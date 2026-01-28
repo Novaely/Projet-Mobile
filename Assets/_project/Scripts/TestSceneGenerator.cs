@@ -33,6 +33,7 @@ public class TestSceneGenerator : EditorWindow
     {
         var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
         
+        // --- CAMÉRA & MANAGER ---
         GameObject camGO = new GameObject("Main Camera");
         Camera cam = camGO.AddComponent<Camera>();
         cam.orthographic = true;
@@ -40,9 +41,16 @@ public class TestSceneGenerator : EditorWindow
         cam.transform.position = new Vector3((gridWidth * spacing) / 2f - 0.5f, (gridHeight * spacing) / 2f - 0.5f, -10f);
         camGO.tag = "MainCamera";
 
-        GameObject managerGO = new GameObject("ConditionManager");
-        managerGO.AddComponent<ConditionManager>();
+        // Ajout du DragManager sur la caméra (ou un objet manager)
+        var dragManager = camGO.AddComponent<DragManager>();
 
+        GameObject managerGO = new GameObject("ConditionManager");
+        var condManager = managerGO.AddComponent<ConditionManager>();
+        
+        // Lier le ConditionManager au DragManager automatiquement (via sérialisation privée c'est dur en éditeur, mais on tente)
+        // Note: Le DragManager fait un FindObjectOfType au Start, donc ça marchera même sans lien direct ici.
+
+        // --- GRILLE ---
         GameObject gridRoot = new GameObject("GridRoot");
         Seat[,] seatGrid = new Seat[gridWidth, gridHeight];
         Sprite squareSprite = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
@@ -61,7 +69,10 @@ public class TestSceneGenerator : EditorWindow
                 sr.sortingOrder = 0;
 
                 seatGO.AddComponent<BoxCollider2D>();
+                
+                // AJOUT DES DEUX SCRIPTS (Toi + Collègue)
                 var seat = seatGO.AddComponent<Seat>();
+                seatGO.AddComponent<EmplacementController>(); // <-- AJOUT DU SCRIPT DU COLLÈGUE
                 
                 if (x == 0 || x == gridWidth - 1) seat.seatType = SeatType.Fenetre;
                 else seat.seatType = SeatType.Normal;
@@ -70,6 +81,7 @@ public class TestSceneGenerator : EditorWindow
             }
         }
 
+        // Connexions Voisins
         for (int x = 0; x < gridWidth; x++)
         {
             for (int y = 0; y < gridHeight; y++)
@@ -82,17 +94,19 @@ public class TestSceneGenerator : EditorWindow
             }
         }
 
+        // --- DINOS ---
         CreateTestDino2D("Rex_Test", DietType.Carnivore, DinoColor.RougeRose, new Vector3(-2, 0, 0), squareSprite);
         CreateTestDino2D("Diplo_Test", DietType.Herbivore, DinoColor.BleuPastel, new Vector3(-2, 1.5f, 0), squareSprite);
         CreateTestDino2D("Stego_Test", DietType.Herbivore, DinoColor.Turquoise, new Vector3(-2, 3, 0), squareSprite);
 
-        Debug.Log("Scène 2D générée !");
+        Debug.Log("Scène 2D générée avec succès (Scripts fusionnés) !");
     }
 
     private void CreateTestDino2D(string name, DietType diet, DinoColor color, Vector3 pos, Sprite sprite)
     {
         GameObject dinoGO = new GameObject(name);
         dinoGO.transform.position = pos;
+        dinoGO.tag = "Dino"; // Important pour certains raycasts
         
         var sr = dinoGO.AddComponent<SpriteRenderer>();
         sr.sprite = sprite;
@@ -101,9 +115,13 @@ public class TestSceneGenerator : EditorWindow
 
         dinoGO.AddComponent<CircleCollider2D>();
 
+        // AJOUT DES DEUX SCRIPTS (Toi + Collègue)
         var dino = dinoGO.AddComponent<Dino>();
+        dinoGO.AddComponent<DinoController>(); // <-- AJOUT DU SCRIPT DU COLLÈGUE
+        
         dino.color = color; 
 
+        // Profil Temporaire
         DinoProfileSO tempProfile = ScriptableObject.CreateInstance<DinoProfileSO>();
         tempProfile.speciesName = name;
         tempProfile.diet = diet;

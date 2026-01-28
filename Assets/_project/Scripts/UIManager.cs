@@ -53,11 +53,11 @@ public class UIManager : MonoBehaviour
         int index = 1;
         foreach (var button in _buttonsLevel)
         {
+            int levelIndex = index++;
             var text = button.GetComponentInChildren<TextMeshProUGUI>();
-            text.text = index.ToString();
+            text.text = levelIndex.ToString();
             text.fontSize = 40;
-            button.onClick.AddListener(() => ScenesManager.Instance.LoadSceneLevel(index));
-            index++;
+            button.onClick.AddListener(() => ScenesManager.Instance.LoadSceneLevel(levelIndex));
         }
     }
 

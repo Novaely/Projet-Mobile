@@ -5,20 +5,29 @@ public class DragManager : MonoBehaviour
 {
     [SerializeField] InputActionReference _dragInputAction;
     [SerializeField] LayerMask layerMask;
+    [SerializeField] LayerMask tqtjesais;
 
     DinoController _currentItemSelected;
     EmplacementController _lastEmplacement;
 
     private void Start()
     {
+        //Input 
         _dragInputAction.action.started += DragStarted;
         _dragInputAction.action.canceled += DragCanceled;
+
+        //Event
+        SpawnManager.Instance.OnSpawn += SpawnDino;
     }
 
     private void OnDestroy()
     {
+        //Input
         _dragInputAction.action.started -= DragStarted;
         _dragInputAction.action.canceled -= DragCanceled;
+
+        //Event
+
     }
 
     private void Update()
@@ -41,7 +50,7 @@ public class DragManager : MonoBehaviour
                 _currentItemSelected = item;
 
                 Vector2 mousePosPlacement = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-                RaycastHit2D hitPlacement = Physics2D.Raycast(mousePosPlacement, Vector2.zero, 10000, layerMask);
+                RaycastHit2D hitPlacement = Physics2D.Raycast(mousePosPlacement, Vector2.zero, 10000, tqtjesais);
 
                 if (hitPlacement)
                 {
@@ -63,13 +72,13 @@ public class DragManager : MonoBehaviour
             Debug.Log("Raycast Hit -> " + hitPlacement.transform.name);
             if (hitPlacement.transform.TryGetComponent(out EmplacementController item))
             {
-                if (item._storage == null)
+                if (item.Storage == null)
                 {
-                    item._storage = _currentItemSelected.gameObject;
+                    item.Storage = _currentItemSelected.gameObject;
                     _currentItemSelected.SetPosition(item.transform);
                     if (_lastEmplacement != null)
                     {
-                        _lastEmplacement._storage = null;
+                        _lastEmplacement.Storage = null;
                         _lastEmplacement = null;
                     }
                 }
@@ -84,5 +93,19 @@ public class DragManager : MonoBehaviour
             _currentItemSelected.ReturnToLastPosition();
         }
         _currentItemSelected = null;
+    }
+
+    private void SpawnDino(DinoController dino ,Transform position)
+    {
+        if (dino == null) { return; }
+
+        if (position != null)
+        {
+            if (position.transform.TryGetComponent(out EmplacementController item))
+            {
+                item.Storage = dino.gameObject;
+                dino.SetPosition(item.transform);
+            }
+        }
     }
 }

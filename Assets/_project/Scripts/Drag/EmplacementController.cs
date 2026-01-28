@@ -2,7 +2,24 @@ using UnityEngine;
 
 public class EmplacementController : MonoBehaviour
 {
-    public GameObject _storage;
+    GameObject _storage;
+
+    public GameObject Storage
+    {
+        get {  return _storage; }
+        set {
+            if (value == null)
+            {
+                _storage = value;
+                return;
+            }
+            if (value.GetComponent<DinoController>() != null)
+            {
+                _storage = value;
+            }
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         if (_storage == null)

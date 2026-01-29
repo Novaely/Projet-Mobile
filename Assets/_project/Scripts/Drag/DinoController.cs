@@ -10,9 +10,14 @@ public class DinoController : MonoBehaviour
 
     public void Displace()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector2 mousePos;
+        if (Input.touchCount != 0)
+        {
+            Touch touch0 = Input.GetTouch(0);
+            mousePos = Camera.main.ScreenToWorldPoint(touch0.position);
+            transform.position = mousePos;
+        }
 
-        transform.position = mousePos;
     }
 
     public void ReturnToLastPosition()

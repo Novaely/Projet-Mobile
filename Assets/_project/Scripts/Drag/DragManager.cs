@@ -5,7 +5,6 @@ public class DragManager : MonoBehaviour
 {
     [SerializeField] InputActionReference _dragInputAction;
     [SerializeField] LayerMask layerMask;
-    [SerializeField] LayerMask tqtjesais;
     [SerializeField] private ConditionManager conditionManager;
 
     DinoController _currentItemSelected;
@@ -31,7 +30,8 @@ public class DragManager : MonoBehaviour
     {
         _dragInputAction.action.started -= DragStarted;
         _dragInputAction.action.canceled -= DragCanceled;
-        
+
+        SpawnManager.Instance.OnSpawn -= SpawnDino;
     }
 
     private void Update()
@@ -66,27 +66,22 @@ public class DragManager : MonoBehaviour
 
     void DragStarted(InputAction.CallbackContext context)
     {
-    Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-    RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
-    if (hit)
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+        if (hit)
         {
-        if (hit.transform.TryGetComponent(out DinoController item))
-         {
-            _currentItemSelected = item;
-
-            RaycastHit2D hitSeat = Physics2D.Raycast(mousePos, Vector2.zero, 10000, tqtjesais);
-
-            if (hitSeat && hitSeat.transform.TryGetComponent(out EmplacementController oldEmplacement))
-             {
-                _lastEmplacement = oldEmplacement;
-                
-                if (oldEmplacement.TryGetComponent(out Seat seatScript))
+            if (hit.transform.TryGetComponent(out DinoController item))
+            {
+                _currentItemSelected = item;
+                if (_currentItemSelected.LastPosition.TryGetComponent<EmplacementController>(out _lastEmplacement))
+                {
+                    if (_currentItemSelected.LastPosition.TryGetComponent(out Seat seatScript))
                     {
-                    conditionManager.PickupDino(seatScript);
+                        conditionManager.PickupDino(seatScript);
                     }
-                
-                oldEmplacement.Storage = null; 
-             }
+
+                    _lastEmplacement.Storage = null;
+                }
             }
         }
     }

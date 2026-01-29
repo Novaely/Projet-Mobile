@@ -6,6 +6,8 @@ public class DinoController : MonoBehaviour
     [SerializeField]
     Transform _lastPosition;
 
+    public Transform LastPosition { get { return _lastPosition; } }
+
     public void Displace()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());

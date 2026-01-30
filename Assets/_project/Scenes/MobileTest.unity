@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
+  accessoryTag: 
   speciesName: Diplo_Test
   diet: 0
   myRules: []
@@ -393,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
+  accessoryTag: 
   speciesName: Stego_Test
   diet: 0
   myRules: []
@@ -1092,6 +1094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
+  accessoryTag: 
   speciesName: Rex_Test
   diet: 1
   myRules: []
@@ -2324,7 +2327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConditionManager
   globalRules:
-  - {fileID: 11400000, guid: 37ced2a65eb7396498123ececf3b6274, type: 2}
+  - {fileID: 0}
   seatProfiles: []
   validColor: {r: 0, g: 1, b: 0, a: 1}
   invalidColor: {r: 1, g: 0, b: 0, a: 1}

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f39ee5725f97544ab2e5ac2054e250, type: 3}
   m_Name: veut rouge
   m_EditorClassIdentifier: Assembly-CSharp::MustBeNeighborColorSO
-  requiredNeighborColor: 0
+  requiredNeighborColor: 1

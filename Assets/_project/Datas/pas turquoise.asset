@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ccd7de5c555498419c3f01f37c0cddb, type: 3}
   m_Name: pas turquoise
   m_EditorClassIdentifier: Assembly-CSharp::NoSpecificNeighborColorSO
-  forbiddenNeighborColor: 0
+  forbiddenNeighborColor: 2

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49cbdeeb4fae5ae4096d4d9cd18197b1, type: 3}
-  m_Name: pas rose
-  m_EditorClassIdentifier: Assembly-CSharp::IncompatibleNeighborRuleSO
-  hatedNeighborColor: 1
+  m_Script: {fileID: 11500000, guid: 9ccd7de5c555498419c3f01f37c0cddb, type: 3}
+  m_Name: pas bleu
+  m_EditorClassIdentifier: Assembly-CSharp::NoSpecificNeighborColorSO
+  forbiddenNeighborColor: 0

@@ -1,5 +1,3 @@
-using System;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +14,7 @@ public class ScenesManager : MonoBehaviour
         }
 
         Instance = this;
+        DontDestroyOnLoad(this);
     }
 
     public void LoadSceneLevel(int index)
@@ -28,5 +27,12 @@ public class ScenesManager : MonoBehaviour
     {
         Debug.Log("Loading MainMenu");
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void LoadSceneMainMenu(bool isLevelSelectActive)
+    {
+        Debug.Log("Loading MainMenu with LevelSelect");
+        SceneManager.LoadScene("MainMenu");
+        FindFirstObjectByType<UIMainMenu>().IsLevelSelectActive(isLevelSelectActive);
     }
 }

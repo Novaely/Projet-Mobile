@@ -7,9 +7,13 @@ public class TestZoom : MonoBehaviour
     [SerializeField] float _maxZoomValue;
     [SerializeField] float _minZoomValue;
 
+    Vector3 _startposition;
+    Vector3 _endposition;
+
     void Start()
     {
         TryGetComponent(out _cam);
+        _startposition = _cam.transform.position;
     }
 
     void Update()
@@ -39,6 +43,22 @@ public class TestZoom : MonoBehaviour
                 ZoomOut();
             }
             Debug.Log("Zoom delta : " + zoomDelta);
+
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                Vector2 vecteurMidt0Tot1 = (touch1.position - touch0.position) / 2;
+                Vector2 position = touch0.position + vecteurMidt0Tot1;
+                Vector3 worldPos = Camera.main.ScreenToWorldPoint(position);
+                worldPos.z = _cam.transform.position.z;
+                _endposition = worldPos;
+            }
+            else if (Input.GetTouch(0).phase == TouchPhase.Moved)
+            {
+                Debug.Log("world pos : " + _endposition);
+                float poids = (_cam.orthographicSize - _minZoomValue) / (_maxZoomValue - _minZoomValue);
+                Debug.Log("poids : " + poids);
+                transform.position = Vector3.Lerp(_startposition, _endposition, poids);
+            }
         }
     }
 

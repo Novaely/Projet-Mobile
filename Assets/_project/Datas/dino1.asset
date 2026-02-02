@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
   m_Name: dino1
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
+  accessoryTag: 
+  designerDescription: Description du comportement de ce dino...
   speciesName: test1
   diet: 0
   myRules:
-  - {fileID: 11400000, guid: 37ced2a65eb7396498123ececf3b6274, type: 2}
+  - {fileID: 11400000, guid: 6651f9bc714ebaa4fb0c3b1267a91eb3, type: 2}

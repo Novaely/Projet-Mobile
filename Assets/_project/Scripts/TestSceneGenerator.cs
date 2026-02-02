@@ -2,58 +2,109 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
+using System.Linq;
+using TMPro;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI; // 🔥 INDISPENSABLE POUR L'UI
 
 public class TestSceneGenerator : EditorWindow
 {
     [MenuItem("Tools/Generate Test Scene 2D")]
-    public static void ShowWindow()
-    {
-        GetWindow<TestSceneGenerator>("Scene Generator 2D");
-    }
+    public static void ShowWindow() => GetWindow<TestSceneGenerator>("Scene Generator 2D");
 
     private int gridWidth = 4;
     private int gridHeight = 3;
     private float spacing = 1.5f;
+    private bool modifyCurrentScene = true;
+    private string newSceneName = "TestScene_2D";
+    private string emplacementLayerName = "Emplacement";
 
     private void OnGUI()
     {
-        GUILayout.Label("Configuration Scène 2D", EditorStyles.boldLabel);
+        GUILayout.Label("Générateur Unity 6 (New Input System)", EditorStyles.boldLabel);
         
-        gridWidth = EditorGUILayout.IntField("Largeur Grille", gridWidth);
-        gridHeight = EditorGUILayout.IntField("Hauteur Grille", gridHeight);
+        GUILayout.Space(10);
+        GUILayout.Label("1. Configuration Grille", EditorStyles.boldLabel);
+        gridWidth = EditorGUILayout.IntField("Largeur", gridWidth);
+        gridHeight = EditorGUILayout.IntField("Hauteur", gridHeight);
         spacing = EditorGUILayout.FloatField("Espacement", spacing);
+        emplacementLayerName = EditorGUILayout.TextField("Layer 'Emplacement'", emplacementLayerName);
 
-        if (GUILayout.Button("Générer Scène 2D"))
+        GUILayout.Space(10);
+        GUILayout.Label("2. Mode Génération", EditorStyles.boldLabel);
+        modifyCurrentScene = GUILayout.Toggle(modifyCurrentScene, "✏️ Modifier scène actuelle");
+        
+        if (!modifyCurrentScene) newSceneName = EditorGUILayout.TextField("Nom Nouvelle Scène", newSceneName);
+
+        GUILayout.Space(20);
+        GUI.backgroundColor = Color.cyan;
+        if (GUILayout.Button("🚀 GÉNÉRER (Compatible New Input)", GUILayout.Height(40)))
         {
-            GenerateScene();
+            if (modifyCurrentScene) GenerateInCurrentScene();
+            else GenerateNewScene();
         }
+        GUI.backgroundColor = Color.white;
     }
 
-    private void GenerateScene()
+    private void GenerateInCurrentScene()
+    {
+        EditorSceneManager.SaveOpenScenes();
+        ClearScene();
+        GenerateLevel();
+        Debug.Log("✅ Scène générée avec succès !");
+    }
+
+    private void GenerateNewScene()
     {
         var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+        GenerateLevel();
+        EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene(), $"Assets/Scenes/{newSceneName}.unity", true);
+        Debug.Log($"✅ Nouvelle scène '{newSceneName}' créée !");
+    }
+
+    private void GenerateLevel()
+    {
+        SetupCameraAndManagers();
+        Seat[,] grid = CreateGrid();
+        ConnectNeighbors(grid);
+        CreateTestDinos(); 
+        CreateFullUI();    
+    }
+
+    private void SetupCameraAndManagers()
+    {
+        // Caméra
+        GameObject camGO = GameObject.Find("Main Camera");
+        if (camGO == null) 
+        { 
+            camGO = new GameObject("Main Camera"); 
+            camGO.AddComponent<Camera>().orthographic = true; 
+            camGO.tag = "MainCamera"; 
+        }
+        Camera.main.orthographicSize = 5f;
+        Camera.main.transform.position = new Vector3(0, 0, -10);
+
+        // Managers
+        if (camGO.GetComponent<DragManager>() == null) camGO.AddComponent<DragManager>();
         
-        // --- CAMÉRA & MANAGER ---
-        GameObject camGO = new GameObject("Main Camera");
-        Camera cam = camGO.AddComponent<Camera>();
-        cam.orthographic = true;
-        cam.orthographicSize = 5f;
-        cam.transform.position = new Vector3((gridWidth * spacing) / 2f - 0.5f, (gridHeight * spacing) / 2f - 0.5f, -10f);
-        camGO.tag = "MainCamera";
-
-        // Ajout du DragManager sur la caméra (ou un objet manager)
-        var dragManager = camGO.AddComponent<DragManager>();
-
-        GameObject managerGO = new GameObject("ConditionManager");
-        var condManager = managerGO.AddComponent<ConditionManager>();
+        if (!GameObject.Find("ConditionManager")) 
+            new GameObject("ConditionManager").AddComponent<ConditionManager>();
         
-        // Lier le ConditionManager au DragManager automatiquement (via sérialisation privée c'est dur en éditeur, mais on tente)
-        // Note: Le DragManager fait un FindObjectOfType au Start, donc ça marchera même sans lien direct ici.
+        if (!GameObject.Find("GameManager")) 
+            new GameObject("GameManager").AddComponent<LevelScorer>();
+    }
 
-        // --- GRILLE ---
+    private Seat[,] CreateGrid()
+    {
         GameObject gridRoot = new GameObject("GridRoot");
         Seat[,] seatGrid = new Seat[gridWidth, gridHeight];
+        
+        // Sprite par défaut
         Sprite squareSprite = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
+        
+        float startX = -(gridWidth - 1) * spacing * 0.5f;
+        float startY = -(gridHeight - 1) * spacing * 0.5f;
 
         for (int x = 0; x < gridWidth; x++)
         {
@@ -61,83 +112,191 @@ public class TestSceneGenerator : EditorWindow
             {
                 GameObject seatGO = new GameObject($"Seat_{x}_{y}");
                 seatGO.transform.parent = gridRoot.transform;
-                seatGO.transform.position = new Vector3(x * spacing, y * spacing, 0);
-                
+                seatGO.transform.position = new Vector3(startX + x * spacing, startY + y * spacing, 0);
+
+                // Layer
+                int layerIndex = LayerMask.NameToLayer(emplacementLayerName);
+                if (layerIndex != -1) seatGO.layer = layerIndex;
+
                 var sr = seatGO.AddComponent<SpriteRenderer>();
                 sr.sprite = squareSprite;
-                sr.color = new Color(1f, 1f, 1f, 0.3f);
-                sr.sortingOrder = 0;
+                sr.color = new Color(1f, 1f, 1f, 0.3f); 
 
                 seatGO.AddComponent<BoxCollider2D>();
-                
-                // AJOUT DES DEUX SCRIPTS (Toi + Collègue)
                 var seat = seatGO.AddComponent<Seat>();
-                seatGO.AddComponent<EmplacementController>(); // <-- AJOUT DU SCRIPT DU COLLÈGUE
-                
+                seatGO.AddComponent<EmplacementController>();
+                seatGO.AddComponent<SeatEvaluator>();
+
+                // Logique Couloir/Fenêtre
                 if (x == 0 || x == gridWidth - 1) seat.seatType = SeatType.Fenetre;
+                else if (x == gridWidth / 2) seat.seatType = SeatType.Couloir; 
                 else seat.seatType = SeatType.Normal;
 
                 seatGrid[x, y] = seat;
             }
         }
-
-        // Connexions Voisins
-        for (int x = 0; x < gridWidth; x++)
-        {
-            for (int y = 0; y < gridHeight; y++)
-            {
-                var seat = seatGrid[x, y];
-                if (x > 0) seat.left = seatGrid[x - 1, y];
-                if (x < gridWidth - 1) seat.right = seatGrid[x + 1, y];
-                if (y > 0) seat.back = seatGrid[x, y - 1];
-                if (y < gridHeight - 1) seat.front = seatGrid[x, y + 1];
-            }
-        }
-
-        // --- DINOS ---
-        CreateTestDino2D("Rex_Test", DietType.Carnivore, DinoColor.RougeRose, new Vector3(-2, 0, 0), squareSprite);
-        CreateTestDino2D("Diplo_Test", DietType.Herbivore, DinoColor.BleuPastel, new Vector3(-2, 1.5f, 0), squareSprite);
-        CreateTestDino2D("Stego_Test", DietType.Herbivore, DinoColor.Turquoise, new Vector3(-2, 3, 0), squareSprite);
-
-        Debug.Log("Scène 2D générée avec succès (Scripts fusionnés) !");
+        return seatGrid;
     }
 
-    private void CreateTestDino2D(string name, DietType diet, DinoColor color, Vector3 pos, Sprite sprite)
+    private void ConnectNeighbors(Seat[,] seatGrid)
     {
-        GameObject dinoGO = new GameObject(name);
-        dinoGO.transform.position = pos;
-        dinoGO.tag = "Dino"; // Important pour certains raycasts
-        
-        var sr = dinoGO.AddComponent<SpriteRenderer>();
-        sr.sprite = sprite;
-        sr.color = GetColorFromEnum(color);
-        sr.sortingOrder = 1;
-
-        dinoGO.AddComponent<CircleCollider2D>();
-
-        // AJOUT DES DEUX SCRIPTS (Toi + Collègue)
-        var dino = dinoGO.AddComponent<Dino>();
-        dinoGO.AddComponent<DinoController>(); // <-- AJOUT DU SCRIPT DU COLLÈGUE
-        
-        dino.color = color; 
-
-        // Profil Temporaire
-        DinoProfileSO tempProfile = ScriptableObject.CreateInstance<DinoProfileSO>();
-        tempProfile.speciesName = name;
-        tempProfile.diet = diet;
-        
-        dino.profile = tempProfile;
+        int w = seatGrid.GetLength(0);
+        int h = seatGrid.GetLength(1);
+        for (int x = 0; x < w; x++) for (int y = 0; y < h; y++)
+        {
+            var s = seatGrid[x, y];
+            if (x > 0) s.left = seatGrid[x - 1, y];
+            if (x < w - 1) s.right = seatGrid[x + 1, y];
+            if (y > 0) s.back = seatGrid[x, y - 1];
+            if (y < h - 1) s.front = seatGrid[x, y + 1];
+        }
     }
 
-    private Color GetColorFromEnum(DinoColor color)
+    private void CreateFullUI()
     {
-        switch (color)
+        // 1. EVENT SYSTEM (Version New Input)
+        if (GameObject.Find("EventSystem") == null)
         {
-            case DinoColor.BleuPastel: return new Color(0.67f, 0.77f, 0.91f);
-            case DinoColor.RougeRose: return new Color(1f, 0.01f, 0.24f);
-            case DinoColor.Turquoise: return new Color(0.4f, 0.86f, 0.71f);
-            case DinoColor.Violet: return new Color(0.87f, 0.45f, 1f);
-            default: return Color.white;
+            var es = new GameObject("EventSystem");
+            es.AddComponent<EventSystem>();
+            // C'est ce composant qui permet à l'UI de marcher avec le nouveau système
+            es.AddComponent<InputSystemUIInputModule>(); 
         }
+
+        // 2. CANVAS
+        GameObject canvasGO = GameObject.Find("Canvas");
+        if (canvasGO == null)
+        {
+            canvasGO = new GameObject("Canvas");
+            var c = canvasGO.AddComponent<Canvas>();
+            c.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvasGO.AddComponent<CanvasScaler>();
+            canvasGO.AddComponent<GraphicRaycaster>();
+        }
+
+        // 3. BOUTON
+        GameObject validateBtnGO = CreateButton("Btn_Valider", canvasGO.transform, new Vector2(0, -350), new Vector2(220, 60), Color.green);
+        validateBtnGO.GetComponentInChildren<TextMeshProUGUI>().text = "VALIDER NIVEAU";
+        Button realValidateButton = validateBtnGO.GetComponent<Button>();
+
+        // 4. PANEL RÉSULTAT
+        GameObject resultPanel = new GameObject("Panel_Resultat");
+        resultPanel.transform.SetParent(canvasGO.transform, false);
+        
+        RectTransform panelRT = resultPanel.AddComponent<RectTransform>();
+        panelRT.anchorMin = Vector2.zero; panelRT.anchorMax = Vector2.one; 
+        panelRT.offsetMin = Vector2.zero; panelRT.offsetMax = Vector2.zero;
+        Image panelImg = resultPanel.AddComponent<Image>();
+        panelImg.color = new Color(0, 0, 0, 0.9f);
+
+        GameObject contentGO = new GameObject("Content");
+        contentGO.transform.SetParent(resultPanel.transform, false);
+        
+        CreateText("Titre", "NIVEAU TERMINÉ", 50, contentGO.transform, new Vector2(0, 100));
+
+        GameObject scoreFinalGO = CreateText("ScoreFinal", "Score: 0/0", 40, contentGO.transform, new Vector2(0, 0));
+        TextMeshProUGUI scoreTextFinal = scoreFinalGO.GetComponent<TextMeshProUGUI>();
+
+        GameObject starsContainer = new GameObject("StarsContainer");
+        starsContainer.transform.SetParent(contentGO.transform, false);
+        var hlg = starsContainer.AddComponent<HorizontalLayoutGroup>();
+        hlg.childAlignment = TextAnchor.MiddleCenter;
+        hlg.spacing = 30;
+        starsContainer.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -80);
+        starsContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 100);
+
+        Image[] starImages = new Image[3];
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject s = new GameObject($"Star_Final_{i}");
+            s.transform.SetParent(starsContainer.transform, false);
+            Image img = s.AddComponent<Image>(); img.color = Color.yellow;
+            starImages[i] = img;
+        }
+
+        // 5. CONNEXION AU LEVELSCORER
+        LevelScorer scorer = GameObject.FindObjectOfType<LevelScorer>();
+        if (scorer != null)
+        {
+            scorer.validateButton = realValidateButton;
+            scorer.resultPanel = resultPanel;
+            scorer.scoreText = scoreTextFinal;
+            scorer.starImages = starImages;
+            resultPanel.SetActive(false); // On cache le panel de fin au début
+        }
+    }
+
+    // --- Utilitaires ---
+
+    private void CreateTestDinos()
+    {
+        Sprite s = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
+        CreateOneDino("Rex", DietType.Carnivore, DinoColor.RougeRose, new Vector3(-5, 0, 0), s);
+        CreateOneDino("Diplo", DietType.Herbivore, DinoColor.BleuPastel, new Vector3(-5, 2, 0), s);
+    }
+
+    private void CreateOneDino(string name, DietType diet, DinoColor col, Vector3 pos, Sprite sprite)
+    {
+        GameObject go = new GameObject(name);
+        go.transform.position = pos;
+        
+        var sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite = sprite; sr.color = GetDinoColor(col);
+
+        go.AddComponent<CircleCollider2D>();
+        var dino = go.AddComponent<Dino>();
+        go.AddComponent<DinoController>();
+
+        DinoProfileSO profile = ScriptableObject.CreateInstance<DinoProfileSO>();
+        profile.speciesName = name; profile.diet = diet;
+        dino.profile = profile; dino.color = col;
+    }
+
+    private Color GetDinoColor(DinoColor c) => c switch {
+        DinoColor.RougeRose => new Color(1f, 0.2f, 0.2f),
+        DinoColor.BleuPastel => new Color(0.4f, 0.6f, 1f),
+        _ => Color.white
+    };
+
+    private GameObject CreateButton(string name, Transform parent, Vector2 pos, Vector2 size, Color c)
+    {
+        GameObject go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        Image img = go.AddComponent<Image>(); img.color = c;
+        go.AddComponent<Button>();
+        RectTransform rt = go.GetComponent<RectTransform>();
+        rt.anchoredPosition = pos; rt.sizeDelta = size;
+        CreateText("Text", "Button", 20, go.transform, Vector2.zero);
+        return go;
+    }
+
+    private GameObject CreateText(string name, string content, int size, Transform parent, Vector2 pos)
+    {
+        GameObject go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        TextMeshProUGUI tmp = go.AddComponent<TextMeshProUGUI>();
+        tmp.text = content; tmp.fontSize = size;
+        tmp.alignment = TextAlignmentOptions.Center; tmp.color = Color.white;
+        RectTransform rt = go.GetComponent<RectTransform>();
+        rt.anchoredPosition = pos; rt.sizeDelta = new Vector2(400, 100);
+        return go;
+    }
+
+    private void ClearScene()
+    {
+        // 1. Nettoyage objets scène
+        GameObject[] roots = { 
+            GameObject.Find("GridRoot"), 
+            GameObject.Find("Canvas"), 
+            GameObject.Find("EventSystem"), 
+            GameObject.Find("GameManager"), 
+            GameObject.Find("ConditionManager") 
+        };
+        foreach (var r in roots) if (r != null) Undo.DestroyObjectImmediate(r);
+        
+        // 2. Nettoyage Dinos (Par Type, pas par Tag pour éviter les erreurs)
+        Dino[] dinos = Object.FindObjectsByType<Dino>(FindObjectsSortMode.None);
+        foreach (var d in dinos) 
+            if (d != null && d.gameObject != null) Undo.DestroyObjectImmediate(d.gameObject);
     }
 }

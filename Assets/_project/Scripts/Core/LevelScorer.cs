@@ -1,50 +1,184 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UI;
+using System.Linq;
 
 public class LevelScorer : MonoBehaviour
 {
-    [Header("UI Étoiles Niveau")]
-    public Image[] starImages = new Image[3];
+    [Header("UI Score (Pendant le jeu)")]
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI percentText;
+    public TextMeshProUGUI starsText;
+    public Image[] starImages; 
+    
+    [Header("UI Fin de Niveau (Interaction)")]
+    public Button validateButton;      
+    public GameObject resultPanel;     
 
-    [Header("Scoring")]
-    public int requiredPerfect = 3; // Combien de dinos doivent être parfaits pour 3 étoiles
-    public int requiredGood = 2;    // Pour 2 étoiles
+    [Header("Scoring Settings")]
+    public Seat[] seats;
+    [Tooltip("Ratio de satisfaction minimum pour gagner le point (0.8 = 80%)")]
+    public float targetSatisfaction = 0.8f;
+    
+    [Header("Level Config")]
+    [Tooltip("Force le nombre total de dinos (Score Max). Si 0, détecte automatiquement les dinos en scène.")]
+    public int totalDinosToPlace = 0; 
+    
+    [Header("Debug")]
+    public bool showDebugLogs = true;
 
-    private int perfectCount = 0;
-    private int totalDinosaurs = 0;
+    private int currentScore = 0;
+    private int maxScore = 0;
+    private float lastUpdateTime = 0f;
+    private const float UPDATE_INTERVAL = 0.5f;
+    private int starCount = 0;
+    
+    private bool levelValidated = false;
 
-    public void UpdateScore()
+    void Start()
     {
-        // Compte les dinos parfaitement placés
-        perfectCount = 0;
-        totalDinosaurs = 0;
-
-        Seat[] allSeats = FindObjectsByType<Seat>(FindObjectsSortMode.None);
-        foreach (var seat in allSeats)
+        InitializeLevel();
+        if (validateButton != null)
         {
-            if (seat.occupant != null)
+            validateButton.onClick.RemoveAllListeners();
+            validateButton.onClick.AddListener(OnValidateClick);
+        }
+
+        if (resultPanel != null)
+        {
+            resultPanel.SetActive(false);
+        }
+
+        UpdateScore();
+    }
+
+    void Update()
+    {
+        if (levelValidated) return;
+
+        if (Time.time - lastUpdateTime >= UPDATE_INTERVAL)
+        {
+            UpdateScore();
+            lastUpdateTime = Time.time;
+        }
+    }
+
+    public void InitializeLevel() 
+    {
+        if (seats == null || seats.Length == 0)
+        {
+            seats = FindObjectsByType<Seat>(FindObjectsSortMode.None);
+        }
+
+        if (totalDinosToPlace > 0)
+        {
+            maxScore = totalDinosToPlace;
+        }
+        else
+        {
+            Dino[] dinosInScene = FindObjectsByType<Dino>(FindObjectsSortMode.None);
+            
+            if (dinosInScene != null && dinosInScene.Length > 0)
             {
-                totalDinosaurs++;
-                var evaluator = seat.GetComponent<SeatEvaluator>();
-                if (evaluator && evaluator.currentState == PlacementState.Bon)
-                    perfectCount++;
+                maxScore = dinosInScene.Length;
+            }
+            else
+            {
+                maxScore = seats.Length;
             }
         }
 
-        // Calcul étoiles
-        int stars = 0;
-        if (perfectCount >= requiredPerfect) stars = 3;
-        else if (perfectCount >= requiredGood) stars = 2;
-        else if (perfectCount > 0) stars = 1;
-
-        // UI
-        for (int i = 0; i < starImages.Length; i++)
-        {
-            starImages[i].gameObject.SetActive(i < stars);
-        }
-
-        scoreText.text = $"{perfectCount}/{totalDinosaurs} ({stars}/3)";
+        if (showDebugLogs)
+            Debug.Log($"📍 CONFIG NIVEAU : {seats.Length} Sièges trouvés | Objectif Score : {maxScore}");
     }
+
+    public void OnValidateClick()
+    {
+        levelValidated = true; 
+        UpdateScore(); 
+
+        Debug.Log($"🏁 FIN DU NIVEAU ! Score Final : {GetPercent():F0}% ({GetStars()} étoiles)");
+
+        if (validateButton != null) 
+            validateButton.gameObject.SetActive(false);
+
+        if (resultPanel != null) 
+            resultPanel.SetActive(true);
+    }
+
+    public void UpdateScore() 
+    {
+        currentScore = 0;
+        
+        foreach (var seat in seats)
+        {
+            if (seat == null) continue;
+            
+            var evaluator = seat.GetComponent<SeatEvaluator>();
+            if (evaluator != null && evaluator.GetSatisfactionRatio() >= targetSatisfaction)
+            {
+                currentScore++;
+            }
+        }
+        
+        UpdateUI();
+    }
+
+    void UpdateUI()
+    {
+        float percent = GetPercent();
+        
+        if (scoreText != null)
+            scoreText.text = $"Score: {currentScore}/{maxScore}";
+            
+        if (percentText != null)
+            percentText.text = $"{percent:F0}%";
+            
+        if (starsText != null)
+            starsText.text = $"{GetStars()}★";
+
+        UpdateStarImages();
+    }
+
+    void UpdateStarImages()
+    {
+        if (starImages != null && starImages.Length > 0)
+        {
+            int stars = GetStars();
+            for (int i = 0; i < starImages.Length; i++)
+            {
+                if (starImages[i] != null)
+                    starImages[i].enabled = i < stars;
+            }
+        }
+    }
+
+    float GetPercent()
+    {
+        if (maxScore <= 0) return 0f;
+        float p = (float)currentScore / maxScore * 100f;
+        return Mathf.Clamp(p, 0f, 100f); 
+    }
+
+    int GetStars()
+    {
+        float percent = GetPercent();
+        starCount = percent switch
+        {
+            >= 90f => 3, 
+            >= 60f => 2,
+            >= 30f => 1,
+            _ => 0
+        };
+        return starCount;
+    }
+
+    public void InitializeSeats() => InitializeLevel();
+    public void ForceUpdateScore() => UpdateScore();
+    public int GetCurrentScore() => currentScore;
+    public int GetMaxScore() => maxScore;
+    public float GetPercentScore() => GetPercent();
+    public int GetStarRating() => starCount;
+    public bool IsLevelComplete() => GetPercent() >= 60f; 
+    public Image[] GetStarImages() => starImages; 
 }

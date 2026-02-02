@@ -7,22 +7,19 @@ public class DragManager : MonoBehaviour
 
     DinoController _currentItemSelected;
     EmplacementController _lastEmplacement;
-    
     private Seat _lastHoveredSeat;
 
     private void Start()
     {
-        // Sécurité
         if (conditionManager == null) conditionManager = FindFirstObjectByType<ConditionManager>();
-        
-        //Event
         if(SpawnManager.Instance != null)
              SpawnManager.Instance.OnSpawn += SpawnDino;
     }
 
     private void OnDestroy()
     {
-        SpawnManager.Instance.OnSpawn -= SpawnDino;
+        if(SpawnManager.Instance != null)
+            SpawnManager.Instance.OnSpawn -= SpawnDino;
     }
 
     private void Update()
@@ -32,6 +29,7 @@ public class DragManager : MonoBehaviour
             Touch touch0 = Input.GetTouch(0);
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(touch0.position);
             RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+            
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 Debug.Log("Start Drag");
@@ -46,7 +44,6 @@ public class DragManager : MonoBehaviour
                             {
                                 conditionManager.PickupDino(seatScript);
                             }
-
                             _lastEmplacement.Storage = null;
                         }
                     }
@@ -100,7 +97,7 @@ public class DragManager : MonoBehaviour
 
                 if (hitPlacement)
                 {
-                    Debug.Log("Raycast Hit -> " + hit.transform.name);
+                    Debug.Log("Raycast Hit -> " + hitPlacement.transform.name);
                     if (hitPlacement.transform.TryGetComponent(out EmplacementController item))
                     {
                         Dino dinoScript = _currentItemSelected.GetComponent<Dino>();
@@ -112,13 +109,17 @@ public class DragManager : MonoBehaviour
                             item.Storage = _currentItemSelected.gameObject;
                             _currentItemSelected.SetPosition(item.transform);
 
+                            var evaluator = seatScript.GetComponent<SeatEvaluator>();
+                            if (evaluator != null) evaluator.Evaluate(dinoScript);
+
+                            var scorer = FindObjectOfType<LevelScorer>();   
+                            if (scorer != null) scorer.UpdateScore();
+
                             if (_lastEmplacement != null)
                             {
                                 _lastEmplacement.Storage = null;
-
                                 if (_lastEmplacement.TryGetComponent(out Seat oldSeat))
                                     conditionManager.ClearSeat(oldSeat);
-
                                 _lastEmplacement = null;
                             }
                             dropSuccess = true;
@@ -169,4 +170,4 @@ public class DragManager : MonoBehaviour
         var sr = seat.GetComponent<SpriteRenderer>();
         if (sr != null) sr.color = new Color(1f, 1f, 1f, 0.3f); 
     }
-}
+}   

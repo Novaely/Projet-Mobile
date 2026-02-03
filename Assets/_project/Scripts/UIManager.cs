@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
             {
                 loca.OnUpdateString.RemoveAllListeners();
                 loca.OnUpdateString.AddListener(text.SetText);
+                loca.RefreshString();
             }
         }
     }

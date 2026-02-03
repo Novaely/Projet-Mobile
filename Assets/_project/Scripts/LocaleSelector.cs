@@ -16,6 +16,7 @@ public class LocaleSelector : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(Instance);
+        SetLanguage(PlayerPrefs.GetInt("Language"));
     }
 
     public void SetLanguage(int localeIndex)
@@ -27,5 +28,6 @@ public class LocaleSelector : MonoBehaviour
     {
         yield return LocalizationSettings.InitializationOperation;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
+        PlayerPrefs.SetInt("Language", index);
     }
 }

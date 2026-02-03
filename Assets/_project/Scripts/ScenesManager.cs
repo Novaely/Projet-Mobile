@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,14 +26,22 @@ public class ScenesManager : MonoBehaviour
 
     public void LoadSceneMainMenu()
     {
-        Debug.Log("Loading MainMenu");
-        SceneManager.LoadScene("MainMenu");
+        StartCoroutine(LoadMainMenuRoutine(null));
     }
 
-    public void LoadSceneMainMenu(bool isLevelSelectActive)
+    public void LoadSceneMainMenu(bool? isLevelSelectActive)
     {
-        Debug.Log("Loading MainMenu with LevelSelect");
-        SceneManager.LoadScene("MainMenu");
-        FindFirstObjectByType<UIMainMenu>().IsLevelSelectActive(isLevelSelectActive);
+        StartCoroutine(LoadMainMenuRoutine(isLevelSelectActive));
+    }
+
+    private IEnumerator LoadMainMenuRoutine(bool? isLevelSelectActive)
+    {
+        Debug.Log(isLevelSelectActive == null ? "Loading MainMenu" : "Loading MainMenu with LevelSelect");
+
+        yield return SceneManager.LoadSceneAsync("MainMenu");
+
+        if (isLevelSelectActive != null) {
+            FindFirstObjectByType<UIMainMenu>().IsLevelSelectActive((bool)isLevelSelectActive);
+        }
     }
 }

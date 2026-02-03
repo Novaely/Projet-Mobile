@@ -43,7 +43,7 @@ public class UILevel : MonoBehaviour
         _buttonParamExit.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_parameters, false)));
         _buttonDicoExit.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_dictionnary, false)));
 
-        UIManager.Instance.InitializeTextTranslate(FindObjectsByType<TextMeshProUGUI>(FindObjectsSortMode.None));
+        UIManager.Instance.InitializeTextTranslate();
 
         UIManager.Instance.SetActiveMenu((_dictionnary, false), (_parameters, false));
     }

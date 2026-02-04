@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public class ConditionManager : MonoBehaviour
 {
     [Header("Règles Globales (Terrain)")]
-    [Tooltip("Règles qui s'appliquent à TOUT le monde (ex: Siège cassé, Event global)")]
     [SerializeField] private List<SeatRuleSO> globalRules = new List<SeatRuleSO>();
 
     [Header("Règles par Siège (Optionnel)")]
@@ -57,12 +56,10 @@ public class ConditionManager : MonoBehaviour
 
     public bool DropDino(Dino dino, Seat seat)
     {
-        if (CanPlace(dino, seat))
-        {
-            seat.occupant = dino;
-            return true;
-        }
-        return false;
+        if (seat == null || seat.occupant != null) return false;
+
+        seat.occupant = dino;
+        return true;
     }
 
     public Dino PickupDino(Seat seat)

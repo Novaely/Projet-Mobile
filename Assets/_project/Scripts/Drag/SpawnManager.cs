@@ -6,35 +6,27 @@ public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance;
 
-    [SerializeField] EmplacementController _spawner;
-
+    [SerializeField] Seat _spawnerSeat; 
     [SerializeField] List<GameObject> _dinos;
     [SerializeField] Transform _dinosContainer;
 
-    public event Action <DinoController, Transform> OnSpawn;
+    public event Action <Dino, Transform> OnSpawn;
 
     void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
+        if (Instance != null) { Destroy(gameObject); return; }
         Instance = this;
     }
 
     private void Update()
     {
-        if (_spawner.Storage == null)
+        if (_dinos.Count == 0) return;
+        if (_spawnerSeat != null && _spawnerSeat.occupant == null)
         {
-            if (_dinos.Count > 0)
-            {
-                GameObject item = Instantiate(_dinos[0], _spawner.transform.position, Quaternion.identity, _dinosContainer);
-                DinoController dino = item.GetComponent<DinoController>();
-                OnSpawn?.Invoke(dino, _spawner.transform);
-                _dinos.RemoveAt(0);
-            }
+            GameObject item = Instantiate(_dinos[0], _spawnerSeat.transform.position, Quaternion.identity, _dinosContainer);
+            Dino dino = item.GetComponent<Dino>();
+            OnSpawn?.Invoke(dino, _spawnerSeat.transform);
+            _dinos.RemoveAt(0);
         }
     }
 }

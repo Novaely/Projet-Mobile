@@ -31,13 +31,13 @@ public class LevelScorer : MonoBehaviour
     private int maxScore = 0;
     private float lastUpdateTime = 0f;
     private const float UPDATE_INTERVAL = 0.5f;
-    private int starCount = 0;
     
     private bool levelValidated = false;
 
     void Start()
     {
         InitializeLevel();
+
         if (validateButton != null)
         {
             validateButton.onClick.RemoveAllListeners();
@@ -99,11 +99,8 @@ public class LevelScorer : MonoBehaviour
 
         Debug.Log($"🏁 FIN DU NIVEAU ! Score Final : {GetPercent():F0}% ({GetStars()} étoiles)");
 
-        if (validateButton != null) 
-            validateButton.gameObject.SetActive(false);
-
-        if (resultPanel != null) 
-            resultPanel.SetActive(true);
+        if (validateButton != null) validateButton.gameObject.SetActive(false);
+        if (resultPanel != null) resultPanel.SetActive(true);
     }
 
     public void UpdateScore() 
@@ -115,7 +112,8 @@ public class LevelScorer : MonoBehaviour
             if (seat == null) continue;
             
             var evaluator = seat.GetComponent<SeatEvaluator>();
-            if (evaluator != null && evaluator.GetSatisfactionRatio() >= targetSatisfaction)
+            
+            if (evaluator != null && evaluator.GetCurrentSatisfaction() >= targetSatisfaction)
             {
                 currentScore++;
             }
@@ -128,14 +126,9 @@ public class LevelScorer : MonoBehaviour
     {
         float percent = GetPercent();
         
-        if (scoreText != null)
-            scoreText.text = $"Score: {currentScore}/{maxScore}";
-            
-        if (percentText != null)
-            percentText.text = $"{percent:F0}%";
-            
-        if (starsText != null)
-            starsText.text = $"{GetStars()}★";
+        if (scoreText != null) scoreText.text = $"Score: {currentScore}/{maxScore}";
+        if (percentText != null) percentText.text = $"{percent:F0}%";
+        if (starsText != null) starsText.text = $"{GetStars()}★";
 
         UpdateStarImages();
     }
@@ -163,14 +156,15 @@ public class LevelScorer : MonoBehaviour
     int GetStars()
     {
         float percent = GetPercent();
-        starCount = percent switch
+        if (currentScore > 0 && percent < 30f) return 1;
+
+        return percent switch
         {
             >= 90f => 3, 
             >= 60f => 2,
             >= 30f => 1,
             _ => 0
         };
-        return starCount;
     }
 
     public void InitializeSeats() => InitializeLevel();
@@ -178,7 +172,7 @@ public class LevelScorer : MonoBehaviour
     public int GetCurrentScore() => currentScore;
     public int GetMaxScore() => maxScore;
     public float GetPercentScore() => GetPercent();
-    public int GetStarRating() => starCount;
+    public int GetStarRating() => GetStars();
     public bool IsLevelComplete() => GetPercent() >= 60f; 
     public Image[] GetStarImages() => starImages; 
 }

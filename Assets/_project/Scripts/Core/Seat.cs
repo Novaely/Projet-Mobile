@@ -7,7 +7,7 @@ public class Seat : MonoBehaviour
     public SeatType seatType = SeatType.Normal;
 
     [Header("État")]
-    public Dino occupant;
+    public Dino occupant; 
 
     [Header("Voisins")]
     public Seat front;
@@ -25,5 +25,20 @@ public class Seat : MonoBehaviour
         if (left) list.Add(left);
         if (right) list.Add(right);
         neighbors = list.ToArray();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (occupant == null) Gizmos.color = Color.green; 
+        else Gizmos.color = Color.red;   
+        Vector3 TopLeft = transform.position - transform.right / 2 - transform.up / 2;
+        Vector3 TopRight = transform.position + transform.right / 2 - transform.up / 2;
+        Vector3 BotRight = transform.position + transform.right / 2 + transform.up / 2;
+        Vector3 BotLeft = transform.position - transform.right / 2 + transform.up / 2;
+
+        Gizmos.DrawLine(TopLeft, TopRight);
+        Gizmos.DrawLine(TopRight, BotRight);
+        Gizmos.DrawLine(BotRight, BotLeft);
+        Gizmos.DrawLine(BotLeft, TopLeft);
     }
 }

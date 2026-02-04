@@ -6,7 +6,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem.UI; // 🔥 INDISPENSABLE POUR L'UI
+using UnityEngine.InputSystem.UI;
 
 public class TestSceneGenerator : EditorWindow
 {
@@ -22,9 +22,9 @@ public class TestSceneGenerator : EditorWindow
 
     private void OnGUI()
     {
-        GUILayout.Label("Générateur Unity 6 (New Input System)", EditorStyles.boldLabel);
-        
+        GUILayout.Label("Générateur Unity 6 (New Input)", EditorStyles.boldLabel);
         GUILayout.Space(10);
+        
         GUILayout.Label("1. Configuration Grille", EditorStyles.boldLabel);
         gridWidth = EditorGUILayout.IntField("Largeur", gridWidth);
         gridHeight = EditorGUILayout.IntField("Hauteur", gridHeight);
@@ -34,12 +34,11 @@ public class TestSceneGenerator : EditorWindow
         GUILayout.Space(10);
         GUILayout.Label("2. Mode Génération", EditorStyles.boldLabel);
         modifyCurrentScene = GUILayout.Toggle(modifyCurrentScene, "✏️ Modifier scène actuelle");
-        
         if (!modifyCurrentScene) newSceneName = EditorGUILayout.TextField("Nom Nouvelle Scène", newSceneName);
 
         GUILayout.Space(20);
         GUI.backgroundColor = Color.cyan;
-        if (GUILayout.Button("🚀 GÉNÉRER (Compatible New Input)", GUILayout.Height(40)))
+        if (GUILayout.Button("🚀 GÉNÉRER", GUILayout.Height(40)))
         {
             if (modifyCurrentScene) GenerateInCurrentScene();
             else GenerateNewScene();
@@ -52,7 +51,7 @@ public class TestSceneGenerator : EditorWindow
         EditorSceneManager.SaveOpenScenes();
         ClearScene();
         GenerateLevel();
-        Debug.Log("✅ Scène générée avec succès !");
+        Debug.Log("✅ Scène générée !");
     }
 
     private void GenerateNewScene()
@@ -74,7 +73,6 @@ public class TestSceneGenerator : EditorWindow
 
     private void SetupCameraAndManagers()
     {
-        // Caméra
         GameObject camGO = GameObject.Find("Main Camera");
         if (camGO == null) 
         { 
@@ -85,7 +83,6 @@ public class TestSceneGenerator : EditorWindow
         Camera.main.orthographicSize = 5f;
         Camera.main.transform.position = new Vector3(0, 0, -10);
 
-        // Managers
         if (camGO.GetComponent<DragManager>() == null) camGO.AddComponent<DragManager>();
         
         if (!GameObject.Find("ConditionManager")) 
@@ -100,9 +97,7 @@ public class TestSceneGenerator : EditorWindow
         GameObject gridRoot = new GameObject("GridRoot");
         Seat[,] seatGrid = new Seat[gridWidth, gridHeight];
         
-        // Sprite par défaut
         Sprite squareSprite = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
-        
         float startX = -(gridWidth - 1) * spacing * 0.5f;
         float startY = -(gridHeight - 1) * spacing * 0.5f;
 
@@ -114,7 +109,6 @@ public class TestSceneGenerator : EditorWindow
                 seatGO.transform.parent = gridRoot.transform;
                 seatGO.transform.position = new Vector3(startX + x * spacing, startY + y * spacing, 0);
 
-                // Layer
                 int layerIndex = LayerMask.NameToLayer(emplacementLayerName);
                 if (layerIndex != -1) seatGO.layer = layerIndex;
 
@@ -124,10 +118,8 @@ public class TestSceneGenerator : EditorWindow
 
                 seatGO.AddComponent<BoxCollider2D>();
                 var seat = seatGO.AddComponent<Seat>();
-                seatGO.AddComponent<EmplacementController>();
                 seatGO.AddComponent<SeatEvaluator>();
 
-                // Logique Couloir/Fenêtre
                 if (x == 0 || x == gridWidth - 1) seat.seatType = SeatType.Fenetre;
                 else if (x == gridWidth / 2) seat.seatType = SeatType.Couloir; 
                 else seat.seatType = SeatType.Normal;
@@ -154,16 +146,13 @@ public class TestSceneGenerator : EditorWindow
 
     private void CreateFullUI()
     {
-        // 1. EVENT SYSTEM (Version New Input)
         if (GameObject.Find("EventSystem") == null)
         {
             var es = new GameObject("EventSystem");
             es.AddComponent<EventSystem>();
-            // C'est ce composant qui permet à l'UI de marcher avec le nouveau système
             es.AddComponent<InputSystemUIInputModule>(); 
         }
 
-        // 2. CANVAS
         GameObject canvasGO = GameObject.Find("Canvas");
         if (canvasGO == null)
         {
@@ -174,12 +163,10 @@ public class TestSceneGenerator : EditorWindow
             canvasGO.AddComponent<GraphicRaycaster>();
         }
 
-        // 3. BOUTON
         GameObject validateBtnGO = CreateButton("Btn_Valider", canvasGO.transform, new Vector2(0, -350), new Vector2(220, 60), Color.green);
         validateBtnGO.GetComponentInChildren<TextMeshProUGUI>().text = "VALIDER NIVEAU";
         Button realValidateButton = validateBtnGO.GetComponent<Button>();
 
-        // 4. PANEL RÉSULTAT
         GameObject resultPanel = new GameObject("Panel_Resultat");
         resultPanel.transform.SetParent(canvasGO.transform, false);
         
@@ -191,7 +178,6 @@ public class TestSceneGenerator : EditorWindow
 
         GameObject contentGO = new GameObject("Content");
         contentGO.transform.SetParent(resultPanel.transform, false);
-        
         CreateText("Titre", "NIVEAU TERMINÉ", 50, contentGO.transform, new Vector2(0, 100));
 
         GameObject scoreFinalGO = CreateText("ScoreFinal", "Score: 0/0", 40, contentGO.transform, new Vector2(0, 0));
@@ -214,19 +200,16 @@ public class TestSceneGenerator : EditorWindow
             starImages[i] = img;
         }
 
-        // 5. CONNEXION AU LEVELSCORER
-        LevelScorer scorer = GameObject.FindObjectOfType<LevelScorer>();
+        LevelScorer scorer = Object.FindFirstObjectByType<LevelScorer>();
         if (scorer != null)
         {
             scorer.validateButton = realValidateButton;
             scorer.resultPanel = resultPanel;
             scorer.scoreText = scoreTextFinal;
             scorer.starImages = starImages;
-            resultPanel.SetActive(false); // On cache le panel de fin au début
+            resultPanel.SetActive(false);
         }
     }
-
-    // --- Utilitaires ---
 
     private void CreateTestDinos()
     {
@@ -239,14 +222,10 @@ public class TestSceneGenerator : EditorWindow
     {
         GameObject go = new GameObject(name);
         go.transform.position = pos;
-        
         var sr = go.AddComponent<SpriteRenderer>();
         sr.sprite = sprite; sr.color = GetDinoColor(col);
-
         go.AddComponent<CircleCollider2D>();
         var dino = go.AddComponent<Dino>();
-        go.AddComponent<DinoController>();
-
         DinoProfileSO profile = ScriptableObject.CreateInstance<DinoProfileSO>();
         profile.speciesName = name; profile.diet = diet;
         dino.profile = profile; dino.color = col;
@@ -284,19 +263,9 @@ public class TestSceneGenerator : EditorWindow
 
     private void ClearScene()
     {
-        // 1. Nettoyage objets scène
-        GameObject[] roots = { 
-            GameObject.Find("GridRoot"), 
-            GameObject.Find("Canvas"), 
-            GameObject.Find("EventSystem"), 
-            GameObject.Find("GameManager"), 
-            GameObject.Find("ConditionManager") 
-        };
+        GameObject[] roots = { GameObject.Find("GridRoot"), GameObject.Find("Canvas"), GameObject.Find("EventSystem"), GameObject.Find("GameManager"), GameObject.Find("ConditionManager") };
         foreach (var r in roots) if (r != null) Undo.DestroyObjectImmediate(r);
-        
-        // 2. Nettoyage Dinos (Par Type, pas par Tag pour éviter les erreurs)
         Dino[] dinos = Object.FindObjectsByType<Dino>(FindObjectsSortMode.None);
-        foreach (var d in dinos) 
-            if (d != null && d.gameObject != null) Undo.DestroyObjectImmediate(d.gameObject);
+        foreach (var d in dinos) if (d != null && d.gameObject != null) Undo.DestroyObjectImmediate(d.gameObject);
     }
 }

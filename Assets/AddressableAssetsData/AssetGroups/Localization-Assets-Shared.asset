@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec03b92d5b332f441a8538ddc85adcef
+    m_Address: Assets/_project/LocalSettings/Tables/DicoDino Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 5a42284074572964289ff611f030da3a, type: 2}
   m_SchemaSet:

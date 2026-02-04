@@ -43,6 +43,14 @@ MonoBehaviour:
     m_Key: prm_lang_Fr
     m_Metadata:
       m_Items: []
+  - m_Id: 2159726196502528
+    m_Key: dico_btn_MainMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2159856568053760
+    m_Key: dico_btn_LvlSelect
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

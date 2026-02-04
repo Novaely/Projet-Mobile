@@ -20,8 +20,16 @@ public class ScenesManager : MonoBehaviour
 
     public void LoadSceneLevel(int index)
     {
-        Debug.Log("Loading Level" + index);
-        SceneManager.LoadScene("Level"+index);
+        StartCoroutine(LoadSceneRoutine(index));
+    }
+
+    private IEnumerator LoadSceneRoutine(int index)
+    {
+        Debug.Log("Loading  Level" + index);
+
+        yield return SceneManager.LoadSceneAsync("Level" + index);
+
+        UIManager.Instance.LoadUILevel();
     }
 
     public void LoadSceneMainMenu()

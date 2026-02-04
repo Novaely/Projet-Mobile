@@ -1,11 +1,12 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
-using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
+
+    [SerializeField] private GameObject _prefabUILevel;
 
     private TextMeshProUGUI[] _textsToTranslate;
 
@@ -41,5 +42,11 @@ public class UIManager : MonoBehaviour
                 loca.RefreshString();
             }
         }
+    }
+
+    public void LoadUILevel()
+    {
+        GameObject uiLevel = Instantiate(_prefabUILevel);
+        uiLevel.GetComponentInChildren<UILevel>().Initialize();
     }
 }

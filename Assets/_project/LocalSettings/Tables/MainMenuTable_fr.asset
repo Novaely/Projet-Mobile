@@ -46,6 +46,14 @@ MonoBehaviour:
     m_Localized: Anglais
     m_Metadata:
       m_Items: []
+  - m_Id: 2159726196502528
+    m_Localized: Menu Principal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2159856568053760
+    m_Localized: "S\xE9lection des Niveaux"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

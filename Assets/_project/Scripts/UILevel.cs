@@ -19,7 +19,7 @@ public class UILevel : MonoBehaviour
     [SerializeField] private Button _buttonFrench;
     [SerializeField] private Button _buttonEnglish;
 
-    void Start()
+    public void Initialize()
     {
         UIManager.Instance.SetActiveMenu((_dictionnary, true), (_parameters, true));
 

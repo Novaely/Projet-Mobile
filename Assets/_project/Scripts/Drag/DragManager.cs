@@ -3,7 +3,8 @@ using UnityEngine.InputSystem;
 
 public class DragManager : MonoBehaviour
 {
-    [SerializeField] LayerMask layerMask;
+    [SerializeField] LayerMask EmplacementMask;
+    [SerializeField] LayerMask DinoMask;
     [SerializeField] private ConditionManager conditionManager;
 
     Dino _currentDino;
@@ -51,7 +52,7 @@ public class DragManager : MonoBehaviour
 
         if (pressed)
         {
-            RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero);
+            RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, 100f, DinoMask);
             if (hit && hit.transform.TryGetComponent(out Dino dino))
             {
                 _currentDino = dino;
@@ -71,7 +72,7 @@ public class DragManager : MonoBehaviour
         {
             _currentDino.transform.position = worldPos;
 
-            RaycastHit2D hitPlace = Physics2D.Raycast(worldPos, Vector2.zero, 100f, layerMask);
+            RaycastHit2D hitPlace = Physics2D.Raycast(worldPos, Vector2.zero, 100f, EmplacementMask);
             Seat seat = (hitPlace && hitPlace.transform.TryGetComponent(out Seat s)) ? s : null;
 
             if (_lastHoveredSeat != seat)
@@ -93,7 +94,7 @@ public class DragManager : MonoBehaviour
             }
 
             bool success = false;
-            RaycastHit2D hitPlace = Physics2D.Raycast(worldPos, Vector2.zero, 100f, layerMask);
+            RaycastHit2D hitPlace = Physics2D.Raycast(worldPos, Vector2.zero, 100f, EmplacementMask);
 
             if (hitPlace && hitPlace.transform.TryGetComponent(out Seat seat))
             {

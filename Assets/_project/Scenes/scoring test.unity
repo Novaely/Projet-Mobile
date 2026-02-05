@@ -131,27 +131,13 @@ GameObject:
   - component: {fileID: 32989092}
   - component: {fileID: 32989091}
   - component: {fileID: 32989090}
-  - component: {fileID: 32989089}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &32989089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 32989088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5dc2aec417c5a4cb8c59f5b140736f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DinoController
-  _lastPosition: {fileID: 980146921}
 --- !u!114 &32989090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +152,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dino
   profile: {fileID: 1734371413}
   color: 1
+  emoteRenderer: {fileID: 0}
+  bubbleHappy: {fileID: 0}
+  bubbleAngry: {fileID: 0}
+  _lastPosition: {fileID: 0}
+  currentState: 0
+  currentSatisfaction: 0
 --- !u!58 &32989091
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -345,7 +337,6 @@ GameObject:
   - component: {fileID: 51259203}
   - component: {fileID: 51259202}
   - component: {fileID: 51259199}
-  - component: {fileID: 51259201}
   - component: {fileID: 51259200}
   m_Layer: 6
   m_Name: Seat_1_1
@@ -395,22 +386,6 @@ MonoBehaviour:
   neutreSprite: {fileID: 0}
   bonSprite: {fileID: 0}
   mauvaisSprite: {fileID: 0}
-  neutreFX: {fileID: 0}
-  bonFX: {fileID: 0}
-  mauvaisFX: {fileID: 0}
-  currentState: 0
---- !u!114 &51259201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 51259198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867ca3c5611d650479fe65fe269d5f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EmplacementController
 --- !u!61 &51259202
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -618,7 +593,6 @@ GameObject:
   - component: {fileID: 275560598}
   - component: {fileID: 275560597}
   - component: {fileID: 275560594}
-  - component: {fileID: 275560596}
   - component: {fileID: 275560595}
   m_Layer: 6
   m_Name: Seat_3_0
@@ -668,22 +642,6 @@ MonoBehaviour:
   neutreSprite: {fileID: 0}
   bonSprite: {fileID: 0}
   mauvaisSprite: {fileID: 0}
-  neutreFX: {fileID: 0}
-  bonFX: {fileID: 0}
-  mauvaisFX: {fileID: 0}
-  currentState: 0
---- !u!114 &275560596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 275560593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867ca3c5611d650479fe65fe269d5f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EmplacementController
 --- !u!61 &275560597
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -816,7 +774,6 @@ GameObject:
   - component: {fileID: 305676201}
   - component: {fileID: 305676200}
   - component: {fileID: 305676197}
-  - component: {fileID: 305676199}
   - component: {fileID: 305676198}
   m_Layer: 6
   m_Name: Seat_0_2
@@ -866,22 +823,6 @@ MonoBehaviour:
   neutreSprite: {fileID: 0}
   bonSprite: {fileID: 0}
   mauvaisSprite: {fileID: 0}
-  neutreFX: {fileID: 0}
-  bonFX: {fileID: 0}
-  mauvaisFX: {fileID: 0}
-  currentState: 0
---- !u!114 &305676199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305676196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867ca3c5611d650479fe65fe269d5f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EmplacementController
 --- !u!61 &305676200
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1014,27 +955,13 @@ GameObject:
   - component: {fileID: 337413850}
   - component: {fileID: 337413849}
   - component: {fileID: 337413848}
-  - component: {fileID: 337413847}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rex (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &337413847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 337413846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5dc2aec417c5a4cb8c59f5b140736f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DinoController
-  _lastPosition: {fileID: 980146921}
 --- !u!114 &337413848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1049,6 +976,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dino
   profile: {fileID: 1734371413}
   color: 0
+  emoteRenderer: {fileID: 0}
+  bubbleHappy: {fileID: 0}
+  bubbleAngry: {fileID: 0}
+  _lastPosition: {fileID: 0}
+  currentState: 0
+  currentSatisfaction: 0
 --- !u!58 &337413849
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1342,7 +1275,6 @@ GameObject:
   - component: {fileID: 447515509}
   - component: {fileID: 447515508}
   - component: {fileID: 447515505}
-  - component: {fileID: 447515507}
   - component: {fileID: 447515506}
   m_Layer: 6
   m_Name: Seat_2_1
@@ -1392,22 +1324,6 @@ MonoBehaviour:
   neutreSprite: {fileID: 0}
   bonSprite: {fileID: 0}
   mauvaisSprite: {fileID: 0}
-  neutreFX: {fileID: 0}
-  bonFX: {fileID: 0}
-  mauvaisFX: {fileID: 0}
-  currentState: 0
---- !u!114 &447515507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447515504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867ca3c5611d650479fe65fe269d5f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EmplacementController
 --- !u!61 &447515508
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1540,7 +1456,6 @@ GameObject:
   - component: {fileID: 525654498}
   - component: {fileID: 525654497}
   - component: {fileID: 525654494}
-  - component: {fileID: 525654496}
   - component: {fileID: 525654495}
   m_Layer: 6
   m_Name: Seat_1_2
@@ -1590,22 +1505,6 @@ MonoBehaviour:
   neutreSprite: {fileID: 0}
   bonSprite: {fileID: 0}
   mauvaisSprite: {fileID: 0}
-  neutreFX: {fileID: 0}
-  bonFX: {fileID: 0}
-  mauvaisFX: {fileID: 0}
-  currentState: 0
---- !u!114 &525654496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 525654493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867ca3c5611d650479fe65fe269d5f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EmplacementController
 --- !u!61 &525654497
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1738,7 +1637,6 @@ GameObject:
   - component: {fileID: 596113455}
   - component: {fileID: 596113454}
   - component: {fileID: 596113451}
-  - component: {fileID: 596113453}
   - component: {fileID: 596113452}
   m_Layer: 6
   m_Name: Seat_0_0
@@ -1788,22 +1686,6 @@ MonoBehaviour:
   neutreSprite: {fileID: 0}
   bonSprite: {fileID: 0}
   mauvaisSprite: {fileID: 0}
-  neutreFX: {fileID: 0}
-  bonFX: {fileID: 0}
-  mauvaisFX: {fileID: 0}
-  currentState: 0
---- !u!114 &596113453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 596113450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867ca3c5611d650479fe65fe269d5f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EmplacementController
 --- !u!61 &596113454
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2001,7 +1883,6 @@ GameObject:
   - component: {fileID: 727580520}
   - component: {fileID: 727580519}
   - component: {fileID: 727580516}
-  - component: {fileID: 727580518}
   - component: {fileID: 727580517}
   m_Layer: 6
   m_Name: Seat_2_0
@@ -2051,22 +1932,6 @@ MonoBehaviour:
   neutreSprite: {fileID: 0}
   bonSprite: {fileID: 0}
   mauvaisSprite: {fileID: 0}
-  neutreFX: {fileID: 0}
-  bonFX: {fileID: 0}
-  mauvaisFX: {fileID: 0}
-  currentState: 0
---- !u!114 &727580518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 727580515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867ca3c5611d650479fe65fe269d5f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EmplacementController
 --- !u!61 &727580519
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2618,7 +2483,6 @@ GameObject:
   - component: {fileID: 1006615381}
   - component: {fileID: 1006615380}
   - component: {fileID: 1006615377}
-  - component: {fileID: 1006615379}
   - component: {fileID: 1006615378}
   m_Layer: 6
   m_Name: Seat_3_1
@@ -2668,22 +2532,6 @@ MonoBehaviour:
   neutreSprite: {fileID: 0}
   bonSprite: {fileID: 0}
   mauvaisSprite: {fileID: 0}
-  neutreFX: {fileID: 0}
-  bonFX: {fileID: 0}
-  mauvaisFX: {fileID: 0}
-  currentState: 0
---- !u!114 &1006615379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1006615376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867ca3c5611d650479fe65fe269d5f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EmplacementController
 --- !u!61 &1006615380
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3056,27 +2904,13 @@ GameObject:
   - component: {fileID: 1099997519}
   - component: {fileID: 1099997518}
   - component: {fileID: 1099997517}
-  - component: {fileID: 1099997516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rex (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1099997516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1099997515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5dc2aec417c5a4cb8c59f5b140736f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DinoController
-  _lastPosition: {fileID: 980146921}
 --- !u!114 &1099997517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3091,6 +2925,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dino
   profile: {fileID: 1734371413}
   color: 3
+  emoteRenderer: {fileID: 0}
+  bubbleHappy: {fileID: 0}
+  bubbleAngry: {fileID: 0}
+  _lastPosition: {fileID: 0}
+  currentState: 0
+  currentSatisfaction: 0
 --- !u!58 &1099997518
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3346,7 +3186,6 @@ GameObject:
   - component: {fileID: 1228554915}
   - component: {fileID: 1228554914}
   - component: {fileID: 1228554911}
-  - component: {fileID: 1228554913}
   - component: {fileID: 1228554912}
   m_Layer: 6
   m_Name: Seat_2_2
@@ -3396,22 +3235,6 @@ MonoBehaviour:
   neutreSprite: {fileID: 0}
   bonSprite: {fileID: 0}
   mauvaisSprite: {fileID: 0}
-  neutreFX: {fileID: 0}
-  bonFX: {fileID: 0}
-  mauvaisFX: {fileID: 0}
-  currentState: 0
---- !u!114 &1228554913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1228554910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867ca3c5611d650479fe65fe269d5f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EmplacementController
 --- !u!61 &1228554914
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3544,27 +3367,13 @@ GameObject:
   - component: {fileID: 1393912118}
   - component: {fileID: 1393912117}
   - component: {fileID: 1393912116}
-  - component: {fileID: 1393912115}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rex (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1393912115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1393912114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5dc2aec417c5a4cb8c59f5b140736f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DinoController
-  _lastPosition: {fileID: 980146921}
 --- !u!114 &1393912116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3579,6 +3388,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dino
   profile: {fileID: 1734371413}
   color: 2
+  emoteRenderer: {fileID: 0}
+  bubbleHappy: {fileID: 0}
+  bubbleAngry: {fileID: 0}
+  _lastPosition: {fileID: 0}
+  currentState: 0
+  currentSatisfaction: 0
 --- !u!58 &1393912117
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3701,7 +3516,6 @@ GameObject:
   - component: {fileID: 1414049269}
   - component: {fileID: 1414049268}
   - component: {fileID: 1414049265}
-  - component: {fileID: 1414049267}
   - component: {fileID: 1414049266}
   m_Layer: 6
   m_Name: Seat_1_0
@@ -3751,22 +3565,6 @@ MonoBehaviour:
   neutreSprite: {fileID: 0}
   bonSprite: {fileID: 0}
   mauvaisSprite: {fileID: 0}
-  neutreFX: {fileID: 0}
-  bonFX: {fileID: 0}
-  mauvaisFX: {fileID: 0}
-  currentState: 0
---- !u!114 &1414049267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414049264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867ca3c5611d650479fe65fe269d5f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EmplacementController
 --- !u!61 &1414049268
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3899,7 +3697,6 @@ GameObject:
   - component: {fileID: 1457153280}
   - component: {fileID: 1457153279}
   - component: {fileID: 1457153276}
-  - component: {fileID: 1457153278}
   - component: {fileID: 1457153277}
   m_Layer: 6
   m_Name: Seat_0_1
@@ -3949,22 +3746,6 @@ MonoBehaviour:
   neutreSprite: {fileID: 0}
   bonSprite: {fileID: 0}
   mauvaisSprite: {fileID: 0}
-  neutreFX: {fileID: 0}
-  bonFX: {fileID: 0}
-  mauvaisFX: {fileID: 0}
-  currentState: 0
---- !u!114 &1457153278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1457153275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867ca3c5611d650479fe65fe269d5f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EmplacementController
 --- !u!61 &1457153279
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4097,7 +3878,6 @@ GameObject:
   - component: {fileID: 1569015738}
   - component: {fileID: 1569015737}
   - component: {fileID: 1569015736}
-  - component: {fileID: 1569015735}
   - component: {fileID: 1569015734}
   m_Layer: 6
   m_Name: Seat_3_2
@@ -4143,22 +3923,6 @@ MonoBehaviour:
   neutreSprite: {fileID: 0}
   bonSprite: {fileID: 0}
   mauvaisSprite: {fileID: 0}
-  neutreFX: {fileID: 0}
-  bonFX: {fileID: 0}
-  mauvaisFX: {fileID: 0}
-  currentState: 0
---- !u!114 &1569015735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1569015732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867ca3c5611d650479fe65fe269d5f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EmplacementController
 --- !u!114 &1569015736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4451,9 +4215,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50369ca0cf98e54e917d9a9cb3db72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragManager
-  layerMask:
+  EmplacementMask:
     serializedVersion: 2
     m_Bits: 64
+  DinoMask:
+    serializedVersion: 2
+    m_Bits: 256
   conditionManager: {fileID: 2086005748}
 --- !u!20 &1931558739
 Camera:
@@ -4608,27 +4375,13 @@ GameObject:
   - component: {fileID: 2061957193}
   - component: {fileID: 2061957192}
   - component: {fileID: 2061957191}
-  - component: {fileID: 2061957190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Diplo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2061957190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2061957189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5dc2aec417c5a4cb8c59f5b140736f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DinoController
-  _lastPosition: {fileID: 980146921}
 --- !u!114 &2061957191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4643,6 +4396,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dino
   profile: {fileID: 11400000, guid: 30be7dd8a179e45459259c9dd1c3b9d2, type: 2}
   color: 0
+  emoteRenderer: {fileID: 0}
+  bubbleHappy: {fileID: 0}
+  bubbleAngry: {fileID: 0}
+  _lastPosition: {fileID: 0}
+  currentState: 0
+  currentSatisfaction: 0
 --- !u!58 &2061957192
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4826,7 +4585,7 @@ Transform:
   m_GameObject: {fileID: 2143290709}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

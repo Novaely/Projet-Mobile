@@ -3,12 +3,19 @@ using UnityEngine.InputSystem;
 
 public class DragManager : MonoBehaviour
 {
+    [Header("Configuration des Layers")]
     [SerializeField] LayerMask EmplacementMask;
     [SerializeField] LayerMask DinoMask;
+    
+    [Header("Références")]
     [SerializeField] private ConditionManager conditionManager;
+
+    [Header("Sécurité")]
+    [SerializeField] float antiSpamDelay = 0.15f; 
 
     Dino _currentDino;
     private Seat _lastHoveredSeat;
+    private float _nextInteractTime = 0f;
 
     private void Start()
     {
@@ -47,11 +54,13 @@ public class DragManager : MonoBehaviour
         }
 
         if (!holding && !pressed && !released && _currentDino == null) return;
-        Vector2 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
 
+        Vector2 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
 
         if (pressed)
         {
+            if (Time.time < _nextInteractTime) return;
+
             RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, 100f, DinoMask);
             if (hit && hit.transform.TryGetComponent(out Dino dino))
             {
@@ -61,9 +70,7 @@ public class DragManager : MonoBehaviour
                     _currentDino.LastPosition.TryGetComponent(out Seat oldSeat))
                 {
                     conditionManager.PickupDino(oldSeat);
-                    
                     UpdateNeighbors(oldSeat);
-                    
                     ForceScoreUpdate(); 
                 }
             }
@@ -77,7 +84,7 @@ public class DragManager : MonoBehaviour
 
             if (_lastHoveredSeat != seat)
             {
-                if (_lastHoveredSeat) _lastHoveredSeat.GetComponent<SpriteRenderer>().color = new Color(1,1,1,0.3f);
+                if (_lastHoveredSeat) ResetSeatColor(_lastHoveredSeat);
                 _lastHoveredSeat = seat;
             }
             if (seat)
@@ -89,7 +96,7 @@ public class DragManager : MonoBehaviour
         {
             if (_lastHoveredSeat) 
             {
-                _lastHoveredSeat.GetComponent<SpriteRenderer>().color = new Color(1,1,1,0.3f);
+                ResetSeatColor(_lastHoveredSeat);
                 _lastHoveredSeat = null;
             }
 
@@ -101,12 +108,10 @@ public class DragManager : MonoBehaviour
                 if (conditionManager.DropDino(_currentDino, seat))
                 {
                     _currentDino.SetSlotPosition(seat.transform);
-
                     var eval = seat.GetComponent<SeatEvaluator>();
                     if (eval) eval.UpdateFeedback(_currentDino);
 
                     UpdateNeighbors(seat);
-
                     ForceScoreUpdate();
 
                     success = true;
@@ -114,10 +119,11 @@ public class DragManager : MonoBehaviour
             }
 
             if (!success) _currentDino.ReturnToLastPosition();
+            
+            _nextInteractTime = Time.time + antiSpamDelay;
             _currentDino = null;
         }
     }
-
 
     private void SpawnDino(Dino dino, Transform pos)
     {
@@ -125,10 +131,8 @@ public class DragManager : MonoBehaviour
         {
             dino.SetSlotPosition(seat.transform);
             conditionManager.DropDino(dino, seat);
-            
             var eval = seat.GetComponent<SeatEvaluator>();
             if (eval) eval.UpdateFeedback(dino);
-
             UpdateNeighbors(seat);
             ForceScoreUpdate();
         }
@@ -137,16 +141,12 @@ public class DragManager : MonoBehaviour
     private void UpdateNeighbors(Seat centerSeat)
     {
         if (centerSeat == null || centerSeat.neighbors == null) return;
-
         foreach (var neighbor in centerSeat.neighbors)
         {
             if (neighbor != null && neighbor.occupant != null)
             {
                 var eval = neighbor.GetComponent<SeatEvaluator>();
-                if (eval != null)
-                {
-                    eval.UpdateFeedback(neighbor.occupant);
-                }
+                if (eval != null) eval.UpdateFeedback(neighbor.occupant);
             }
         }
     }
@@ -157,12 +157,6 @@ public class DragManager : MonoBehaviour
         if (scorer != null) scorer.ForceUpdateScore();
     }
   
-    private void SetSeatColor(Seat seat, Color color)
-    {
-        var sr = seat.GetComponent<SpriteRenderer>();
-        if (sr != null) sr.color = color;
-    }
-
     private void ResetSeatColor(Seat seat)
     {
         var sr = seat.GetComponent<SpriteRenderer>();

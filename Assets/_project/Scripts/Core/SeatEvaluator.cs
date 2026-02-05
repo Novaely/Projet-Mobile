@@ -4,10 +4,9 @@ using TMPro;
 
 public class SeatEvaluator : MonoBehaviour
 {
-    [Header("UI References")]
+    [Header("UI References (Local)")]
     public TextMeshProUGUI stateText;
     public TextMeshProUGUI descriptionText;
-    public Button validateButton;
     public Image spriteDisplay;
 
     [Header("Visuels")]
@@ -24,7 +23,6 @@ public class SeatEvaluator : MonoBehaviour
     void Start()
     {
         seat = GetComponent<Seat>();
-        if (validateButton != null) validateButton.onClick.AddListener(OnValidateClick);
         UpdateVisuals(null);
     }
 
@@ -66,14 +64,7 @@ public class SeatEvaluator : MonoBehaviour
             else
                 descriptionText.text = "Siège vide";
         }
-
-        if (validateButton != null)
-            validateButton.interactable = (state == PlacementState.Bon);
-    }
-
-    void OnValidateClick()
-    {
-        Debug.Log($"Siège {name} validé !");
+        
     }
     
     public float GetCurrentSatisfaction()

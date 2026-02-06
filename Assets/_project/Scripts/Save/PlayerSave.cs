@@ -1,20 +1,30 @@
 using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
+using UnityEditor;
 
 public class PlayerSave : MonoBehaviour
 {
+    public static PlayerSave Instance;
+
     [SerializeField] LevelsSave _levelData;
+
+    int _currentLevel;
 
     void Awake()
     {
         DontDestroyOnLoad(this);
+
+        if (Instance == null) { Instance = this; }
+
+        else { Destroy(gameObject); }
     }
 
     private void Start()
     {
         LoadSaveOnStart.Instance.OnNoSaveFound += CreateNewSave;
         LoadSaveOnStart.Instance.OnNoAllLevelFoundOnSave += UpdateNumberOfLevel;
+        ScenesManager.Instance.OnSceneLoad += SettScene;
     }
 
     void OnApplicationQuit()
@@ -54,22 +64,14 @@ public class PlayerSave : MonoBehaviour
         return data;
     }
 
-
-    [ContextMenu("Save le niveau 1 avec 3 etoiles")]
-    void Save3StarAtlevel1()
+    public void UpdateStarOfOneLevel(int numberOfStar)
     {
-        UpdateStarOfOneLevel(1, 3);
-    }
-
-
-    void UpdateStarOfOneLevel(int level, int numberOfStar)
-    {
-        if (level < 0 || level > _levelData.starsLevels.Count) return;
+        if (_currentLevel < 0 || _currentLevel > _levelData.starsLevels.Count) return;
         if (numberOfStar < 0 || numberOfStar > 3) return;
 
-        if (_levelData.starsLevels[level] >= numberOfStar) return;
+        if (_levelData.starsLevels[_currentLevel] >= numberOfStar) return;
 
-        _levelData.starsLevels[level] = numberOfStar;
+        _levelData.starsLevels[_currentLevel] = numberOfStar;
 
         LevelsSaveData data = new LevelsSaveData
         {
@@ -77,5 +79,10 @@ public class PlayerSave : MonoBehaviour
         };
 
         SaveManager.Save(data);
+    }
+
+    public void SettScene(int index)
+    {
+        _currentLevel = index - 1;
     }
 }

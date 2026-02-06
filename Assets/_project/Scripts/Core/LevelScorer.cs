@@ -29,6 +29,7 @@ public class LevelScorer : MonoBehaviour
     private int maxScore = 0;
     private bool levelValidated = false;
 
+
     void Start()
     {
         InitializeLevel();
@@ -121,7 +122,9 @@ public class LevelScorer : MonoBehaviour
         levelValidated = true;
         
         if (validateButton != null) validateButton.gameObject.SetActive(false);
-        if (resultPanel != null) resultPanel.SetActive(true);
+        if (resultPanel != null) { resultPanel.SetActive(true);
+            PlayerSave.Instance.UpdateStarOfOneLevel(GetStars());
+        }
     }
 
     void UpdateStarImages()

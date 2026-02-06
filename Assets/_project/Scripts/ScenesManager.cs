@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class ScenesManager : MonoBehaviour
 {
     public static ScenesManager Instance;
+
+    public event Action<int> OnSceneLoad; 
 
     private void Awake()
     {
@@ -25,11 +28,12 @@ public class ScenesManager : MonoBehaviour
 
     private IEnumerator LoadSceneRoutine(int index)
     {
-        Debug.Log("Loading  Level" + index);
+        Debug.Log("Loading  Level " + index);
 
         yield return SceneManager.LoadSceneAsync("Level" + index);
 
         UIManager.Instance.LoadUILevel();
+        OnSceneLoad?.Invoke(index);
     }
 
     public void LoadSceneMainMenu()

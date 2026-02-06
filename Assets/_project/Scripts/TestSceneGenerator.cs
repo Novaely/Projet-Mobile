@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
-using UnityEngine.SceneManagement;
-using System.Linq;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;

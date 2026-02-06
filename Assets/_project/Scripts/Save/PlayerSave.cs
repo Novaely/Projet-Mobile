@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
-using UnityEditor;
 
 public class PlayerSave : MonoBehaviour
 {

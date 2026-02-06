@@ -9,6 +9,7 @@ public class DragManager : MonoBehaviour
     
     [Header("Références")]
     [SerializeField] private ConditionManager conditionManager;
+    private Dino setdragging;
 
     [Header("Sécurité")]
     [SerializeField] float antiSpamDelay = 0.15f; 
@@ -65,6 +66,8 @@ public class DragManager : MonoBehaviour
             if (hit && hit.transform.TryGetComponent(out Dino dino))
             {
                 _currentDino = dino;
+
+                _currentDino.SetDragging(true);
                 
                 if (_currentDino.LastPosition != null && 
                     _currentDino.LastPosition.TryGetComponent(out Seat oldSeat))
@@ -98,6 +101,7 @@ public class DragManager : MonoBehaviour
             {
                 ResetSeatColor(_lastHoveredSeat);
                 _lastHoveredSeat = null;
+                _currentDino.SetDragging(false);
             }
 
             bool success = false;

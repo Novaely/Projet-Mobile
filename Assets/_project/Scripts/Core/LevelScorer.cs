@@ -5,70 +5,47 @@ using System.Linq;
 
 public class LevelScorer : MonoBehaviour
 {
-    [Header("UI Score (Pendant le jeu)")]
+    [Header("UI Score")]
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI percentText;
     public TextMeshProUGUI starsText;
     public Image[] starImages; 
     
-    [Header("UI Fin de Niveau (Interaction)")]
-    public Button validateButton;      
-    public GameObject resultPanel;     
-
-    [Header("Scoring Settings")]
+    [Header("UI End Level")]
+    public Button validateButton;
+    public GameObject resultPanel;
+    
+    [Header("Settings")]
     public Seat[] seats;
-    [Tooltip("Ratio de satisfaction minimum pour gagner le point (0.8 = 80%)")]
     public float targetSatisfaction = 0.8f;
     
     [Header("Level Config")]
-    [Tooltip("Force le nombre total de dinos (Score Max). Si 0, détecte automatiquement les dinos en scène.")]
     public int totalDinosToPlace = 0; 
     
-    [Header("Debug")]
-    public bool showDebugLogs = true;
-
     private int currentScore = 0;
     private int maxScore = 0;
-    private float lastUpdateTime = 0f;
-    private const float UPDATE_INTERVAL = 0.5f;
-    private int starCount = 0;
-    
     private bool levelValidated = false;
 
     void Start()
     {
         InitializeLevel();
+
         if (validateButton != null)
         {
             validateButton.onClick.RemoveAllListeners();
             validateButton.onClick.AddListener(OnValidateClick);
+            validateButton.interactable = false;
         }
 
-        if (resultPanel != null)
-        {
-            resultPanel.SetActive(false);
-        }
+        if (resultPanel != null) resultPanel.SetActive(false);
 
         UpdateScore();
-    }
-
-    void Update()
-    {
-        if (levelValidated) return;
-
-        if (Time.time - lastUpdateTime >= UPDATE_INTERVAL)
-        {
-            UpdateScore();
-            lastUpdateTime = Time.time;
-        }
     }
 
     public void InitializeLevel() 
     {
         if (seats == null || seats.Length == 0)
-        {
             seats = FindObjectsByType<Seat>(FindObjectsSortMode.None);
-        }
 
         if (totalDinosToPlace > 0)
         {
@@ -77,36 +54,16 @@ public class LevelScorer : MonoBehaviour
         else
         {
             Dino[] dinosInScene = FindObjectsByType<Dino>(FindObjectsSortMode.None);
-            
-            if (dinosInScene != null && dinosInScene.Length > 0)
-            {
-                maxScore = dinosInScene.Length;
-            }
-            else
-            {
-                maxScore = seats.Length;
-            }
+            maxScore = (dinosInScene.Length > 0) ? dinosInScene.Length : seats.Length;
         }
-
-        if (showDebugLogs)
-            Debug.Log($"📍 CONFIG NIVEAU : {seats.Length} Sièges trouvés | Objectif Score : {maxScore}");
     }
 
-    public void OnValidateClick()
+    public void ForceUpdateScore()
     {
-        levelValidated = true; 
-        UpdateScore(); 
-
-        Debug.Log($"🏁 FIN DU NIVEAU ! Score Final : {GetPercent():F0}% ({GetStars()} étoiles)");
-
-        if (validateButton != null) 
-            validateButton.gameObject.SetActive(false);
-
-        if (resultPanel != null) 
-            resultPanel.SetActive(true);
+        if (!levelValidated) UpdateScore();
     }
 
-    public void UpdateScore() 
+    void UpdateScore() 
     {
         currentScore = 0;
         
@@ -115,11 +72,13 @@ public class LevelScorer : MonoBehaviour
             if (seat == null) continue;
             
             var evaluator = seat.GetComponent<SeatEvaluator>();
-            if (evaluator != null && evaluator.GetSatisfactionRatio() >= targetSatisfaction)
+            if (evaluator != null && evaluator.GetCurrentSatisfaction() >= targetSatisfaction)
             {
                 currentScore++;
             }
         }
+
+        if (currentScore > maxScore) currentScore = maxScore;
         
         UpdateUI();
     }
@@ -128,27 +87,41 @@ public class LevelScorer : MonoBehaviour
     {
         float percent = GetPercent();
         
-        if (scoreText != null)
-            scoreText.text = $"Score: {currentScore}/{maxScore}";
-            
-        if (percentText != null)
-            percentText.text = $"{percent:F0}%";
-            
-        if (starsText != null)
-            starsText.text = $"{GetStars()}★";
+        if (scoreText != null) scoreText.text = $"Score: {currentScore}/{maxScore}";
+        if (percentText != null) percentText.text = $"{percent:F0}%";
+        if (starsText != null) starsText.text = $"{GetStars()}★";
 
         UpdateStarImages();
+
+        if (validateButton != null)
+        {
+            int occupiedSeats = 0;
+            foreach(var seat in seats)
+            {
+                if (seat != null && seat.occupant != null) occupiedSeats++;
+            }
+
+            bool isFull = (occupiedSeats >= maxScore);
+            validateButton.interactable = isFull;
+        }
+    }
+
+    public void OnValidateClick()
+    {
+        levelValidated = true;
+        
+        if (validateButton != null) validateButton.gameObject.SetActive(false);
+        if (resultPanel != null) resultPanel.SetActive(true);
     }
 
     void UpdateStarImages()
     {
-        if (starImages != null && starImages.Length > 0)
+        if (starImages != null)
         {
             int stars = GetStars();
             for (int i = 0; i < starImages.Length; i++)
             {
-                if (starImages[i] != null)
-                    starImages[i].enabled = i < stars;
+                if (starImages[i] != null) starImages[i].enabled = (i < stars);
             }
         }
     }
@@ -156,29 +129,15 @@ public class LevelScorer : MonoBehaviour
     float GetPercent()
     {
         if (maxScore <= 0) return 0f;
-        float p = (float)currentScore / maxScore * 100f;
-        return Mathf.Clamp(p, 0f, 100f); 
+        return Mathf.Clamp((float)currentScore / maxScore * 100f, 0f, 100f); 
     }
 
     int GetStars()
     {
-        float percent = GetPercent();
-        starCount = percent switch
-        {
-            >= 90f => 3, 
-            >= 60f => 2,
-            >= 30f => 1,
-            _ => 0
-        };
-        return starCount;
+        float p = GetPercent();
+        if (p >= 90f) return 3;
+        if (p >= 60f) return 2;
+        if (p >= 30f) return 1;
+        return 0;
     }
-
-    public void InitializeSeats() => InitializeLevel();
-    public void ForceUpdateScore() => UpdateScore();
-    public int GetCurrentScore() => currentScore;
-    public int GetMaxScore() => maxScore;
-    public float GetPercentScore() => GetPercent();
-    public int GetStarRating() => starCount;
-    public bool IsLevelComplete() => GetPercent() >= 60f; 
-    public Image[] GetStarImages() => starImages; 
 }

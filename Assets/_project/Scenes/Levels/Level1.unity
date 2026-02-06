@@ -608,7 +608,10 @@ MonoBehaviour:
   resultPanel: {fileID: 1723166109}
   seats: []
   targetSatisfaction: 0.8
-  totalDinosToPlace: 0
+  ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  totalDinosToPlace: 2
 --- !u!114 &676351100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1436,7 +1439,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 676351099}
         m_TargetAssemblyTypeName: LevelScorer, Assembly-CSharp
         m_MethodName: OnValidateClick
         m_Mode: 1

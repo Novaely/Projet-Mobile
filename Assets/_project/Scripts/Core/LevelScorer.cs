@@ -18,6 +18,9 @@ public class LevelScorer : MonoBehaviour
     [Header("Settings")]
     public Seat[] seats;
     public float targetSatisfaction = 0.8f;
+
+    [Header("Filtering")]
+    public LayerMask ignoreLayers; 
     
     [Header("Level Config")]
     public int totalDinosToPlace = 0; 
@@ -44,8 +47,8 @@ public class LevelScorer : MonoBehaviour
 
     public void InitializeLevel() 
     {
-        if (seats == null || seats.Length == 0)
-            seats = FindObjectsByType<Seat>(FindObjectsSortMode.None);
+        var allSeats = FindObjectsByType<Seat>(FindObjectsSortMode.None);
+        seats = allSeats.Where(s => !IsIgnored(s.gameObject)).ToArray();
 
         if (totalDinosToPlace > 0)
         {
@@ -53,9 +56,16 @@ public class LevelScorer : MonoBehaviour
         }
         else
         {
-            Dino[] dinosInScene = FindObjectsByType<Dino>(FindObjectsSortMode.None);
-            maxScore = (dinosInScene.Length > 0) ? dinosInScene.Length : seats.Length;
+            var allDinos = FindObjectsByType<Dino>(FindObjectsSortMode.None);
+            var validDinos = allDinos.Where(d => !IsIgnored(d.gameObject)).ToArray();
+
+            maxScore = (validDinos.Length > 0) ? validDinos.Length : seats.Length;
         }
+    }
+
+    bool IsIgnored(GameObject obj)
+    {
+        return (ignoreLayers.value & (1 << obj.layer)) != 0;
     }
 
     public void ForceUpdateScore()

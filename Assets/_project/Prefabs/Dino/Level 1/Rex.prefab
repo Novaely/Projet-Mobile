@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd2614b461f4a2429b096b9724a9ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dino
-  profile: {fileID: 0}
+  profile: {fileID: 11400000, guid: 30be7dd8a179e45459259c9dd1c3b9d2, type: 2}
   color: 1
   emoteRenderer: {fileID: 0}
   bubbleHappy: {fileID: 0}

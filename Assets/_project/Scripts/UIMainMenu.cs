@@ -67,6 +67,7 @@ public class UIMainMenu : MonoBehaviour
             text.fontSize = 40;
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => ScenesManager.Instance.LoadSceneLevel(index));
+            buttonLevel.GetComponent<ButtonLevelInfo>().index = index-1;
         }
 
         UIManager.Instance.InitializeTextTranslate();

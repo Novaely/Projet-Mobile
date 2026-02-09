@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -32,7 +33,7 @@ public class UIMainMenu : MonoBehaviour
 
 
     private void Start()
-    {;
+    {
         UIManager.Instance.SetActiveMenu((_mainMenu, true), (_parameters, true), (_levelSelect, true), (_credits, true));
 
         _buttonMainMenuLevelSelect.onClick.RemoveAllListeners();
@@ -55,7 +56,24 @@ public class UIMainMenu : MonoBehaviour
         _buttonLevelSelectExit.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_levelSelect, false)));
         _buttonCreditsExit.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_credits, false)));
 
-        for (int nLevel = 1; nLevel < SceneManager.sceneCountInBuildSettings; nLevel++)
+        if (LoadSaveOnStart.Instance.IsSaveLoad)
+        {
+            InitialiseMenuLevelSelection();
+        }
+        else
+        {
+            LoadSaveOnStart.Instance.OnLoadSave += LoadWasSave;
+        }
+
+            UIManager.Instance.InitializeTextTranslate();
+
+        UIManager.Instance.SetActiveMenu((_mainMenu, true), (_parameters, false), (_levelSelect, _isActive), (_credits, false));
+    }
+
+
+    void InitialiseMenuLevelSelection()
+    {
+        for (int nLevel = 1; nLevel<SceneManager.sceneCountInBuildSettings; nLevel++)
         {
             int index = nLevel;
             var buttonLevel = Instantiate(_prefabButtonLevel, _levelList.transform);
@@ -74,11 +92,14 @@ public class UIMainMenu : MonoBehaviour
                     button.interactable = false;
                 }
             }
-            buttonLevel.GetComponent<ButtonLevelInfo>().index = index-1;
+            buttonLevel.GetComponent<ButtonLevelInfo>().index = index - 1;
         }
+    }
 
-        UIManager.Instance.InitializeTextTranslate();
+    void LoadWasSave()
+    {
+        InitialiseMenuLevelSelection();
 
-        UIManager.Instance.SetActiveMenu((_mainMenu, true), (_parameters, false), (_levelSelect, _isActive), (_credits, false));
+        LoadSaveOnStart.Instance.OnLoadSave -= LoadWasSave;
     }
 }

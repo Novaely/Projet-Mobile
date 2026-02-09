@@ -18,6 +18,7 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private Button _buttonFrench;
     [SerializeField] private Button _buttonEnglish;
     [Header("Level Select")]
+    [SerializeField] LevelsSave _levelData;
     [SerializeField] private GameObject _levelSelect;
     [SerializeField] private Button _buttonLevelSelectExit;
     [SerializeField] private GameObject _levelList;
@@ -66,6 +67,13 @@ public class UIMainMenu : MonoBehaviour
             text.fontSize = 40;
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => ScenesManager.Instance.LoadSceneLevel(index));
+            if (index > 1)
+            {
+                if (_levelData.starsLevels[index - 2] <= 0)
+                {
+                    button.interactable = false;
+                }
+            }
             buttonLevel.GetComponent<ButtonLevelInfo>().index = index-1;
         }
 

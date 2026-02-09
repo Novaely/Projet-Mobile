@@ -921,6 +921,7 @@ MonoBehaviour:
   _buttonParamExit: {fileID: 479513666}
   _buttonFrench: {fileID: 592472899}
   _buttonEnglish: {fileID: 563707782}
+  _levelData: {fileID: 11400000, guid: b306a36ee4bbd574bb6089cbbf203a83, type: 2}
   _levelSelect: {fileID: 589920554}
   _buttonLevelSelectExit: {fileID: 1554803928}
   _levelList: {fileID: 1080394850}

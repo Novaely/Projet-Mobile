@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 047d69cd45d15fc4692c96253bc218d8
+guid: b1637eba4593a4340950ffff5f3050ab
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1426362317923036474
-    second: cinema_0
+      213: 2494671544206886372
+    second: ecran_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cinema_0
+      name: ecran_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 161
+        height: 793
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a3d2ec098f47bc310800000000000000
-      internalID: 1426362317923036474
+      spriteID: 4e50ab75d8ade9220800000000000000
+      internalID: 2494671544206886372
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cinema_0: 1426362317923036474
+      ecran_0: 2494671544206886372
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

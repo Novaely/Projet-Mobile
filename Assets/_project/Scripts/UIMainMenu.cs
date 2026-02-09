@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -19,7 +19,6 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private Button _buttonFrench;
     [SerializeField] private Button _buttonEnglish;
     [Header("Level Select")]
-    [SerializeField] LevelsSave _levelData;
     [SerializeField] private GameObject _levelSelect;
     [SerializeField] private Button _buttonLevelSelectExit;
     [SerializeField] private GameObject _levelList;
@@ -56,16 +55,16 @@ public class UIMainMenu : MonoBehaviour
         _buttonLevelSelectExit.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_levelSelect, false)));
         _buttonCreditsExit.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_credits, false)));
 
-        if (LoadSaveOnStart.Instance.IsSaveLoad)
+        if (PlayerSave.Instance.IsSaveLoad)
         {
             InitialiseMenuLevelSelection();
         }
         else
         {
-            LoadSaveOnStart.Instance.OnLoadSave += LoadWasSave;
+            StartCoroutine(WaitForSave());
         }
 
-            UIManager.Instance.InitializeTextTranslate();
+        UIManager.Instance.InitializeTextTranslate();
 
         UIManager.Instance.SetActiveMenu((_mainMenu, true), (_parameters, false), (_levelSelect, _isActive), (_credits, false));
     }
@@ -87,7 +86,7 @@ public class UIMainMenu : MonoBehaviour
             button.onClick.AddListener(() => ScenesManager.Instance.LoadSceneLevel(index));
             if (index > 1)
             {
-                if (_levelData.starsLevels[index - 2] <= 0)
+                if (PlayerSave.Instance.LevelSave.starsLevels[index - 2] <= 0)
                 {
                     button.interactable = false;
                 }
@@ -96,10 +95,10 @@ public class UIMainMenu : MonoBehaviour
         }
     }
 
-    void LoadWasSave()
+    IEnumerator WaitForSave()
     {
-        InitialiseMenuLevelSelection();
+        yield return new WaitForSeconds(0.01f);
 
-        LoadSaveOnStart.Instance.OnLoadSave -= LoadWasSave;
+        InitialiseMenuLevelSelection();
     }
 }

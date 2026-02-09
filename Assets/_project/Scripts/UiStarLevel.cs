@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class UiStarLevel : MonoBehaviour
 {
-    [SerializeField] LevelsSave _levelData;
-
     private void OnEnable()
     {
         ButtonLevelInfo[] buttonLevelInfos = GetComponentsInChildren<ButtonLevelInfo>();
@@ -12,7 +10,7 @@ public class UiStarLevel : MonoBehaviour
         {
             for (int i = 0; i < 3; i++)
             {
-                switch (_levelData.starsLevels[buttonLevelInfo.index])
+                switch (PlayerSave.Instance.LevelSave.starsLevels[buttonLevelInfo.index])
                 {
                     case 0:
                         buttonLevelInfo.stars[0].color = Color.black;

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8935060602001106471}
-  - component: {fileID: 7123992529071123548}
   - component: {fileID: 7753494517416729957}
   m_Layer: 0
   m_Name: SaveManager
@@ -33,19 +32,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7123992529071123548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760555618538273107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09a74cd2cbbed624cb133625ba263768, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LoadSaveOnStart
-  _levelData: {fileID: 11400000, guid: b306a36ee4bbd574bb6089cbbf203a83, type: 2}
 --- !u!114 &7753494517416729957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,4 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3c251accf8c5c4bab9eac4ac7b18db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSave
-  _levelData: {fileID: 11400000, guid: b306a36ee4bbd574bb6089cbbf203a83, type: 2}
+  <LevelSave>k__BackingField:
+    starsLevels: 
+  Scenes:
+  - {fileID: 102900000, guid: f453f0d654a10404787fef3010d4ba21, type: 3}
+  - {fileID: 102900000, guid: f62dde7db11599a4487a50738d39121f, type: 3}

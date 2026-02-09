@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: faa10d13fcbe44440b168e2bd32e163e
+guid: b5cd4d4e7580695418626f97144435f5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5529022320273088708
-    second: credit_0
+      213: -3335318219893880733
+    second: ankylosor dos_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: credit_0
+      name: ankylosor dos_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 583
-        height: 212
+        width: 814
+        height: 830
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4c0651b91880bbc40800000000000000
-      internalID: 5529022320273088708
+      spriteID: 368465210c196b1d0800000000000000
+      internalID: -3335318219893880733
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      credit_0: 5529022320273088708
+      ankylosor dos_0: -3335318219893880733
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

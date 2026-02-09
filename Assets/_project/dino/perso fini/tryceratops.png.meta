@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e40ad3383026920489855b4fc3f91806
+guid: d3b30c72b52c3af4c98150df9a30988a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5986496617192891051
-    second: ecran_acceuil_0
+      213: 312203889082793009
+    second: tryceratops_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 108
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ecran_acceuil_0
+      name: tryceratops_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 798
+        height: 820
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ba22cdc94fe441350800000000000000
-      internalID: 5986496617192891051
+      spriteID: 13c764278cb255400800000000000000
+      internalID: 312203889082793009
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ecran_acceuil_0: 5986496617192891051
+      tryceratops_0: 312203889082793009
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

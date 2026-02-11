@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ea1438c4c1bd941b291b3e1be03e90, type: 3}
+  m_Name: DicoDino
+  m_EditorClassIdentifier: Assembly-CSharp::DicoDinoDatabase
+  <Dictionnary>k__BackingField:
+  - DinoWord: rrrr
+    KeyUniversalTraduction: a
+    UnlockedAtLevel: 0
+  - DinoWord: brrr
+    KeyUniversalTraduction: b
+    UnlockedAtLevel: 0
+  - DinoWord: vroum
+    KeyUniversalTraduction: c
+    UnlockedAtLevel: 0
+  - DinoWord: tutu
+    KeyUniversalTraduction: d
+    UnlockedAtLevel: 0

@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ccd7de5c555498419c3f01f37c0cddb, type: 3}
-  m_Name: New No Specific Neighbor Color SO
-  m_EditorClassIdentifier: Assembly-CSharp::NoSpecificNeighborColorSO
-  forbiddenNeighborColor: 1
+  m_Script: {fileID: 11500000, guid: 36410caad0c92294d87643eaa6e77a2a, type: 3}
+  m_Name: veut_devant
+  m_EditorClassIdentifier: Assembly-CSharp::MustBeInFrontRowRuleSO

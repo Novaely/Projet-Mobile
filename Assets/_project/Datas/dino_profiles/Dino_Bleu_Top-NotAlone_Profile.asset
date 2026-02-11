@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
-  m_Name: Carni_Vert_01_Profile
+  m_Name: Dino_Bleu_Top-NotAlone_Profile
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  designerDescription: 
-  speciesName: Carni_Vert_01
-  diet: 1
+  designerDescription: "Veut \xEAtre devant\nNe veut pas \xEAtre seul"
+  speciesName: Dino_Bleu_Top-NotAlone
+  diet: 0
   myRules:
-  - {fileID: 11400000, guid: 8799951869fdf8644abd6652f7bb8775, type: 2}
+  - {fileID: 11400000, guid: 62e3fee61f8534941ae70f54eed4981d, type: 2}
+  - {fileID: 11400000, guid: 7e443ffd4e0a114409a86c03bae4259c, type: 2}

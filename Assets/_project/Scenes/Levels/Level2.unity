@@ -223,8 +223,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
   _spawnerSeat: {fileID: 980146925}
   _dinos:
-  - {fileID: 684974834371062554, guid: e176e7a685fcf8f4fbe402e8cb58e858, type: 3}
-  - {fileID: 8484907764720655690, guid: 8903e563f46fe164187a4b77b654f51d, type: 3}
+  - {fileID: 3371091615917382114, guid: 5d4c8ee4c29cbdc498ab713599772ce7, type: 3}
+  - {fileID: 7032738968105588410, guid: 2c77ac68c21b5e04eb4886018861e2ca, type: 3}
+  - {fileID: 2425875410060567949, guid: 8a203e9045b432d47a54aca37c3b1ce4, type: 3}
   _dinosContainer: {fileID: 1604867147}
 --- !u!1 &805868069
 GameObject:
@@ -424,6 +425,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+      propertyPath: detectRadius
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5693101656122206242, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
       propertyPath: m_Name
       value: Seat_0_1
@@ -560,6 +565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Seat
   seatType: 0
+  detectRadius: 2.1
   occupant: {fileID: 0}
   front: {fileID: 0}
   back: {fileID: 0}
@@ -764,6 +770,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+      propertyPath: detectRadius
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5693101656122206242, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
       propertyPath: m_Name
       value: Seat_0_0
@@ -833,6 +843,14 @@ PrefabInstance:
     - target: {fileID: 132931330196989814, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+      propertyPath: seatType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+      propertyPath: detectRadius
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5693101656122206242, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
       propertyPath: m_Name
@@ -1244,6 +1262,10 @@ PrefabInstance:
     - target: {fileID: 132931330196989814, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+      propertyPath: detectRadius
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5693101656122206242, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
       propertyPath: m_Name

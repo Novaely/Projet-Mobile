@@ -56,4 +56,17 @@ public class ScenesManager : MonoBehaviour
             FindFirstObjectByType<UIMainMenu>().IsLevelSelectActive((bool)isLevelSelectActive);
         }
     }
+
+    public int GetLevelIndex(Scene scene)
+    {
+        string sceneName = scene.name;
+
+        string levelNumber = sceneName.Replace("Level", "");
+
+        if (int.TryParse(levelNumber, out int index))
+            return index;
+
+        Debug.LogWarning("Scene name format invalid.");
+        return -1;
+    }
 }

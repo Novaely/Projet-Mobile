@@ -198,7 +198,7 @@ public class TestSceneGenerator : EditorWindow
             starImages[i] = img;
         }
 
-        LevelScorer scorer = Object.FindFirstObjectByType<LevelScorer>();
+        /*LevelScorer scorer = Object.FindFirstObjectByType<LevelScorer>();
         if (scorer != null)
         {
             scorer.validateButton = realValidateButton;
@@ -206,7 +206,7 @@ public class TestSceneGenerator : EditorWindow
             scorer.scoreText = scoreTextFinal;
             scorer.starImages = starImages;
             resultPanel.SetActive(false);
-        }
+        }*/
     }
 
     private void CreateTestDinos()

@@ -47,6 +47,6 @@ public class UIManager : MonoBehaviour
     public void LoadUILevel()
     {
         GameObject uiLevel = Instantiate(_prefabUILevel);
-        uiLevel.GetComponentInChildren<UILevel>().Initialize();
+        uiLevel.GetComponentInChildren<UILevel>().InitializeParam();
     }
 }

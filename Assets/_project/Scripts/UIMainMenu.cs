@@ -19,9 +19,12 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private Button _buttonFrench;
     [SerializeField] private Button _buttonEnglish;
     [Header("Level Select")]
+    [SerializeField] WorldData _worldData;
     [SerializeField] private GameObject _levelSelect;
     [SerializeField] private Button _buttonLevelSelectExit;
-    [SerializeField] private GameObject _levelList;
+    [SerializeField] GameObject _worldContainer;
+    [SerializeField] GameObject _prefabsLevelContainer;
+    [SerializeField] private List<GameObject> _levelContainers;
     [SerializeField] private GameObject _prefabButtonLevel;
     private List<Button> _buttonsLevel = new List<Button>();
     private bool _isActive = false;
@@ -72,10 +75,22 @@ public class UIMainMenu : MonoBehaviour
 
     void InitialiseMenuLevelSelection()
     {
+        int idWorld = 0;
+        GameObject world = Instantiate(_prefabsLevelContainer, _worldContainer.transform);
+        world.name = _worldData.Worlds[idWorld].label;
+        _levelContainers.Add(world);
         for (int nLevel = 1; nLevel<SceneManager.sceneCountInBuildSettings; nLevel++)
         {
+            if (_levelContainers[idWorld].transform.childCount == _worldData.Worlds[idWorld].levelInThisWorld)
+            {
+                idWorld++;
+                world = Instantiate(_prefabsLevelContainer, _worldContainer.transform);
+                world.name = _worldData.Worlds[idWorld].label;
+                _levelContainers.Add(world);
+                world.SetActive(false);
+            }
             int index = nLevel;
-            var buttonLevel = Instantiate(_prefabButtonLevel, _levelList.transform);
+            var buttonLevel = Instantiate(_prefabButtonLevel, _levelContainers[idWorld].transform);
             buttonLevel.name = "ButtonLevel" + nLevel;
             var button = buttonLevel.GetComponent<Button>();
             _buttonsLevel.Add(button);

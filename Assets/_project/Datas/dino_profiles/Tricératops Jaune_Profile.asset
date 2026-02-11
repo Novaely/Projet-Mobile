@@ -18,5 +18,5 @@ MonoBehaviour:
   speciesName: "Tric\xE9ratops Jaune"
   diet: 0
   myRules:
-  - {fileID: 11400000, guid: c6dcfc0feb68eb246bbc670471a336c7, type: 2}
+  - {fileID: 11400000, guid: d76dd48535659ce4e88ecfb366d219ab, type: 2}
   - {fileID: 11400000, guid: 66a52e1f702fe3b40b595b2af0689bfe, type: 2}

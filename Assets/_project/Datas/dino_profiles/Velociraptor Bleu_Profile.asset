@@ -17,5 +17,5 @@ MonoBehaviour:
   speciesName: Velociraptor Bleu
   diet: 1
   myRules:
-  - {fileID: 11400000, guid: 77c1e91bb2e8f104a8724378b6c7e3e1, type: 2}
+  - {fileID: 11400000, guid: 10921794291114a458823b1381a138ee, type: 2}
   - {fileID: 11400000, guid: f311842d94c462d439d1f3fcf02a2fa8, type: 2}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "SeatRules/Not Between Two Dinosaurs")]
+[CreateAssetMenu(menuName = "Rules/Not Between Two Dinosaurs")]
 public class NotBetweenTwoDinosaursSO : SeatRuleSO
 {
     public override bool IsSatisfied(Dino dino, Seat seat)

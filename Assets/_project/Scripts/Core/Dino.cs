@@ -12,7 +12,6 @@ public class Dino : MonoBehaviour
 {
     [Header("--- DATA ---")]
     public DinoProfileSO profile;
-    public DinoColor color; 
     public string dinoName => profile ? profile.speciesName : "Unknown";
     public DietType diet => profile ? profile.diet : DietType.Herbivore;
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "SeatRules/Diplodocus No Front")]
+[CreateAssetMenu(menuName = "Rules/Diplodocus No Front")]
 public class DiplodocusNoFrontSO : SeatRuleSO
 {
     public override bool IsSatisfied(Dino dino, Seat seat)

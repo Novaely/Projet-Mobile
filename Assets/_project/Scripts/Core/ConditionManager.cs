@@ -75,4 +75,13 @@ public class ConditionManager : MonoBehaviour
     {
         return seatRuleCache.ContainsKey(seat) ? seatRuleCache[seat] : globalRules;
     }
+
+
+    public bool ForceDropDino(Dino dino, Seat seat)
+    {
+        if (seat == null) return false;
+
+        seat.occupant = dino;
+        return true;
+    }
 }

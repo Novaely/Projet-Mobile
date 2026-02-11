@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "SeatRules/Friend With Accessory")]
+[CreateAssetMenu(menuName = "Rules/Friend With Accessory")]
 public class FriendWithAccessoryRuleSO : SeatRuleSO
 {
     [Header("Tag de l'accessoire recherché")]

@@ -11,19 +11,19 @@ public class ForbiddenEdgeRuleSO : SeatRuleSO
         switch (forbiddenEdge)
         {
             case NeighborDirection.Devant:
-                if (seat.front == null) return false; 
+                if (seat.front == null) return true; 
                 break;
             case NeighborDirection.Derriere:
-                if (seat.back == null) return false;  
+                if (seat.back == null) return true;  
                 break;
             case NeighborDirection.Gauche:
-                if (seat.left == null) return false;
+                if (seat.left == null) return true;
                 break;
             case NeighborDirection.Droite:
-                if (seat.right == null) return false;
+                if (seat.right == null) return true;
                 break;
         }
         
-        return true;
+        return false;
     }
 }

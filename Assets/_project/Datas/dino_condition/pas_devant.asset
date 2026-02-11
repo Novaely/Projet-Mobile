@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 532dc5f15bc292c45ac7f728d0010e59, type: 3}
-  m_Name: T-rex_veut_herbi
-  m_EditorClassIdentifier: Assembly-CSharp::TRexNeedsHerbivoreSO
+  m_Script: {fileID: 11500000, guid: ed66c466c98f9c541be9afb70c0e3d5d, type: 3}
+  m_Name: pas_devant
+  m_EditorClassIdentifier: Assembly-CSharp::ForbiddenEdgeRuleSO
+  forbiddenEdge: 0

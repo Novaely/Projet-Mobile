@@ -87,7 +87,7 @@ public class SpawnManager : MonoBehaviour
                 _dinos[i].SetActive(false);
             }
         }
-        if (_dinos.Count >= 1 && _currentIdDino != -1)
+        if (_dinos.Count >= 2 && _currentIdDino != -1)
         {
             _dinos[_currentIdDino].SetActive(false);
         }

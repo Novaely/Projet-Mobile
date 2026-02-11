@@ -5,7 +5,7 @@ public class UiStarLevel : MonoBehaviour
     [SerializeField] Sprite[] _starObtained;
     [SerializeField] Sprite[] _StarNotObtained;
 
-    private void OnEnable()
+    private void Start()
     {
         ButtonLevelInfo[] buttonLevelInfos = GetComponentsInChildren<ButtonLevelInfo>();
 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 61d0074720a371c49aeb98b7a886a3a8
+guid: b5f77890ae3445845ab23a8cca3ffe2e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1961439882422596991
-    second: fleche ui_0
+      213: 6934086728263231946
+    second: icon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fleche ui_0
+      name: icon_0
       rect:
         serializedVersion: 2
-        x: 42
-        y: 15
-        width: 55
-        height: 95
+        x: 0
+        y: 0
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f7535105e2f683b10800000000000000
-      internalID: 1961439882422596991
+      spriteID: ac961e71423da3060800000000000000
+      internalID: 6934086728263231946
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      fleche ui_0: 1961439882422596991
+      icon_0: 6934086728263231946
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

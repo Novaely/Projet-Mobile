@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "SeatRules/At The Back")]
+[CreateAssetMenu(menuName = "Rules/At The Back")]
 public class AtTheBackRuleSO : SeatRuleSO
 {
     public override bool IsSatisfied(Dino dino, Seat seat)

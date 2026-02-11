@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,13 +18,13 @@ public class UIInfoDinoLevel : MonoBehaviour
     [Header("Visuel")]
     [SerializeField] Image _imagePreviewDino;
 
-    public event Func<SpawnManager.InfoDino> OnNextDino;
-    public event Func<SpawnManager.InfoDino> OnNextDinoForced;
-    public event Func<SpawnManager.InfoDino> OnPreviousDino;
+    public event Func<bool, InfoDino> OnNextDino;
+    public event Func<InfoDino> OnNextDinoForced;
+    public event Func<InfoDino> OnPreviousDino;
 
-    public void NextDino()
+    public void NextDino(bool forced)
     {
-        SpawnManager.InfoDino infoDino =  OnNextDino?.Invoke();
+        InfoDino infoDino =  OnNextDino?.Invoke(forced);
 
         if (infoDino == null) { return; }
 
@@ -39,28 +37,7 @@ public class UIInfoDinoLevel : MonoBehaviour
 
     public void PreviousDino()
     {
-        SpawnManager.InfoDino infoDino = OnPreviousDino?.Invoke();
-
-        if (infoDino == null) { return; }
-
-
-        _textDinoName.text = infoDino.label;
-        _textDinoContraintePositive.text = infoDino.contraintePositive;
-        _textDinoContrainteNegative.text = infoDino.contrainteNegative;
-        _imagePreviewDino.sprite = infoDino.sprite;
-    }
-
-    public void CleanDino()
-    {
-        _textDinoName.text = "";
-        _textDinoContraintePositive.text = "";
-        _textDinoContrainteNegative.text = "";
-        _imagePreviewDino.sprite = null;
-    }
-
-    public void ForceNextDino()
-    {
-        SpawnManager.InfoDino infoDino = OnNextDinoForced?.Invoke();
+        InfoDino infoDino = OnPreviousDino?.Invoke();
 
         if (infoDino == null) { return; }
 
@@ -68,6 +45,5 @@ public class UIInfoDinoLevel : MonoBehaviour
         _textDinoContraintePositive.text = infoDino.contraintePositive;
         _textDinoContrainteNegative.text = infoDino.contrainteNegative;
         _imagePreviewDino.sprite = infoDino.sprite;
-
     }
 }

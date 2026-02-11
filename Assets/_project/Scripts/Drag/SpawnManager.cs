@@ -42,7 +42,6 @@ public class SpawnManager : MonoBehaviour
             _UIInfoDino = FindFirstObjectByType<UIInfoDinoLevel>();
 
             _UIInfoDino.OnNextDino += NextDino;
-            _UIInfoDino.OnNextDinoForced += ForceNextDino;
             _UIInfoDino.OnPreviousDino += PrevDino;
 
             for (int i = 0; i < _dinosPrefab.Count; i++)
@@ -51,15 +50,18 @@ public class SpawnManager : MonoBehaviour
 
                 if (i == 0)
                 {
-                    dino.SetActive(false);
                     Dino dinoDino = dino.GetComponent<Dino>();
                     OnSpawn?.Invoke(dinoDino, _spawnerSeat.transform);
+                }
+                else
+                {
+                    dino.SetActive(false);
                 }
 
                 _dinos.Add(dino);
             }
 
-            _UIInfoDino.NextDino();
+            _UIInfoDino.NextDino(false);
         }
     }
 
@@ -75,22 +77,15 @@ public class SpawnManager : MonoBehaviour
         if (_spawnerSeat != null && _spawnerSeat.occupant == null)
         {
             _dinos.RemoveAt(_currentIdDino);
-            _UIInfoDino.ForceNextDino();
+            _UIInfoDino.NextDino(true);
         }
     }
 
-    InfoDino NextDino()
+    InfoDino NextDino(bool forced)
     {
         if (_dinos.Count == 0) { return null; }
 
-        if (_currentIdDino == -1)
-        {
-            for (int i = 1; i < _dinos.Count; i++)
-            {
-                _dinos[i].SetActive(false);
-            }
-        }
-        if (_dinos.Count >= 3 && _currentIdDino != -1)
+        if (!forced && _dinos.Count >= 3 && _currentIdDino != -1)
         {
             _dinos[_currentIdDino].SetActive(false);
         }
@@ -134,30 +129,6 @@ public class SpawnManager : MonoBehaviour
         };
 
         _dinos[_currentIdDino].SetActive(true);
-
-        return infoDino;
-    }
-
-    InfoDino ForceNextDino()
-    {
-        if (_dinos.Count == 0) { return null; }
-
-        _currentIdDino = (_currentIdDino + 1) % _dinos.Count;
-
-        GameObject dino = _dinos[_currentIdDino];
-
-        InfoDino infoDino = new InfoDino
-        {
-            label = dino.name,
-            contraintePositive = "",
-            contrainteNegative = "",
-            sprite = dino.GetComponent<SpriteRenderer>().sprite,
-        };
-
-        _dinos[_currentIdDino].SetActive(true);
-
-        Dino dinoDino = dino.GetComponent<Dino>();
-        OnSpawn?.Invoke(dinoDino, _spawnerSeat.transform);
 
         return infoDino;
     }

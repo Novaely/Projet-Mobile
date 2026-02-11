@@ -73,3 +73,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a240f97522bda4693b6bf1c109e5d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _starObtained:
+  - {fileID: 21300000, guid: abf18df0f704dd9468df26ebf22dd84a, type: 3}
+  - {fileID: 21300000, guid: 0b442c859185a274faff1513979dd5c2, type: 3}
+  - {fileID: 21300000, guid: 3b702ec4b02412644b79d31aca9196d8, type: 3}
+  _StarNotObtained:
+  - {fileID: 21300000, guid: ab2ff9b9662910e488a54dbb4009e590, type: 3}
+  - {fileID: 21300000, guid: c46a2d4aefdb7ed4583350a365dba51d, type: 3}
+  - {fileID: 21300000, guid: ec0b8c7badf971d4181757a3bff81db0, type: 3}

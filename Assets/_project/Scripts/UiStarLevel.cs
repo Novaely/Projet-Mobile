@@ -2,37 +2,23 @@ using UnityEngine;
 
 public class UiStarLevel : MonoBehaviour
 {
+    [SerializeField] Sprite[] _starObtained;
+    [SerializeField] Sprite[] _StarNotObtained;
+
     private void OnEnable()
     {
         ButtonLevelInfo[] buttonLevelInfos = GetComponentsInChildren<ButtonLevelInfo>();
 
+
         foreach (var buttonLevelInfo in buttonLevelInfos)
         {
+
             for (int i = 0; i < 3; i++)
             {
-                switch (PlayerSave.Instance.LevelSave.starsLevels[buttonLevelInfo.index])
-                {
-                    case 0:
-                        buttonLevelInfo.stars[0].color = Color.black;
-                        buttonLevelInfo.stars[1].color = Color.black;
-                        buttonLevelInfo.stars[2].color = Color.black;
-                        break;
-                    case 1:
-                        buttonLevelInfo.stars[0].color = Color.yellow;
-                        buttonLevelInfo.stars[1].color = Color.black;
-                        buttonLevelInfo.stars[2].color = Color.black;
-                        break;
-                    case 2:
-                        buttonLevelInfo.stars[0].color = Color.yellow;
-                        buttonLevelInfo.stars[1].color = Color.yellow;
-                        buttonLevelInfo.stars[2].color = Color.black;
-                        break;
-                    case 3:
-                        buttonLevelInfo.stars[0].color = Color.yellow;
-                        buttonLevelInfo.stars[1].color = Color.yellow;
-                        buttonLevelInfo.stars[2].color = Color.yellow;
-                        break;
-                }
+                int nbStar = PlayerSave.Instance.LevelSave.starsLevels[buttonLevelInfo.index];
+                buttonLevelInfo.stars[0].sprite = nbStar >= 1 ? _starObtained[0] : _StarNotObtained[0];
+                buttonLevelInfo.stars[1].sprite = nbStar >= 2 ? _starObtained[1] : _StarNotObtained[1];
+                buttonLevelInfo.stars[2].sprite = nbStar >= 3 ? _starObtained[2] : _StarNotObtained[2];
             }
         }
     }

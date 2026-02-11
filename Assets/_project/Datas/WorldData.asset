@@ -18,4 +18,7 @@ MonoBehaviour:
     numberStarNeed: 0
   - label: Cineee
     levelInThisWorld: 5
-    numberStarNeed: 10
+    numberStarNeed: 5
+  - label: oihg
+    levelInThisWorld: 5
+    numberStarNeed: 25

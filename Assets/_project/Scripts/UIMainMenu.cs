@@ -31,6 +31,7 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] GameObject _buttonPreviousWorld;
     [SerializeField] GameObject _buttonNextWorld;
     int _currentWorldId = 0;
+    [SerializeField] GameObject _textStar;
     public void IsLevelSelectActive(bool isActive) => _isActive = isActive;
     [Header("Credits")]
     [SerializeField] private GameObject _credits;
@@ -179,14 +180,18 @@ public class UIMainMenu : MonoBehaviour
 
 
         Button button = _buttonNextWorld.GetComponent<Button>();
+        TextMeshProUGUI textStar = _textStar.GetComponentInChildren<TextMeshProUGUI>();
 
         if (numberStar >= _worldData.Worlds[_currentWorldId+1].numberStarNeed)
         {
             button.interactable = true;
+            _textStar.SetActive(false);
         }
         else
         {
             button.interactable = false;
+            _textStar.SetActive(true);
+            textStar.text = numberStar.ToString() + " / " + _worldData.Worlds[_currentWorldId + 1].numberStarNeed.ToString();
         }
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "SeatRules/T-Rex Needs Herbivore")]
+[CreateAssetMenu(menuName = "Rules/T-Rex Needs Herbivore")]
 public class TRexNeedsHerbivoreSO : SeatRuleSO
 {
     public override bool IsSatisfied(Dino dino, Seat seat)

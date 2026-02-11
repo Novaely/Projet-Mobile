@@ -66,7 +66,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (_currentIdDino == -1) { return; }
 
-        if (_dinos.Count == 1)
+        if (_dinos.Count == 0)
         {
             return;
         }
@@ -80,6 +80,8 @@ public class SpawnManager : MonoBehaviour
 
     InfoDino NextDino()
     {
+        if (_dinos.Count == 0) { return null; }
+
         if (_currentIdDino == -1)
         {
             for (int i = 1; i < _dinos.Count; i++)
@@ -87,7 +89,7 @@ public class SpawnManager : MonoBehaviour
                 _dinos[i].SetActive(false);
             }
         }
-        if (_dinos.Count >= 2 && _currentIdDino != -1)
+        if (_dinos.Count >= 3 && _currentIdDino != -1)
         {
             _dinos[_currentIdDino].SetActive(false);
         }
@@ -114,6 +116,8 @@ public class SpawnManager : MonoBehaviour
 
     InfoDino PrevDino()
     {
+        if (_dinos.Count == 0) { return null; }
+
         _dinos[_currentIdDino].SetActive(false);
 
         _currentIdDino = (_currentIdDino - 1) % _dinos.Count;

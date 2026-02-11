@@ -27,6 +27,8 @@ public class UIInfoDinoLevel : MonoBehaviour
     {
         SpawnManager.InfoDino infoDino =  OnNextDino?.Invoke();
 
+        if (infoDino == null) { return; }
+
         _textDinoName.text = infoDino.label;
         _textDinoContraintePositive.text = infoDino.contraintePositive;
         _textDinoContrainteNegative.text = infoDino.contrainteNegative;
@@ -37,6 +39,9 @@ public class UIInfoDinoLevel : MonoBehaviour
     public void PreviousDino()
     {
         SpawnManager.InfoDino infoDino = OnPreviousDino?.Invoke();
+
+        if (infoDino == null) { return; }
+
 
         _textDinoName.text = infoDino.label;
         _textDinoContraintePositive.text = infoDino.contraintePositive;

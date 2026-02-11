@@ -42,6 +42,7 @@ public class SpawnManager : MonoBehaviour
             _UIInfoDino = FindFirstObjectByType<UIInfoDinoLevel>();
 
             _UIInfoDino.OnNextDino += NextDino;
+            _UIInfoDino.OnNextDinoForced += ForceNextDino;
             _UIInfoDino.OnPreviousDino += PrevDino;
 
             for (int i = 0; i < _dinosPrefab.Count; i++)
@@ -74,7 +75,7 @@ public class SpawnManager : MonoBehaviour
         if (_spawnerSeat != null && _spawnerSeat.occupant == null)
         {
             _dinos.RemoveAt(_currentIdDino);
-            _UIInfoDino.NextDino();
+            _UIInfoDino.ForceNextDino();
         }
     }
 
@@ -133,6 +134,30 @@ public class SpawnManager : MonoBehaviour
         };
 
         _dinos[_currentIdDino].SetActive(true);
+
+        return infoDino;
+    }
+
+    InfoDino ForceNextDino()
+    {
+        if (_dinos.Count == 0) { return null; }
+
+        _currentIdDino = (_currentIdDino + 1) % _dinos.Count;
+
+        GameObject dino = _dinos[_currentIdDino];
+
+        InfoDino infoDino = new InfoDino
+        {
+            label = dino.name,
+            contraintePositive = "",
+            contrainteNegative = "",
+            sprite = dino.GetComponent<SpriteRenderer>().sprite,
+        };
+
+        _dinos[_currentIdDino].SetActive(true);
+
+        Dino dinoDino = dino.GetComponent<Dino>();
+        OnSpawn?.Invoke(dinoDino, _spawnerSeat.transform);
 
         return infoDino;
     }

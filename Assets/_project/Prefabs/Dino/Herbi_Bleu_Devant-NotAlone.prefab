@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4808319598897392892
+--- !u!1 &3371091615917382114
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 302481279667648517}
-  - component: {fileID: 2291952890010344459}
-  - component: {fileID: 816396258620733165}
-  - component: {fileID: 3861762709723472196}
+  - component: {fileID: 7202659756642262527}
+  - component: {fileID: 4765945480872610054}
+  - component: {fileID: 3034761806732973393}
+  - component: {fileID: 3326748064245650695}
   m_Layer: 8
-  m_Name: Carni_Vert_Window-NotTop
+  m_Name: Herbi_Bleu_Devant-NotAlone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &302481279667648517
+--- !u!4 &7202659756642262527
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4808319598897392892}
+  m_GameObject: {fileID: 3371091615917382114}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8588373278908754077}
+  - {fileID: 1039026987280227821}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2291952890010344459
+--- !u!212 &4765945480872610054
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4808319598897392892}
+  m_GameObject: {fileID: 3371091615917382114}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -84,23 +84,23 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 8c34f91a967e6a54ca445b2fb9d3ff08, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a837ad02e14dc4a43ac31155ca2d68e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.4036363, y: 1.8927273}
+  m_Size: {x: 2.012, y: 2.152}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!58 &816396258620733165
+--- !u!58 &3034761806732973393
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4808319598897392892}
+  m_GameObject: {fileID: 3371091615917382114}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -129,31 +129,31 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.9463636
---- !u!114 &3861762709723472196
+  m_Radius: 1.076
+--- !u!114 &3326748064245650695
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4808319598897392892}
+  m_GameObject: {fileID: 3371091615917382114}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fd2614b461f4a2429b096b9724a9ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dino
-  profile: {fileID: 11400000, guid: ec8f0ca60c0bc35429ce5ef2c473a49f, type: 2}
+  profile: {fileID: 11400000, guid: 15ebc1946bdf7b94cab068ced457318e, type: 2}
   color: 0
-  passiveSprite: {fileID: 21300000, guid: 8c34f91a967e6a54ca445b2fb9d3ff08, type: 3}
-  idleSprite: {fileID: 21300000, guid: 3b9ac4cc03386f74d9bb94fdf399c0a0, type: 3}
+  passiveSprite: {fileID: 21300000, guid: a837ad02e14dc4a43ac31155ca2d68e5, type: 3}
+  idleSprite: {fileID: 21300000, guid: ce0c29610ce02e64da7c7a2019d2d9b6, type: 3}
   happySprite: {fileID: 0}
   angrySprite: {fileID: 0}
-  emoteRenderer: {fileID: 4175630339418465297}
+  emoteRenderer: {fileID: 7952290453051475964}
   bubbleHappy: {fileID: 0}
   bubbleAngry: {fileID: 0}
   currentState: 0
   currentSatisfaction: 0
---- !u!1 &9184567350929268426
+--- !u!1 &6183573673432430536
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,8 +161,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8588373278908754077}
-  - component: {fileID: 4175630339418465297}
+  - component: {fileID: 1039026987280227821}
+  - component: {fileID: 7952290453051475964}
   m_Layer: 0
   m_Name: EmoteBubble
   m_TagString: Untagged
@@ -170,29 +170,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8588373278908754077
+--- !u!4 &1039026987280227821
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9184567350929268426}
+  m_GameObject: {fileID: 6183573673432430536}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.2, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 302481279667648517}
+  m_Father: {fileID: 7202659756642262527}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4175630339418465297
+--- !u!212 &7952290453051475964
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9184567350929268426}
+  m_GameObject: {fileID: 6183573673432430536}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

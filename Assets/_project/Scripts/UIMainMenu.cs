@@ -28,6 +28,9 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private GameObject _prefabButtonLevel;
     private List<Button> _buttonsLevel = new List<Button>();
     private bool _isActive = false;
+    [SerializeField] GameObject _buttonPreviousWorld;
+    [SerializeField] GameObject _buttonNextWorld;
+    int _currentWorldId = 0;
     public void IsLevelSelectActive(bool isActive) => _isActive = isActive;
     [Header("Credits")]
     [SerializeField] private GameObject _credits;
@@ -75,6 +78,7 @@ public class UIMainMenu : MonoBehaviour
 
     void InitialiseMenuLevelSelection()
     {
+        _buttonPreviousWorld.SetActive(false);
         int idWorld = 0;
         GameObject world = Instantiate(_prefabsLevelContainer, _worldContainer.transform);
         world.name = _worldData.Worlds[idWorld].label;
@@ -108,6 +112,8 @@ public class UIMainMenu : MonoBehaviour
             }
             buttonLevel.GetComponent<ButtonLevelInfo>().index = index - 1;
         }
+
+        UpdateButtonNextWorld();
     }
 
     IEnumerator WaitForSave()
@@ -115,5 +121,72 @@ public class UIMainMenu : MonoBehaviour
         yield return new WaitForSeconds(0.01f);
 
         InitialiseMenuLevelSelection();
+    }
+
+    public void NextWorld()
+    {
+        if (_currentWorldId >= _levelContainers.Count -1) { return; }
+
+        if (_currentWorldId == 0)
+        {
+            _buttonPreviousWorld.SetActive(true);
+        }
+
+        _levelContainers[_currentWorldId].SetActive(false);
+        _currentWorldId++;
+        _levelContainers[_currentWorldId].SetActive(true);
+
+        if (_currentWorldId >= _levelContainers.Count - 1)
+        {
+            _buttonNextWorld.SetActive(false);
+        }
+
+        UpdateButtonNextWorld();
+    }
+
+    public void PreviousWorld()
+    {
+        if (_currentWorldId == 0) { return; }
+
+        if (_currentWorldId >= _levelContainers.Count - 1)
+        {
+            _buttonNextWorld.SetActive(true);
+        }
+
+        _levelContainers[_currentWorldId].SetActive(false);
+        _currentWorldId--;
+        _levelContainers[_currentWorldId].SetActive(true);
+
+        if (_currentWorldId == 0)
+        {
+            _buttonPreviousWorld.SetActive(false);
+        }
+
+        UpdateButtonNextWorld();
+    }
+
+
+
+    void UpdateButtonNextWorld()
+    {
+        if (_currentWorldId+1 >  _worldData.Worlds.Count-1) { return; }
+
+        int numberStar = 0;
+        foreach (var nbStarLevel in PlayerSave.Instance.LevelSave.starsLevels)
+        {
+            numberStar += nbStarLevel;
+        }
+
+
+        Button button = _buttonNextWorld.GetComponent<Button>();
+
+        if (numberStar >= _worldData.Worlds[_currentWorldId+1].numberStarNeed)
+        {
+            button.interactable = true;
+        }
+        else
+        {
+            button.interactable = false;
+        }
     }
 }

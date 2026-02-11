@@ -3,8 +3,12 @@ using System.Collections.Generic;
 
 public class Seat : MonoBehaviour
 {
-    [Header("Configuration")]
+    [Header("Configuration")]   
     public SeatType seatType = SeatType.Normal;
+    
+
+    public SeatColumn seatColumn = SeatColumn.Milieu;
+    public SeatRow seatRow = SeatRow.Milieu;
     
     [Tooltip("Distance maximum pour détecter un voisin (doit être un peu plus grand que l'espacement de ta grille)")]
     public float detectRadius = 2.1f;

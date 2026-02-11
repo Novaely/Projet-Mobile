@@ -6,11 +6,9 @@ using System.IO;
 public class DinoCreatorWizard : EditorWindow
 {
     string dinoName = "New Dino";
-    Sprite dinoSprite;
-    Color spriteColor = Color.white;
-
-    Sprite happyBubbleSprite;
-    Sprite angryBubbleSprite;
+    
+    Sprite passiveSprite; 
+    Sprite idleSprite;    
 
     DietType diet = DietType.Herbivore;
     string accessoryTag = "";
@@ -18,8 +16,8 @@ public class DinoCreatorWizard : EditorWindow
 
     List<SeatRuleSO> rules = new List<SeatRuleSO>();
     
-    const string PROFILE_PATH = "Assets/_project/Resources/Dinos/Profiles/";
-    const string PREFAB_PATH = "Assets/_project/Resources/Dinos/Prefabs/";
+    const string PROFILE_PATH = "Assets/_project/Datas/dino_profiles/";
+    const string PREFAB_PATH = "Assets/_project/Prefabs/Dino/";
 
     [MenuItem("Tools/Dino Creator Wizard")]
     public static void ShowWindow()
@@ -29,23 +27,18 @@ public class DinoCreatorWizard : EditorWindow
 
     void OnGUI()
     {
-        GUILayout.Label("Créateur de Dino (Avec Bulles)", EditorStyles.boldLabel);
+        GUILayout.Label("Créateur de Dino", EditorStyles.boldLabel);
         EditorGUILayout.Space();
 
         GUILayout.Label("1. Apparence Corps", EditorStyles.boldLabel);
         dinoName = EditorGUILayout.TextField("Nom du Dino", dinoName);
-        dinoSprite = (Sprite)EditorGUILayout.ObjectField("Sprite Corps", dinoSprite, typeof(Sprite), false);
-        spriteColor = EditorGUILayout.ColorField("Teinte Corps", spriteColor);
+        
+        passiveSprite = (Sprite)EditorGUILayout.ObjectField("Sprite Passif (Debout/Drag)", passiveSprite, typeof(Sprite), false);
+        idleSprite = (Sprite)EditorGUILayout.ObjectField("Sprite Actif (Assis/Neutre)", idleSprite, typeof(Sprite), false);
 
         EditorGUILayout.Space();
 
-        GUILayout.Label("2. Apparence Bulles (Emotes)", EditorStyles.boldLabel);
-        happyBubbleSprite = (Sprite)EditorGUILayout.ObjectField("Sprite Happy", happyBubbleSprite, typeof(Sprite), false);
-        angryBubbleSprite = (Sprite)EditorGUILayout.ObjectField("Sprite Angry", angryBubbleSprite, typeof(Sprite), false);
-
-        EditorGUILayout.Space();
-
-        GUILayout.Label("3. Caractéristiques & GD", EditorStyles.boldLabel);
+        GUILayout.Label("2. Caractéristiques & GD", EditorStyles.boldLabel);
         diet = (DietType)EditorGUILayout.EnumPopup("Régime", diet);
         accessoryTag = EditorGUILayout.TextField("Accessoire (Tag)", accessoryTag);
         
@@ -55,7 +48,7 @@ public class DinoCreatorWizard : EditorWindow
 
         EditorGUILayout.Space();
 
-        GUILayout.Label("4. Contraintes & Règles", EditorStyles.boldLabel);
+        GUILayout.Label("3. Contraintes & Règles", EditorStyles.boldLabel);
         
         for (int i = 0; i < rules.Count; i++)
         {
@@ -108,9 +101,15 @@ public class DinoCreatorWizard : EditorWindow
 
         GameObject dinoGO = new GameObject(dinoName);
         
+        int dinoLayer = LayerMask.NameToLayer("Dino");
+        if (dinoLayer != -1)
+        {
+            dinoGO.layer = dinoLayer;
+        }
+
         var sr = dinoGO.AddComponent<SpriteRenderer>();
-        sr.sprite = dinoSprite;
-        sr.color = spriteColor;
+        sr.sprite = passiveSprite != null ? passiveSprite : idleSprite;
+        sr.color = Color.white; 
         sr.sortingOrder = 5;
 
         dinoGO.AddComponent<CircleCollider2D>(); 
@@ -119,6 +118,9 @@ public class DinoCreatorWizard : EditorWindow
         dinoScript.profile = newProfile;
         dinoScript.tag = "Dino"; 
 
+        dinoScript.passiveSprite = passiveSprite;
+        dinoScript.idleSprite = idleSprite;
+
         GameObject bubbleGO = new GameObject("EmoteBubble");
         bubbleGO.transform.SetParent(dinoGO.transform);
         bubbleGO.transform.localPosition = new Vector3(0, 1.2f, 0); 
@@ -126,10 +128,7 @@ public class DinoCreatorWizard : EditorWindow
 
         var bubbleSR = bubbleGO.AddComponent<SpriteRenderer>();
         bubbleSR.sortingOrder = 10; 
-
         dinoScript.emoteRenderer = bubbleSR;
-        dinoScript.bubbleHappy = happyBubbleSprite;
-        dinoScript.bubbleAngry = angryBubbleSprite;
 
         string prefabAssetPath = AssetDatabase.GenerateUniqueAssetPath(PREFAB_PATH + dinoName + ".prefab");
         PrefabUtility.SaveAsPrefabAsset(dinoGO, prefabAssetPath);
@@ -141,7 +140,7 @@ public class DinoCreatorWizard : EditorWindow
         EditorUtility.FocusProjectWindow();
         Selection.activeObject = AssetDatabase.LoadAssetAtPath<GameObject>(prefabAssetPath);
 
-        Debug.Log($"<color=green>SUCCÈS : Dino '{dinoName}' créé avec ses bulles !</color>");
+        Debug.Log($"<color=green>SUCCÈS : Dino '{dinoName}' créé (Interface allégée) !</color>");
     }
 
     void EnsureDirectoryExists(string path)

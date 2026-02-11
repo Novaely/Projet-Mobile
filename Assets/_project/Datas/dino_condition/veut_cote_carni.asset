@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b3764583e3f8ce45bc3cf6a11dd3472, type: 3}
-  m_Name: pas_devant
-  m_EditorClassIdentifier: Assembly-CSharp::ForbiddenRowSO
-  forbiddenRow: 0
+  m_Script: {fileID: 11500000, guid: 27f39ee5725f97544ab2e5ac2054e250, type: 3}
+  m_Name: veut_cote_carni
+  m_EditorClassIdentifier: Assembly-CSharp::MustBeNeighborDietSO
+  requiredDiet: 1

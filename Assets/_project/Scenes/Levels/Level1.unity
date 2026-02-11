@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Seat
   seatType: 1
+  seatColumn: 0
+  seatRow: 2
   detectRadius: 2.1
   occupant: {fileID: 0}
   front: {fileID: 0}
@@ -403,9 +405,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
   _spawnerSeat: {fileID: 980146925}
-  _dinos:
-  - {fileID: 3371091615917382114, guid: 5d4c8ee4c29cbdc498ab713599772ce7, type: 3}
-  - {fileID: 6957669862163754153, guid: ef0117c4c1308bf419ac7aebdccc9178, type: 3}
+  _dinosPrefab:
+  - {fileID: 5070272790163675155, guid: 34a6140976615ed4db6783ee0b10fe34, type: 3}
+  - {fileID: 3438902453895450876, guid: 072877182c0dd2a459754fd92197178c, type: 3}
   _dinosContainer: {fileID: 1604867147}
 --- !u!4 &712073609 stripped
 Transform:
@@ -494,6 +496,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Seat
   seatType: 0
+  seatColumn: 1
+  seatRow: 1
   detectRadius: 2.1
   occupant: {fileID: 0}
   front: {fileID: 0}
@@ -625,6 +629,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Seat
   seatType: 0
+  seatColumn: 0
+  seatRow: 0
   detectRadius: 2.1
   occupant: {fileID: 0}
   front: {fileID: 0}
@@ -806,6 +812,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Seat
   seatType: 1
+  seatColumn: 2
+  seatRow: 2
   detectRadius: 2.1
   occupant: {fileID: 0}
   front: {fileID: 0}
@@ -993,6 +1001,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143290710}
     m_Modifications:
+    - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+      propertyPath: seatRow
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+      propertyPath: seatColumn
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5693101656122206242, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
       propertyPath: m_Name
       value: Seat_1_1

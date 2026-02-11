@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e40ad3383026920489855b4fc3f91806
+guid: 34de50e891780de41b4001eff4a91f96
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5986496617192891051
-    second: ecran_acceuil_0
+      213: 5470408682059982043
+    second: long coup bleu debout_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 108
+  spritePixelsToUnits: 500
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ecran_acceuil_0
+      name: long coup bleu debout_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 24
+        y: 24
+        width: 923
+        height: 1017
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ba22cdc94fe441350800000000000000
-      internalID: 5986496617192891051
+      spriteID: bd4e56e76bbcaeb40800000000000000
+      internalID: 5470408682059982043
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ecran_acceuil_0: 5986496617192891051
+      long coup bleu debout_0: 5470408682059982043
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

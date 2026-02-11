@@ -7,6 +7,12 @@ public class DinoProfileSO : ScriptableObject
     [Header("Accessoires")]
     public string accessoryTag;
 
+    [Header("GD Info")]
+    
+    [TextArea(3, 5)]
+    public string designerDescription = "Description du comportement de ce dino...";
+
+
     [Header("Infos Espèce")]
     public string speciesName;
     public DietType diet;

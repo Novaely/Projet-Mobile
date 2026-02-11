@@ -1,169 +1,166 @@
 using UnityEngine;
+using UnityEngine.InputSystem; 
 
 public class DragManager : MonoBehaviour
 {
-    [SerializeField] LayerMask layerMask;
-    [SerializeField] private ConditionManager conditionManager;
-
-    DinoController _currentItemSelected;
-    EmplacementController _lastEmplacement;
+    [Header("Configuration des Layers")]
+    [SerializeField] LayerMask EmplacementMask;
+    [SerializeField] LayerMask DinoMask;
     
+    [Header("Références")]
+    [SerializeField] private ConditionManager conditionManager;
+    private Dino setdragging;
+
+    [Header("Sécurité")]
+    [SerializeField] float antiSpamDelay = 0.15f; 
+
+    Dino _currentDino;
     private Seat _lastHoveredSeat;
+    private float _nextInteractTime = 0f;
 
     private void Start()
     {
-        // Sécurité
-        if (conditionManager == null) conditionManager = FindFirstObjectByType<ConditionManager>();
+        if (conditionManager == null) 
+            conditionManager = Object.FindFirstObjectByType<ConditionManager>();
         
-        //Event
         if(SpawnManager.Instance != null)
-             SpawnManager.Instance.OnSpawn += SpawnDino;
+            SpawnManager.Instance.OnSpawn += SpawnDino;
     }
 
     private void OnDestroy()
     {
-        SpawnManager.Instance.OnSpawn -= SpawnDino;
+        if(SpawnManager.Instance != null)
+            SpawnManager.Instance.OnSpawn -= SpawnDino;
     }
 
     private void Update()
     {
-        if (Input.touchCount > 0)
+        bool pressed = false, released = false, holding = false;
+        Vector2 screenPos = Vector2.zero;
+
+        if (Mouse.current != null)
         {
-            Touch touch0 = Input.GetTouch(0);
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(touch0.position);
-            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                Debug.Log("Start Drag");
-                if (hit)
-                {
-                    if (hit.transform.TryGetComponent(out DinoController item))
-                    {
-                        _currentItemSelected = item;
-                        if (_currentItemSelected.LastPosition.TryGetComponent<EmplacementController>(out _lastEmplacement))
-                        {
-                            if (_currentItemSelected.LastPosition.TryGetComponent(out Seat seatScript))
-                            {
-                                conditionManager.PickupDino(seatScript);
-                            }
-
-                            _lastEmplacement.Storage = null;
-                        }
-                    }
-                }
-            }
-            else if (Input.GetTouch(0).phase == TouchPhase.Moved)
-            {
-                if (_currentItemSelected == null) { return; }
-
-                Debug.Log("bouge");
-                _currentItemSelected.Displace();
-
-                Vector2 mousePosPlacement = Camera.main.ScreenToWorldPoint(touch0.position);
-                RaycastHit2D hitPlacement = Physics2D.Raycast(mousePosPlacement, Vector2.zero, 10000, layerMask);
-
-                Seat currentSeat = null;
-                if (hitPlacement && hitPlacement.transform.TryGetComponent(out Seat s))
-                    currentSeat = s;
-
-                if (_lastHoveredSeat != currentSeat)
-                {
-                    if (_lastHoveredSeat != null) ResetSeatColor(_lastHoveredSeat);
-                    _lastHoveredSeat = currentSeat;
-                }
-
-                if (currentSeat != null)
-                {
-                    Dino dinoScript = _currentItemSelected.GetComponent<Dino>();
-                    if (dinoScript != null)
-                    {
-                        Color color = conditionManager.GetHighlightColor(dinoScript, currentSeat);
-                        SetSeatColor(currentSeat, color);
-                    }
-                }
-            }
-            else if (Input.GetTouch(0).phase == TouchPhase.Ended)
-            {
-                Debug.Log("end drag");
-                if (_currentItemSelected == null) { return; }
-
-                if (_lastHoveredSeat != null)
-                {
-                    ResetSeatColor(_lastHoveredSeat);
-                    _lastHoveredSeat = null;
-                }
-
-                bool dropSuccess = false;
-
-                Vector2 mousePosPlacement = Camera.main.ScreenToWorldPoint(touch0.position);
-                RaycastHit2D hitPlacement = Physics2D.Raycast(mousePosPlacement, Vector2.zero, 10000, layerMask);
-
-                if (hitPlacement)
-                {
-                    Debug.Log("Raycast Hit -> " + hit.transform.name);
-                    if (hitPlacement.transform.TryGetComponent(out EmplacementController item))
-                    {
-                        Dino dinoScript = _currentItemSelected.GetComponent<Dino>();
-                        Seat seatScript = item.GetComponent<Seat>();
-
-                        if (item.Storage == null &&
-                            (dinoScript != null && seatScript != null && conditionManager.DropDino(dinoScript, seatScript)))
-                        {
-                            item.Storage = _currentItemSelected.gameObject;
-                            _currentItemSelected.SetPosition(item.transform);
-
-                            if (_lastEmplacement != null)
-                            {
-                                _lastEmplacement.Storage = null;
-
-                                if (_lastEmplacement.TryGetComponent(out Seat oldSeat))
-                                    conditionManager.ClearSeat(oldSeat);
-
-                                _lastEmplacement = null;
-                            }
-                            dropSuccess = true;
-                        }
-                        else
-                        {
-                            Debug.Log("Drop refusé : Occupé ou Règles non valides");
-                        }
-                    }
-                }
-
-                if (!dropSuccess)
-                {
-                    _currentItemSelected.ReturnToLastPosition();
-                }
-
-                _currentItemSelected = null;
-            }
+            screenPos = Mouse.current.position.ReadValue();
+            if (Mouse.current.leftButton.wasPressedThisFrame) pressed = true;
+            if (Mouse.current.leftButton.wasReleasedThisFrame) released = true;
+            if (Mouse.current.leftButton.isPressed) holding = true;
         }
-    }
-
-    private void SpawnDino(DinoController dino, Transform position)
-    {
-        if (dino == null) { return; }
-
-        if (position != null)
+        if (Touchscreen.current != null)
         {
-            if (position.transform.TryGetComponent(out EmplacementController item))
+            var t = Touchscreen.current.primaryTouch;
+            if (t.press.isPressed || t.press.wasReleasedThisFrame) screenPos = t.position.ReadValue();
+            if (t.press.wasPressedThisFrame) pressed = true;
+            if (t.press.wasReleasedThisFrame) released = true;
+            if (t.press.isPressed) holding = true;
+        }
+
+        if (!holding && !pressed && !released && _currentDino == null) return;
+
+        Vector2 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+
+        if (pressed)
+        {
+            if (Time.time < _nextInteractTime) return;
+
+            RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, 100f, DinoMask);
+            if (hit && hit.transform.TryGetComponent(out Dino dino))
             {
-                item.Storage = dino.gameObject;
-                dino.SetPosition(item.transform);
+                _currentDino = dino;
+
+                _currentDino.SetDragging(true);
                 
-                var s = item.GetComponent<Seat>();
-                var d = dino.GetComponent<Dino>();
-                if (s && d) conditionManager.DropDino(d, s); 
+                if (_currentDino.LastPosition != null && 
+                    _currentDino.LastPosition.TryGetComponent(out Seat oldSeat))
+                {
+                    conditionManager.PickupDino(oldSeat);
+                    UpdateNeighbors(oldSeat);
+                    ForceScoreUpdate(); 
+                }
+            }
+        }
+        else if (holding && _currentDino != null)
+        {
+            _currentDino.transform.position = worldPos;
+
+            RaycastHit2D hitPlace = Physics2D.Raycast(worldPos, Vector2.zero, 100f, EmplacementMask);
+            Seat seat = (hitPlace && hitPlace.transform.TryGetComponent(out Seat s)) ? s : null;
+
+            if (_lastHoveredSeat != seat)
+            {
+                if (_lastHoveredSeat) ResetSeatColor(_lastHoveredSeat);
+                _lastHoveredSeat = seat;
+            }
+            if (seat)
+            {
+                seat.GetComponent<SpriteRenderer>().color = conditionManager.GetHighlightColor(_currentDino, seat);
+            }
+        }
+        else if ((released || !holding) && _currentDino != null)
+        {
+            if (_lastHoveredSeat) 
+            {
+                ResetSeatColor(_lastHoveredSeat);
+                _lastHoveredSeat = null;
+                _currentDino.SetDragging(false);
+            }
+
+            bool success = false;
+            RaycastHit2D hitPlace = Physics2D.Raycast(worldPos, Vector2.zero, 100f, EmplacementMask);
+
+            if (hitPlace && hitPlace.transform.TryGetComponent(out Seat seat))
+            {
+                if (conditionManager.DropDino(_currentDino, seat))
+                {
+                    _currentDino.SetSlotPosition(seat.transform);
+                    var eval = seat.GetComponent<SeatEvaluator>();
+                    if (eval) eval.UpdateFeedback(_currentDino);
+
+                    UpdateNeighbors(seat);
+                    ForceScoreUpdate();
+
+                    success = true;
+                }
+            }
+
+            if (!success) _currentDino.ReturnToLastPosition();
+            
+            _nextInteractTime = Time.time + antiSpamDelay;
+            _currentDino = null;
+        }
+    }
+
+    private void SpawnDino(Dino dino, Transform pos)
+    {
+        if (dino != null && pos != null && pos.TryGetComponent(out Seat seat))
+        {
+            dino.SetSlotPosition(seat.transform);
+            conditionManager.DropDino(dino, seat);
+            var eval = seat.GetComponent<SeatEvaluator>();
+            if (eval) eval.UpdateFeedback(dino);
+            UpdateNeighbors(seat);
+            ForceScoreUpdate();
+        }
+    }
+
+    private void UpdateNeighbors(Seat centerSeat)
+    {
+        if (centerSeat == null || centerSeat.neighbors == null) return;
+        foreach (var neighbor in centerSeat.neighbors)
+        {
+            if (neighbor != null && neighbor.occupant != null)
+            {
+                var eval = neighbor.GetComponent<SeatEvaluator>();
+                if (eval != null) eval.UpdateFeedback(neighbor.occupant);
             }
         }
     }
-    
-    private void SetSeatColor(Seat seat, Color color)
-    {
-        var sr = seat.GetComponent<SpriteRenderer>();
-        if (sr != null) sr.color = color;
-    }
 
+    private void ForceScoreUpdate()
+    {
+        var scorer = Object.FindFirstObjectByType<LevelScorer>();
+        if (scorer != null) scorer.ForceUpdateScore();
+    }
+  
     private void ResetSeatColor(Seat seat)
     {
         var sr = seat.GetComponent<SpriteRenderer>();

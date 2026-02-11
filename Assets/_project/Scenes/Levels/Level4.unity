@@ -540,7 +540,7 @@ MonoBehaviour:
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 128
-  totalDinosToPlace: 2
+  totalDinosToPlace: 5
   levelValidated: 0
 --- !u!114 &676351100
 MonoBehaviour:

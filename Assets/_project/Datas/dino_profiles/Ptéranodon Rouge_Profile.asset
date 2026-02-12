@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: "Pt\xE9ranodon Rouge_Profile"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  designerDescription: "Veut \xEAtre devant"
+  positiveCondition: "Veut \xEAtre devant"
+  negativeCondition: 
   speciesName: "Pt\xE9ranodon Rouge"
   diet: 1
   myRules:

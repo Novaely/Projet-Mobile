@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Diplodocus Vert_Profile
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  designerDescription: "Veut \xEAtre au fond\nNe veut pas \xEAtre seul"
+  positiveCondition: "Veut \xEAtre derri\xE8re"
+  negativeCondition: "Ne veut pas \xEAtre seul"
   speciesName: Diplodocus Vert
   diet: 0
   myRules:

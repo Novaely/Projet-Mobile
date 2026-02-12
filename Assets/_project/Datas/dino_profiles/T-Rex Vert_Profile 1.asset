@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: T-Rex Vert_Profile 1
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Fumeur
-  designerDescription: "Ne veut pas \xEAtre devant\nNe veut pas \xEAtre \xE0 gauche"
+  positiveCondition: 
+  negativeCondition: "Ne veut pas \xEAtre devant\nNe veut pas \xEAtre \xE0 gauche"
   speciesName: T-Rex Vert
   diet: 1
   myRules:

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
   m_Name: Diplodocus Bleu avec Jupe_Profile
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
-  accessoryTag: jupe
-  designerDescription: "Veut \xEAtre devant\nNe veut pas \xEAtre seul"
+  accessoryTag: Jupe
+  positiveCondition: "Veut \xEAtre devant"
+  negativeCondition: "Ne veut pas \xEAtre seul"
   speciesName: Diplodocus Bleu avec Jupe
   diet: 0
   myRules:

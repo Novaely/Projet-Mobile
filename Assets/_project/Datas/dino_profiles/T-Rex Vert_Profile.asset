@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
   m_Name: T-Rex Vert_Profile
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
-  accessoryTag: fumeur
-  designerDescription: "Veut \xEAtre \xE0 c\xF4t\xE9 d'une fen\xEAtre\nNe veut pas
-    \xEAtre devant"
+  accessoryTag: Fumeu
+  positiveCondition: "Veut \xEAtre proche de la fen\xEAtre"
+  negativeCondition: "Ne veut pas \xEAtre devant"
   speciesName: T-Rex Vert
   diet: 1
   myRules:

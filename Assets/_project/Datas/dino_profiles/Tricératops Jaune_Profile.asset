@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
   m_Name: "Tric\xE9ratops Jaune_Profile"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
-  accessoryTag: piercing
-  designerDescription: "Veut \xEAtre \xE0 gauche\nNe veut pas \xEAtre entre deux
-    dinosaures"
+  accessoryTag: Piercing
+  positiveCondition: "Veut \xEAtre \xE0 droite"
+  negativeCondition: "Ne veut pas \xEAtre entre deux dinosaures"
   speciesName: "Tric\xE9ratops Jaune"
   diet: 0
   myRules:

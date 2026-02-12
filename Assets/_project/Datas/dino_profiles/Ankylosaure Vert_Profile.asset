@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Ankylosaure Vert_Profile
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Fumeur
-  designerDescription: "Veut \xEAtre au centre (milieu de tous)\nNe veut pas \xEAtre
-    derri\xE8re"
+  positiveCondition: "Veut \xEAtre au milieu"
+  negativeCondition: "Ne veut pas \xEAtre derri\xE8re"
   speciesName: Ankylosaure Vert
   diet: 0
   myRules:

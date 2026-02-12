@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Diplodocus Bleu avec Jupe_Profile 1
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Jupe
-  designerDescription: "Veut \xEAtre au fond\nNe veut pas \xEAtre au milieu"
+  positiveCondition: "Veut \xEAtre au fond"
+  negativeCondition: "Ne veut pas \xEAtre au milieu"
   speciesName: Diplodocus Bleu avec Jupe
   diet: 0
   myRules:

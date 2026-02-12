@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "Tric\xE9ratops Bleu_Profile"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Jupe+noeud
-  designerDescription: "Ne veut pas \xEAtre au milieu\nNe veut pas \xEAtre \xE0 c\xF4t\xE9
-    d'un autre Herbivore"
+  positiveCondition: "Veut \xEAtre \xE0 droite"
+  negativeCondition: "Pas \xE0 c\xF4t\xE9 d'un herbivore\nJamais au milieu"
   speciesName: "Tric\xE9ratops Bleu"
   diet: 0
   myRules:

@@ -85,7 +85,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (_dinos.Count == 0) { return null; }
 
-        if (!forced && _dinos.Count >= 3 && _currentIdDino != -1)
+        if (!forced && _dinos.Count >= 1 && _currentIdDino != -1)
         {
             _dinos[_currentIdDino].SetActive(false);
         }
@@ -116,7 +116,11 @@ public class SpawnManager : MonoBehaviour
 
         _dinos[_currentIdDino].SetActive(false);
 
-        _currentIdDino = (_currentIdDino - 1) % _dinos.Count;
+        _currentIdDino--;
+
+        if (_currentIdDino == -1) { 
+            _currentIdDino = _dinos.Count - 1;
+        }
 
         GameObject dino = _dinos[_currentIdDino];
 

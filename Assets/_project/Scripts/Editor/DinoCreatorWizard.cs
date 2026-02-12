@@ -12,7 +12,9 @@ public class DinoCreatorWizard : EditorWindow
 
     DietType diet = DietType.Herbivore;
     string accessoryTag = "";
-    string description = "";
+    
+    string positiveCond = "J'aime...";
+    string negativeCond = "Je déteste...";
 
     List<SeatRuleSO> rules = new List<SeatRuleSO>();
     
@@ -27,7 +29,7 @@ public class DinoCreatorWizard : EditorWindow
 
     void OnGUI()
     {
-        GUILayout.Label("Créateur de Dino", EditorStyles.boldLabel);
+        GUILayout.Label("🦖 Créateur de Dino (V2 - Descriptions Séparées)", EditorStyles.boldLabel);
         EditorGUILayout.Space();
 
         GUILayout.Label("1. Apparence Corps", EditorStyles.boldLabel);
@@ -43,8 +45,12 @@ public class DinoCreatorWizard : EditorWindow
         accessoryTag = EditorGUILayout.TextField("Accessoire (Tag)", accessoryTag);
         
         GUILayout.Space(5);
-        GUILayout.Label("Description (Pour le joueur/GD) :", EditorStyles.label);
-        description = EditorGUILayout.TextArea(description, GUILayout.Height(60));
+        
+        GUILayout.Label("Ce qu'il aime (Affiché en VERT) :", EditorStyles.label);
+        positiveCond = EditorGUILayout.TextArea(positiveCond, GUILayout.Height(40));
+        
+        GUILayout.Label("Ce qu'il déteste (Affiché en ROUGE) :", EditorStyles.label);
+        negativeCond = EditorGUILayout.TextArea(negativeCond, GUILayout.Height(40));
 
         EditorGUILayout.Space();
 
@@ -69,7 +75,7 @@ public class DinoCreatorWizard : EditorWindow
         EditorGUILayout.Space(20);
 
         GUI.backgroundColor = Color.green;
-        if (GUILayout.Button("CRÉER LE DINO COMPLET", GUILayout.Height(40)))
+        if (GUILayout.Button(" CRÉER CE PUTAIN DE DINO ET SON PROFIL DE CON ", GUILayout.Height(40)))
         {
             CreateDino();
         }
@@ -80,7 +86,7 @@ public class DinoCreatorWizard : EditorWindow
     {
         if (string.IsNullOrEmpty(dinoName))
         {
-            EditorUtility.DisplayDialog("Erreur", "Le dino doit avoir un nom !", "OK");
+            EditorUtility.DisplayDialog("Erreur", "Manque un nom !", "OK");
             return;
         }
 
@@ -91,7 +97,9 @@ public class DinoCreatorWizard : EditorWindow
         newProfile.speciesName = dinoName;
         newProfile.diet = diet;
         newProfile.accessoryTag = accessoryTag;
-        newProfile.designerDescription = description;
+        
+        newProfile.positiveCondition = positiveCond;
+        newProfile.negativeCondition = negativeCond;
         
         newProfile.myRules = new List<SeatRuleSO>();
         foreach (var r in rules) if (r != null) newProfile.myRules.Add(r);
@@ -102,14 +110,10 @@ public class DinoCreatorWizard : EditorWindow
         GameObject dinoGO = new GameObject(dinoName);
         
         int dinoLayer = LayerMask.NameToLayer("Dino");
-        if (dinoLayer != -1)
-        {
-            dinoGO.layer = dinoLayer;
-        }
+        if (dinoLayer != -1) dinoGO.layer = dinoLayer;
 
         var sr = dinoGO.AddComponent<SpriteRenderer>();
         sr.sprite = passiveSprite != null ? passiveSprite : idleSprite;
-        sr.color = Color.white; 
         sr.sortingOrder = 5;
 
         dinoGO.AddComponent<CircleCollider2D>(); 
@@ -140,7 +144,7 @@ public class DinoCreatorWizard : EditorWindow
         EditorUtility.FocusProjectWindow();
         Selection.activeObject = AssetDatabase.LoadAssetAtPath<GameObject>(prefabAssetPath);
 
-        Debug.Log($"<color=green>SUCCÈS : Dino '{dinoName}' créé (Interface allégée) !</color>");
+        Debug.Log($"<color=green>SUCCÈS : Dino '{dinoName}' créé avec ses conditions Positives/Négatives !</color>");
     }
 
     void EnsureDirectoryExists(string path)

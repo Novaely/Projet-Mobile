@@ -94,13 +94,15 @@ public class SpawnManager : MonoBehaviour
 
         GameObject dino = _dinos[_currentIdDino];
 
-        InfoDino infoDino = new InfoDino
-        {
-            label = dino.name,
-            contraintePositive = "",
-            contrainteNegative = "",
-            sprite = dino.GetComponent<SpriteRenderer>().sprite,
-        };
+Dino dinoScript = dino.GetComponent<Dino>();
+
+InfoDino infoDino = new InfoDino
+{
+    label = (dinoScript.profile != null) ? dinoScript.profile.speciesName : dino.name,
+    contraintePositive = (dinoScript.profile != null) ? dinoScript.profile.positiveCondition : "Aucune",
+    contrainteNegative = (dinoScript.profile != null) ? dinoScript.profile.negativeCondition : "Aucune",
+    sprite = dinoScript.passiveSprite 
+};
 
         _dinos[_currentIdDino].SetActive(true);
 
@@ -124,13 +126,15 @@ public class SpawnManager : MonoBehaviour
 
         GameObject dino = _dinos[_currentIdDino];
 
-        InfoDino infoDino = new InfoDino
-        {
-            label = dino.name,
-            contraintePositive = "",
-            contrainteNegative = "",
-            sprite = dino.GetComponent<SpriteRenderer>().sprite,
-        };
+Dino dinoScript = dino.GetComponent<Dino>();
+
+InfoDino infoDino = new InfoDino
+{
+    label = (dinoScript.profile != null) ? dinoScript.profile.speciesName : dino.name,
+    contraintePositive = (dinoScript.profile != null) ? dinoScript.profile.positiveCondition : "Aucune",
+    contrainteNegative = (dinoScript.profile != null) ? dinoScript.profile.negativeCondition : "Aucune",
+    sprite = dinoScript.passiveSprite 
+};
 
         _dinos[_currentIdDino].SetActive(true);
 

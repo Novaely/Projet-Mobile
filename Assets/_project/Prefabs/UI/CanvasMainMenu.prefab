@@ -1050,6 +1050,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a240f97522bda4693b6bf1c109e5d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _starObtained: []
+  _StarNotObtained: []
 --- !u!1 &4225603589257477651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,10 +1104,16 @@ MonoBehaviour:
   _buttonParamExit: {fileID: 322889157522640723}
   _buttonFrench: {fileID: 607835192373287024}
   _buttonEnglish: {fileID: 8448645028178496604}
+  _worldData: {fileID: 0}
   _levelSelect: {fileID: 5469361129971795259}
   _buttonLevelSelectExit: {fileID: 4005651935832796893}
-  _levelList: {fileID: 4044455794290114256}
+  _worldContainer: {fileID: 0}
+  _prefabsLevelContainer: {fileID: 0}
+  _levelContainers: []
   _prefabButtonLevel: {fileID: 469649970336742344, guid: 3ec0ee9ce3b41e343b17f426b3c38e07, type: 3}
+  _buttonPreviousWorld: {fileID: 0}
+  _buttonNextWorld: {fileID: 0}
+  _textStar: {fileID: 0}
   _credits: {fileID: 78101561742369978}
   _buttonCreditsExit: {fileID: 7537482573503250645}
 --- !u!1 &4493241338337716360
@@ -1929,7 +1937,7 @@ PrefabInstance:
     - target: {fileID: 1683410957861967512, guid: 3a49854790faf5c4c921217363d9e575, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b41b85524c44e8548b3d97d87bf108bd, type: 3}
+      objectReference: {fileID: 21300000, guid: 946cc11ec9abcb74a988f8c17d3b4e68, type: 3}
     - target: {fileID: 4296340273752073932, guid: 3a49854790faf5c4c921217363d9e575, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

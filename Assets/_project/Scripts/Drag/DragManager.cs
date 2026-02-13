@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem; 
 
@@ -19,10 +20,14 @@ public class DragManager : MonoBehaviour
     private float _nextInteractTime = 0f;
     Seat _oldSeat;
 
+    public event Action<Dino> OnDinoClicked;
+    public event Action OnDrag;
+    public event Action OnDragCanceled;
+
     private void Start()
     {
         if (conditionManager == null) 
-            conditionManager = Object.FindFirstObjectByType<ConditionManager>();
+            conditionManager = FindFirstObjectByType<ConditionManager>();
         
         if(SpawnManager.Instance != null)
             SpawnManager.Instance.OnSpawn += SpawnDino;
@@ -66,6 +71,9 @@ public class DragManager : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, 100f, DinoMask);
             if (hit && hit.transform.TryGetComponent(out Dino dino))
             {
+                OnDinoClicked?.Invoke(dino);
+                OnDrag?.Invoke();
+
                 _currentDino = dino;
 
                 _currentDino.SetDragging(true);
@@ -97,6 +105,9 @@ public class DragManager : MonoBehaviour
         }
         else if ((released || !holding) && _currentDino != null)
         {
+            OnDragCanceled?.Invoke();
+
+
             if (_lastHoveredSeat) 
             {
                 ResetSeatColor(_lastHoveredSeat);
@@ -160,7 +171,7 @@ public class DragManager : MonoBehaviour
 
     private void ForceScoreUpdate()
     {
-        var scorer = Object.FindFirstObjectByType<LevelScorer>();
+        var scorer = FindFirstObjectByType<LevelScorer>();
         if (scorer != null) scorer.ForceUpdateScore();
     }
   

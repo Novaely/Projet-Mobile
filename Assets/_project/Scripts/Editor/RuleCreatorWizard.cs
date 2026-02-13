@@ -16,7 +16,17 @@ public class RuleCreatorWizard : EditorWindow
         ForbiddenRow,      
         ColumnRestriction, 
         ForbiddenColumn,
-        NearExit           
+        NearExit,
+        WantsToBeAlone,
+        MustNotBeAlone,
+        NearWindow,
+        AtTheBack,
+        MustBeInFrontRow,
+        NotBetweenTwoDinosaurs,
+        FriendWithAccessory,
+        NoFriendWithAccessory,
+        TRexNeedsHerbivore,
+        DiplodocusNoFront
     }
 
     [Header("Configuration")]
@@ -30,8 +40,9 @@ public class RuleCreatorWizard : EditorWindow
     private NeighborDirection targetDirection = NeighborDirection.Derriere; 
     private SeatRow targetRow = SeatRow.Devant;
     private SeatColumn targetColumn = SeatColumn.Gauche;
+    private string targetAccessory = "Chapeau";
 
-    const string RULES_PATH = "Assets/_project/Resources/Rules/";
+    const string RULES_PATH = "Assets/_project/Datas/dino_condition/";
 
     [MenuItem("Tools/Rule Creator Wizard")]
     public static void ShowWindow()
@@ -84,27 +95,37 @@ public class RuleCreatorWizard : EditorWindow
                 break;
 
             case RuleType.RowRestriction:
-                EditorGUILayout.HelpBox("DOIT être sur cette LIGNE (Devant/Milieu/Derrière).", MessageType.Info);
+                EditorGUILayout.HelpBox("DOIT être sur cette LIGNE.", MessageType.Info);
                 targetRow = (SeatRow)EditorGUILayout.EnumPopup("Ligne Obligatoire", targetRow);
                 break;
 
             case RuleType.ForbiddenRow:
-                EditorGUILayout.HelpBox("REFUSE d'être sur cette LIGNE (Devant/Milieu/Derrière).", MessageType.Info);
+                EditorGUILayout.HelpBox("REFUSE d'être sur cette LIGNE.", MessageType.Info);
                 targetRow = (SeatRow)EditorGUILayout.EnumPopup("Ligne Interdite", targetRow);
                 break;
 
             case RuleType.ColumnRestriction:
-                EditorGUILayout.HelpBox("DOIT être sur cette COLONNE (Gauche/Milieu/Droite).", MessageType.Info);
+                EditorGUILayout.HelpBox("DOIT être sur cette COLONNE.", MessageType.Info);
                 targetColumn = (SeatColumn)EditorGUILayout.EnumPopup("Colonne Obligatoire", targetColumn);
                 break;
 
             case RuleType.ForbiddenColumn:
-                EditorGUILayout.HelpBox("REFUSE d'être sur cette COLONNE (Gauche/Milieu/Droite).", MessageType.Info);
+                EditorGUILayout.HelpBox("REFUSE d'être sur cette COLONNE.", MessageType.Info);
                 targetColumn = (SeatColumn)EditorGUILayout.EnumPopup("Colonne Interdite", targetColumn);
                 break;
 
-            case RuleType.NearExit:
-                EditorGUILayout.HelpBox("DOIT être sur ou à côté d'une Sortie (Exit). Aucun paramètre supplémentaire requis.", MessageType.Info);
+            case RuleType.FriendWithAccessory:
+                EditorGUILayout.HelpBox("Veut être à côté d'un Dino portant cet accessoire.", MessageType.Info);
+                targetAccessory = EditorGUILayout.TextField("Tag Accessoire", targetAccessory);
+                break;
+
+            case RuleType.NoFriendWithAccessory:
+                EditorGUILayout.HelpBox("REFUSE d'être à côté d'un Dino portant cet accessoire.", MessageType.Info);
+                targetAccessory = EditorGUILayout.TextField("Tag Interdit", targetAccessory);
+                break;
+
+            default:
+                EditorGUILayout.HelpBox("Règle simple : Aucun paramètre supplémentaire requis.", MessageType.None);
                 break;
         }
 
@@ -172,9 +193,25 @@ public class RuleCreatorWizard : EditorWindow
                 var r10 = CreateInstance<ForbiddenColumnSO>();
                 r10.forbiddenColumn = targetColumn;
                 newRule = r10; break;
-            case RuleType.NearExit:
-                newRule = CreateInstance<NearExitRuleSO>();
-                break;
+            case RuleType.NoFriendWithAccessory:
+                var r12 = CreateInstance<NoFriendWithAccessoryRuleSO>();
+                r12.forbiddenAccessory = targetAccessory;
+                newRule = r12; break;
+            
+            case RuleType.NearExit: newRule = CreateInstance<NearExitRuleSO>(); break;
+            case RuleType.WantsToBeAlone: newRule = CreateInstance<WantsToBeAloneSO>(); break;
+            case RuleType.MustNotBeAlone: newRule = CreateInstance<MustNotBeAloneRuleSO>(); break;
+            case RuleType.NearWindow: newRule = CreateInstance<NearWindowRuleSO>(); break;
+            case RuleType.AtTheBack: newRule = CreateInstance<AtTheBackRuleSO>(); break;
+            case RuleType.MustBeInFrontRow: newRule = CreateInstance<MustBeInFrontRowRuleSO>(); break;
+            case RuleType.NotBetweenTwoDinosaurs: newRule = CreateInstance<NotBetweenTwoDinosaursSO>(); break;
+            case RuleType.TRexNeedsHerbivore: newRule = CreateInstance<TRexNeedsHerbivoreSO>(); break;
+            case RuleType.DiplodocusNoFront: newRule = CreateInstance<DiplodocusNoFrontSO>(); break;
+            
+            case RuleType.FriendWithAccessory:
+                var r11 = CreateInstance<FriendWithAccessoryRuleSO>();
+                r11.targetAccessory = targetAccessory;
+                newRule = r11; break;
         }
 
         if (newRule != null)
@@ -191,9 +228,6 @@ public class RuleCreatorWizard : EditorWindow
     private void EnsureDirectoryExists(string path)
     {
         string sysPath = Application.dataPath + path.Substring("Assets".Length);
-        if (!Directory.Exists(sysPath))
-        {
-            Directory.CreateDirectory(sysPath);
-        }
+        if (!Directory.Exists(sysPath)) Directory.CreateDirectory(sysPath);
     }
 }

@@ -1,10 +1,10 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "SeatRules/Incompatible Neighbor Rule")]
+[CreateAssetMenu(menuName = "Rules/Incompatible Neighbor")]
 public class IncompatibleNeighborRuleSO : SeatRuleSO
 {
-    [Header("Je ne veux PAS de cette couleur à côté :")]
-    public DinoColor hatedNeighborColor;
+    [Tooltip("Le nom de l'espèce qu'il déteste (ex: T-Rex)")]
+    public string hatedDinoName;
 
     public override bool IsSatisfied(Dino dino, Seat seat)
     {
@@ -12,7 +12,8 @@ public class IncompatibleNeighborRuleSO : SeatRuleSO
         {
             if (neighbor != null && neighbor.occupant != null)
             {
-                if (neighbor.occupant.color == hatedNeighborColor)
+                // On vérifie le nom au lieu de la couleur
+                if (neighbor.occupant.dinoName == hatedDinoName)
                     return false; 
             }
         }

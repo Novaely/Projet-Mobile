@@ -9,6 +9,7 @@ public class DragManager : MonoBehaviour
     
     [Header("Références")]
     [SerializeField] private ConditionManager conditionManager;
+    private Dino setdragging;
 
     [Header("Sécurité")]
     [SerializeField] float antiSpamDelay = 0.15f; 
@@ -16,6 +17,7 @@ public class DragManager : MonoBehaviour
     Dino _currentDino;
     private Seat _lastHoveredSeat;
     private float _nextInteractTime = 0f;
+    Seat _oldSeat;
 
     private void Start()
     {
@@ -65,12 +67,13 @@ public class DragManager : MonoBehaviour
             if (hit && hit.transform.TryGetComponent(out Dino dino))
             {
                 _currentDino = dino;
+
+                _currentDino.SetDragging(true);
                 
                 if (_currentDino.LastPosition != null && 
-                    _currentDino.LastPosition.TryGetComponent(out Seat oldSeat))
+                    _currentDino.LastPosition.TryGetComponent(out _oldSeat))
                 {
-                    conditionManager.PickupDino(oldSeat);
-                    UpdateNeighbors(oldSeat);
+                    UpdateNeighbors(_oldSeat);
                     ForceScoreUpdate(); 
                 }
             }
@@ -98,6 +101,7 @@ public class DragManager : MonoBehaviour
             {
                 ResetSeatColor(_lastHoveredSeat);
                 _lastHoveredSeat = null;
+                _currentDino.SetDragging(false);
             }
 
             bool success = false;
@@ -107,6 +111,8 @@ public class DragManager : MonoBehaviour
             {
                 if (conditionManager.DropDino(_currentDino, seat))
                 {
+                    conditionManager.PickupDino(_oldSeat);
+
                     _currentDino.SetSlotPosition(seat.transform);
                     var eval = seat.GetComponent<SeatEvaluator>();
                     if (eval) eval.UpdateFeedback(_currentDino);
@@ -115,6 +121,7 @@ public class DragManager : MonoBehaviour
                     ForceScoreUpdate();
 
                     success = true;
+                    _oldSeat = null;
                 }
             }
 
@@ -130,7 +137,7 @@ public class DragManager : MonoBehaviour
         if (dino != null && pos != null && pos.TryGetComponent(out Seat seat))
         {
             dino.SetSlotPosition(seat.transform);
-            conditionManager.DropDino(dino, seat);
+            conditionManager.ForceDropDino(dino, seat);
             var eval = seat.GetComponent<SeatEvaluator>();
             if (eval) eval.UpdateFeedback(dino);
             UpdateNeighbors(seat);

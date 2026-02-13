@@ -1,36 +1,81 @@
-using UnityEngine;
-using System.IO;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerSave : MonoBehaviour
 {
-    [SerializeField] LevelsSave _levelData;
+    public static PlayerSave Instance;
+
+    [field:SerializeField] public LevelsSaveData LevelSave {  get; private set; }
+
+    int _currentLevel;
+
+    public int NumberOfLevel;
+
+    public bool IsSaveLoad { get; private set; }
+    public event Action OnLoadSave;
 
     void Awake()
     {
         DontDestroyOnLoad(this);
+
+        if (Instance == null) { Instance = this; }
+
+        else { Destroy(gameObject); }
+
+        IsSaveLoad = false;
+
+        NumberOfLevel = SceneManager.sceneCountInBuildSettings - 1;
     }
 
-    private void Start()
+    void Start()
     {
-        LoadSaveOnStart.Instance.OnNoSaveFound += CreateNewSave;
-        LoadSaveOnStart.Instance.OnNoAllLevelFoundOnSave += UpdateNumberOfLevel;
-    }
+        ScenesManager.Instance.OnSceneLoad += SettScene;
 
+        StartCoroutine(WaitForItem());
+        IEnumerator WaitForItem()
+        {
+            yield return new WaitForEndOfFrame();
+            LoadSave();
+        }
+    }
     void OnApplicationQuit()
     {
-        SaveManager.Save(_levelData);
+        SaveManager.Save(LevelSave);
         Debug.Log("Sauvegarde effectuée");
+    }
+
+    void LoadSave()
+    {
+        LevelSave = SaveManager.Load<LevelsSaveData>();
+
+        if (LevelSave == null)
+        {
+            Debug.Log("Aucune sauvegarde trouvée");
+            LevelSave = CreateNewSave();
+        }
+        else if (LevelSave.starsLevels.Count != NumberOfLevel)
+        {
+            LevelSave = UpdateNumberOfLevel();
+        }
+
+        Debug.Log("Sauvegarde chargée");
+
+        IsSaveLoad = true;
+
+        OnLoadSave?.Invoke();
     }
 
     LevelsSaveData CreateNewSave()
     {
-        int numberOfScene = Directory.GetFiles("Assets/_project/Scenes/Levels").Length / 2;
 
         LevelsSaveData data = new LevelsSaveData
         {
-            starsLevels = new List<int>(new int[numberOfScene]),
+            starsLevels = new List<int>(new int[NumberOfLevel]),
         };
+
         SaveManager.Save(data);
         Debug.Log("Nouvelle sauvegarde crée");
 
@@ -39,14 +84,12 @@ public class PlayerSave : MonoBehaviour
 
     LevelsSaveData UpdateNumberOfLevel()
     {
-        int numberOfScene = Directory.GetFiles("Assets/_project/Scenes/Levels").Length / 2;
-
         LevelsSaveData data = new LevelsSaveData
         {
-            starsLevels = _levelData.starsLevels,
+            starsLevels = LevelSave.starsLevels,
         };
 
-        for (int i = data.starsLevels.Count; i < numberOfScene; i++)
+        for (int i = data.starsLevels.Count; i < NumberOfLevel; i++)
         {
             data.starsLevels.Add(0);
         }
@@ -54,28 +97,20 @@ public class PlayerSave : MonoBehaviour
         return data;
     }
 
-
-    [ContextMenu("Save le niveau 1 avec 3 etoiles")]
-    void Save3StarAtlevel1()
+    public void UpdateStarOfOneLevel(int numberOfStar)
     {
-        UpdateStarOfOneLevel(1, 3);
-    }
-
-
-    void UpdateStarOfOneLevel(int level, int numberOfStar)
-    {
-        if (level < 0 || level > _levelData.starsLevels.Count) return;
+        if (_currentLevel < 0 || _currentLevel > LevelSave.starsLevels.Count) return;
         if (numberOfStar < 0 || numberOfStar > 3) return;
 
-        if (_levelData.starsLevels[level] >= numberOfStar) return;
+        if (LevelSave.starsLevels[_currentLevel] >= numberOfStar) return;
 
-        _levelData.starsLevels[level] = numberOfStar;
+        LevelSave.starsLevels[_currentLevel] = numberOfStar;
 
-        LevelsSaveData data = new LevelsSaveData
-        {
-            starsLevels = _levelData.starsLevels,
-        };
+        SaveManager.Save(LevelSave);
+    }
 
-        SaveManager.Save(data);
+    void SettScene(int index)
+    {
+        _currentLevel = index - 1;
     }
 }

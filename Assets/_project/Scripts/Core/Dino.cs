@@ -12,39 +12,42 @@ public class Dino : MonoBehaviour
 {
     [Header("--- DATA ---")]
     public DinoProfileSO profile;
-    public DinoColor color; 
-    
-    // Raccourcis
     public string dinoName => profile ? profile.speciesName : "Unknown";
     public DietType diet => profile ? profile.diet : DietType.Herbivore;
 
-    [Header("--- VISUEL BULLES ---")]
-    [Tooltip("Glisse ici l'objet enfant 'EmoteBubble'")]
-    public SpriteRenderer emoteRenderer; 
+    [Header("--- VISUEL PASSIF (Spawn & Drag) ---")]
+    public Sprite passiveSprite; 
 
-    [Tooltip("Image quand il est Content")]
+    [Header("--- VISUEL ACTIF (Posé en Jeu) ---")]
+    public Sprite idleSprite;   
+    public Sprite happySprite;  
+    public Sprite angrySprite;  
+
+    [Header("--- VISUEL BULLES ---")]
+    public SpriteRenderer emoteRenderer; 
     public Sprite bubbleHappy;  
-    [Tooltip("Image quand il est Enervé")]
     public Sprite bubbleAngry;  
 
-    [Header("--- MOUVEMENT ---")]
-    [SerializeField] private Transform _lastPosition;
-    public Transform LastPosition => _lastPosition;
-
-    [Header("--- ÉTAT ---")]
+    [Header("--- ETAT ---")]
     public PlacementState currentState = PlacementState.Neutre;
     public float currentSatisfaction = 0f;
 
+    private SpriteRenderer _renderer;
     private Coroutine _currentAnim;
+    private Vector3 _originalScale;
+    private Transform _lastPosition;
+    public Transform LastPosition => _lastPosition;
 
     private void Awake()
     {
-        // Sécurité : On cache la bulle au démarrage
+        _renderer = GetComponent<SpriteRenderer>();
+        _originalScale = transform.localScale;
+        
         if (emoteRenderer != null) 
             emoteRenderer.transform.localScale = Vector3.zero;
-    }
 
-    // --- 1. GESTION MOUVEMENT ---
+        SetVisualMode(false); 
+    }
     
     public void SetSlotPosition(Transform slotTransform)
     {
@@ -57,17 +60,40 @@ public class Dino : MonoBehaviour
         if (_lastPosition != null)
         {
             transform.position = _lastPosition.position;
-            SetState(PlacementState.Neutre, 0f);
+            if (_lastPosition.TryGetComponent(out Seat seat))
+            {
+                EvaluateSatisfaction(seat);
+            }
         }
     }
 
-    // --- 2. GESTION ÉTAT ---
+    public void SetDragging(bool isDragging)
+    {
+        if (isDragging)
+        {
+            SetVisualMode(false);
+        }
+    }
 
     public void EvaluateSatisfaction(Seat seat)
     {
-        if (seat == null || profile == null) { SetState(PlacementState.Neutre, 0f); return; }
+        if (seat == null) return;
 
-        if (profile.myRules == null || profile.myRules.Count == 0) { SetState(PlacementState.Bon, 1f); return; }
+        int spawnLayerIndex = LayerMask.NameToLayer("Spawn");
+        
+        if (seat.gameObject.layer == spawnLayerIndex)
+        {
+            SetVisualMode(false);
+            currentState = PlacementState.Neutre;
+            currentSatisfaction = 0f;
+            return;
+        }
+        
+        if (profile == null || profile.myRules == null || profile.myRules.Count == 0) 
+        { 
+            SetState(PlacementState.Bon, 1f); 
+            return; 
+        }
 
         int satisfiedRules = 0;
         foreach (var rule in profile.myRules)
@@ -83,24 +109,65 @@ public class Dino : MonoBehaviour
         else SetState(PlacementState.Neutre, ratio);
     }
 
-    private void SetState(PlacementState state, float satisfaction)
+    private void SetVisualMode(bool isActiveMode)
     {
-        if (currentState == state) return;
+        if (_currentAnim != null) StopCoroutine(_currentAnim);
+        
+        transform.localScale = _originalScale;
+        transform.rotation = Quaternion.identity;
 
-        currentState = state;
-        currentSatisfaction = satisfaction;
+        if (!isActiveMode)
+        {
+            if (passiveSprite != null) _renderer.sprite = passiveSprite;
+            else if (idleSprite != null) _renderer.sprite = idleSprite;
 
-        UpdateBubbleVisuals(state);
+            if (emoteRenderer != null) emoteRenderer.gameObject.SetActive(false);
+        }
     }
 
-    // --- 3. ANIMATION BULLE (POP) ---
+    private void SetState(PlacementState state, float satisfaction)
+    {
+        currentState = state;
+        currentSatisfaction = satisfaction;
+        PlayActiveAnimation(state);
+    }
+
+    private void PlayActiveAnimation(PlacementState state)
+    {
+        if (_currentAnim != null) StopCoroutine(_currentAnim);
+        
+        if (_lastPosition != null && Vector3.Distance(transform.position, _lastPosition.position) < 0.5f)
+             transform.position = _lastPosition.position;
+
+        switch (state)
+        {
+            case PlacementState.Bon:
+                if (happySprite) _renderer.sprite = happySprite;
+                else _renderer.sprite = idleSprite;
+                
+                UpdateBubbleVisuals(state);
+                _currentAnim = StartCoroutine(AnimHappyJump());
+                break;
+
+            case PlacementState.Mauvais:
+                if (angrySprite) _renderer.sprite = angrySprite;
+                else _renderer.sprite = idleSprite;
+
+                UpdateBubbleVisuals(state);
+                _currentAnim = StartCoroutine(AnimAngryShake());
+                break;
+
+            case PlacementState.Neutre:
+            default:
+                if (idleSprite) _renderer.sprite = idleSprite;
+                UpdateBubbleVisuals(state);
+                break;
+        }
+    }
 
     private void UpdateBubbleVisuals(PlacementState state)
     {
         if (emoteRenderer == null) return;
-
-        // Arrêter l'animation en cours
-        if (_currentAnim != null) StopCoroutine(_currentAnim);
 
         switch (state)
         {
@@ -108,63 +175,82 @@ public class Dino : MonoBehaviour
                 if (bubbleHappy != null)
                 {
                     emoteRenderer.sprite = bubbleHappy;
-                    _currentAnim = StartCoroutine(PopInBubble());
+                    StartCoroutine(PopInBubble());
                 }
                 break;
-
             case PlacementState.Mauvais:
                 if (bubbleAngry != null)
                 {
                     emoteRenderer.sprite = bubbleAngry;
-                    _currentAnim = StartCoroutine(PopInBubble());
+                    StartCoroutine(PopInBubble());
                 }
                 break;
-
             case PlacementState.Neutre:
             default:
-                // Disparaître
-                _currentAnim = StartCoroutine(PopOutBubble());
+                StartCoroutine(PopOutBubble());
                 break;
         }
     }
 
-    // Effet de "Pop" élastique (Apparition)
+    private IEnumerator AnimHappyJump()
+    {
+        float duration = 0.4f;
+        float timer = 0f;
+        Vector3 startScale = _originalScale;
+        Vector3 peakScale = _originalScale * 1.3f;
+        while (timer < duration) {
+            timer += Time.deltaTime;
+            float progress = timer / duration;
+            float curve = Mathf.Sin(progress * Mathf.PI); 
+            transform.localScale = Vector3.Lerp(startScale, peakScale, curve);
+            if (_lastPosition != null) transform.position = _lastPosition.position + new Vector3(0, curve * 0.5f, 0);
+            yield return null;
+        }
+        transform.localScale = startScale;
+        if (_lastPosition != null) transform.position = _lastPosition.position;
+    }
+
+    private IEnumerator AnimAngryShake()
+    {
+        float duration = 0.4f;
+        float timer = 0f;
+        Vector3 centerPos = transform.position;
+        while (timer < duration) {
+            timer += Time.deltaTime;
+            float x = Mathf.Sin(timer * 30f) * 0.15f; 
+            transform.position = centerPos + new Vector3(x, 0, 0);
+            float z = Mathf.Cos(timer * 20f) * 5f;
+            transform.rotation = Quaternion.Euler(0, 0, z);
+            yield return null;
+        }
+        transform.position = centerPos;
+        transform.rotation = Quaternion.identity;
+    }
+
     private IEnumerator PopInBubble()
     {
         emoteRenderer.gameObject.SetActive(true);
         Transform t = emoteRenderer.transform;
-        
         float timer = 0f;
         float duration = 0.3f;
-
-        while (timer < duration)
-        {
+        while (timer < duration) {
             timer += Time.deltaTime;
             float p = timer / duration;
-
-            // Courbe "Overshoot" (dévasse un peu 1 puis revient)
             float scale = Mathf.Sin(p * Mathf.PI * 0.8f) * 1.2f; 
-            if (scale > 1f) scale = 1f; // On clippe un peu pour stabiliser
-
-            // Version simple smooth :
-            // float scale = Mathf.SmoothStep(0f, 1f, p);
-
+            if (scale > 1f) scale = 1f; 
             t.localScale = Vector3.one * scale;
             yield return null;
         }
         t.localScale = Vector3.one;
     }
 
-    // Effet de disparition rapide
     private IEnumerator PopOutBubble()
     {
         Transform t = emoteRenderer.transform;
         float startScale = t.localScale.x;
         float timer = 0f;
         float duration = 0.15f;
-
-        while (timer < duration)
-        {
+        while (timer < duration) {
             timer += Time.deltaTime;
             float p = timer / duration;
             t.localScale = Vector3.one * Mathf.Lerp(startScale, 0f, p);
@@ -174,3 +260,4 @@ public class Dino : MonoBehaviour
         emoteRenderer.gameObject.SetActive(false);
     }
 }
+

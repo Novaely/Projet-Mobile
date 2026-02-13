@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
+  m_Name: "Tric\xE9ratop Jaune_Profile"
+  m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
+  accessoryTag: Piercing
+  positiveCondition: "Veut \xEAtre proche de la fen\xEAtre"
+  negativeCondition: "Ne veut pas \xEAtre \xE0 c\xF4t\xE9 d'un Herbivore"
+  speciesName: "Tric\xE9ratop Jaune"
+  diet: 0
+  myRules:
+  - {fileID: 11400000, guid: e3ffc2552a2a8e64f9b7ce631cda2098, type: 2}
+  - {fileID: 11400000, guid: a3df932b6403e1344b40989f57d1ab2b, type: 2}

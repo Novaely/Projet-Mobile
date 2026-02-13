@@ -60,11 +60,15 @@ public class SeatEvaluator : MonoBehaviour
         if (descriptionText != null)
         {
             if (dino != null && dino.profile != null)
-                descriptionText.text = dino.profile.designerDescription;
+            {
+                descriptionText.text = $"<color=green><b>Aime :</b> {dino.profile.positiveCondition}</color>\n" +
+                                     $"<color=red><b>Déteste :</b> {dino.profile.negativeCondition}</color>";
+            }
             else
+            {
                 descriptionText.text = "Siège vide";
+            }
         }
-        
     }
     
     public float GetCurrentSatisfaction()

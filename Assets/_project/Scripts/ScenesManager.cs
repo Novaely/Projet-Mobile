@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class ScenesManager : MonoBehaviour
 {
     public static ScenesManager Instance;
+
+    public event Action<int> OnSceneLoad; 
 
     private void Awake()
     {
@@ -25,11 +28,12 @@ public class ScenesManager : MonoBehaviour
 
     private IEnumerator LoadSceneRoutine(int index)
     {
-        Debug.Log("Loading  Level" + index);
+        Debug.Log("Loading  Level " + index);
 
         yield return SceneManager.LoadSceneAsync("Level" + index);
 
         UIManager.Instance.LoadUILevel();
+        OnSceneLoad?.Invoke(index);
     }
 
     public void LoadSceneMainMenu()
@@ -51,5 +55,18 @@ public class ScenesManager : MonoBehaviour
         if (isLevelSelectActive != null) {
             FindFirstObjectByType<UIMainMenu>().IsLevelSelectActive((bool)isLevelSelectActive);
         }
+    }
+
+    public int GetLevelIndex(Scene scene)
+    {
+        string sceneName = scene.name;
+
+        string levelNumber = sceneName.Replace("Level", "");
+
+        if (int.TryParse(levelNumber, out int index))
+            return index;
+
+        Debug.LogWarning("Scene name format invalid.");
+        return -1;
     }
 }

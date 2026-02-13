@@ -7,11 +7,11 @@ public class DinoProfileSO : ScriptableObject
     [Header("Accessoires")]
     public string accessoryTag;
 
-    [Header("GD Info")]
-    
-    [TextArea(3, 5)]
-    public string designerDescription = "Description du comportement de ce dino...";
-
+    [Header("GD Info (Descriptions UI)")]
+    [TextArea(2, 4)]
+    public string positiveCondition = "J'aime..."; 
+    [TextArea(2, 4)]
+    public string negativeCondition = "Je déteste...";
 
     [Header("Infos Espèce")]
     public string speciesName;

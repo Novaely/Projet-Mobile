@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 047d69cd45d15fc4692c96253bc218d8
+guid: 91195b050051d8144be1ae50397a30c1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1426362317923036474
-    second: cinema_0
+      213: 4623510461319920983
+    second: "barri\xE8re c\xF4t\xE9_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cinema_0
+      name: "barri\xE8re c\xF4t\xE9_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 77
+        height: 791
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a3d2ec098f47bc310800000000000000
-      internalID: 1426362317923036474
+      spriteID: 75db646a4420a2040800000000000000
+      internalID: 4623510461319920983
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cinema_0: 1426362317923036474
+      "barri\xE8re c\xF4t\xE9_0": 4623510461319920983
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

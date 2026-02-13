@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f14f6da421bf9554db336f0a5f584c32
+guid: 094481afeda55ca479bf7fddf0caf81b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1883200524786931780
-    second: Concept art final 1_0
+      213: -7341171388466606657
+    second: bouton credit_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Concept art final 1_0
+      name: bouton credit_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 193
+        height: 242
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 44811c056e8722a10800000000000000
-      internalID: 1883200524786931780
+      spriteID: fbdcf23748bee1a90800000000000000
+      internalID: -7341171388466606657
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Concept art final 1_0: 1883200524786931780
+      bouton credit_0: -7341171388466606657
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

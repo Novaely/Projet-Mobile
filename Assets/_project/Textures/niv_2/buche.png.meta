@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d8b0780f6d949f441b698b635072a13f
+guid: 92b33419fb965ff40b95c3b2e0bf973a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5457987256566552194
-    second: essai tuto_0
+      213: 4223487769746438835
+    second: buche_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 108
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: essai tuto_0
+      name: buche_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 70
+        height: 169
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e79edbff1855144b0800000000000000
-      internalID: -5457987256566552194
+      spriteID: 3ba71f4efb7dc9a30800000000000000
+      internalID: 4223487769746438835
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      essai tuto_0: -5457987256566552194
+      buche_0: 4223487769746438835
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

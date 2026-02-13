@@ -117,14 +117,32 @@ public class UILevel : MonoBehaviour
     {
         var table = LocalizationSettings.StringDatabase.GetTable("DicoDino");
         _textDico.text = string.Empty;
+        
+        int maxLevelUnlocked = 0;
+        for (int i = 0; i < PlayerSave.Instance.LevelSave.starsLevels.Count; i++)
+        {
+            if (PlayerSave.Instance.LevelSave.starsLevels[i] <= 0)
+            {
+                maxLevelUnlocked = i;
+                break;
+            }
+        }
 
         foreach (var word in _databaseDico.Dictionnary)
         {
-            var entry = table.GetEntry(word.KeyUniversalTraduction);
-            if (entry == null)
-                continue;
+            if (word.UnlockedAtLevel > maxLevelUnlocked)
+            {
+                _textDico.text += word.DinoWord + " : ???" + "\n";
+            }
+            else
+            {
+                var entry = table.GetEntry(word.DinoWord);
+                if (entry == null)
+                    continue;
 
-            _textDico.text += word.DinoWord + " : " + entry.GetLocalizedString() + "\n";
+                _textDico.text += word.DinoWord + " : " + entry.GetLocalizedString() + "\n";
+            }
+                
         }
     }
 

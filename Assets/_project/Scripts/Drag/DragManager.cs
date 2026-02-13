@@ -20,6 +20,9 @@ public class DragManager : MonoBehaviour
     private float _nextInteractTime = 0f;
     Seat _oldSeat;
 
+    Vector2 _startPosition;
+    bool _isDragging;
+
     public event Action<Dino> OnDinoClicked;
     public event Action OnDrag;
     public event Action OnDragCanceled;
@@ -71,75 +74,89 @@ public class DragManager : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, 100f, DinoMask);
             if (hit && hit.transform.TryGetComponent(out Dino dino))
             {
-                OnDinoClicked?.Invoke(dino);
-                OnDrag?.Invoke();
-
+                _startPosition = worldPos;
                 _currentDino = dino;
 
-                _currentDino.SetDragging(true);
-                
-                if (_currentDino.LastPosition != null && 
-                    _currentDino.LastPosition.TryGetComponent(out _oldSeat))
-                {
-                    UpdateNeighbors(_oldSeat);
-                    ForceScoreUpdate(); 
-                }
+                OnDinoClicked?.Invoke(_currentDino);
+
             }
         }
         else if (holding && _currentDino != null)
         {
-            _currentDino.transform.position = worldPos;
-
-            RaycastHit2D hitPlace = Physics2D.Raycast(worldPos, Vector2.zero, 100f, EmplacementMask);
-            Seat seat = (hitPlace && hitPlace.transform.TryGetComponent(out Seat s)) ? s : null;
-
-            if (_lastHoveredSeat != seat)
+            if (!_isDragging && (worldPos - _startPosition).magnitude >= 0.5)
             {
-                if (_lastHoveredSeat) ResetSeatColor(_lastHoveredSeat);
-                _lastHoveredSeat = seat;
+                _isDragging = true;
+
+                OnDrag?.Invoke();
+
+                _currentDino.SetDragging(true);
+
+                if (_currentDino.LastPosition != null &&
+                    _currentDino.LastPosition.TryGetComponent(out _oldSeat))
+                {
+                    UpdateNeighbors(_oldSeat);
+                    ForceScoreUpdate();
+                }
             }
-            if (seat)
+
+            if (_isDragging)
             {
-                seat.GetComponent<SpriteRenderer>().color = conditionManager.GetHighlightColor(_currentDino, seat);
+                _currentDino.transform.position = worldPos;
+
+                RaycastHit2D hitPlace = Physics2D.Raycast(worldPos, Vector2.zero, 100f, EmplacementMask);
+                Seat seat = (hitPlace && hitPlace.transform.TryGetComponent(out Seat s)) ? s : null;
+
+                if (_lastHoveredSeat != seat)
+                {
+                    if (_lastHoveredSeat) ResetSeatColor(_lastHoveredSeat);
+                    _lastHoveredSeat = seat;
+                }
+                if (seat)
+                {
+                    seat.GetComponent<SpriteRenderer>().color = conditionManager.GetHighlightColor(_currentDino, seat);
+                }
             }
         }
         else if ((released || !holding) && _currentDino != null)
         {
-            OnDragCanceled?.Invoke();
-
-
-            if (_lastHoveredSeat) 
+            if (_isDragging == true)
             {
-                ResetSeatColor(_lastHoveredSeat);
-                _lastHoveredSeat = null;
-                _currentDino.SetDragging(false);
-            }
+                OnDragCanceled?.Invoke();
+                _isDragging = false;
 
-            bool success = false;
-            RaycastHit2D hitPlace = Physics2D.Raycast(worldPos, Vector2.zero, 100f, EmplacementMask);
-
-            if (hitPlace && hitPlace.transform.TryGetComponent(out Seat seat))
-            {
-                if (conditionManager.DropDino(_currentDino, seat))
+                if (_lastHoveredSeat)
                 {
-                    conditionManager.PickupDino(_oldSeat);
-
-                    _currentDino.SetSlotPosition(seat.transform);
-                    var eval = seat.GetComponent<SeatEvaluator>();
-                    if (eval) eval.UpdateFeedback(_currentDino);
-
-                    UpdateNeighbors(seat);
-                    ForceScoreUpdate();
-
-                    success = true;
-                    _oldSeat = null;
+                    ResetSeatColor(_lastHoveredSeat);
+                    _lastHoveredSeat = null;
+                    _currentDino.SetDragging(false);
                 }
-            }
 
-            if (!success) _currentDino.ReturnToLastPosition();
-            
-            _nextInteractTime = Time.time + antiSpamDelay;
-            _currentDino = null;
+                bool success = false;
+                RaycastHit2D hitPlace = Physics2D.Raycast(worldPos, Vector2.zero, 100f, EmplacementMask);
+
+                if (hitPlace && hitPlace.transform.TryGetComponent(out Seat seat))
+                {
+                    if (conditionManager.DropDino(_currentDino, seat))
+                    {
+                        conditionManager.PickupDino(_oldSeat);
+
+                        _currentDino.SetSlotPosition(seat.transform);
+                        var eval = seat.GetComponent<SeatEvaluator>();
+                        if (eval) eval.UpdateFeedback(_currentDino);
+
+                        UpdateNeighbors(seat);
+                        ForceScoreUpdate();
+
+                        success = true;
+                        _oldSeat = null;
+                    }
+                }
+
+                if (!success) _currentDino.ReturnToLastPosition();
+
+                _nextInteractTime = Time.time + antiSpamDelay;
+            }
+                _currentDino = null;
         }
     }
 

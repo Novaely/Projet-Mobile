@@ -142,6 +142,7 @@ public class SpawnManager : MonoBehaviour
         }
         else
         {
+            _dinos[_currentIdDino].dino.SetActive(true);
             _isInfoDinoAlreadyPlaced = false;
         }
 
@@ -177,6 +178,7 @@ public class SpawnManager : MonoBehaviour
         }
         else
         {
+            _dinos[_currentIdDino].dino.SetActive(true);
             _isInfoDinoAlreadyPlaced = false;
         }
 
@@ -203,6 +205,8 @@ public class SpawnManager : MonoBehaviour
                 Debug.Log("dino trouvé");
                 if (tryDino.isPlace == true)
                 {
+                    _dinos[_currentIdDino].dino.SetActive(false);
+
                     _UIInfoDino.PreciseDino(tryDino.characteristic,tryDino.isPlace);
                     _isInfoDinoAlreadyPlaced = true;
                 }

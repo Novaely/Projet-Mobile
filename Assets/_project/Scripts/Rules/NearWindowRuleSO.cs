@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "SeatRules/Near Window")]
+[CreateAssetMenu(menuName = "Rules/Near Window")]
 public class NearWindowRuleSO : SeatRuleSO
 {
     public override bool IsSatisfied(Dino dino, Seat seat)

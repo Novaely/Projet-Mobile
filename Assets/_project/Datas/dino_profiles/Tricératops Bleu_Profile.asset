@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
+  m_Name: "Tric\xE9ratops Bleu_Profile"
+  m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
+  accessoryTag: Jupe+noeud
+  positiveCondition: "Veut \xEAtre \xE0 droite"
+  negativeCondition: "Pas \xE0 c\xF4t\xE9 d'un herbivore\nJamais au milieu"
+  speciesName: "Tric\xE9ratops Bleu"
+  diet: 0
+  myRules:
+  - {fileID: 11400000, guid: d76dd48535659ce4e88ecfb366d219ab, type: 2}
+  - {fileID: 11400000, guid: a3df932b6403e1344b40989f57d1ab2b, type: 2}
+  - {fileID: 11400000, guid: 8e5cdf4fa2a4825418f82adba49a360f, type: 2}
+  - {fileID: 11400000, guid: 459d283a01a2cd242a7ac1d8a1ba24c7, type: 2}

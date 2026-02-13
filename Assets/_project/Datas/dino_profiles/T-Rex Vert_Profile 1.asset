@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
   m_Name: T-Rex Vert_Profile 1
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
-  accessoryTag: Fumeur
+  accessoryTag: Cigarette
   positiveCondition: 
   negativeCondition: "Ne veut pas \xEAtre devant\nNe veut pas \xEAtre \xE0 gauche"
   speciesName: T-Rex Vert

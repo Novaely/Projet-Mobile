@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
   m_Name: Ankylosaure Vert_Profile
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
-  accessoryTag: Fumeur
+  accessoryTag: Cigarette
   positiveCondition: "Veut \xEAtre au milieu"
   negativeCondition: "Ne veut pas \xEAtre derri\xE8re"
   speciesName: Ankylosaure Vert

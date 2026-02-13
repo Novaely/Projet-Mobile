@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
-  m_Name: Velociraptor Bleu_Profile
+  m_Name: Diplodocus Bleu_Profile
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre au milieu"
-  negativeCondition: "Ne veut pas \xEAtre devant"
-  speciesName: Velociraptor Bleu
-  diet: 1
+  positiveCondition: "Aime \xEAtre seul"
+  negativeCondition: N'aime pas les carnivores
+  speciesName: Diplodocus Bleu
+  diet: 0
   myRules:
-  - {fileID: 11400000, guid: f311842d94c462d439d1f3fcf02a2fa8, type: 2}
-  - {fileID: 11400000, guid: 10921794291114a458823b1381a138ee, type: 2}
+  - {fileID: 11400000, guid: 15f4083acb666bb409cca4f552a5ae32, type: 2}
+  - {fileID: 11400000, guid: 25738de98f77b444c9f92d9e7db58b30, type: 2}
+  - {fileID: 11400000, guid: df57fa887ed00df4aa7f07192cf00734, type: 2}

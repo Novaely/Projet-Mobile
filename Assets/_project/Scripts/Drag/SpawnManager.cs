@@ -205,7 +205,11 @@ public class SpawnManager : MonoBehaviour
                 Debug.Log("dino trouvé");
                 if (tryDino.isPlace == true)
                 {
+                    if (!_dinos[_currentIdDino].isPlace)
+                    {
                     _dinos[_currentIdDino].dino.SetActive(false);
+
+                    }
 
                     _UIInfoDino.PreciseDino(tryDino.characteristic,tryDino.isPlace);
                     _isInfoDinoAlreadyPlaced = true;

@@ -57,11 +57,11 @@ public class UIInfoDinoLevel : MonoBehaviour
             _imagePreviewDino.enabled = (infoDino.sprite != null);
             if (isPlaced)
             {
-                _imagePreviewDino.color = Color.black;
+                _imagePreviewDino.gameObject.SetActive(true);
             }
             else
             {
-                _imagePreviewDino.color = Color.white;
+                _imagePreviewDino.gameObject.SetActive(false);
             }
         }
     }

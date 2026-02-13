@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Ankylosaure Rouge_Profile
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Fred
-  designerDescription: "Ne veut pas \xEAtre \xE0 c\xF4t\xE9 d'un carnivore\nVeut
-    \xEAtre au milieu devant"
+  positiveCondition: "Veut \xEAtre devant"
+  negativeCondition: "Ne veut pas \xEAtre \xE0 c\xF4t\xE9 d'un Carnivore"
   speciesName: Ankylosaure Rouge
   diet: 0
   myRules:
   - {fileID: 11400000, guid: df57fa887ed00df4aa7f07192cf00734, type: 2}
   - {fileID: 11400000, guid: 2eca79e8eb6a1c3458959325c6ca6662, type: 2}
-  - {fileID: 11400000, guid: 56ec71c2d3d1eda4b8d910559509900d, type: 2}

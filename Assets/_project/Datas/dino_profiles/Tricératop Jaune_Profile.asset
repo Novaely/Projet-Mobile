@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
   m_Name: "Tric\xE9ratop Jaune_Profile"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
-  accessoryTag: piercing
-  designerDescription: "Veut \xEAtre \xE0 c\xF4t\xE9 d'une fen\xEAtre\nNe veut pas
-    \xEAtre \xE0 c\xF4t\xE9 d'un autre Herbivore"
+  accessoryTag: Piercing
+  positiveCondition: "Veut \xEAtre proche de la fen\xEAtre"
+  negativeCondition: "Ne veut pas \xEAtre \xE0 c\xF4t\xE9 d'un Herbivore"
   speciesName: "Tric\xE9ratop Jaune"
   diet: 0
   myRules:

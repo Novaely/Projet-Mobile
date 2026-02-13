@@ -17,9 +17,15 @@ public class UIInfoDinoLevel : MonoBehaviour
 
     [Header("Visual Preview")]
     [SerializeField] private Image _imagePreviewDino;
+    public RectTransform Spawn;
 
     public event Func<bool, DinoCharacteristic> OnNextDino;
     public event Func<DinoCharacteristic> OnPreviousDino;
+
+    private void Start()
+    {
+        Spawn = _imagePreviewDino.GetComponent<RectTransform>();
+    }
 
     public void NextDino(bool forced)
     {

@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     [SerializeField] private GameObject _prefabUILevel;
+    [SerializeField] private GameObject _prefabUILevelInfoDino;
 
     private TextMeshProUGUI[] _textsToTranslate;
 
@@ -47,6 +48,8 @@ public class UIManager : MonoBehaviour
     public void LoadUILevel()
     {
         GameObject uiLevel = Instantiate(_prefabUILevel);
+        GameObject uiLevelInfoDino = Instantiate(_prefabUILevelInfoDino);
+        uiLevelInfoDino.GetComponent<Canvas>().worldCamera = Camera.main;
         uiLevel.GetComponentInChildren<UILevel>().InitializeParam();
     }
 }

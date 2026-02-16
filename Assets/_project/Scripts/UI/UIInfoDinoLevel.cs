@@ -17,9 +17,15 @@ public class UIInfoDinoLevel : MonoBehaviour
 
     [Header("Visual Preview")]
     [SerializeField] private Image _imagePreviewDino;
+    public RectTransform Spawn;
 
     public event Func<bool, DinoCharacteristic> OnNextDino;
     public event Func<DinoCharacteristic> OnPreviousDino;
+
+    private void Start()
+    {
+        Spawn = _imagePreviewDino.GetComponent<RectTransform>();
+    }
 
     public void NextDino(bool forced)
     {
@@ -57,11 +63,11 @@ public class UIInfoDinoLevel : MonoBehaviour
             _imagePreviewDino.enabled = (infoDino.sprite != null);
             if (isPlaced)
             {
-                _imagePreviewDino.color = Color.black;
+                _imagePreviewDino.gameObject.SetActive(true);
             }
             else
             {
-                _imagePreviewDino.color = Color.white;
+                _imagePreviewDino.gameObject.SetActive(false);
             }
         }
     }

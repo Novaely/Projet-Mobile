@@ -58,6 +58,8 @@ public class SpawnManager : MonoBehaviour
             _UIInfoDino = FindFirstObjectByType<UIInfoDinoLevel>();
             _dragManager = FindFirstObjectByType<DragManager>();
 
+            _spawnerSeat.transform.position = _UIInfoDino.Spawn.transform.position;
+
             _UIInfoDino.OnNextDino += NextDino;
             _UIInfoDino.OnPreviousDino += PrevDino;
 
@@ -205,7 +207,10 @@ public class SpawnManager : MonoBehaviour
                 Debug.Log("dino trouvé");
                 if (tryDino.isPlace == true)
                 {
-                    _dinos[_currentIdDino].dino.SetActive(false);
+                    if (!_dinos[_currentIdDino].isPlace)
+                    {
+                        _dinos[_currentIdDino].dino.SetActive(false);
+                    }
 
                     _UIInfoDino.PreciseDino(tryDino.characteristic,tryDino.isPlace);
                     _isInfoDinoAlreadyPlaced = true;

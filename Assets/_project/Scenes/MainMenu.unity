@@ -453,6 +453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   _prefabUILevel: {fileID: 828019135349436978, guid: 13f3bbd6e0d1c6b41a2a01007a8ee943, type: 3}
+  _prefabUILevelInfoDino: {fileID: 5976072776285185705, guid: a731d836e295a5148aff56d1b8a101d8, type: 3}
 --- !u!4 &1711684756
 Transform:
   m_ObjectHideFlags: 0

@@ -6,14 +6,14 @@ public class SeatEvaluator : MonoBehaviour
 {
     [Header("Configuration Rendu")]
     public SpriteRenderer visualRenderer;
-    public Sprite spriteBuche; 
+    public Sprite spriteBuche;
 
     [Header("UI References")]
     public TextMeshProUGUI descriptionText;
-    public SpriteRenderer feedbackIconRenderer; 
+    public SpriteRenderer feedbackIconRenderer;
 
     [Header("Couleurs État Siège")]
-    public Color colorSiegeLibre = new Color(0, 1, 0, 0.5f); 
+    public Color colorSiegeLibre = new Color(0, 1, 0, 0.5f);
     public Color colorSiegeOccupe = new Color(1, 0, 0, 0.5f);
     public Color colorSiegeVide = Color.white;
 
@@ -23,7 +23,7 @@ public class SeatEvaluator : MonoBehaviour
     public Sprite neutreSprite;
 
     private Seat _seat;
-    private bool _localIsDragging = false; 
+    private bool _localIsDragging = false;
 
     void Awake()
     {
@@ -37,7 +37,7 @@ public class SeatEvaluator : MonoBehaviour
 
     void Start()
     {
-        var dm = FindFirstObjectByType<DragManager>(); //
+        var dm = FindFirstObjectByType<DragManager>();
         if (dm != null)
         {
             dm.OnDrag += HandleDragStart;
@@ -68,7 +68,7 @@ public class SeatEvaluator : MonoBehaviour
             
             if (!_localIsDragging)
             {
-                dino.PlayPlacementAnimation(); //
+                dino.PlayPlacementAnimation();
             }
 
             UpdateVisuals(dino);
@@ -83,9 +83,11 @@ public class SeatEvaluator : MonoBehaviour
     {
         if (visualRenderer != null)
         {
-            if (_localIsDragging)
+            bool estLeDinoAssis = (_seat.occupant == dino);
+
+            if (_localIsDragging && !estLeDinoAssis)
             {
-                bool estVraimentLibre = (_seat.occupant == null || _seat.occupant == dino);
+                bool estVraimentLibre = (_seat.occupant == null);
                 visualRenderer.color = estVraimentLibre ? colorSiegeLibre : colorSiegeOccupe;
             }
             else
@@ -107,8 +109,9 @@ public class SeatEvaluator : MonoBehaviour
 
         if (descriptionText != null)
         {
-            // Texte d'aide uniquement pendant le drag
-            if (_localIsDragging && dino.profile != null)
+            bool estLeDinoAssis = (_seat.occupant == dino);
+
+            if (_localIsDragging && !estLeDinoAssis && dino.profile != null)
             {
                 descriptionText.text = $"<color=green>Aime : {dino.profile.positiveCondition}</color>\n" +
                                      $"<color=red>Déteste : {dino.profile.negativeCondition}</color>";
@@ -141,7 +144,7 @@ public class SeatEvaluator : MonoBehaviour
     public float GetCurrentSatisfaction()
     {
         if (_seat != null && _seat.occupant != null)
-            return _seat.occupant.currentSatisfaction; //
+            return _seat.occupant.currentSatisfaction;
         return 0f;
     }
 }

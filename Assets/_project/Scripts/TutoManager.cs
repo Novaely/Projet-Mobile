@@ -34,7 +34,7 @@ public class TutoManager : MonoBehaviour
         {
             var t = Touchscreen.current.primaryTouch;
 
-            if (t.press.wasReleasedThisFrame && !t.press.isPressed)
+            if (t.press.wasReleasedThisFrame)
             {
                 index++;
                 if (index >= InfoTutos.Count)

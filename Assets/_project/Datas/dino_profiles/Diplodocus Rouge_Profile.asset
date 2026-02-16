@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Diplodocus Rouge_Profile
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre seul"
+  positiveCondition: 
   negativeCondition: N'aime pas les Haut de Forme
   speciesName: Diplodocus Rouge
   diet: 0
   myRules:
-  - {fileID: 11400000, guid: 25738de98f77b444c9f92d9e7db58b30, type: 2}
   - {fileID: 11400000, guid: ba5261a5f2a3db44cb919d52743a946d, type: 2}

@@ -91,7 +91,8 @@ public class Dino : MonoBehaviour
         
         if (profile == null || profile.myRules == null || profile.myRules.Count == 0) 
         { 
-            SetState(PlacementState.Bon, 1f); 
+            currentState = PlacementState.Bon;
+            currentSatisfaction = 1f;
             return; 
         }
 
@@ -104,9 +105,9 @@ public class Dino : MonoBehaviour
         float ratio = (float)satisfiedRules / profile.myRules.Count;
         currentSatisfaction = ratio;
 
-        if (ratio >= 0.8f) SetState(PlacementState.Bon, ratio);
-        else if (ratio <= 0.3f) SetState(PlacementState.Mauvais, ratio);
-        else SetState(PlacementState.Neutre, ratio);
+        if (ratio >= 0.8f) currentState = PlacementState.Bon;
+        else if (ratio <= 0.3f) currentState = PlacementState.Mauvais;
+        else currentState = PlacementState.Neutre;
     }
 
     private void SetVisualMode(bool isActiveMode)
@@ -125,11 +126,9 @@ public class Dino : MonoBehaviour
         }
     }
 
-    private void SetState(PlacementState state, float satisfaction)
+    public void PlayPlacementAnimation()
     {
-        currentState = state;
-        currentSatisfaction = satisfaction;
-        PlayActiveAnimation(state);
+        PlayActiveAnimation(currentState);
     }
 
     private void PlayActiveAnimation(PlacementState state)
@@ -142,24 +141,20 @@ public class Dino : MonoBehaviour
         switch (state)
         {
             case PlacementState.Bon:
-                if (happySprite) _renderer.sprite = happySprite;
-                else _renderer.sprite = idleSprite;
-                
+                _renderer.sprite = happySprite ? happySprite : idleSprite;
                 UpdateBubbleVisuals(state);
                 _currentAnim = StartCoroutine(AnimHappyJump());
                 break;
 
             case PlacementState.Mauvais:
-                if (angrySprite) _renderer.sprite = angrySprite;
-                else _renderer.sprite = idleSprite;
-
+                _renderer.sprite = angrySprite ? angrySprite : idleSprite;
                 UpdateBubbleVisuals(state);
                 _currentAnim = StartCoroutine(AnimAngryShake());
                 break;
 
             case PlacementState.Neutre:
             default:
-                if (idleSprite) _renderer.sprite = idleSprite;
+                _renderer.sprite = idleSprite;
                 UpdateBubbleVisuals(state);
                 break;
         }
@@ -236,8 +231,7 @@ public class Dino : MonoBehaviour
         while (timer < duration) {
             timer += Time.deltaTime;
             float p = timer / duration;
-            float scale = Mathf.Sin(p * Mathf.PI * 0.8f) * 1.2f; 
-            if (scale > 1f) scale = 1f; 
+            float scale = Mathf.Min(Mathf.Sin(p * Mathf.PI * 0.8f) * 1.2f, 1f); 
             t.localScale = Vector3.one * scale;
             yield return null;
         }
@@ -247,6 +241,10 @@ public class Dino : MonoBehaviour
     private IEnumerator PopOutBubble()
     {
         Transform t = emoteRenderer.transform;
+        if (t.localScale.x <= 0) {
+            emoteRenderer.gameObject.SetActive(false);
+            yield break;
+        }
         float startScale = t.localScale.x;
         float timer = 0f;
         float duration = 0.15f;
@@ -260,4 +258,3 @@ public class Dino : MonoBehaviour
         emoteRenderer.gameObject.SetActive(false);
     }
 }
-

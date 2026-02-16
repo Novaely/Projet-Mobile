@@ -63,6 +63,8 @@ public class Dino : MonoBehaviour
             if (_lastPosition.TryGetComponent(out Seat seat))
             {
                 EvaluateSatisfaction(seat);
+                // AJOUT : Force le visuel "Assis" ou "Couché" quand on retourne à la place
+                PlayPlacementAnimation(); 
             }
         }
     }
@@ -128,6 +130,9 @@ public class Dino : MonoBehaviour
 
     public void PlayPlacementAnimation()
     {
+        // Si on est sur le spawn, on ne joue pas l'anim "assis"
+        if (_lastPosition != null && _lastPosition.gameObject.layer == LayerMask.NameToLayer("Spawn")) return;
+        
         PlayActiveAnimation(currentState);
     }
 

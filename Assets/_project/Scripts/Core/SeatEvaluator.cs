@@ -1,18 +1,19 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class SeatEvaluator : MonoBehaviour
 {
     [Header("Configuration Rendu")]
-    public SpriteRenderer visualRenderer; // Glisse ici l'enfant "VisuelBuche"
-    public Sprite spriteBuche; 
+    public SpriteRenderer visualRenderer;
+    public Sprite spriteBuche;
 
     [Header("UI References")]
     public TextMeshProUGUI descriptionText;
-    public SpriteRenderer feedbackIconRenderer; 
+    public SpriteRenderer feedbackIconRenderer;
 
     [Header("Couleurs État Siège")]
-    public Color colorSiegeLibre = new Color(0, 1, 0, 0.5f); 
+    public Color colorSiegeLibre = new Color(0, 1, 0, 0.5f);
     public Color colorSiegeOccupe = new Color(1, 0, 0, 0.5f);
     public Color colorSiegeVide = Color.white;
 
@@ -22,12 +23,12 @@ public class SeatEvaluator : MonoBehaviour
     public Sprite neutreSprite;
 
     private Seat _seat;
+    private bool _localIsDragging = false;
 
     void Awake()
     {
         _seat = GetComponent<Seat>();
         
-        // Si tu n'as rien glissé dans l'inspecteur, on ne fait rien par sécurité
         if (visualRenderer != null && spriteBuche != null)
         {
             visualRenderer.sprite = spriteBuche;
@@ -36,14 +37,40 @@ public class SeatEvaluator : MonoBehaviour
 
     void Start()
     {
+        var dm = FindFirstObjectByType<DragManager>();
+        if (dm != null)
+        {
+            dm.OnDrag += HandleDragStart;
+            dm.OnDragCanceled += HandleDragEnd;
+        }
+
         ResetVisuals();
     }
+
+    void OnDestroy()
+    {
+        var dm = FindFirstObjectByType<DragManager>();
+        if (dm != null)
+        {
+            dm.OnDrag -= HandleDragStart;
+            dm.OnDragCanceled -= HandleDragEnd;
+        }
+    }
+
+    void HandleDragStart() => _localIsDragging = true;
+    void HandleDragEnd() { _localIsDragging = false; ResetVisuals(); }
 
     public void UpdateFeedback(Dino dino)
     {
         if (dino != null)
         {
             dino.EvaluateSatisfaction(_seat);
+            
+            if (!_localIsDragging)
+            {
+                dino.PlayPlacementAnimation();
+            }
+
             UpdateVisuals(dino);
         }
         else
@@ -56,8 +83,17 @@ public class SeatEvaluator : MonoBehaviour
     {
         if (visualRenderer != null)
         {
-            bool estVraimentLibre = (_seat.occupant == null || _seat.occupant == dino);
-            visualRenderer.color = estVraimentLibre ? colorSiegeLibre : colorSiegeOccupe;
+            bool estLeDinoAssis = (_seat.occupant == dino);
+
+            if (_localIsDragging && !estLeDinoAssis)
+            {
+                bool estVraimentLibre = (_seat.occupant == null);
+                visualRenderer.color = estVraimentLibre ? colorSiegeLibre : colorSiegeOccupe;
+            }
+            else
+            {
+                visualRenderer.color = colorSiegeVide;
+            }
         }
 
         if (feedbackIconRenderer != null)
@@ -71,10 +107,19 @@ public class SeatEvaluator : MonoBehaviour
             feedbackIconRenderer.gameObject.SetActive(true);
         }
 
-        if (descriptionText != null && dino.profile != null)
+        if (descriptionText != null)
         {
-            descriptionText.text = $"<color=green>Aime : {dino.profile.positiveCondition}</color>\n" +
-                                 $"<color=red>Déteste : {dino.profile.negativeCondition}</color>";
+            bool estLeDinoAssis = (_seat.occupant == dino);
+
+            if (_localIsDragging && !estLeDinoAssis && dino.profile != null)
+            {
+                descriptionText.text = $"<color=green>Aime : {dino.profile.positiveCondition}</color>\n" +
+                                     $"<color=red>Déteste : {dino.profile.negativeCondition}</color>";
+            }
+            else
+            {
+                descriptionText.text = "";
+            }
         }
     }
 
@@ -82,8 +127,7 @@ public class SeatEvaluator : MonoBehaviour
     {
         if (visualRenderer != null)
         {
-            // Retour à la couleur vide (souvent blanc ou gris transparent)
-            visualRenderer.color = (_seat != null && _seat.occupant != null) ? colorSiegeOccupe : colorSiegeVide;
+            visualRenderer.color = colorSiegeVide;
         }
         
         if (feedbackIconRenderer != null)

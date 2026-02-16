@@ -18,22 +18,27 @@ public class UIInfoDinoLevel : MonoBehaviour
     [Header("Visual Preview")]
     [SerializeField] private Image _imagePreviewDino;
 
-    public event Func<bool, InfoDino> OnNextDino;
-    public event Func<InfoDino> OnPreviousDino;
+    public event Func<bool, DinoCharacteristic> OnNextDino;
+    public event Func<DinoCharacteristic> OnPreviousDino;
 
     public void NextDino(bool forced)
     {
-        InfoDino infoDino = OnNextDino?.Invoke(forced);
-        UpdateUI(infoDino);
+        DinoCharacteristic infoDino = OnNextDino?.Invoke(forced);
+        UpdateUI(infoDino,false);
     }
 
     public void PreviousDino()
     {
-        InfoDino infoDino = OnPreviousDino?.Invoke();
-        UpdateUI(infoDino);
+        DinoCharacteristic infoDino = OnPreviousDino?.Invoke();
+        UpdateUI(infoDino,false);
     }
 
-    private void UpdateUI(InfoDino infoDino)
+    public void PreciseDino(DinoCharacteristic infoDino,bool isPlace)
+    {
+        UpdateUI(infoDino,isPlace);
+    }
+
+    private void UpdateUI(DinoCharacteristic infoDino,bool isPlaced)
     {
         if (infoDino == null) return;
 
@@ -50,6 +55,14 @@ public class UIInfoDinoLevel : MonoBehaviour
         {
             _imagePreviewDino.sprite = infoDino.sprite;
             _imagePreviewDino.enabled = (infoDino.sprite != null);
+            if (isPlaced)
+            {
+                _imagePreviewDino.color = Color.black;
+            }
+            else
+            {
+                _imagePreviewDino.color = Color.white;
+            }
         }
     }
 }

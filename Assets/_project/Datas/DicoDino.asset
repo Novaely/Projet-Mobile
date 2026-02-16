@@ -14,14 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DicoDinoDatabase
   <Dictionnary>k__BackingField:
   - DinoWord: rrrr
-    KeyUniversalTraduction: a
-    UnlockedAtLevel: 0
+    French: Bonjour
+    English: Hello
+    UnlockedAtLevel: 1
   - DinoWord: brrr
-    KeyUniversalTraduction: b
-    UnlockedAtLevel: 0
+    French: Froid
+    English: Cold
+    UnlockedAtLevel: 2
   - DinoWord: vroum
-    KeyUniversalTraduction: c
-    UnlockedAtLevel: 0
+    French: Conducteur
+    English: Driver
+    UnlockedAtLevel: 3
   - DinoWord: tutu
-    KeyUniversalTraduction: d
-    UnlockedAtLevel: 0
+    French: Princesse
+    English: Princess
+    UnlockedAtLevel: 4

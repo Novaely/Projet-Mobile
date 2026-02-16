@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1674156320237763323}
   - component: {fileID: 7358036259457739663}
   - component: {fileID: 1764527370849736029}
+  - component: {fileID: 5761905892270565306}
   m_Layer: 5
   m_Name: LevelList
   m_TagString: Untagged
@@ -34,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60}
+  m_AnchoredPosition: {x: 60, y: -60}
   m_SizeDelta: {x: 850, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7358036259457739663
@@ -50,17 +51,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GridLayoutGroup
   m_Padding:
-    m_Left: 0
+    m_Left: 50
     m_Right: 0
-    m_Top: 0
+    m_Top: 50
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
+  m_CellSize: {x: 150, y: 150}
   m_Spacing: {x: 50, y: 50}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Constraint: 1
+  m_ConstraintCount: 4
 --- !u!114 &1764527370849736029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,3 +82,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ab2ff9b9662910e488a54dbb4009e590, type: 3}
   - {fileID: 21300000, guid: c46a2d4aefdb7ed4583350a365dba51d, type: 3}
   - {fileID: 21300000, guid: ec0b8c7badf971d4181757a3bff81db0, type: 3}
+--- !u!222 &5761905892270565306
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4015517955263753916}
+  m_CullTransparentMesh: 1

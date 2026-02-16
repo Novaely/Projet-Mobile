@@ -44,6 +44,8 @@ public class DragManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.GameState != GameManager.GameStates.Play) { return; }
+
         bool pressed = false, released = false, holding = false;
         Vector2 screenPos = Vector2.zero;
 

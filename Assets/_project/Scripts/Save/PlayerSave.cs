@@ -16,6 +16,7 @@ public class PlayerSave : MonoBehaviour
 
     public bool IsSaveLoad { get; private set; }
     public event Action OnLoadSave;
+    public event Action OnLevelEnd;
 
     void Awake()
     {
@@ -99,6 +100,8 @@ public class PlayerSave : MonoBehaviour
 
     public void UpdateStarOfOneLevel(int numberOfStar)
     {
+        OnLevelEnd?.Invoke();
+
         if (_currentLevel < 0 || _currentLevel > LevelSave.starsLevels.Count) return;
         if (numberOfStar < 0 || numberOfStar > 3) return;
 

@@ -21,6 +21,8 @@ public class TutoManager : MonoBehaviour
 
     int index = 0;
 
+    public event Action OnTutoEnd;
+
     private void Start()
     {
         index = 0;
@@ -40,6 +42,7 @@ public class TutoManager : MonoBehaviour
                 if (index >= InfoTutos.Count)
                 {
                     _canvasTuto.gameObject.SetActive(false);
+                    OnTutoEnd?.Invoke();
                     return;
                 }
                 _zoneText.text = InfoTutos[index].text;

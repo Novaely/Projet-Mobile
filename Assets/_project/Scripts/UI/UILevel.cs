@@ -96,15 +96,19 @@ public class UILevel : MonoBehaviour
 
         _textDico.GetComponent<LocalizeStringEvent>().OnUpdateString.AddListener(_ => UpdateDicoDino());
         _buttonDictionnary.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_dictionnary, true)));
+        _buttonDictionnary.onClick.AddListener(() => UIManager.Instance.SetPause(true));
         _buttonMainMenu.onClick.AddListener(() => ScenesManager.Instance.LoadSceneMainMenu());
         _buttonLevelSelect.onClick.AddListener(() => ScenesManager.Instance.LoadSceneMainMenu(true));
         _buttonParameters.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_parameters, true)));
+        _buttonParameters.onClick.AddListener(() => UIManager.Instance.SetPause(true));
         _localeSelector = FindAnyObjectByType<LocaleSelector>();
         _buttonFrench.onClick.AddListener(() => _localeSelector.SetLanguage(1));
         _buttonEnglish.onClick.AddListener(() => _localeSelector.SetLanguage(0));
 
         _buttonParamExit.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_parameters, false)));
+        _buttonParamExit.onClick.AddListener(() => UIManager.Instance.SetPause(false));
         _buttonDicoExit.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_dictionnary, false)));
+        _buttonDicoExit.onClick.AddListener(() => UIManager.Instance.SetPause(false));
 
         UpdateDicoDino();
 

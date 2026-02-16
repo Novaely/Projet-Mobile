@@ -8,17 +8,25 @@ public class NoFriendWithAccessoryRuleSO : SeatRuleSO
 
     public override bool IsSatisfied(Dino dino, Seat seat)
     {
+        if (string.IsNullOrWhiteSpace(forbiddenAccessory)) return true;
+
         foreach (var neighbor in seat.neighbors)
         {
             if (neighbor != null && neighbor.occupant != null)
             {
-                if (neighbor.occupant.profile != null && 
-                    neighbor.occupant.profile.accessoryTag == forbiddenAccessory)
+                if (neighbor.occupant.profile != null)
                 {
-                    return false; 
+                    string neighborTag = neighbor.occupant.profile.accessoryTag;
+
+                    if (string.IsNullOrWhiteSpace(neighborTag)) continue;
+
+                    if (string.Equals(neighborTag.Trim(), forbiddenAccessory.Trim(), System.StringComparison.OrdinalIgnoreCase))
+                    {
+                        return false; 
+                    }
                 }
             }
         }
-        return true;
+        return true; 
     }
 }

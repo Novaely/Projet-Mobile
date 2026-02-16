@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
-  m_Name: "Pt\xE9ranodon Violet_Profile"
+  m_Name: Diplodocus Rouge_Profile 1
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre \xE0 c\xF4t\xE9 d'un herbivore"
-  negativeCondition: "Ne veut pas \xEAtre devant"
-  speciesName: "Pt\xE9ranodon Violet"
-  diet: 1
+  positiveCondition: "veut \xEAtre derri\xE8re"
+  negativeCondition: "Ne veut pas \xEAtre \xE0 c\xF4t\xE9 de carnivore"
+  speciesName: Diplodocus Rouge
+  diet: 0
   myRules:
-  - {fileID: 11400000, guid: 8207afc6b12fdf244923f0d51ae8060f, type: 2}
-  - {fileID: 11400000, guid: f311842d94c462d439d1f3fcf02a2fa8, type: 2}
+  - {fileID: 11400000, guid: c4b12ceb2a1154640a835ceba2e202bf, type: 2}
+  - {fileID: 11400000, guid: df57fa887ed00df4aa7f07192cf00734, type: 2}

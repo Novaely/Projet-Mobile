@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
-  m_Name: "Pt\xE9ranodon Violet_Profile"
+  m_Name: "Pt\xE9ranodon Bleu_Profile"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre \xE0 c\xF4t\xE9 d'un herbivore"
-  negativeCondition: "Ne veut pas \xEAtre devant"
-  speciesName: "Pt\xE9ranodon Violet"
+  positiveCondition: "veut milieu (colonne)\nherbivore \xE0 c\xF4t\xE9"
+  negativeCondition: "ne veut pas \xEAtre devant"
+  speciesName: "Pt\xE9ranodon Bleu"
   diet: 1
   myRules:
-  - {fileID: 11400000, guid: 8207afc6b12fdf244923f0d51ae8060f, type: 2}
   - {fileID: 11400000, guid: f311842d94c462d439d1f3fcf02a2fa8, type: 2}
+  - {fileID: 11400000, guid: 13e00f8a3af41df49ac5e1928cee7cf7, type: 2}
+  - {fileID: 11400000, guid: 10921794291114a458823b1381a138ee, type: 2}

@@ -1936,7 +1936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4897928801444234737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2143,8 +2143,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1000, y: 0}
+  m_AnchoredPosition: {x: 72, y: 8.482117}
+  m_SizeDelta: {x: 910.6026, y: -143.0359}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8795263482903739726
 CanvasRenderer:
@@ -2174,12 +2174,35 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Game Designer :\nMathieu Dolphin\nLola Brasseur\nAur\xE9lien Colombelli\n\nGame
-    Artist :\nCamille Leblond-Champion\nR\xE9my Maret\n\nGame Programmer :\nEly Guerfi
-    - Gameplay\nEnzo Varlet - Gameplay\nMilan Dupuis - UI and Localization"
+  m_text: 'Game Designer :
+
+    Mathieu Dolphin
+
+    Lola Brasseur
+
+    Aurelien
+    Colombelli
+
+
+    Game Artist :
+
+    Camille Leblond-Champion
+
+    Remy Maret
+
+
+    Game
+    Programmer :
+
+    Ely Guerfi - Gameplay
+
+    Enzo Varlet - Gameplay
+
+    Milan
+    Dupuis - UI and Localization'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 75e76eda15d2fc7438e667a89ed74498, type: 2}
+  m_sharedMaterial: {fileID: -4274496308295222994, guid: 75e76eda15d2fc7438e667a89ed74498, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2203,7 +2226,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55.15
+  m_fontSize: 43.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2440,6 +2463,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 454074033430759591, guid: 3a49854790faf5c4c921217363d9e575, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294426221711672467, guid: 3a49854790faf5c4c921217363d9e575, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607044637973420776, guid: 3a49854790faf5c4c921217363d9e575, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4296340273752073932, guid: 3a49854790faf5c4c921217363d9e575, type: 3}
@@ -2521,6 +2552,18 @@ PrefabInstance:
     - target: {fileID: 4296340273752073932, guid: 3a49854790faf5c4c921217363d9e575, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5269406705830757454, guid: 3a49854790faf5c4c921217363d9e575, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966198000489196933, guid: 3a49854790faf5c4c921217363d9e575, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206705716681501883, guid: 3a49854790faf5c4c921217363d9e575, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -18,5 +18,5 @@ MonoBehaviour:
   speciesName: Ankylosaure Rouge
   diet: 0
   myRules:
-  - {fileID: 11400000, guid: df57fa887ed00df4aa7f07192cf00734, type: 2}
   - {fileID: 11400000, guid: 2eca79e8eb6a1c3458959325c6ca6662, type: 2}
+  - {fileID: 11400000, guid: df57fa887ed00df4aa7f07192cf00734, type: 2}

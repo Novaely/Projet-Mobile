@@ -207,7 +207,7 @@ public class SpawnManager : MonoBehaviour
         {
             if (tryDino.dino == dino.gameObject)
             {
-                Debug.Log("dino trouvé");
+                Debug.Log("dino trouvï¿½");
                 if (tryDino.isPlace == true)
                 {
                     if (!_dinos[_currentIdDino].isPlace)

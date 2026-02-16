@@ -5,15 +5,15 @@ using UnityEngine.UI;
 public class SeatEvaluator : MonoBehaviour
 {
     [Header("Configuration Rendu")]
-    public SpriteRenderer visualRenderer;
-    public Sprite spriteBuche;
+    public SpriteRenderer[] visualRenderers; 
+    public Sprite spriteBuche; 
 
     [Header("UI References")]
     public TextMeshProUGUI descriptionText;
-    public SpriteRenderer feedbackIconRenderer;
+    public SpriteRenderer feedbackIconRenderer; 
 
     [Header("Couleurs État Siège")]
-    public Color colorSiegeLibre = new Color(0, 1, 0, 0.5f);
+    public Color colorSiegeLibre = new Color(0, 1, 0, 0.5f); 
     public Color colorSiegeOccupe = new Color(1, 0, 0, 0.5f);
     public Color colorSiegeVide = Color.white;
 
@@ -23,15 +23,18 @@ public class SeatEvaluator : MonoBehaviour
     public Sprite neutreSprite;
 
     private Seat _seat;
-    private bool _localIsDragging = false;
+    private bool _localIsDragging = false; 
 
     void Awake()
     {
         _seat = GetComponent<Seat>();
         
-        if (visualRenderer != null && spriteBuche != null)
+        if (visualRenderers != null && spriteBuche != null)
         {
-            visualRenderer.sprite = spriteBuche;
+            foreach (var renderer in visualRenderers)
+            {
+                if (renderer != null) renderer.sprite = spriteBuche;
+            }
         }
     }
 
@@ -68,7 +71,7 @@ public class SeatEvaluator : MonoBehaviour
             
             if (!_localIsDragging)
             {
-                dino.PlayPlacementAnimation();
+                dino.PlayPlacementAnimation(); 
             }
 
             UpdateVisuals(dino);
@@ -81,18 +84,20 @@ public class SeatEvaluator : MonoBehaviour
 
     void UpdateVisuals(Dino dino)
     {
-        if (visualRenderer != null)
+        if (visualRenderers != null)
         {
             bool estLeDinoAssis = (_seat.occupant == dino);
+            Color targetColor = colorSiegeVide;
 
             if (_localIsDragging && !estLeDinoAssis)
             {
                 bool estVraimentLibre = (_seat.occupant == null);
-                visualRenderer.color = estVraimentLibre ? colorSiegeLibre : colorSiegeOccupe;
+                targetColor = estVraimentLibre ? colorSiegeLibre : colorSiegeOccupe;
             }
-            else
+
+            foreach (var renderer in visualRenderers)
             {
-                visualRenderer.color = colorSiegeVide;
+                if (renderer != null) renderer.color = targetColor;
             }
         }
 
@@ -110,7 +115,6 @@ public class SeatEvaluator : MonoBehaviour
         if (descriptionText != null)
         {
             bool estLeDinoAssis = (_seat.occupant == dino);
-
             if (_localIsDragging && !estLeDinoAssis && dino.profile != null)
             {
                 descriptionText.text = $"<color=green>Aime : {dino.profile.positiveCondition}</color>\n" +
@@ -125,9 +129,12 @@ public class SeatEvaluator : MonoBehaviour
 
     public void ResetVisuals()
     {
-        if (visualRenderer != null)
+        if (visualRenderers != null)
         {
-            visualRenderer.color = colorSiegeVide;
+            foreach (var renderer in visualRenderers)
+            {
+                if (renderer != null) renderer.color = colorSiegeVide;
+            }
         }
         
         if (feedbackIconRenderer != null)
@@ -144,7 +151,7 @@ public class SeatEvaluator : MonoBehaviour
     public float GetCurrentSatisfaction()
     {
         if (_seat != null && _seat.occupant != null)
-            return _seat.occupant.currentSatisfaction;
+            return _seat.occupant.currentSatisfaction; //
         return 0f;
     }
 }

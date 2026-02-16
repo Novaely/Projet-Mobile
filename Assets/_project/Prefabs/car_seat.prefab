@@ -115,7 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a70d39539fe46419dc5cd6a3d5cc33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SeatEvaluator
-  visualRenderer: {fileID: 80090755251770412}
+  visualRenderers:
+  - {fileID: 80090755251770412}
   spriteBuche: {fileID: 0}
   descriptionText: {fileID: 0}
   feedbackIconRenderer: {fileID: 0}

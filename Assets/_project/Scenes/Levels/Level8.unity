@@ -608,8 +608,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
   _spawnerSeat: {fileID: 980146925}
   _dinosPrefab:
-  - {fileID: 1540111827714683626, guid: 29a763bd340d6d24ebd9847772efbe32, type: 3}
-  - {fileID: 3221172024998021084, guid: 7c45625603bdc8e4488b04465f67d4e3, type: 3}
+  - {fileID: 8631885794090658840, guid: c98c8fc4014205c4d925fe192b8bdf27, type: 3}
+  - {fileID: 357898211779199951, guid: ff2e589b7376db14682af8e833766287, type: 3}
+  - {fileID: 4235063462841123962, guid: da561018e5ed7094e8e61c2b2f518026, type: 3}
+  - {fileID: 8895739185195698350, guid: 885846e14667aae4e82c0fbc654b9b24, type: 3}
+  - {fileID: 3539384525158239415, guid: 3277fd0f9ef5f0d4b83725e828d94a70, type: 3}
+  - {fileID: 1462833576357639142, guid: 6f527b68248a62d428bdda0a249444a2, type: 3}
+  - {fileID: 1495451563095317834, guid: 7eadf47c10fbcb24f8ee76f23660e731, type: 3}
+  - {fileID: 8631885794090658840, guid: c98c8fc4014205c4d925fe192b8bdf27, type: 3}
+  - {fileID: 1495451563095317834, guid: 7eadf47c10fbcb24f8ee76f23660e731, type: 3}
   _dinosContainer: {fileID: 1604867147}
 --- !u!1001 &722255233
 PrefabInstance:

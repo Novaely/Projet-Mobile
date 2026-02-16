@@ -18,6 +18,5 @@ MonoBehaviour:
   speciesName: Diplodocus Bleu
   diet: 0
   myRules:
-  - {fileID: 11400000, guid: 15f4083acb666bb409cca4f552a5ae32, type: 2}
   - {fileID: 11400000, guid: 25738de98f77b444c9f92d9e7db58b30, type: 2}
   - {fileID: 11400000, guid: df57fa887ed00df4aa7f07192cf00734, type: 2}

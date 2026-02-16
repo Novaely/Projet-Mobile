@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
-  m_Name: Ankylosaure Rouge_Profile
+  m_Name: "Tric\xE9ratops Bleu_Profile 1"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
-  accessoryTag: Fred
-  positiveCondition: "Veut \xEAtre devant"
-  negativeCondition: "Ne veut pas \xEAtre \xE0 c\xF4t\xE9 d'un Carnivore"
-  speciesName: Ankylosaure Rouge
+  accessoryTag: Jupe et Noeud
+  positiveCondition: "Veut \xEAtre \xE0 c\xF4t\xE9 de quelqu'un qui porte une jupe
+    aussi"
+  negativeCondition: A peur des piercing
+  speciesName: "Tric\xE9ratops Bleu"
   diet: 0
   myRules:
-  - {fileID: 11400000, guid: 2eca79e8eb6a1c3458959325c6ca6662, type: 2}
-  - {fileID: 11400000, guid: df57fa887ed00df4aa7f07192cf00734, type: 2}
+  - {fileID: 11400000, guid: 17d8b4ae4c45866489880635fd83fdf5, type: 2}
+  - {fileID: 11400000, guid: 5679a8d72273c434f9d123e975af2d8f, type: 2}

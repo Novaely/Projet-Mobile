@@ -561,7 +561,7 @@ MonoBehaviour:
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 128
-  totalDinosToPlace: 2
+  totalDinosToPlace: 8
   levelValidated: 0
 --- !u!114 &676351100
 MonoBehaviour:
@@ -616,6 +616,8 @@ MonoBehaviour:
   - {fileID: 5010225392362821113, guid: 93e2d3833627faa408eba0ed43f55f06, type: 3}
   - {fileID: 5255204324678621868, guid: a0f104e278959f841b6f7c429db7bb0b, type: 3}
   - {fileID: 3539384525158239415, guid: 3277fd0f9ef5f0d4b83725e828d94a70, type: 3}
+  - {fileID: 5566352794017433482, guid: 47c096f383b9a8b4d8cd3ee4be3f032b, type: 3}
+  - {fileID: 9133726291839362616, guid: 521607cc36e33e64089849b2fa4954af, type: 3}
   _dinosContainer: {fileID: 1604867147}
 --- !u!1001 &722255233
 PrefabInstance:

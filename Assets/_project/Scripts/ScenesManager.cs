@@ -7,7 +7,10 @@ public class ScenesManager : MonoBehaviour
 {
     public static ScenesManager Instance;
 
-    public event Action<int> OnSceneLoad; 
+    public event Action<int> OnSceneLoad;
+
+    public event Action OnMenuLoad;
+    public event Action OnLevelLoad;
 
     private void Awake()
     {
@@ -34,6 +37,7 @@ public class ScenesManager : MonoBehaviour
 
         UIManager.Instance.LoadUILevel();
         OnSceneLoad?.Invoke(index);
+        OnLevelLoad?.Invoke();
     }
 
     public void LoadSceneMainMenu()
@@ -51,6 +55,8 @@ public class ScenesManager : MonoBehaviour
         Debug.Log(isLevelSelectActive == null ? "Loading MainMenu" : "Loading MainMenu with LevelSelect");
 
         yield return SceneManager.LoadSceneAsync("MainMenu");
+
+        OnMenuLoad?.Invoke();
 
         if (isLevelSelectActive != null) {
             FindFirstObjectByType<UIMainMenu>().IsLevelSelectActive((bool)isLevelSelectActive);

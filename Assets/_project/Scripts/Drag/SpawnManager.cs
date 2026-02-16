@@ -89,6 +89,8 @@ public class SpawnManager : MonoBehaviour
                 {
                     Dino dinoDino = dino.GetComponent<Dino>();
                     OnSpawn?.Invoke(dinoDino, _spawnerSeat.transform);
+                    _currentIdDino = 0;
+                    _UIInfoDino.PreciseDino(info.characteristic,false);
                 }
                 else
                 {
@@ -98,12 +100,13 @@ public class SpawnManager : MonoBehaviour
                 _dinos.Add(info);
             }
 
-            _UIInfoDino.NextDino(false);
         }
     }
 
     private void Update()
     {
+        if (GameManager.Instance.GameState != GameManager.GameStates.Play)
+
         if (_currentIdDino == -1) { return; }
 
         if (_dinos.Count == _nbDinoPlaced)

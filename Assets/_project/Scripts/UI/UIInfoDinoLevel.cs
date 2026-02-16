@@ -29,12 +29,16 @@ public class UIInfoDinoLevel : MonoBehaviour
 
     public void NextDino(bool forced)
     {
+        if (GameManager.Instance.GameState != GameManager.GameStates.Play) { return; }
+
         DinoCharacteristic infoDino = OnNextDino?.Invoke(forced);
         UpdateUI(infoDino,false);
     }
 
     public void PreviousDino()
     {
+        if (GameManager.Instance.GameState != GameManager.GameStates.Play) { return; }
+
         DinoCharacteristic infoDino = OnPreviousDino?.Invoke();
         UpdateUI(infoDino,false);
     }

@@ -12,6 +12,7 @@ public class DicoDinoDatabase : ScriptableObject
 public struct DicoDino
 {
     public string DinoWord;
-    public string KeyUniversalTraduction;
+    public string French;
+    public string English;
     public int UnlockedAtLevel;
 }

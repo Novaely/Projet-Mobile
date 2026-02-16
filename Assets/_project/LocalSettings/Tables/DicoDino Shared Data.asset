@@ -15,20 +15,28 @@ MonoBehaviour:
   m_TableCollectionName: DicoDino
   m_TableCollectionNameGuidString: ec03b92d5b332f441a8538ddc85adcef
   m_Entries:
-  - m_Id: 3861456695296
-    m_Key: a
+  - m_Id: 3255425550069760
+    m_Key: rrrr
     m_Metadata:
       m_Items: []
-  - m_Id: 3918201434112
-    m_Key: b
+  - m_Id: 3255425550069761
+    m_Key: brrr
     m_Metadata:
       m_Items: []
-  - m_Id: 3931962945536
-    m_Key: c
+  - m_Id: 3255425550069762
+    m_Key: vroum
     m_Metadata:
       m_Items: []
-  - m_Id: 3945783177216
-    m_Key: d
+  - m_Id: 3255425550069763
+    m_Key: tutu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3256341690920960
+    m_Key: New Entry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3258484112044032
+    m_Key: aaa
     m_Metadata:
       m_Items: []
   m_Metadata:

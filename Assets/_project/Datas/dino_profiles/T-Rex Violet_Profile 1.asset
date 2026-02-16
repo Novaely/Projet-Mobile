@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
-  m_Name: Ankylosaure Rouge_Profile
+  m_Name: T-Rex Violet_Profile 1
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
-  accessoryTag: Fred
-  positiveCondition: "Veut \xEAtre devant"
-  negativeCondition: "Ne veut pas \xEAtre \xE0 c\xF4t\xE9 d'un Carnivore"
-  speciesName: Ankylosaure Rouge
-  diet: 0
+  accessoryTag: Haut de Forme
+  positiveCondition: "Veut \xEAtre \xE0 c\xF4t\xE9 d'un dino qui fume"
+  negativeCondition: N'aime pas ceux qui porte des jupes
+  speciesName: T-Rex Violet
+  diet: 1
   myRules:
-  - {fileID: 11400000, guid: 2eca79e8eb6a1c3458959325c6ca6662, type: 2}
-  - {fileID: 11400000, guid: df57fa887ed00df4aa7f07192cf00734, type: 2}
+  - {fileID: 11400000, guid: fe2e5880ec4faa3488f02238a1bdfd68, type: 2}
+  - {fileID: 11400000, guid: eb22e4cbe4ca78247a1782f5050363e6, type: 2}

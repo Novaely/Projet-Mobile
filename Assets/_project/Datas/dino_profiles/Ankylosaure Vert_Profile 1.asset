@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
+  m_Name: Ankylosaure Vert_Profile 1
+  m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
+  accessoryTag: Cigarette
+  positiveCondition: "\xEAtre au milieu"
+  negativeCondition: "Ne pas \xEAtre derri\xE8re"
+  speciesName: Ankylosaure Vert
+  diet: 0
+  myRules:
+  - {fileID: 11400000, guid: 56ec71c2d3d1eda4b8d910559509900d, type: 2}
+  - {fileID: 11400000, guid: 77c1e91bb2e8f104a8724378b6c7e3e1, type: 2}

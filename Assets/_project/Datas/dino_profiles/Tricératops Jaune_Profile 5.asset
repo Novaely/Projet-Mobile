@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
-  m_Name: T-Rex Vert_Profile 3
+  m_Name: "Tric\xE9ratops Jaune_Profile 5"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
-  accessoryTag: Cigarette
-  positiveCondition: Veut un voisin avec une Jupe
-  negativeCondition: N'aime pas les Haut de Forme
-  speciesName: T-Rex Vert
-  diet: 1
+  accessoryTag: Piercing
+  positiveCondition: "Veut \xEAtre \xE0 c\xF4t\xE9 d'Ankylo Fred"
+  negativeCondition: N'aime pas ceux qui porte des jupes
+  speciesName: "Tric\xE9ratops Jaune"
+  diet: 0
   myRules:
-  - {fileID: 11400000, guid: 17d8b4ae4c45866489880635fd83fdf5, type: 2}
-  - {fileID: 11400000, guid: ba5261a5f2a3db44cb919d52743a946d, type: 2}
+  - {fileID: 11400000, guid: 56e66458cd43d0940a9e5dee01b9eb61, type: 2}
+  - {fileID: 11400000, guid: eb22e4cbe4ca78247a1782f5050363e6, type: 2}

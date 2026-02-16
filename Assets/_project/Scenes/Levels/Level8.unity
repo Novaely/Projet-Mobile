@@ -561,7 +561,7 @@ MonoBehaviour:
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 128
-  totalDinosToPlace: 2
+  totalDinosToPlace: 9
   levelValidated: 0
 --- !u!114 &676351100
 MonoBehaviour:
@@ -608,15 +608,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
   _spawnerSeat: {fileID: 980146925}
   _dinosPrefab:
-  - {fileID: 8631885794090658840, guid: c98c8fc4014205c4d925fe192b8bdf27, type: 3}
+  - {fileID: 7147448375264154726, guid: 7b8f296c8c97bb547bbc5e2d5a29741d, type: 3}
   - {fileID: 357898211779199951, guid: ff2e589b7376db14682af8e833766287, type: 3}
   - {fileID: 4235063462841123962, guid: da561018e5ed7094e8e61c2b2f518026, type: 3}
-  - {fileID: 8895739185195698350, guid: 885846e14667aae4e82c0fbc654b9b24, type: 3}
+  - {fileID: 8105603903061242898, guid: c6f208715d2f17d49970a70bbcb5229c, type: 3}
   - {fileID: 3539384525158239415, guid: 3277fd0f9ef5f0d4b83725e828d94a70, type: 3}
-  - {fileID: 1462833576357639142, guid: 6f527b68248a62d428bdda0a249444a2, type: 3}
+  - {fileID: 4542159638519610237, guid: 5eb5c143c75af0d4e9f6807bb95bb157, type: 3}
   - {fileID: 1495451563095317834, guid: 7eadf47c10fbcb24f8ee76f23660e731, type: 3}
-  - {fileID: 8631885794090658840, guid: c98c8fc4014205c4d925fe192b8bdf27, type: 3}
-  - {fileID: 1495451563095317834, guid: 7eadf47c10fbcb24f8ee76f23660e731, type: 3}
+  - {fileID: 5070272790163675155, guid: 34a6140976615ed4db6783ee0b10fe34, type: 3}
+  - {fileID: 9156668621598424937, guid: 7e580b998b6cae14f9dbd45c8116b508, type: 3}
   _dinosContainer: {fileID: 1604867147}
 --- !u!1001 &722255233
 PrefabInstance:

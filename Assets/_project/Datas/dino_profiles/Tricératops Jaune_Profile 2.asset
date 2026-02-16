@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
-  m_Name: Diplodocus Rouge_Profile
+  m_Name: "Tric\xE9ratops Jaune_Profile 2"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
-  accessoryTag: 
+  accessoryTag: Piercing
   positiveCondition: 
-  negativeCondition: N'aime pas les Haut de Forme
-  speciesName: Diplodocus Rouge
+  negativeCondition: "ne veut pas \xEAtre entre deux dinosaures\nne veut pas \xEAtre
+    derri\xE8re"
+  speciesName: "Tric\xE9ratops Jaune"
   diet: 0
   myRules:
-  - {fileID: 11400000, guid: ba5261a5f2a3db44cb919d52743a946d, type: 2}
+  - {fileID: 11400000, guid: 66a52e1f702fe3b40b595b2af0689bfe, type: 2}
+  - {fileID: 11400000, guid: 77c1e91bb2e8f104a8724378b6c7e3e1, type: 2}

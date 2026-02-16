@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
-  m_Name: Diplodocus Rouge_Profile
+  m_Name: T-Rex Vert_Profile 3
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
-  accessoryTag: 
-  positiveCondition: 
-  negativeCondition: N'aime pas les Haut de Forme
-  speciesName: Diplodocus Rouge
-  diet: 0
+  accessoryTag: Cigarette
+  positiveCondition: "Veut \xEAtre devant"
+  negativeCondition: "Ne veut pas \xEAtre \xE0 gauche"
+  speciesName: T-Rex Vert
+  diet: 1
   myRules:
-  - {fileID: 11400000, guid: ba5261a5f2a3db44cb919d52743a946d, type: 2}
+  - {fileID: 11400000, guid: 2eca79e8eb6a1c3458959325c6ca6662, type: 2}
+  - {fileID: 11400000, guid: ecce7013fd896b540a1999b5294e83ea, type: 2}

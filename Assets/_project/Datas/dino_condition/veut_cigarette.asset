@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a259b4123bf5604fa3a33b5a9d106d3, type: 3}
-  m_Name: pas0_cigarette
+  m_Name: veut_cigarette
   m_EditorClassIdentifier: Assembly-CSharp::FriendWithAccessoryRuleSO
   targetAccessory: Cigarette

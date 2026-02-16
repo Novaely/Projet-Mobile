@@ -205,8 +205,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.067814, y: 1.0379317, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1337485443}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -561,7 +561,7 @@ MonoBehaviour:
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 128
-  totalDinosToPlace: 2
+  totalDinosToPlace: 8
   levelValidated: 0
 --- !u!114 &676351100
 MonoBehaviour:
@@ -609,12 +609,13 @@ MonoBehaviour:
   _spawnerSeat: {fileID: 980146925}
   _dinosPrefab:
   - {fileID: 4179208559799515444, guid: 3b06f068a0dd757469870b27e3d642ff, type: 3}
-  - {fileID: 5964368501469947228, guid: b7508c1e0e5b663489a081d180783e74, type: 3}
+  - {fileID: 3990205140094097271, guid: 52cc4c57a8a1a6046bebd23e51102c9c, type: 3}
   - {fileID: 6418585567153782447, guid: 567f32a5d63ebd548910ef38b10a5a06, type: 3}
   - {fileID: 1495451563095317834, guid: 7eadf47c10fbcb24f8ee76f23660e731, type: 3}
   - {fileID: 4235063462841123962, guid: da561018e5ed7094e8e61c2b2f518026, type: 3}
   - {fileID: 3803709592713593623, guid: b740a5e68f821344eb7b11dbebedf575, type: 3}
-  - {fileID: 1462833576357639142, guid: 6f527b68248a62d428bdda0a249444a2, type: 3}
+  - {fileID: 4542159638519610237, guid: 5eb5c143c75af0d4e9f6807bb95bb157, type: 3}
+  - {fileID: 7607031608106350175, guid: 83a5e56bee04c044db5c43e0c86843f3, type: 3}
   _dinosContainer: {fileID: 1604867147}
 --- !u!1001 &722255233
 PrefabInstance:

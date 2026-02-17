@@ -176,8 +176,8 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 3
-  AndroidMinSdkVersion: 33
+  AndroidBundleVersionCode: 4
+  AndroidMinSdkVersion: 28
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   AndroidPreferredDataLocation: 1
@@ -262,19 +262,19 @@ PlayerSettings:
   templateDefaultScene: Assets/Scenes/SampleScene.unity
   useCustomMainManifest: 0
   useCustomLauncherManifest: 0
-  useCustomMainGradleTemplate: 0
+  useCustomMainGradleTemplate: 1
   useCustomLauncherGradleManifest: 0
   useCustomBaseGradleTemplate: 0
-  useCustomGradlePropertiesTemplate: 0
-  useCustomGradleSettingsTemplate: 0
+  useCustomGradlePropertiesTemplate: 1
+  useCustomGradleSettingsTemplate: 1
   useCustomProguardFile: 0
-  AndroidTargetArchitectures: 2
+  AndroidTargetArchitectures: 3
   AndroidAllowedArchitectures: -13
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/adamg/Documents/unity project/IIMCertificate.keystore
+  AndroidKeystoreName: C:/Users/milan/Downloads/IIMCertificate.keystore
   AndroidKeyaliasName: iimjv
-  AndroidEnableArmv9SecurityFeatures: 0
+  AndroidEnableArmv9SecurityFeatures: 1
   AndroidEnableArm64MTE: 0
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
@@ -295,7 +295,7 @@ PlayerSettings:
   AndroidMinifyDebug: 0
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 150
-  AndroidReportGooglePlayAppDependencies: 1
+  AndroidReportGooglePlayAppDependencies: 0
   androidSymbolsSizeThreshold: 800
   m_BuildTargetIcons:
   - m_BuildTarget: 

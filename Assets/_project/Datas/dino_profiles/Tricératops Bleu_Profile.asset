@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
   m_Name: "Tric\xE9ratops Bleu_Profile"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
-  accessoryTag: Jupe et Noeud
+  accessoryTag: Jupe
   positiveCondition: "Veut \xEAtre \xE0 droite"
   negativeCondition: "Pas \xE0 c\xF4t\xE9 d'un herbivore\nJamais au milieu"
   speciesName: "Tric\xE9ratops Bleu"

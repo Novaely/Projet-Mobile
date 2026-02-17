@@ -1,3 +1,5 @@
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -14,7 +16,7 @@ public class GameManager : MonoBehaviour
         EndLevel,
     }
 
-    public GameStates GameState {  get; private set; }
+    public GameStates GameState { get; private set; }
 
     void Awake()
     {
@@ -23,6 +25,19 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    void ProcessAuthentication(SignInStatus status)
+    {
+        if (status == SignInStatus.Success)
+        {
+            // Continue with Play Games Services
+        }
+        else
+        {
+            // Disable your integration with Play Games Services or show a login button
+            // to ask users to authenticate. Clicking it should call
+            // PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication).
+        }
+    }
     void Start()
     {
         GameState = GameStates.Init;
@@ -43,11 +58,14 @@ public class GameManager : MonoBehaviour
             UIManager.Instance.OnPauseActive += PauseActive;
             UIManager.Instance.OnPauseDesactive += PauseDesactive;
         }
+        PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+
     }
 
     void Update()
     {
-        switch (GameState) {
+        switch (GameState)
+        {
             case GameStates.Init:
                 if (PlayerSave.Instance.IsSaveLoad) { GameState = GameStates.Menu; }
                 break;

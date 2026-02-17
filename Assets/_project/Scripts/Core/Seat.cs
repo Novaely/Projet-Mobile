@@ -5,21 +5,23 @@ public class Seat : MonoBehaviour
 {
     [Header("Configuration")]   
     public SeatType seatType = SeatType.Normal;
+
+    [Tooltip("COCHER pour les sièges de la file d'attente (Spawn) !")]
+    public bool isSpawnSeat = false; 
+
     public SeatColumn seatColumn = SeatColumn.Milieu;
     public SeatRow seatRow = SeatRow.Milieu;
     
-
     [Header("État")]
     public Dino occupant; 
 
-    [Header("Voisins (A assigner manuellement)")]
+    [Header("Voisins (Manuel)")]
     public Seat front;
     public Seat back;
     public Seat left;
     public Seat right;
 
     [HideInInspector] public Seat[] neighbors; 
-
 
     private void Start()
     {
@@ -28,7 +30,6 @@ public class Seat : MonoBehaviour
         if (back) list.Add(back);
         if (left) list.Add(left);
         if (right) list.Add(right);
-        
         neighbors = list.ToArray();
     }
 
@@ -36,16 +37,7 @@ public class Seat : MonoBehaviour
     {
         if (occupant == null) Gizmos.color = Color.green; 
         else Gizmos.color = Color.red;   
-        
-        Vector3 TopLeft = transform.position - transform.right / 2 - transform.up / 2;
-        Vector3 TopRight = transform.position + transform.right / 2 - transform.up / 2;
-        Vector3 BotRight = transform.position + transform.right / 2 + transform.up / 2;
-        Vector3 BotLeft = transform.position - transform.right / 2 + transform.up / 2;
-
-        Gizmos.DrawLine(TopLeft, TopRight);
-        Gizmos.DrawLine(TopRight, BotRight);
-        Gizmos.DrawLine(BotRight, BotLeft);
-        Gizmos.DrawLine(BotLeft, TopLeft);
+        Gizmos.DrawWireCube(transform.position, Vector3.one * 0.5f);
         
         Gizmos.color = Color.cyan;
         if (front) Gizmos.DrawLine(transform.position, front.transform.position);

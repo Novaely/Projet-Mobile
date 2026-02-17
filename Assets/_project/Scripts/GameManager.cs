@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
         Menu,
         Tuto,
         Play,
+        Pause,
         EndLevel,
     }
 
@@ -36,6 +37,12 @@ public class GameManager : MonoBehaviour
         {
             PlayerSave.Instance.OnLevelEnd += LevelEnd;
         }
+
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.OnPauseActive += PauseActive;
+            UIManager.Instance.OnPauseDesactive += PauseDesactive;
+        }
     }
 
     void Update()
@@ -49,6 +56,8 @@ public class GameManager : MonoBehaviour
             case GameStates.Tuto:
                 break;
             case (GameStates.Play):
+                break;
+            case (GameStates.Pause):
                 break;
             case (GameStates.EndLevel):
                 break;
@@ -85,5 +94,15 @@ public class GameManager : MonoBehaviour
     void LevelEnd()
     {
         GameState = GameStates.EndLevel;
+    }
+
+    void PauseActive()
+    {
+        GameState = GameStates.Pause;
+    }
+
+    void PauseDesactive()
+    {
+        GameState = GameStates.Play;
     }
 }

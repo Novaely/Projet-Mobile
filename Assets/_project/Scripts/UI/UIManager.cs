@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _prefabUILevelInfoDino;
 
     private TextMeshProUGUI[] _textsToTranslate;
+
+    public event Action OnPauseActive;
+    public event Action OnPauseDesactive;
 
     private void Awake()
     {
@@ -51,5 +55,17 @@ public class UIManager : MonoBehaviour
         GameObject uiLevelInfoDino = Instantiate(_prefabUILevelInfoDino);
         uiLevelInfoDino.GetComponent<Canvas>().worldCamera = Camera.main;
         uiLevel.GetComponentInChildren<UILevel>().InitializeParam();
+    }
+
+    public void SetPause(bool acive)
+    {
+        if (acive)
+        {
+            OnPauseActive?.Invoke();
+        }
+        else
+        {
+            OnPauseDesactive?.Invoke();
+        }
     }
 }

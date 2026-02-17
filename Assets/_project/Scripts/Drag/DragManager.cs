@@ -10,7 +10,7 @@ public class DragManager : MonoBehaviour
     
     [Header("Références")]
     [SerializeField] private ConditionManager conditionManager;
-    private Dino setdragging;
+    private Dino setdragging; 
 
     [Header("Sécurité")]
     [SerializeField] float antiSpamDelay = 0.15f; 
@@ -92,7 +92,6 @@ public class DragManager : MonoBehaviour
                 if (_currentDino.LastPosition != null &&
                     _currentDino.LastPosition.TryGetComponent(out _oldSeat))
                 {
-                    UpdateNeighbors(_oldSeat);
                     ForceScoreUpdate();
                 }
             }
@@ -146,7 +145,8 @@ public class DragManager : MonoBehaviour
 
                         _currentDino.PlayPlacementAnimation();
 
-                        UpdateNeighbors(seat);
+                        UpdateAllBoard(); 
+
                         ForceScoreUpdate();
 
                         success = true;
@@ -154,18 +154,18 @@ public class DragManager : MonoBehaviour
                     }
                 }
 
-                if (!success) _currentDino.ReturnToLastPosition();
-                
-                if (!success && _oldSeat != null) _oldSeat.occupant = _currentDino;
+                if (!success) 
+                {
+                    _currentDino.ReturnToLastPosition();
+                    
+                    if (_oldSeat != null) 
+                    {
+                        _oldSeat.occupant = _currentDino;
+                        UpdateAllBoard();
+                    }
+                }
 
                 _nextInteractTime = Time.time + antiSpamDelay;
-            }
-            else
-            {
-                // C'EST ICI LA CORRECTION
-                // Si on relâche le clic SANS avoir bougé (pas de drag), on force le dino à vérifier sa place.
-                // Cela appellera EvaluateSatisfaction qui remettra le bon visuel (assis ou couché).
-                _currentDino.ReturnToLastPosition();
             }
 
             _currentDino = null;
@@ -178,25 +178,32 @@ public class DragManager : MonoBehaviour
         {
             dino.SetSlotPosition(seat.transform);
             conditionManager.ForceDropDino(dino, seat);
-            var eval = seat.GetComponent<SeatEvaluator>();
-            if (eval) eval.UpdateFeedback(dino);
-            
-            dino.PlayPlacementAnimation();
-            
-            UpdateNeighbors(seat);
-            ForceScoreUpdate();
         }
     }
 
-    private void UpdateNeighbors(Seat centerSeat)
+    private void UpdateAllBoard()
     {
-        if (centerSeat == null || centerSeat.neighbors == null) return;
-        foreach (var neighbor in centerSeat.neighbors)
+        Seat[] allSeats = FindObjectsByType<Seat>(FindObjectsSortMode.None);
+        int spawnLayer = LayerMask.NameToLayer("Spawn");
+
+        foreach (Seat seat in allSeats)
         {
-            if (neighbor != null && neighbor.occupant != null)
+            if (seat.isSpawnSeat || (spawnLayer != -1 && seat.gameObject.layer == spawnLayer)) 
+                continue; 
+
+            var eval = seat.GetComponent<SeatEvaluator>();
+
+            if (seat.occupant != null)
             {
-                var eval = neighbor.GetComponent<SeatEvaluator>();
-                if (eval != null) eval.UpdateFeedback(neighbor.occupant);
+                seat.occupant.EvaluateSatisfaction(seat);
+
+                if (eval != null) eval.UpdateFeedback(seat.occupant);
+
+                seat.occupant.PlayPlacementAnimation();
+            }
+            else
+            {
+                if (eval != null) eval.ResetVisuals();
             }
         }
     }

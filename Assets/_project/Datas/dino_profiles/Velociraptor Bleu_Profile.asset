@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Velociraptor Bleu_Profile
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre au milieu"
+  positiveCondition: "Veut \xEAtre au milieu (colonne)"
   negativeCondition: "Ne veut pas \xEAtre devant"
   speciesName: Velociraptor Bleu
   diet: 1

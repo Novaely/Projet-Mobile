@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
   positiveCondition: 
-  negativeCondition: "Ne veut pas etre derri\xE8re"
+  negativeCondition: "Ne veut pas \xEAtre derri\xE8re"
   speciesName: "Pt\xE9ranodon Rouge"
   diet: 1
   myRules:

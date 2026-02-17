@@ -753,7 +753,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &8565524787426626426
 MonoBehaviour:
@@ -988,3 +988,4 @@ MonoBehaviour:
   _buttonNextDino: {fileID: 6650467898721546115}
   _buttonPreviousDino: {fileID: 3767456542214740273}
   _imagePreviewDino: {fileID: 1048135108860685090}
+  Spawn: {fileID: 0}

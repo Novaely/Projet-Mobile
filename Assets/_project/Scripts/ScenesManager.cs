@@ -5,12 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class ScenesManager : MonoBehaviour
 {
+    public WorldData _worlds;
+
     public static ScenesManager Instance;
 
     public event Action<int> OnSceneLoad;
 
     public event Action OnMenuLoad;
     public event Action OnLevelLoad;
+
+    public int ActiveSceneIndex { get; private set; }
 
     private void Awake()
     {
@@ -31,6 +35,8 @@ public class ScenesManager : MonoBehaviour
 
     private IEnumerator LoadSceneRoutine(int index)
     {
+        ActiveSceneIndex = index;
+
         Debug.Log("Loading  Level " + index);
 
         yield return SceneManager.LoadSceneAsync("Level" + index);
@@ -42,6 +48,7 @@ public class ScenesManager : MonoBehaviour
 
     public void LoadSceneMainMenu()
     {
+        ActiveSceneIndex = 0;
         StartCoroutine(LoadMainMenuRoutine(null));
     }
 
@@ -74,5 +81,40 @@ public class ScenesManager : MonoBehaviour
 
         Debug.LogWarning("Scene name format invalid.");
         return -1;
+    }
+
+    public Scene? GetLevelScene(int index)
+    {
+        string sceneName = "Level" + index;
+
+        Scene scene = SceneManager.GetSceneByName(sceneName);
+        if (scene != null)
+        {
+            return scene;
+        }
+
+        Debug.LogWarning("Scene index out of range.");
+        return null;
+    }
+
+    public int GetStarsForNextWorld(int index)
+    {
+        foreach (var world in _worlds.Worlds)
+        {
+            index -= world.levelInThisWorld;
+            if (index < 0) return -1;
+            if (index == 0) return world.numberStarNeed;
+        }
+        return -1;
+    }
+
+    public int GetStarsObtained()
+    {
+        int numberStar = 0;
+        foreach (var nbStarLevel in PlayerSave.Instance.LevelSave.starsLevels)
+        {
+            numberStar += nbStarLevel;
+        }
+        return numberStar;
     }
 }

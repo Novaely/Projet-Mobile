@@ -1,177 +1,193 @@
 using UnityEngine;
 using UnityEditor;
+using System.Collections.Generic;
+using System.IO;
 
-public class DinoCreationWizard : EditorWindow
+public class DinoCreatorWizard : EditorWindow
 {
-    // --- DONNÉES ---
-    string dinoName = "Nouveau Dino";
-    DinoProfileSO profile;
-
-    // --- VISUELS DINO ---
-    Sprite passiveSprite;
-    Sprite idleSprite;
-    Sprite happySprite;
+    string dinoName = "New Dino";
+    
+    [Header("Sprites Dino")]
+    Sprite passiveSprite; 
+    Sprite idleSprite;    
+    Sprite happySprite;  
     Sprite angrySprite;
 
-    // --- VISUELS PARTICULES ---
-    Sprite particleHappy; // Cœur
-    Sprite particleAngry; // Éclair
-
-    // --- VISUELS BULLE FIXE ---
+    [Header("Bulles & Particules")]
     Sprite bubbleHappy;
     Sprite bubbleAngry;
+    Sprite particleHappy;
+    Sprite particleAngry;
+
+    DietType diet = DietType.Herbivore;
+    string accessoryTag = "";
+    
+    string positiveCond = "J'aime...";
+    string negativeCond = "Je déteste...";
+
+    List<SeatRuleSO> rules = new List<SeatRuleSO>();
+    
+    const string PROFILE_PATH = "Assets/_project/Datas/dino_profiles/";
+    const string PREFAB_PATH = "Assets/_project/Prefabs/Dino/";
 
     [MenuItem("Tools/Dino Creator Wizard")]
     public static void ShowWindow()
     {
-        GetWindow<DinoCreationWizard>("Dino Creator");
+        GetWindow<DinoCreatorWizard>("Dino Creator");
     }
 
     void OnGUI()
     {
-        GUILayout.Label("CONFIGURATION DINO", EditorStyles.boldLabel);
-        dinoName = EditorGUILayout.TextField("Nom du GameObject", dinoName);
-        profile = (DinoProfileSO)EditorGUILayout.ObjectField("Profil (SO)", profile, typeof(DinoProfileSO), false);
+        GUILayout.Label("🦖 CRÉATEUR DE DINO COMPLET", EditorStyles.boldLabel);
+        EditorGUILayout.Space();
+
+        // --- 1. VISUELS CORPS ---
+        GUILayout.Label("1. Apparence du Dinosaure", EditorStyles.boldLabel);
+        dinoName = EditorGUILayout.TextField("Nom du Dino", dinoName);
+        passiveSprite = (Sprite)EditorGUILayout.ObjectField("Drag (Debout)", passiveSprite, typeof(Sprite), false);
+        idleSprite = (Sprite)EditorGUILayout.ObjectField("Assis (Neutre)", idleSprite, typeof(Sprite), false);
+        happySprite = (Sprite)EditorGUILayout.ObjectField("Visuel Content", happySprite, typeof(Sprite), false);
+        angrySprite = (Sprite)EditorGUILayout.ObjectField("Visuel Pas Content", angrySprite, typeof(Sprite), false);
 
         EditorGUILayout.Space();
-        GUILayout.Label("SPRITES DINO", EditorStyles.boldLabel);
-        passiveSprite = (Sprite)EditorGUILayout.ObjectField("Passive (Drag)", passiveSprite, typeof(Sprite), false);
-        idleSprite = (Sprite)EditorGUILayout.ObjectField("Idle (Assis)", idleSprite, typeof(Sprite), false);
-        happySprite = (Sprite)EditorGUILayout.ObjectField("Happy (Content)", happySprite, typeof(Sprite), false);
-        angrySprite = (Sprite)EditorGUILayout.ObjectField("Angry (Énervé)", angrySprite, typeof(Sprite), false);
+
+        // --- 2. FEEDBACKS (BULLLES & PARTICULES) ---
+        GUILayout.Label("2. Feedbacks Visuels (UI & FX)", EditorStyles.boldLabel);
+        EditorGUILayout.BeginHorizontal();
+        bubbleHappy = (Sprite)EditorGUILayout.ObjectField("Bulle 😊", bubbleHappy, typeof(Sprite), false);
+        bubbleAngry = (Sprite)EditorGUILayout.ObjectField("Bulle 😡", bubbleAngry, typeof(Sprite), false);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        particleHappy = (Sprite)EditorGUILayout.ObjectField("Particule ✨", particleHappy, typeof(Sprite), false);
+        particleAngry = (Sprite)EditorGUILayout.ObjectField("Particule 💢", particleAngry, typeof(Sprite), false);
+        EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.Space();
-        GUILayout.Label("SPRITES FEEDBACK (Particules)", EditorStyles.boldLabel);
-        particleHappy = (Sprite)EditorGUILayout.ObjectField("Particule Content (Cœur)", particleHappy, typeof(Sprite), false);
-        particleAngry = (Sprite)EditorGUILayout.ObjectField("Particule Énervé (Éclair)", particleAngry, typeof(Sprite), false);
+
+        // --- 3. DATA ---
+        GUILayout.Label("3. Game Design & Textes", EditorStyles.boldLabel);
+        diet = (DietType)EditorGUILayout.EnumPopup("Régime", diet);
+        accessoryTag = EditorGUILayout.TextField("Accessoire (Tag)", accessoryTag);
+        
+        GUILayout.Label("Texte VERT (J'aime) :", EditorStyles.miniLabel);
+        positiveCond = EditorGUILayout.TextArea(positiveCond, GUILayout.Height(30));
+        GUILayout.Label("Texte ROUGE (Je déteste) :", EditorStyles.miniLabel);
+        negativeCond = EditorGUILayout.TextArea(negativeCond, GUILayout.Height(30));
 
         EditorGUILayout.Space();
-        GUILayout.Label("SPRITES BULLE (Persistante)", EditorStyles.boldLabel);
-        bubbleHappy = (Sprite)EditorGUILayout.ObjectField("Bulle Content", bubbleHappy, typeof(Sprite), false);
-        bubbleAngry = (Sprite)EditorGUILayout.ObjectField("Bulle Énervé", bubbleAngry, typeof(Sprite), false);
+
+        // --- 4. RÈGLES ---
+        GUILayout.Label("4. Règles de Satisfaction", EditorStyles.boldLabel);
+        for (int i = 0; i < rules.Count; i++)
+        {
+            EditorGUILayout.BeginHorizontal();
+            rules[i] = (SeatRuleSO)EditorGUILayout.ObjectField($"Règle {i+1}", rules[i], typeof(SeatRuleSO), false);
+            if (GUILayout.Button("X", GUILayout.Width(20))) rules.RemoveAt(i);
+            EditorGUILayout.EndHorizontal();
+        }
+        if (GUILayout.Button("+ Ajouter une Règle")) rules.Add(null);
 
         EditorGUILayout.Space(20);
 
-        if (GUILayout.Button("GRÉER / METTRE À JOUR LE DINO", GUILayout.Height(40)))
+        GUI.backgroundColor = Color.green;
+        if (GUILayout.Button("GÉNÉRER CE PUTAIN DE DINO COMPLET", GUILayout.Height(45)))
         {
-            CreateOrUpdateDino();
+            CreateDino();
         }
+        GUI.backgroundColor = Color.white;
     }
 
-    void CreateOrUpdateDino()
+    void CreateDino()
     {
-        GameObject dinoObj;
-
-        // 1. Si on a sélectionné un Dino, on le met à jour, sinon on en crée un
-        if (Selection.activeGameObject != null && Selection.activeGameObject.GetComponent<Dino>() != null)
-        {
-            dinoObj = Selection.activeGameObject;
-            Undo.RecordObject(dinoObj, "Update Dino");
-        }
-        else
-        {
-            dinoObj = new GameObject(dinoName);
-            Undo.RegisterCreatedObjectUndo(dinoObj, "Create Dino");
-            dinoObj.AddComponent<SpriteRenderer>();
-            dinoObj.AddComponent<Dino>();
-            // Ajouter un BoxCollider2D si besoin pour le clic
-            dinoObj.AddComponent<BoxCollider2D>(); 
+        if (string.IsNullOrEmpty(dinoName)) {
+            EditorUtility.DisplayDialog("Erreur", "Donne un nom au Dino !", "OK");
+            return;
         }
 
-        Dino dinoScript = dinoObj.GetComponent<Dino>();
-        SpriteRenderer mainRenderer = dinoObj.GetComponent<SpriteRenderer>();
+        EnsureDirectoryExists(PROFILE_PATH);
+        EnsureDirectoryExists(PREFAB_PATH);
 
-        // --- CONFIGURATION PRINCIPALE ---
-        dinoScript.profile = profile;
+        // --- SCRIPTABLE OBJECT ---
+        DinoProfileSO newProfile = CreateInstance<DinoProfileSO>();
+        newProfile.speciesName = dinoName;
+        newProfile.diet = diet;
+        newProfile.accessoryTag = accessoryTag;
+        newProfile.positiveCondition = positiveCond;
+        newProfile.negativeCondition = negativeCond;
+        newProfile.myRules = new List<SeatRuleSO>();
+        foreach (var r in rules) if (r != null) newProfile.myRules.Add(r);
+
+        string profileAssetPath = AssetDatabase.GenerateUniqueAssetPath(PROFILE_PATH + dinoName + "_Profile.asset");
+        AssetDatabase.CreateAsset(newProfile, profileAssetPath);
+
+        // --- GAMEOBJECT ---
+        GameObject dinoGO = new GameObject(dinoName);
+        dinoGO.layer = LayerMask.NameToLayer("Dino");
+
+        var sr = dinoGO.AddComponent<SpriteRenderer>();
+        sr.sprite = idleSprite;
+        sr.sortingOrder = 5;
+
+        dinoGO.AddComponent<CircleCollider2D>().radius = 0.5f;
+
+        // --- SCRIPT DINO & ASSIGNATION ---
+        var dinoScript = dinoGO.AddComponent<Dino>();
+        dinoScript.profile = newProfile;
+        
+        // Assignation des sprites de corps
         dinoScript.passiveSprite = passiveSprite;
         dinoScript.idleSprite = idleSprite;
         dinoScript.happySprite = happySprite;
         dinoScript.angrySprite = angrySprite;
+
+        // Assignation des sprites de particules
         dinoScript.particleHappy = particleHappy;
         dinoScript.particleAngry = particleAngry;
+
+        // Assignation des sprites de bulles
         dinoScript.bubbleHappySprite = bubbleHappy;
         dinoScript.bubbleAngrySprite = bubbleAngry;
 
-        // Assigner le sprite par défaut
-        if (passiveSprite != null) mainRenderer.sprite = passiveSprite;
-        mainRenderer.sortingOrder = 10; // Valeur par défaut pour être devant le siège
+        // --- CRÉATION DE LA BULLE (ENFANT) ---
+        GameObject bubbleGO = new GameObject("Bubble");
+        bubbleGO.transform.SetParent(dinoGO.transform);
+        bubbleGO.transform.localPosition = new Vector3(0.7f, 0.8f, 0);
+        var bubbleSR = bubbleGO.AddComponent<SpriteRenderer>();
+        bubbleSR.sortingOrder = 10;
+        dinoScript.bubbleRenderer = bubbleSR; // On lie le Renderer au script
 
-        // --- 2. GESTION DES PARTICULES (Enfant) ---
-        Transform particlesTransform = dinoObj.transform.Find("FeedbackParticles");
-        GameObject particlesObj;
-
-        if (particlesTransform == null)
-        {
-            particlesObj = new GameObject("FeedbackParticles");
-            particlesObj.transform.SetParent(dinoObj.transform);
-            particlesObj.transform.localPosition = new Vector3(0, 1.2f, 0); // Position au-dessus de la tête
+        // --- TENTATIVE DE RÉCUPÉRATION DU PARTICLE SYSTEM ---
+        // On cherche si un ParticleSystem existe déjà dans tes prefabs ou on en crée un vide
+        // Ici on suppose que tu as un ParticleSystem sur le Dino ou un enfant
+        // Pour faire simple, on ajoute un ParticleSystem de base s'il n'existe pas
+        var ps = dinoGO.GetComponentInChildren<ParticleSystem>();
+        if(ps == null) {
+            GameObject psGO = new GameObject("FeedbackParticles");
+            psGO.transform.SetParent(dinoGO.transform);
+            psGO.transform.localPosition = Vector3.zero;
+            ps = psGO.AddComponent<ParticleSystem>();
+            // Config de base rapide pour que ça ne spam pas au lancement
+            var main = ps.main;
+            main.playOnAwake = false;
         }
-        else
-        {
-            particlesObj = particlesTransform.gameObject;
-        }
-
-        // Configuration du Particle System
-        ParticleSystem ps = particlesObj.GetComponent<ParticleSystem>();
-        if (ps == null) ps = particlesObj.AddComponent<ParticleSystem>();
-        
-        // Configuration automatique des modules pour l'effet "POUF"
-        var main = ps.main;
-        main.loop = true; // On boucle (géré par le script)
-        main.duration = 2f;
-        main.startLifetime = 1.2f;
-        main.startSpeed = 2f;
-        main.startSize = 0.5f;
-        
-        var emission = ps.emission;
-        emission.rateOverTime = 0f; // Pas de flux continu
-        // On configure le Burst
-        emission.SetBursts(new ParticleSystem.Burst[] { new ParticleSystem.Burst(0f, 3) }); // 3 particules d'un coup
-
-        var shape = ps.shape;
-        shape.shapeType = ParticleSystemShapeType.Cone;
-        shape.angle = 35f;
-        shape.radius = 0.2f;
-
-        var texSheet = ps.textureSheetAnimation;
-        texSheet.enabled = true;
-        texSheet.mode = ParticleSystemAnimationMode.Sprites;
-        
-        // IMPORTANT : Le Renderer
-        var renderer = ps.GetComponent<ParticleSystemRenderer>();
-        renderer.renderMode = ParticleSystemRenderMode.Billboard;
-        renderer.material = new Material(Shader.Find("Sprites/Default")); // Matériel par défaut pour éviter le rose
-        renderer.sortingOrder = 20; // Devant le dino
-
-        // Lier au script
         dinoScript.feedbackParticles = ps;
 
+        // --- SAUVEGARDE ---
+        string prefabAssetPath = AssetDatabase.GenerateUniqueAssetPath(PREFAB_PATH + dinoName + ".prefab");
+        PrefabUtility.SaveAsPrefabAsset(dinoGO, prefabAssetPath);
 
-        // --- 3. GESTION DE LA BULLE PERSISTANTE (Enfant) ---
-        Transform bubbleTransform = dinoObj.transform.Find("PersistentBubble");
-        GameObject bubbleObj;
+        DestroyImmediate(dinoGO);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
 
-        if (bubbleTransform == null)
-        {
-            bubbleObj = new GameObject("PersistentBubble");
-            bubbleObj.transform.SetParent(dinoObj.transform);
-            bubbleObj.transform.localPosition = new Vector3(0, 1.5f, 0); // Un peu plus haut que les particules
-        }
-        else
-        {
-            bubbleObj = bubbleTransform.gameObject;
-        }
+        Selection.activeObject = AssetDatabase.LoadAssetAtPath<GameObject>(prefabAssetPath);
+        Debug.Log($"<color=green>Dino {dinoName} créé avec tous ses sprites de bulles et particules !</color>");
+    }
 
-        SpriteRenderer bubbleSr = bubbleObj.GetComponent<SpriteRenderer>();
-        if (bubbleSr == null) bubbleSr = bubbleObj.AddComponent<SpriteRenderer>();
-
-        bubbleSr.sortingOrder = 21; // Devant tout le monde
-        bubbleObj.SetActive(false); // Caché par défaut
-
-        // Lier au script
-        dinoScript.bubbleRenderer = bubbleSr;
-
-        Debug.Log($"Dino '{dinoObj.name}' configuré avec succès !");
-        Selection.activeGameObject = dinoObj;
+    void EnsureDirectoryExists(string path)
+    {
+        string sysPath = Application.dataPath + path.Substring("Assets".Length);
+        if (!Directory.Exists(sysPath)) Directory.CreateDirectory(sysPath);
     }
 }

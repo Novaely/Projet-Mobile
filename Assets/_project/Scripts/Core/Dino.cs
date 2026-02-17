@@ -22,7 +22,10 @@ public class Dino : MonoBehaviour
     public Sprite particleAngry;
     public SpriteRenderer bubbleRenderer; 
     public Sprite bubbleHappySprite;      
-    public Sprite bubbleAngrySprite;      
+    public Sprite bubbleAngrySprite;
+
+    [Header("--- SFX ---")]
+    [SerializeField] AudioClip _SFXBubbleEmotion;
 
     [Header("--- ETAT ---")]
     public PlacementState currentState = PlacementState.Neutre;
@@ -192,6 +195,7 @@ public class Dino : MonoBehaviour
         textureModule.mode = ParticleSystemAnimationMode.Sprites;
         textureModule.SetSprite(0, spriteToPlay);
         feedbackParticles.Play();
+        AudioManager.Instance.PlaySFX(_SFXBubbleEmotion);
     }
 
     private IEnumerator AnimHappyJump()

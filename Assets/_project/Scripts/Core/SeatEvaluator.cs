@@ -1,80 +1,157 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UI;
 
 public class SeatEvaluator : MonoBehaviour
 {
-    [Header("UI References (Local)")]
-    public TextMeshProUGUI stateText;
+    [Header("Configuration Rendu")]
+    public SpriteRenderer[] visualRenderers; 
+    public Sprite spriteBuche; 
+
+    [Header("UI References")]
     public TextMeshProUGUI descriptionText;
-    public Image spriteDisplay;
+    public SpriteRenderer feedbackIconRenderer; 
 
-    [Header("Visuels")]
-    public Color neutreColor = Color.gray;
-    public Color bonColor = Color.green;
-    public Color mauvaisColor = Color.red;
+    [Header("Couleurs État Siège")]
+    public Color colorSiegeLibre = new Color(0, 1, 0, 0.5f); 
+    public Color colorSiegeOccupe = new Color(1, 0, 0, 0.5f);
+    public Color colorSiegeVide = Color.white;
 
-    public Sprite neutreSprite;
+    [Header("Sprites Feedback")]
     public Sprite bonSprite;
     public Sprite mauvaisSprite;
+    public Sprite neutreSprite;
 
-    private Seat seat;
+    private Seat _seat;
+    private bool _localIsDragging = false; 
+
+    void Awake()
+    {
+        _seat = GetComponent<Seat>();
+        
+        if (visualRenderers != null && spriteBuche != null)
+        {
+            foreach (var renderer in visualRenderers)
+            {
+                if (renderer != null) renderer.sprite = spriteBuche;
+            }
+        }
+    }
 
     void Start()
     {
-        seat = GetComponent<Seat>();
-        UpdateVisuals(null);
+        var dm = FindFirstObjectByType<DragManager>();
+        if (dm != null)
+        {
+            dm.OnDrag += HandleDragStart;
+            dm.OnDragCanceled += HandleDragEnd;
+        }
+
+        ResetVisuals();
     }
+
+    void OnDestroy()
+    {
+        var dm = FindFirstObjectByType<DragManager>();
+        if (dm != null)
+        {
+            dm.OnDrag -= HandleDragStart;
+            dm.OnDragCanceled -= HandleDragEnd;
+        }
+    }
+
+    void HandleDragStart() => _localIsDragging = true;
+    void HandleDragEnd() { _localIsDragging = false; ResetVisuals(); }
 
     public void UpdateFeedback(Dino dino)
     {
         if (dino != null)
         {
-            dino.EvaluateSatisfaction(seat);
+            dino.EvaluateSatisfaction(_seat);
+            
+            if (!_localIsDragging)
+            {
+                dino.PlayPlacementAnimation(); 
+            }
+
+            UpdateVisuals(dino);
         }
-        UpdateVisuals(dino);
+        else
+        {
+            ResetVisuals();
+        }
     }
 
     void UpdateVisuals(Dino dino)
     {
-        PlacementState state = dino != null ? dino.currentState : PlacementState.Neutre;
-
-        if (stateText != null)
+        if (visualRenderers != null)
         {
-            stateText.text = state.ToString();
-            stateText.color = state == PlacementState.Bon ? bonColor : 
-                             state == PlacementState.Mauvais ? mauvaisColor : neutreColor;
+            bool estLeDinoAssis = (_seat.occupant == dino);
+            Color targetColor = colorSiegeVide;
+
+            if (_localIsDragging && !estLeDinoAssis)
+            {
+                bool estVraimentLibre = (_seat.occupant == null);
+                targetColor = estVraimentLibre ? colorSiegeLibre : colorSiegeOccupe;
+            }
+
+            foreach (var renderer in visualRenderers)
+            {
+                if (renderer != null) renderer.color = targetColor;
+            }
         }
 
-        if (spriteDisplay != null)
+        if (feedbackIconRenderer != null)
         {
-            spriteDisplay.sprite = state switch
+            feedbackIconRenderer.sprite = dino.currentState switch
             {
                 PlacementState.Bon => bonSprite,
                 PlacementState.Mauvais => mauvaisSprite,
                 _ => neutreSprite
             };
-            spriteDisplay.gameObject.SetActive(spriteDisplay.sprite != null);
+            feedbackIconRenderer.gameObject.SetActive(true);
         }
 
         if (descriptionText != null)
         {
-            if (dino != null && dino.profile != null)
+            bool estLeDinoAssis = (_seat.occupant == dino);
+            if (_localIsDragging && !estLeDinoAssis && dino.profile != null)
             {
-                descriptionText.text = $"<color=green><b>Aime :</b> {dino.profile.positiveCondition}</color>\n" +
-                                     $"<color=red><b>Déteste :</b> {dino.profile.negativeCondition}</color>";
+                descriptionText.text = $"<color=green>Aime : {dino.profile.positiveCondition}</color>\n" +
+                                     $"<color=red>Déteste : {dino.profile.negativeCondition}</color>";
             }
             else
             {
-                descriptionText.text = "Siège vide";
+                descriptionText.text = "";
             }
         }
     }
-    
+
+    public void ResetVisuals()
+    {
+        if (visualRenderers != null)
+        {
+            foreach (var renderer in visualRenderers)
+            {
+                if (renderer != null) renderer.color = colorSiegeVide;
+            }
+        }
+        
+        if (feedbackIconRenderer != null)
+        {
+            feedbackIconRenderer.gameObject.SetActive(false);
+        }
+
+        if (descriptionText != null)
+        {
+            descriptionText.text = "";
+        }
+    }
+
     public float GetCurrentSatisfaction()
     {
-        if (seat != null && seat.occupant != null)
-            return seat.occupant.currentSatisfaction;
+        if (_seat != null && _seat.occupant != null)
+            return _seat.occupant.currentSatisfaction; //
         return 0f;
     }
 }

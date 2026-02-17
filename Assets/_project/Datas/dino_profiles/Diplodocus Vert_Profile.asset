@@ -18,6 +18,5 @@ MonoBehaviour:
   speciesName: Diplodocus Vert
   diet: 0
   myRules:
-  - {fileID: 11400000, guid: 15f4083acb666bb409cca4f552a5ae32, type: 2}
   - {fileID: 11400000, guid: c4b12ceb2a1154640a835ceba2e202bf, type: 2}
   - {fileID: 11400000, guid: 7e443ffd4e0a114409a86c03bae4259c, type: 2}

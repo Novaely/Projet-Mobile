@@ -5,18 +5,14 @@ public class Seat : MonoBehaviour
 {
     [Header("Configuration")]   
     public SeatType seatType = SeatType.Normal;
-    
-
     public SeatColumn seatColumn = SeatColumn.Milieu;
     public SeatRow seatRow = SeatRow.Milieu;
     
-    [Tooltip("Distance maximum pour détecter un voisin (doit être un peu plus grand que l'espacement de ta grille)")]
-    public float detectRadius = 2.1f;
 
     [Header("État")]
     public Dino occupant; 
 
-    [Header("Voisins (Détectés auto)")]
+    [Header("Voisins (A assigner manuellement)")]
     public Seat front;
     public Seat back;
     public Seat left;
@@ -24,10 +20,6 @@ public class Seat : MonoBehaviour
 
     [HideInInspector] public Seat[] neighbors; 
 
-    private void Awake()
-    {
-        AutoDetectNeighbors();
-    }
 
     private void Start()
     {
@@ -36,38 +28,8 @@ public class Seat : MonoBehaviour
         if (back) list.Add(back);
         if (left) list.Add(left);
         if (right) list.Add(right);
+        
         neighbors = list.ToArray();
-    }
-
-    private void AutoDetectNeighbors()
-    {
-        front = back = left = right = null;
-
-        Seat[] allSeats = Object.FindObjectsByType<Seat>(FindObjectsSortMode.None);
-
-        foreach (Seat other in allSeats)
-        {
-            if (other == this) continue;
-
-            Vector3 dir = other.transform.position - transform.position;
-            float dist = dir.magnitude;
-
-            if (dist <= detectRadius)
-            {
-                Vector3 normDir = dir.normalized;
-
-                if (Mathf.Abs(normDir.x) > Mathf.Abs(normDir.y))
-                {
-                    if (normDir.x > 0.5f) right = other; 
-                    else if (normDir.x < -0.5f) left = other;  
-                }
-                else
-                {
-                    if (normDir.y > 0.5f) front = other;       
-                    else if (normDir.y < -0.5f) back = other;  
-                }
-            }
-        }
     }
 
     private void OnDrawGizmosSelected()

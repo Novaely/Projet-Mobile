@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: WorldData
   m_EditorClassIdentifier: Assembly-CSharp::WorldData
   Worlds:
-  - label: VrouuumVrouuum
+  - label: Monde 1
     levelInThisWorld: 5
     numberStarNeed: 0
-  - label: Cineee
+  - label: Monde 2
     levelInThisWorld: 5
-    numberStarNeed: 5
-  - label: oihg
+    numberStarNeed: 12
+  - label: Monde 3
     levelInThisWorld: 5
     numberStarNeed: 25

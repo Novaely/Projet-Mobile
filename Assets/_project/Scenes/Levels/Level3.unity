@@ -318,6 +318,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+      propertyPath: back
+      value: 
+      objectReference: {fileID: 2036870638}
+    - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+      propertyPath: right
+      value: 
+      objectReference: {fileID: 1799707940}
+    - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
       propertyPath: seatRow
       value: 2
       objectReference: {fileID: 0}
@@ -391,6 +399,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6834832061970728478, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
   m_PrefabInstance: {fileID: 503467205}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &503467207 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+  m_PrefabInstance: {fileID: 503467205}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
 --- !u!1 &676351097
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +603,6 @@ MonoBehaviour:
   seatType: 0
   seatColumn: 1
   seatRow: 1
-  detectRadius: 2.1
   occupant: {fileID: 0}
   front: {fileID: 0}
   back: {fileID: 0}
@@ -699,6 +717,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+      propertyPath: front
+      value: 
+      objectReference: {fileID: 2036870638}
+    - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+      propertyPath: right
+      value: 
+      objectReference: {fileID: 1360434168}
+    - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
       propertyPath: seatRow
       value: 2
       objectReference: {fileID: 0}
@@ -772,6 +798,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6834832061970728478, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
   m_PrefabInstance: {fileID: 1094216402}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1094216404 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+  m_PrefabInstance: {fileID: 1094216402}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
 --- !u!1 &1302189363
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,8 +836,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.035482, y: 1.0437272, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1337485443}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -916,6 +953,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+      propertyPath: left
+      value: 
+      objectReference: {fileID: 1094216404}
+    - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
       propertyPath: seatRow
       value: 2
       objectReference: {fileID: 0}
@@ -989,6 +1030,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6834832061970728478, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
   m_PrefabInstance: {fileID: 1360434166}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1360434168 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+  m_PrefabInstance: {fileID: 1360434166}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
 --- !u!1 &1604867146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,6 +1180,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+      propertyPath: left
+      value: 
+      objectReference: {fileID: 503467207}
+    - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
       propertyPath: seatRow
       value: 0
       objectReference: {fileID: 0}
@@ -1201,6 +1257,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6834832061970728478, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
   m_PrefabInstance: {fileID: 1799707938}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1799707940 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+  m_PrefabInstance: {fileID: 1799707938}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
 --- !u!1 &1931558736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,6 +1413,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+      propertyPath: back
+      value: 
+      objectReference: {fileID: 1094216404}
+    - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+      propertyPath: front
+      value: 
+      objectReference: {fileID: 503467207}
+    - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
       propertyPath: seatRow
       value: 2
       objectReference: {fileID: 0}
@@ -1415,6 +1490,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6834832061970728478, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
   m_PrefabInstance: {fileID: 2036870636}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2036870638 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
+  m_PrefabInstance: {fileID: 2036870636}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
 --- !u!1 &2143290709
 GameObject:
   m_ObjectHideFlags: 0

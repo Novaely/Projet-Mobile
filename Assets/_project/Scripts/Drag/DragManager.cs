@@ -44,6 +44,8 @@ public class DragManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.GameState != GameManager.GameStates.Play) { return; }
+
         bool pressed = false, released = false, holding = false;
         Vector2 screenPos = Vector2.zero;
 
@@ -76,19 +78,15 @@ public class DragManager : MonoBehaviour
             {
                 _startPosition = worldPos;
                 _currentDino = dino;
-
                 OnDinoClicked?.Invoke(_currentDino);
-
             }
         }
         else if (holding && _currentDino != null)
         {
-            if (!_isDragging && (worldPos - _startPosition).magnitude >= 0.5)
+            if (!_isDragging && (worldPos - _startPosition).magnitude >= 0.5f)
             {
                 _isDragging = true;
-
                 OnDrag?.Invoke();
-
                 _currentDino.SetDragging(true);
 
                 if (_currentDino.LastPosition != null &&
@@ -104,16 +102,18 @@ public class DragManager : MonoBehaviour
                 _currentDino.transform.position = worldPos;
 
                 RaycastHit2D hitPlace = Physics2D.Raycast(worldPos, Vector2.zero, 100f, EmplacementMask);
-                Seat seat = (hitPlace && hitPlace.transform.TryGetComponent(out Seat s)) ? s : null;
+                Seat seat = (hitPlace.collider != null && hitPlace.transform.TryGetComponent(out Seat s)) ? s : null;
 
                 if (_lastHoveredSeat != seat)
                 {
                     if (_lastHoveredSeat) ResetSeatColor(_lastHoveredSeat);
                     _lastHoveredSeat = seat;
-                }
-                if (seat)
-                {
-                    seat.GetComponent<SpriteRenderer>().color = conditionManager.GetHighlightColor(_currentDino, seat);
+                    
+                    if (_lastHoveredSeat)
+                    {
+                        var eval = _lastHoveredSeat.GetComponent<SeatEvaluator>();
+                        if (eval) eval.UpdateFeedback(_currentDino);
+                    }
                 }
             }
         }
@@ -134,15 +134,17 @@ public class DragManager : MonoBehaviour
                 bool success = false;
                 RaycastHit2D hitPlace = Physics2D.Raycast(worldPos, Vector2.zero, 100f, EmplacementMask);
 
-                if (hitPlace && hitPlace.transform.TryGetComponent(out Seat seat))
+                if (hitPlace.collider != null && hitPlace.transform.TryGetComponent(out Seat seat))
                 {
                     if (conditionManager.DropDino(_currentDino, seat))
                     {
                         conditionManager.PickupDino(_oldSeat);
-
                         _currentDino.SetSlotPosition(seat.transform);
+                        
                         var eval = seat.GetComponent<SeatEvaluator>();
                         if (eval) eval.UpdateFeedback(_currentDino);
+
+                        _currentDino.PlayPlacementAnimation();
 
                         UpdateNeighbors(seat);
                         ForceScoreUpdate();
@@ -153,10 +155,20 @@ public class DragManager : MonoBehaviour
                 }
 
                 if (!success) _currentDino.ReturnToLastPosition();
+                
+                if (!success && _oldSeat != null) _oldSeat.occupant = _currentDino;
 
                 _nextInteractTime = Time.time + antiSpamDelay;
             }
-                _currentDino = null;
+            else
+            {
+                // C'EST ICI LA CORRECTION
+                // Si on relâche le clic SANS avoir bougé (pas de drag), on force le dino à vérifier sa place.
+                // Cela appellera EvaluateSatisfaction qui remettra le bon visuel (assis ou couché).
+                _currentDino.ReturnToLastPosition();
+            }
+
+            _currentDino = null;
         }
     }
 
@@ -168,6 +180,9 @@ public class DragManager : MonoBehaviour
             conditionManager.ForceDropDino(dino, seat);
             var eval = seat.GetComponent<SeatEvaluator>();
             if (eval) eval.UpdateFeedback(dino);
+            
+            dino.PlayPlacementAnimation();
+            
             UpdateNeighbors(seat);
             ForceScoreUpdate();
         }
@@ -194,7 +209,7 @@ public class DragManager : MonoBehaviour
   
     private void ResetSeatColor(Seat seat)
     {
-        var sr = seat.GetComponent<SpriteRenderer>();
-        if (sr != null) sr.color = new Color(1f, 1f, 1f, 0.3f); 
+        var eval = seat.GetComponent<SeatEvaluator>();
+        if (eval != null) eval.ResetVisuals();
     }
 }

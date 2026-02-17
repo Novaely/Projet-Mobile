@@ -17,8 +17,8 @@ MonoBehaviour:
     levelInThisWorld: 5
     numberStarNeed: 0
   - label: Monde 2
-    levelInThisWorld: 8
+    levelInThisWorld: 5
     numberStarNeed: 12
   - label: Monde 3
-    levelInThisWorld: 10
+    levelInThisWorld: 5
     numberStarNeed: 25

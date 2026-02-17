@@ -184,6 +184,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: left
+      value: 
+      objectReference: {fileID: 905963965}
+    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: front
+      value: 
+      objectReference: {fileID: 71985441}
+    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: seatRow
       value: 0
       objectReference: {fileID: 0}
@@ -195,6 +203,14 @@ PrefabInstance:
       propertyPath: seatColumn
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: back
+      value: 
+      objectReference: {fileID: 71985440}
+    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: left
+      value: 
+      objectReference: {fileID: 905963966}
     - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: seatRow
       value: 0
@@ -213,6 +229,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6834832061970728478, guid: d263f81fac5874c4f874484c5249619c, type: 3}
   m_PrefabInstance: {fileID: 71985438}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &71985440 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+  m_PrefabInstance: {fileID: 71985438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
+--- !u!114 &71985441 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+  m_PrefabInstance: {fileID: 71985438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
 --- !u!1 &173339127
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +407,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: left
+      value: 
+      objectReference: {fileID: 1089434414}
+    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: front
+      value: 
+      objectReference: {fileID: 554074709}
+    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: right
+      value: 
+      objectReference: {fileID: 905963965}
+    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: seatType
       value: 0
       objectReference: {fileID: 0}
@@ -376,6 +426,18 @@ PrefabInstance:
       propertyPath: seatColumn
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: back
+      value: 
+      objectReference: {fileID: 554074708}
+    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: left
+      value: 
+      objectReference: {fileID: 1089434415}
+    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: right
+      value: 
+      objectReference: {fileID: 905963966}
     - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: seatType
       value: 2
@@ -390,6 +452,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6834832061970728478, guid: d263f81fac5874c4f874484c5249619c, type: 3}
   m_PrefabInstance: {fileID: 554074706}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &554074708 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+  m_PrefabInstance: {fileID: 554074706}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
+--- !u!114 &554074709 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+  m_PrefabInstance: {fileID: 554074706}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
 --- !u!1 &676351097
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,6 +607,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2082316319609833877, guid: 98302762ac26dc64199d524716529d8a, type: 3}
+      propertyPath: left
+      value: 
+      objectReference: {fileID: 1627298756}
+    - target: {fileID: 2082316319609833877, guid: 98302762ac26dc64199d524716529d8a, type: 3}
+      propertyPath: right
+      value: 
+      objectReference: {fileID: 1065819306}
+    - target: {fileID: 2082316319609833877, guid: 98302762ac26dc64199d524716529d8a, type: 3}
       propertyPath: seatType
       value: 2
       objectReference: {fileID: 0}
@@ -580,6 +672,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6834832061970728478, guid: 98302762ac26dc64199d524716529d8a, type: 3}
   m_PrefabInstance: {fileID: 713432344}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &713432346 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2082316319609833877, guid: 98302762ac26dc64199d524716529d8a, type: 3}
+  m_PrefabInstance: {fileID: 713432344}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
 --- !u!1 &797751246
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,6 +839,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: left
+      value: 
+      objectReference: {fileID: 554074708}
+    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: front
+      value: 
+      objectReference: {fileID: 905963966}
+    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: right
+      value: 
+      objectReference: {fileID: 71985440}
+    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: seatType
       value: 0
       objectReference: {fileID: 0}
@@ -743,6 +858,18 @@ PrefabInstance:
       propertyPath: seatColumn
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: back
+      value: 
+      objectReference: {fileID: 905963965}
+    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: left
+      value: 
+      objectReference: {fileID: 554074709}
+    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: right
+      value: 
+      objectReference: {fileID: 71985441}
     - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: seatType
       value: 2
@@ -757,6 +884,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6834832061970728478, guid: d263f81fac5874c4f874484c5249619c, type: 3}
   m_PrefabInstance: {fileID: 905963963}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &905963965 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+  m_PrefabInstance: {fileID: 905963963}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
+--- !u!114 &905963966 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+  m_PrefabInstance: {fileID: 905963963}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
 --- !u!1001 &925572186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -773,6 +922,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2082316319609833877, guid: 98302762ac26dc64199d524716529d8a, type: 3}
+      propertyPath: right
+      value: 
+      objectReference: {fileID: 1627298756}
     - target: {fileID: 2082316319609833877, guid: 98302762ac26dc64199d524716529d8a, type: 3}
       propertyPath: seatRow
       value: 2
@@ -839,6 +992,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6834832061970728478, guid: 98302762ac26dc64199d524716529d8a, type: 3}
   m_PrefabInstance: {fileID: 925572186}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &925572188 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2082316319609833877, guid: 98302762ac26dc64199d524716529d8a, type: 3}
+  m_PrefabInstance: {fileID: 925572186}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
 --- !u!1 &980146920
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +1087,6 @@ MonoBehaviour:
   seatType: 0
   seatColumn: 1
   seatRow: 1
-  detectRadius: 2.1
   occupant: {fileID: 0}
   front: {fileID: 0}
   back: {fileID: 0}
@@ -1194,6 +1357,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6834832061970728478, guid: 98302762ac26dc64199d524716529d8a, type: 3}
   m_PrefabInstance: {fileID: 1065819304}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1065819306 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2082316319609833877, guid: 98302762ac26dc64199d524716529d8a, type: 3}
+  m_PrefabInstance: {fileID: 1065819304}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
 --- !u!1001 &1089434412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1259,6 +1433,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: front
+      value: 
+      objectReference: {fileID: 1089434415}
+    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: right
+      value: 
+      objectReference: {fileID: 554074708}
+    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: seatRow
       value: 2
       objectReference: {fileID: 0}
@@ -1266,6 +1448,14 @@ PrefabInstance:
       propertyPath: seatType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: back
+      value: 
+      objectReference: {fileID: 1089434414}
+    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+      propertyPath: right
+      value: 
+      objectReference: {fileID: 554074709}
     - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: seatRow
       value: 2
@@ -1284,6 +1474,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6834832061970728478, guid: d263f81fac5874c4f874484c5249619c, type: 3}
   m_PrefabInstance: {fileID: 1089434412}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1089434414 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+  m_PrefabInstance: {fileID: 1089434412}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
+--- !u!114 &1089434415 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
+  m_PrefabInstance: {fileID: 1089434412}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
 --- !u!1 &1135496860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,6 +1763,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2082316319609833877, guid: 98302762ac26dc64199d524716529d8a, type: 3}
+      propertyPath: left
+      value: 
+      objectReference: {fileID: 925572188}
+    - target: {fileID: 2082316319609833877, guid: 98302762ac26dc64199d524716529d8a, type: 3}
+      propertyPath: right
+      value: 
+      objectReference: {fileID: 713432346}
+    - target: {fileID: 2082316319609833877, guid: 98302762ac26dc64199d524716529d8a, type: 3}
       propertyPath: seatType
       value: 2
       objectReference: {fileID: 0}
@@ -1608,6 +1828,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6834832061970728478, guid: 98302762ac26dc64199d524716529d8a, type: 3}
   m_PrefabInstance: {fileID: 1627298754}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1627298756 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2082316319609833877, guid: 98302762ac26dc64199d524716529d8a, type: 3}
+  m_PrefabInstance: {fileID: 1627298754}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3429500f7ea7bb24c814d1df5a9578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seat
 --- !u!1 &1931558736
 GameObject:
   m_ObjectHideFlags: 0

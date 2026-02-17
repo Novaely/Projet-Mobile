@@ -23,10 +23,15 @@ public class Dino : MonoBehaviour
     public Sprite happySprite;  
     public Sprite angrySprite;  
 
-    [Header("--- VISUEL BULLES ---")]
-    public SpriteRenderer emoteRenderer; 
-    public Sprite bubbleHappy;  
-    public Sprite bubbleAngry;  
+    [Header("--- PARTICULES (Effet au placement) ---")]
+    public ParticleSystem feedbackParticles; 
+    public Sprite particleHappy;  
+    public Sprite particleAngry;
+
+    [Header("--- BULLE PERSISTANTE (Reste affichée) ---")]
+    public SpriteRenderer bubbleRenderer; 
+    public Sprite bubbleHappySprite;      
+    public Sprite bubbleAngrySprite;      
 
     [Header("--- ETAT ---")]
     public PlacementState currentState = PlacementState.Neutre;
@@ -42,10 +47,9 @@ public class Dino : MonoBehaviour
     {
         _renderer = GetComponent<SpriteRenderer>();
         _originalScale = transform.localScale;
-        
-        if (emoteRenderer != null) 
-            emoteRenderer.transform.localScale = Vector3.zero;
 
+        if (bubbleRenderer != null) bubbleRenderer.gameObject.SetActive(false);
+        
         SetVisualMode(false); 
     }
     
@@ -63,16 +67,14 @@ public class Dino : MonoBehaviour
             if (_lastPosition.TryGetComponent(out Seat seat))
             {
                 EvaluateSatisfaction(seat);
+                PlayPlacementAnimation(); 
             }
         }
     }
 
     public void SetDragging(bool isDragging)
     {
-        if (isDragging)
-        {
-            SetVisualMode(false);
-        }
+        if (isDragging) SetVisualMode(false);
     }
 
     public void EvaluateSatisfaction(Seat seat)
@@ -80,7 +82,6 @@ public class Dino : MonoBehaviour
         if (seat == null) return;
 
         int spawnLayerIndex = LayerMask.NameToLayer("Spawn");
-        
         if (seat.gameObject.layer == spawnLayerIndex)
         {
             SetVisualMode(false);
@@ -110,6 +111,7 @@ public class Dino : MonoBehaviour
         else currentState = PlacementState.Neutre;
     }
 
+
     private void SetVisualMode(bool isActiveMode)
     {
         if (_currentAnim != null) StopCoroutine(_currentAnim);
@@ -122,12 +124,15 @@ public class Dino : MonoBehaviour
             if (passiveSprite != null) _renderer.sprite = passiveSprite;
             else if (idleSprite != null) _renderer.sprite = idleSprite;
 
-            if (emoteRenderer != null) emoteRenderer.gameObject.SetActive(false);
+            if (feedbackParticles != null) feedbackParticles.Stop();
+            if (bubbleRenderer != null) bubbleRenderer.gameObject.SetActive(false);
         }
     }
 
     public void PlayPlacementAnimation()
     {
+        if (_lastPosition != null && _lastPosition.gameObject.layer == LayerMask.NameToLayer("Spawn")) return;
+        
         PlayActiveAnimation(currentState);
     }
 
@@ -135,6 +140,8 @@ public class Dino : MonoBehaviour
     {
         if (_currentAnim != null) StopCoroutine(_currentAnim);
         
+        UpdateBubbleState(state);
+
         if (_lastPosition != null && Vector3.Distance(transform.position, _lastPosition.position) < 0.5f)
              transform.position = _lastPosition.position;
 
@@ -142,49 +149,58 @@ public class Dino : MonoBehaviour
         {
             case PlacementState.Bon:
                 _renderer.sprite = happySprite ? happySprite : idleSprite;
-                UpdateBubbleVisuals(state);
+                TriggerParticles(particleHappy); 
                 _currentAnim = StartCoroutine(AnimHappyJump());
                 break;
 
             case PlacementState.Mauvais:
                 _renderer.sprite = angrySprite ? angrySprite : idleSprite;
-                UpdateBubbleVisuals(state);
+                TriggerParticles(particleAngry); 
                 _currentAnim = StartCoroutine(AnimAngryShake());
                 break;
 
             case PlacementState.Neutre:
             default:
                 _renderer.sprite = idleSprite;
-                UpdateBubbleVisuals(state);
+                if (feedbackParticles != null) feedbackParticles.Stop();
                 break;
         }
     }
 
-    private void UpdateBubbleVisuals(PlacementState state)
+    private void UpdateBubbleState(PlacementState state)
     {
-        if (emoteRenderer == null) return;
+        if (bubbleRenderer == null) return;
 
         switch (state)
         {
             case PlacementState.Bon:
-                if (bubbleHappy != null)
-                {
-                    emoteRenderer.sprite = bubbleHappy;
-                    StartCoroutine(PopInBubble());
-                }
+                bubbleRenderer.sprite = bubbleHappySprite;
+                bubbleRenderer.gameObject.SetActive(true);
                 break;
             case PlacementState.Mauvais:
-                if (bubbleAngry != null)
-                {
-                    emoteRenderer.sprite = bubbleAngry;
-                    StartCoroutine(PopInBubble());
-                }
+                bubbleRenderer.sprite = bubbleAngrySprite;
+                bubbleRenderer.gameObject.SetActive(true);
                 break;
             case PlacementState.Neutre:
             default:
-                StartCoroutine(PopOutBubble());
+                bubbleRenderer.gameObject.SetActive(false);
                 break;
         }
+    }
+
+    private void TriggerParticles(Sprite spriteToPlay)
+    {
+        if (feedbackParticles == null || spriteToPlay == null) return;
+
+        feedbackParticles.Stop();
+        feedbackParticles.Clear();
+
+        var textureModule = feedbackParticles.textureSheetAnimation;
+        textureModule.enabled = true;
+        textureModule.mode = ParticleSystemAnimationMode.Sprites;
+        textureModule.SetSprite(0, spriteToPlay);
+
+        feedbackParticles.Play();
     }
 
     private IEnumerator AnimHappyJump()
@@ -220,41 +236,5 @@ public class Dino : MonoBehaviour
         }
         transform.position = centerPos;
         transform.rotation = Quaternion.identity;
-    }
-
-    private IEnumerator PopInBubble()
-    {
-        emoteRenderer.gameObject.SetActive(true);
-        Transform t = emoteRenderer.transform;
-        float timer = 0f;
-        float duration = 0.3f;
-        while (timer < duration) {
-            timer += Time.deltaTime;
-            float p = timer / duration;
-            float scale = Mathf.Min(Mathf.Sin(p * Mathf.PI * 0.8f) * 1.2f, 1f); 
-            t.localScale = Vector3.one * scale;
-            yield return null;
-        }
-        t.localScale = Vector3.one;
-    }
-
-    private IEnumerator PopOutBubble()
-    {
-        Transform t = emoteRenderer.transform;
-        if (t.localScale.x <= 0) {
-            emoteRenderer.gameObject.SetActive(false);
-            yield break;
-        }
-        float startScale = t.localScale.x;
-        float timer = 0f;
-        float duration = 0.15f;
-        while (timer < duration) {
-            timer += Time.deltaTime;
-            float p = timer / duration;
-            t.localScale = Vector3.one * Mathf.Lerp(startScale, 0f, p);
-            yield return null;
-        }
-        t.localScale = Vector3.zero;
-        emoteRenderer.gameObject.SetActive(false);
     }
 }

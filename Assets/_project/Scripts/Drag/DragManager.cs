@@ -83,7 +83,7 @@ public class DragManager : MonoBehaviour
         }
         else if (holding && _currentDino != null)
         {
-            if (!_isDragging && (worldPos - _startPosition).magnitude >= 0.5)
+            if (!_isDragging && (worldPos - _startPosition).magnitude >= 0.5f)
             {
                 _isDragging = true;
                 OnDrag?.Invoke();
@@ -102,7 +102,7 @@ public class DragManager : MonoBehaviour
                 _currentDino.transform.position = worldPos;
 
                 RaycastHit2D hitPlace = Physics2D.Raycast(worldPos, Vector2.zero, 100f, EmplacementMask);
-                Seat seat = (hitPlace && hitPlace.transform.TryGetComponent(out Seat s)) ? s : null;
+                Seat seat = (hitPlace.collider != null && hitPlace.transform.TryGetComponent(out Seat s)) ? s : null;
 
                 if (_lastHoveredSeat != seat)
                 {
@@ -134,7 +134,7 @@ public class DragManager : MonoBehaviour
                 bool success = false;
                 RaycastHit2D hitPlace = Physics2D.Raycast(worldPos, Vector2.zero, 100f, EmplacementMask);
 
-                if (hitPlace && hitPlace.transform.TryGetComponent(out Seat seat))
+                if (hitPlace.collider != null && hitPlace.transform.TryGetComponent(out Seat seat))
                 {
                     if (conditionManager.DropDino(_currentDino, seat))
                     {
@@ -155,8 +155,19 @@ public class DragManager : MonoBehaviour
                 }
 
                 if (!success) _currentDino.ReturnToLastPosition();
+                
+                if (!success && _oldSeat != null) _oldSeat.occupant = _currentDino;
+
                 _nextInteractTime = Time.time + antiSpamDelay;
             }
+            else
+            {
+                // C'EST ICI LA CORRECTION
+                // Si on relâche le clic SANS avoir bougé (pas de drag), on force le dino à vérifier sa place.
+                // Cela appellera EvaluateSatisfaction qui remettra le bon visuel (assis ou couché).
+                _currentDino.ReturnToLastPosition();
+            }
+
             _currentDino = null;
         }
     }

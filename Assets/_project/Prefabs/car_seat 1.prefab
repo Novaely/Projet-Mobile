@@ -248,7 +248,6 @@ MonoBehaviour:
   seatType: 1
   seatColumn: 1
   seatRow: 1
-  detectRadius: 2.1
   occupant: {fileID: 0}
   front: {fileID: 0}
   back: {fileID: 0}
@@ -433,7 +432,6 @@ MonoBehaviour:
   seatType: 1
   seatColumn: 1
   seatRow: 1
-  detectRadius: 2.1
   occupant: {fileID: 0}
   front: {fileID: 0}
   back: {fileID: 0}

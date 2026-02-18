@@ -743,6 +743,7 @@ MonoBehaviour:
   conditionManager: {fileID: 676351100}
   antiSpamDelay: 0.15
   _SFXPlacement: {fileID: 8300000, guid: ed47ce49632f9b44eab94f99effab788, type: 3}
+  _volume: 1
 --- !u!114 &676351099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1733,7 +1734,7 @@ PrefabInstance:
       objectReference: {fileID: 1506747400}
     - target: {fileID: 7316352534658010278, guid: 85fd353cc3d0a52438af564272c1cc2c, type: 3}
       propertyPath: seatRow
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7316352534658010278, guid: 85fd353cc3d0a52438af564272c1cc2c, type: 3}
       propertyPath: seatType

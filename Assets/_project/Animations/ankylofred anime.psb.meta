@@ -83,7 +83,7 @@ ScriptedImporter:
       y: 0
       width: 0
       height: 0
-    spriteID: 0422d879cdaf8bd42b8930685713885c
+    spriteID: ac6360de70910a041a93be0f24db6037
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -97,7 +97,7 @@ ScriptedImporter:
   layeredSpriteImportData:
   - name: Calque 22
     originalName: 
-    pivot: {x: 0.6672433, y: 0.17603813}
+    pivot: {x: 0.69076324, y: 0.19780603}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -107,7 +107,7 @@ ScriptedImporter:
       y: 707
       width: 525
       height: 527
-    spriteID: bc360322e766933409e204b16be719e7
+    spriteID: ad456594a409557479c3a2059ef05270
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -129,7 +129,7 @@ ScriptedImporter:
       y: 1242
       width: 231
       height: 216
-    spriteID: 680cfcce919c957499ac32b8e08de339
+    spriteID: 08f409803f665eb4b810af2fd3212865
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -151,7 +151,7 @@ ScriptedImporter:
       y: 4
       width: 869
       height: 695
-    spriteID: 925622ca9b892c444b988e3eab5e7bf8
+    spriteID: c9b8ec1ac13081e48a91c36709fe5030
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -173,7 +173,7 @@ ScriptedImporter:
       y: 1242
       width: 205
       height: 295
-    spriteID: ac2d58aee5c42c440ac11c58829e492a
+    spriteID: 3b01696ad983df448906ed9aa25fe464
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -195,7 +195,7 @@ ScriptedImporter:
       y: 1545
       width: 198
       height: 201
-    spriteID: 60134fa8f0ab9ac42a45c1936978802c
+    spriteID: 744f7fcc3b0a6334f9089fe91ae46dd4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -217,7 +217,7 @@ ScriptedImporter:
       y: 1754
       width: 198
       height: 201
-    spriteID: 89a51b9a97d97004c9d4a8077f89d831
+    spriteID: 8de37272e2f48d84cb1336ae4221d7a7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -278,7 +278,7 @@ ScriptedImporter:
     spriteName: Calque 22
     isGroup: 0
     parentIndex: -1
-    spriteID: bc360322e766933409e204b16be719e7
+    spriteID: ad456594a409557479c3a2059ef05270
     layerID: 25
     mosaicPosition: {x: 4, y: 707}
     flatten: 0
@@ -288,7 +288,7 @@ ScriptedImporter:
     spriteName: Calque 23
     isGroup: 0
     parentIndex: -1
-    spriteID: 680cfcce919c957499ac32b8e08de339
+    spriteID: 08f409803f665eb4b810af2fd3212865
     layerID: 27
     mosaicPosition: {x: 217, y: 1242}
     flatten: 0
@@ -298,7 +298,7 @@ ScriptedImporter:
     spriteName: Calque 21
     isGroup: 0
     parentIndex: -1
-    spriteID: 925622ca9b892c444b988e3eab5e7bf8
+    spriteID: c9b8ec1ac13081e48a91c36709fe5030
     layerID: 24
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
@@ -308,7 +308,7 @@ ScriptedImporter:
     spriteName: Calque 27
     isGroup: 0
     parentIndex: -1
-    spriteID: ac2d58aee5c42c440ac11c58829e492a
+    spriteID: 3b01696ad983df448906ed9aa25fe464
     layerID: 31
     mosaicPosition: {x: 4, y: 1242}
     flatten: 0
@@ -318,7 +318,7 @@ ScriptedImporter:
     spriteName: Calque 25
     isGroup: 0
     parentIndex: -1
-    spriteID: 60134fa8f0ab9ac42a45c1936978802c
+    spriteID: 744f7fcc3b0a6334f9089fe91ae46dd4
     layerID: 29
     mosaicPosition: {x: 4, y: 1545}
     flatten: 0
@@ -328,7 +328,7 @@ ScriptedImporter:
     spriteName: Calque 26
     isGroup: 0
     parentIndex: -1
-    spriteID: 89a51b9a97d97004c9d4a8077f89d831
+    spriteID: 8de37272e2f48d84cb1336ae4221d7a7
     layerID: 30
     mosaicPosition: {x: 4, y: 1754}
     flatten: 0

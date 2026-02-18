@@ -12,6 +12,8 @@ public class PlayerSave : MonoBehaviour
 
     int _currentLevel;
 
+    public int CurrentLevel { get {  return _currentLevel; } }
+
     public int NumberOfLevel;
 
     public bool IsSaveLoad { get; private set; }

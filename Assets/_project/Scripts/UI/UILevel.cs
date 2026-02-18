@@ -185,8 +185,9 @@ public class UILevel : MonoBehaviour
         if (_btnValidateButton != null) _btnValidateButton.gameObject.SetActive(false);
         if (resultPanel != null)
         {
+            PlayerSave.Instance.UpdateStarOfOneLevel(_levelScorer.GetStars());
             resultPanel.SetActive(true);
-            if (_levelScorer.GetStars() <= 0 || (ScenesManager.Instance.GetLevelScene(ScenesManager.Instance.GetLevelIndex(SceneManager.GetActiveScene()) + 1)) == null ||
+            if (PlayerSave.Instance.LevelSave.starsLevels[PlayerSave.Instance.CurrentLevel] <= 0 || (PlayerSave.Instance.NumberOfLevel < ScenesManager.Instance.GetLevelIndex(SceneManager.GetActiveScene()) + 1) ||
                 ScenesManager.Instance.GetStarsForNextWorld(ScenesManager.Instance.GetLevelIndex(SceneManager.GetActiveScene())) > ScenesManager.Instance.GetStarsObtained())
             {
                 _btnNextLevel.gameObject.SetActive(false);
@@ -201,7 +202,6 @@ public class UILevel : MonoBehaviour
                 GooglePlayManager.Instance.CompleteAchievement((AchivementEnum)ScenesManager.Instance.GetLevelIndex(SceneManager.GetActiveScene()));
             }
 #endif
-            PlayerSave.Instance.UpdateStarOfOneLevel(_levelScorer.GetStars());
         }
     }
 

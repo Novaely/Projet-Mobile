@@ -50,6 +50,66 @@ MonoBehaviour:
     m_Localized: Princesse
     m_Metadata:
       m_Items: []
+  - m_Id: 5098070546317312
+    m_Localized: "Fen\xEAtre"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5098070609231872
+    m_Localized: Devant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5098070609231873
+    m_Localized: "\xC9tre seul"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5098070609231874
+    m_Localized: "A c\xF4t\xE9 d'un herbivore"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5098070609231875
+    m_Localized: "Derri\xE8re"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5098070609231876
+    m_Localized: "A c\xF4t\xE9 d'un carnivore"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5098070609231877
+    m_Localized: A droite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5098070609231878
+    m_Localized: Pas entre deux dinosaures
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5098070609231879
+    m_Localized: Au milieu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5098070609231880
+    m_Localized: Jamais au milieu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5098070609231881
+    m_Localized: A gauche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5098070609231882
+    m_Localized: Fumeur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5098070609231883
+    m_Localized: Couloir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5098070609231884
+    m_Localized: Piercing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5098070609231885
+    m_Localized: haut de forme
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

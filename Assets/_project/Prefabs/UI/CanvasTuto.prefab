@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1029398876642468218
 CanvasRenderer:
@@ -92,15 +92,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -167,10 +167,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3927425127888023255}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 909, y: -393}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0.26200002, y: 0.29722223}
+  m_AnchorMax: {x: 0.26200002, y: 0.29722223}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 372.9886, y: 298.098}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1632144219074947179
 GameObject:
@@ -202,10 +202,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3927425127888023255}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -803, y: 269}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0.26200002, y: 0.7298519}
+  m_AnchorMax: {x: 0.26200002, y: 0.7298519}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 327.0879, y: 189.3856}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1726620825146001937
 GameObject:
@@ -240,6 +240,8 @@ RectTransform:
   - {fileID: 5392114039101721826}
   - {fileID: 5522695376460049926}
   - {fileID: 3844326224402179366}
+  - {fileID: 6858561277074816310}
+  - {fileID: 3054459828412265968}
   m_Father: {fileID: 6830736488330223910}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -285,6 +287,41 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2819189382491081151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3054459828412265968}
+  m_Layer: 5
+  m_Name: Position 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3054459828412265968
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819189382491081151}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3927425127888023255}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.813, y: 0.76962966}
+  m_AnchorMax: {x: 0.813, y: 0.76962966}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 310.407, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3743232323076297161
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,12 +397,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -404,6 +441,49 @@ MonoBehaviour:
   _zoneText: {fileID: 7626774507015882693}
   InfoTutos:
   - position: {fileID: 5522695376460049926}
-    text: kjhgfcdfghj
+    text: "Ici ce sont les informations des dinosaures \xE0 placer. Vous y retrouverez
+      leur nom, ce qu'ils veulent et ce qu'ils ne veulent pas"
   - position: {fileID: 3844326224402179366}
-    text: zdefrg
+    text: Ici ce sont vos dinosaures, vous pouvez changer de dinosaures et les placer
+      dans l'ordre que vous voulez
+  - position: {fileID: 6858561277074816310}
+    text: "Vous pouvez changer dans les param\xE8tres de volume ainsi que la langue
+      du jeu"
+  - position: {fileID: 3054459828412265968}
+    text: Et ici c'est le dictionnaire du vocabulaire dinosaures ! vous retrouverez
+      tous les mots utiliser par les dinosaures et leur traduction dans notre langue
+--- !u!1 &4943184931038883484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6858561277074816310}
+  m_Layer: 5
+  m_Name: Position 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6858561277074816310
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943184931038883484}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3927425127888023255}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.89000005, y: 0.76962966}
+  m_AnchorMax: {x: 0.89000005, y: 0.76962966}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 323.5574, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}

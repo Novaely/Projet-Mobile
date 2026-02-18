@@ -35,6 +35,7 @@ public class SpawnManager : MonoBehaviour
     public class DinoCharacteristic
     {
         public string label;
+        public DietType diet;
         public string contraintePositive;
         public string contrainteNegative;
         public Sprite sprite;
@@ -78,6 +79,7 @@ public class SpawnManager : MonoBehaviour
                     characteristic = new DinoCharacteristic
                     {
                         label = (dinoScript.profile != null) ? dinoScript.profile.speciesName : dino.name,
+                        diet = dinoScript.profile.diet,
                         contraintePositive = (dinoScript.profile != null) ? dinoScript.profile.positiveCondition : "Aucune",
                         contrainteNegative = (dinoScript.profile != null) ? dinoScript.profile.negativeCondition : "Aucune",
                         sprite = dinoScript.passiveSprite

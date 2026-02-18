@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.UI;
 using static SpawnManager;
@@ -7,6 +8,7 @@ using static SpawnManager;
 public class UIInfoDinoLevel : MonoBehaviour
 {
     [Header("Text References")]
+    [SerializeField] Image _imageDiet;
     [SerializeField] private TextMeshProUGUI _textDinoName;
     [SerializeField] private TextMeshProUGUI _textDinoContraintePositive;
     [SerializeField] private TextMeshProUGUI _textDinoContrainteNegative;
@@ -18,6 +20,10 @@ public class UIInfoDinoLevel : MonoBehaviour
     [Header("Visual Preview")]
     [SerializeField] private Image _imagePreviewDino;
     public RectTransform Spawn;
+
+    [Header("Sprite Need")]
+    [SerializeField] Sprite _spriteCarnivor;
+    [SerializeField] Sprite _spriteHerbivor;
 
     public event Func<bool, DinoCharacteristic> OnNextDino;
     public event Func<DinoCharacteristic> OnPreviousDino;
@@ -52,7 +58,7 @@ public class UIInfoDinoLevel : MonoBehaviour
     {
         if (infoDino == null) return;
 
-        if (_textDinoName != null) 
+        if (_textDinoName != null)
             _textDinoName.text = infoDino.label;
 
         if (_textDinoContraintePositive != null) 
@@ -73,6 +79,11 @@ public class UIInfoDinoLevel : MonoBehaviour
             {
                 _imagePreviewDino.gameObject.SetActive(false);
             }
+        }
+
+        if (_imageDiet != null)
+        {
+            _imageDiet.sprite = infoDino.diet == DietType.Carnivore ? _spriteCarnivor : _spriteHerbivor;
         }
     }
 }

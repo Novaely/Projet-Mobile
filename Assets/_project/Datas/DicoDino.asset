@@ -13,19 +13,55 @@ MonoBehaviour:
   m_Name: DicoDino
   m_EditorClassIdentifier: Assembly-CSharp::DicoDinoDatabase
   <Dictionnary>k__BackingField:
-  - DinoWord: rrrr
-    French: Bonjour
-    English: Hello
+  - DinoWord: Freeeeerrr
+    French: "Fen\xEAtre"
+    English: Window
     UnlockedAtLevel: 1
-  - DinoWord: brrr
-    French: Froid
-    English: Cold
+  - DinoWord: Vrooouuvroouuu
+    French: Devant
+    English: Front
+    UnlockedAtLevel: 1
+  - DinoWord: Rawr
+    French: "\xC9tre seul"
+    English: to be alone
+    UnlockedAtLevel: 1
+  - DinoWord: Herbrrre
+    French: "A c\xF4t\xE9 d'un herbivore"
+    English: Next to a Herbivore
     UnlockedAtLevel: 2
-  - DinoWord: vroum
-    French: Conducteur
-    English: Driver
-    UnlockedAtLevel: 3
-  - DinoWord: tutu
-    French: Princesse
-    English: Princess
+  - DinoWord: Grroorr
+    French: "Derri\xE8re"
+    English: At Back
     UnlockedAtLevel: 4
+  - DinoWord: Carrnn
+    French: "A c\xF4t\xE9 d'un carnivore"
+    English: Next to a Carnivore
+    UnlockedAtLevel: 4
+  - DinoWord: Drroo
+    French: A droite
+    English: At right
+    UnlockedAtLevel: 4
+  - DinoWord: Grrre Dino
+    French: Pas entre deux dinosaures
+    English: Not between two dinosaurs
+    UnlockedAtLevel: 4
+  - DinoWord: Miill
+    French: Au milieu
+    English: In the middle
+    UnlockedAtLevel: 4
+  - DinoWord: Grree  Miill
+    French: Jamais au milieu
+    English: Never in the middle
+    UnlockedAtLevel: 5
+  - DinoWord: Grrroo
+    French: A gauche
+    English: At left
+    UnlockedAtLevel: 5
+  - DinoWord: Cigra
+    French: Fumeur
+    English: Smoking
+    UnlockedAtLevel: 6
+  - DinoWord: Crrolar
+    French: Couloir
+    English: Corridor
+    UnlockedAtLevel: 7

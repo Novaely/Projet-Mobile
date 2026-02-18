@@ -110,6 +110,66 @@ MonoBehaviour:
     m_Localized: a top hat
     m_Metadata:
       m_Items: []
+  - m_Id: 5106313449254912
+    m_Localized: Window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5106313537335296
+    m_Localized: Front
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5106313537335297
+    m_Localized: to be alone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5106313537335298
+    m_Localized: Next to a Herbivore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5106313537335299
+    m_Localized: At Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5106313537335300
+    m_Localized: Next to a Carnivore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5106313537335301
+    m_Localized: At right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5106313537335302
+    m_Localized: Not between two dinosaurs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5106313537335303
+    m_Localized: In the middle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5106313537335304
+    m_Localized: Never in the middle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5106313537335305
+    m_Localized: At left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5106313537335306
+    m_Localized: Smoking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5106313537335307
+    m_Localized: Corridor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5106313537335308
+    m_Localized: Piercing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5106313537335309
+    m_Localized: a top hat
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

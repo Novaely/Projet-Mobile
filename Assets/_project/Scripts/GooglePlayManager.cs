@@ -1,3 +1,5 @@
+#if !UNITY_EDITOR
+
 using System.Collections.Generic;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
@@ -153,3 +155,5 @@ public class GooglePlayManager : MonoBehaviour
         if (Instance == this) Instance = null;
     }
 }
+
+#endif

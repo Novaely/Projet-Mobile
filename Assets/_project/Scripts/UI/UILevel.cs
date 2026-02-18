@@ -191,6 +191,7 @@ public class UILevel : MonoBehaviour
             {
                 _btnNextLevel.gameObject.SetActive(false);
             }
+#if !UNITY_EDITOR
             if (ScenesManager.Instance.GetLevelIndex(SceneManager.GetActiveScene()) == 1)
             {
                 GooglePlayManager.Instance.CompleteAchievement(AchivementEnum.Tuto);
@@ -199,7 +200,7 @@ public class UILevel : MonoBehaviour
             {
                 GooglePlayManager.Instance.CompleteAchievement((AchivementEnum)ScenesManager.Instance.GetLevelIndex(SceneManager.GetActiveScene()));
             }
-            
+#endif
             PlayerSave.Instance.UpdateStarOfOneLevel(_levelScorer.GetStars());
         }
     }

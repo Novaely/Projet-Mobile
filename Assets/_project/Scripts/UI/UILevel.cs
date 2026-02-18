@@ -29,8 +29,6 @@ public class UILevel : MonoBehaviour
     [SerializeField] private Button _btnValidateButton;
     [SerializeField] private GameObject resultPanel;
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI percentText;
-    [SerializeField] private TextMeshProUGUI starsText;
     [SerializeField] private Image[] starImages;
     [SerializeField] private Button _btnLevelSelect;
     [SerializeField] private Button _btnRestartLevel;
@@ -155,8 +153,6 @@ public class UILevel : MonoBehaviour
         float percent = _levelScorer.GetPercent();
 
         if (scoreText != null) scoreText.text = $"Score: {_levelScorer.currentScore}/{_levelScorer.maxScore}";
-        if (percentText != null) percentText.text = $"{percent:F0}%";
-        if (starsText != null) starsText.text = $"{_levelScorer.GetStars()}★";
 
         UpdateStarImages();
 

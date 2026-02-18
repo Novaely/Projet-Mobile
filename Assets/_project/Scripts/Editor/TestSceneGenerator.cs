@@ -1,12 +1,10 @@
-using UnityEngine;
+using TMPro;
 using UnityEditor;
 using UnityEditor.SceneManagement;
-using UnityEngine.SceneManagement;
-using System.Linq;
-using TMPro;
-using UnityEngine.UI;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.UI;
 
 public class TestSceneGenerator : EditorWindow
 {

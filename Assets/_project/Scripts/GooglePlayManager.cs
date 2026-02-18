@@ -1,5 +1,3 @@
-#if !UNITY_EDITOR
-
 using System.Collections.Generic;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
@@ -27,6 +25,7 @@ public enum AchivementEnum
 
 public class GooglePlayManager : MonoBehaviour
 {
+#if !UNITY_EDITOR
     // ---------- VARIABLES ---------- \\
 
     // ----- Singleton ----- \\
@@ -154,6 +153,5 @@ public class GooglePlayManager : MonoBehaviour
     {
         if (Instance == this) Instance = null;
     }
-}
-
 #endif
+}

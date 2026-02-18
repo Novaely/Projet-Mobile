@@ -186,8 +186,8 @@ public class UILevel : MonoBehaviour
         if (resultPanel != null)
         {
             resultPanel.SetActive(true);
-            if (_levelScorer.GetStars() <= 0 || (ScenesManager.Instance.GetLevelScene(ScenesManager.Instance.ActiveSceneIndex + 1)) == null ||
-                (ScenesManager.Instance.GetStarsForNextWorld(ScenesManager.Instance.ActiveSceneIndex) != -1 && ScenesManager.Instance.GetStarsForNextWorld(ScenesManager.Instance.ActiveSceneIndex) <= ScenesManager.Instance.GetStarsObtained()))
+            if (_levelScorer.GetStars() <= 0 || (ScenesManager.Instance.GetLevelScene(ScenesManager.Instance.GetLevelIndex(SceneManager.GetActiveScene()) + 1)) == null ||
+                ScenesManager.Instance.GetStarsForNextWorld(ScenesManager.Instance.GetLevelIndex(SceneManager.GetActiveScene())) > ScenesManager.Instance.GetStarsObtained())
             {
                 _btnNextLevel.gameObject.SetActive(false);
             }

@@ -14,8 +14,6 @@ public class ScenesManager : MonoBehaviour
     public event Action OnMenuLoad;
     public event Action OnLevelLoad;
 
-    public int ActiveSceneIndex { get; private set; }
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -35,8 +33,6 @@ public class ScenesManager : MonoBehaviour
 
     private IEnumerator LoadSceneRoutine(int index)
     {
-        ActiveSceneIndex = index;
-
         Debug.Log("Loading  Level " + index);
 
         yield return SceneManager.LoadSceneAsync("Level" + index);
@@ -48,7 +44,6 @@ public class ScenesManager : MonoBehaviour
 
     public void LoadSceneMainMenu()
     {
-        ActiveSceneIndex = 0;
         StartCoroutine(LoadMainMenuRoutine(null));
     }
 
@@ -99,11 +94,10 @@ public class ScenesManager : MonoBehaviour
 
     public int GetStarsForNextWorld(int index)
     {
-        foreach (var world in _worlds.Worlds)
+        for (int i = 0; i < _worlds.Worlds.Count - 1; i++)
         {
-            index -= world.levelInThisWorld;
-            if (index < 0) return -1;
-            if (index == 0) return world.numberStarNeed;
+            index -= _worlds.Worlds[i].levelInThisWorld;
+            if (index == 0) return _worlds.Worlds[i+1].numberStarNeed;
         }
         return -1;
     }

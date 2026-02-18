@@ -1,3 +1,4 @@
+using GooglePlayGames.OurUtils;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,12 +13,17 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private Button _buttonMainMenuLevelSelect;
     [SerializeField] private Button _buttonMainMenuParameters;
     [SerializeField] private Button _buttonMainMenuCredit;
+
     [Header("Parameters")]
     [SerializeField] private GameObject _parameters;
     [SerializeField] private Button _buttonParamExit;
     private LocaleSelector _localeSelector;
     [SerializeField] private Button _buttonFrench;
     [SerializeField] private Button _buttonEnglish;
+    private AudioManager _audioManager;
+    [SerializeField] private Slider _sliderMusic;
+    [SerializeField] private Slider _sliderSFX;
+
     [Header("Level Select")]
     [SerializeField] WorldData _worldData;
     [SerializeField] private GameObject _levelSelect;
@@ -33,6 +39,7 @@ public class UIMainMenu : MonoBehaviour
     int _currentWorldId = 0;
     [SerializeField] GameObject _textStar;
     public void IsLevelSelectActive(bool isActive) => _isActive = isActive;
+
     [Header("Credits")]
     [SerializeField] private GameObject _credits;
     [SerializeField] private Button _buttonCreditsExit;
@@ -50,12 +57,18 @@ public class UIMainMenu : MonoBehaviour
         _buttonEnglish.onClick.RemoveAllListeners();
         _buttonLevelSelectExit.onClick.RemoveAllListeners();
         _buttonCreditsExit.onClick.RemoveAllListeners();
+        _sliderMusic.onValueChanged.RemoveAllListeners();
+        _sliderSFX.onValueChanged.RemoveAllListeners();
 
         _buttonMainMenuLevelSelect.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_levelSelect, true)));
         _buttonMainMenuParameters.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_parameters, true)));
-        _localeSelector = FindAnyObjectByType<LocaleSelector>();
+        _localeSelector = LocaleSelector.Instance;
         _buttonFrench.onClick.AddListener(() => _localeSelector.SetLanguage(1));
         _buttonEnglish.onClick.AddListener(() => _localeSelector.SetLanguage(0));
+        _audioManager = AudioManager.Instance;
+        _sliderMusic.onValueChanged.AddListener((value) => _audioManager.SetMusicVolume(value));
+        _sliderSFX.onValueChanged.AddListener((value) => _audioManager.SetSFXVolume(value));
+        UIManager.Instance.InitializeVolume(_sliderMusic, _sliderSFX);
         _buttonMainMenuCredit.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_credits, true)));
 
         _buttonParamExit.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_parameters, false)));

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using static UnityEngine.Rendering.DebugUI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("Sources")]
     [SerializeField] private AudioSource _musicSource;
+    [SerializeField] private AudioMixerGroup _SFXGroup;
     [SerializeField] private int _sfxPoolSize = 10;
 
     private List<AudioSource> _sfxPool = new();
@@ -40,6 +42,7 @@ public class AudioManager : MonoBehaviour
             go.transform.parent = transform;
 
             AudioSource source = go.AddComponent<AudioSource>();
+            source.outputAudioMixerGroup = _SFXGroup;
             source.playOnAwake = false;
 
             _sfxPool.Add(source);
@@ -78,11 +81,29 @@ public class AudioManager : MonoBehaviour
 
     public void SetMusicVolume(float volume)
     {
-        _mixer.SetFloat(_musicVolumeParam, Mathf.Log10(volume) * 20);
+        if (volume <= 0.0001f)
+        {
+            _mixer.SetFloat(_musicVolumeParam, -80f);
+        }
+        else
+        {
+            _mixer.SetFloat(_musicVolumeParam, Mathf.Log10(volume) * 20f);
+        }
+        PlayerPrefs.SetFloat("MusicVolume", volume);
+        PlayerPrefs.Save();
     }
 
     public void SetSFXVolume(float volume)
     {
-        _mixer.SetFloat(_sfxVolumeParam, Mathf.Log10(volume) * 20);
+        if (volume <= 0.0001f)
+        {
+            _mixer.SetFloat(_sfxVolumeParam, -80f);
+        }
+        else
+        {
+            _mixer.SetFloat(_sfxVolumeParam, Mathf.Log10(volume) * 20f);
+        }
+        PlayerPrefs.SetFloat("SFXVolume", volume);
+        PlayerPrefs.Save();
     }
 }

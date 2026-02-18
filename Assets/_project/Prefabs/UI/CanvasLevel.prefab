@@ -1141,6 +1141,8 @@ MonoBehaviour:
   _buttonParamExit: {fileID: 7250751247246353645}
   _buttonFrench: {fileID: 7533256426412880846}
   _buttonEnglish: {fileID: 1574971028962256866}
+  _sliderMusic: {fileID: 5148731558249829990}
+  _sliderSFX: {fileID: 275013625950481461}
   _btnValidateButton: {fileID: 4310209121964570833}
   resultPanel: {fileID: 4609852959734627363}
   scoreText: {fileID: 4061341673957814387}
@@ -3557,6 +3559,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5269406705830757454, guid: 3a49854790faf5c4c921217363d9e575, type: 3}
   m_PrefabInstance: {fileID: 5256164905597791600}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &275013625950481461 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5413517300809351493, guid: 3a49854790faf5c4c921217363d9e575, type: 3}
+  m_PrefabInstance: {fileID: 5256164905597791600}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!114 &1574971028962256866 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6713404610055522962, guid: 3a49854790faf5c4c921217363d9e575, type: 3}
@@ -3568,6 +3581,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &5148731558249829990 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1117559220650441494, guid: 3a49854790faf5c4c921217363d9e575, type: 3}
+  m_PrefabInstance: {fileID: 5256164905597791600}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!114 &7250751247246353645 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3201621685439629725, guid: 3a49854790faf5c4c921217363d9e575, type: 3}

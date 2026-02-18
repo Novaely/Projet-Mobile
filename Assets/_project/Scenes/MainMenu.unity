@@ -658,7 +658,7 @@ AudioSource:
   m_GameObject: {fileID: 2071117504}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3322072792317298729, guid: 1a8bc7e9f2c702a4dbbaab7109bc67a6, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -762,6 +762,7 @@ MonoBehaviour:
   _musicVolumeParam: MusicVolume
   _sfxVolumeParam: SFXVolume
   _musicSource: {fileID: 2071117505}
+  _SFXGroup: {fileID: 7974663475081471280, guid: 1a8bc7e9f2c702a4dbbaab7109bc67a6, type: 2}
   _sfxPoolSize: 10
 --- !u!4 &2071117507
 Transform:
@@ -786,38 +787,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 260703535115341883, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 388211286130936414, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
       propertyPath: m_Name
       value: CanvasMainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 518337256367264005, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3267391901860971226, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 8.482178
       objectReference: {fileID: 0}
     - target: {fileID: 4026229391196603860, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1126714159}
-    - target: {fileID: 4114109439688682199, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
-      propertyPath: m_fontSize
-      value: 36.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4114109439688682199, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
-      propertyPath: m_margin.w
-      value: 145.87901
-      objectReference: {fileID: 0}
-    - target: {fileID: 4114109439688682199, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
-      propertyPath: m_margin.y
-      value: 219.42557
-      objectReference: {fileID: 0}
     - target: {fileID: 4806490993232654540, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -900,23 +877,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5149437461113961973, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5342764360369813523, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6166451732744037992, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7048231532039795751, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7338774939175901780, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

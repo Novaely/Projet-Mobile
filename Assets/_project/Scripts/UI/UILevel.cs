@@ -24,13 +24,14 @@ public class UILevel : MonoBehaviour
     private LocaleSelector _localeSelector;
     [SerializeField] private Button _buttonFrench;
     [SerializeField] private Button _buttonEnglish;
+    private AudioManager _audioManager;
+    [SerializeField] private Slider _sliderMusic;
+    [SerializeField] private Slider _sliderSFX;
 
     [Header("End Level")]
     [SerializeField] private Button _btnValidateButton;
     [SerializeField] private GameObject resultPanel;
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI percentText;
-    [SerializeField] private TextMeshProUGUI starsText;
     [SerializeField] private Image[] starImages;
     [SerializeField] private Button _btnLevelSelect;
     [SerializeField] private Button _btnRestartLevel;
@@ -93,6 +94,8 @@ public class UILevel : MonoBehaviour
         _buttonParamExit.onClick.RemoveAllListeners();
         _buttonFrench.onClick.RemoveAllListeners();
         _buttonEnglish.onClick.RemoveAllListeners();
+        _sliderMusic.onValueChanged.RemoveAllListeners();
+        _sliderSFX.onValueChanged.RemoveAllListeners();
 
         _textDico.GetComponent<LocalizeStringEvent>().OnUpdateString.AddListener(_ => UpdateDicoDino());
         _buttonDictionnary.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_dictionnary, true)));
@@ -101,9 +104,13 @@ public class UILevel : MonoBehaviour
         _buttonLevelSelect.onClick.AddListener(() => ScenesManager.Instance.LoadSceneMainMenu(true));
         _buttonParameters.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_parameters, true)));
         _buttonParameters.onClick.AddListener(() => UIManager.Instance.SetPause(true));
-        _localeSelector = FindAnyObjectByType<LocaleSelector>();
+        _localeSelector = LocaleSelector.Instance;
         _buttonFrench.onClick.AddListener(() => _localeSelector.SetLanguage(1));
         _buttonEnglish.onClick.AddListener(() => _localeSelector.SetLanguage(0));
+        _audioManager = AudioManager.Instance;
+        _sliderMusic.onValueChanged.AddListener((value) => _audioManager.SetMusicVolume(value));
+        _sliderSFX.onValueChanged.AddListener((value) => _audioManager.SetSFXVolume(value));
+        UIManager.Instance.InitializeVolume(_sliderMusic, _sliderSFX);
 
         _buttonParamExit.onClick.AddListener(() => UIManager.Instance.SetActiveMenu((_parameters, false)));
         _buttonParamExit.onClick.AddListener(() => UIManager.Instance.SetPause(false));
@@ -155,8 +162,6 @@ public class UILevel : MonoBehaviour
         float percent = _levelScorer.GetPercent();
 
         if (scoreText != null) scoreText.text = $"Score: {_levelScorer.currentScore}/{_levelScorer.maxScore}";
-        if (percentText != null) percentText.text = $"{percent:F0}%";
-        if (starsText != null) starsText.text = $"{_levelScorer.GetStars()}★";
 
         UpdateStarImages();
 

@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using System;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -67,5 +68,16 @@ public class UIManager : MonoBehaviour
         {
             OnPauseDesactive?.Invoke();
         }
+    }
+
+    public void InitializeVolume(Slider music, Slider sfx)
+    {
+        float savedMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        music.value = savedMusicVolume;
+        AudioManager.Instance.SetMusicVolume(savedMusicVolume);
+
+        float savedSFXVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        sfx.value = savedSFXVolume;
+        AudioManager.Instance.SetSFXVolume(savedSFXVolume);
     }
 }

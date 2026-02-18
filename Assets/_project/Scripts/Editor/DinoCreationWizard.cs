@@ -138,12 +138,6 @@ public class DinoCreatorWizard : EditorWindow
         // Assignation des sprites de corps
         dinoScript.passiveSprite = passiveSprite;
         dinoScript.idleSprite = idleSprite;
-        dinoScript.happySprite = happySprite;
-        dinoScript.angrySprite = angrySprite;
-
-        // Assignation des sprites de particules
-        dinoScript.particleHappy = particleHappy;
-        dinoScript.particleAngry = particleAngry;
 
         // Assignation des sprites de bulles
         dinoScript.bubbleHappySprite = bubbleHappy;

@@ -11,17 +11,13 @@ public class Dino : MonoBehaviour
     public DietType diet => profile ? profile.diet : DietType.Herbivore;
 
     [Header("--- VISUEL ---")]
-    public Sprite passiveSprite; 
-    public Sprite idleSprite;    
-    public Sprite happySprite;  
-    public Sprite angrySprite;  
+    public Sprite passiveSprite;
+    public Sprite idleSprite;
 
     [Header("--- FX ---")]
-    public ParticleSystem feedbackParticles; 
-    public Sprite particleHappy;  
-    public Sprite particleAngry;
-    public SpriteRenderer bubbleRenderer; 
-    public Sprite bubbleHappySprite;      
+    public ParticleSystem feedbackParticles;
+    public SpriteRenderer bubbleRenderer;
+    public Sprite bubbleHappySprite;
     public Sprite bubbleAngrySprite;
 
     [Header("--- SFX ---")]
@@ -41,7 +37,7 @@ public class Dino : MonoBehaviour
     private void Awake()
     {
         _renderer = GetComponent<SpriteRenderer>();
-        _originalScale = transform.localScale; 
+        _originalScale = transform.localScale;
 
         if (bubbleRenderer != null) bubbleRenderer.gameObject.SetActive(false);
         if (idleSprite != null) _renderer.sprite = idleSprite;
@@ -148,19 +144,19 @@ public class Dino : MonoBehaviour
         switch (state)
         {
             case PlacementState.Bon:
-                _renderer.sprite = happySprite ? happySprite : idleSprite;
+                _renderer.sprite = idleSprite;
                 if (playFX) 
                 {
-                    TriggerParticles(particleHappy); 
+                    TriggerParticles(bubbleHappySprite); 
                     _currentAnim = StartCoroutine(AnimHappyJump());
                 }
                 break;
 
             case PlacementState.Mauvais:
-                _renderer.sprite = angrySprite ? angrySprite : idleSprite;
+                _renderer.sprite = idleSprite;
                 if (playFX) 
                 {
-                    TriggerParticles(particleAngry); 
+                    TriggerParticles(bubbleAngrySprite); 
                     _currentAnim = StartCoroutine(AnimAngryShake());
                 }
                 break;

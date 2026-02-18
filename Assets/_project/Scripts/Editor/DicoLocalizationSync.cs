@@ -4,7 +4,6 @@ using UnityEditor;
 using UnityEditor.Localization;
 using UnityEngine;
 using UnityEngine.Localization.Tables;
-using static UnityEngine.Rendering.DebugUI;
 
 public static class DicoLocalizationSync
 {

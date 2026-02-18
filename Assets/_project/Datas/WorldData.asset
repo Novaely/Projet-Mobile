@@ -22,6 +22,3 @@ MonoBehaviour:
   - label: Monde 3
     levelInThisWorld: 5
     numberStarNeed: 25
-  - label: Monde 4
-    levelInThisWorld: 5
-    numberStarNeed: 40

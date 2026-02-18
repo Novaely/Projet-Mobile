@@ -424,6 +424,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1181368200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1181368202}
+  - component: {fileID: 1181368201}
+  m_Layer: 0
+  m_Name: GooglePlayManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1181368201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181368200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c483ab5c90e3f9c41846fa884f09d327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GooglePlayManager
+--- !u!4 &1181368202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181368200}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1701.7755, y: 442.45486, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1433368212
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,13 +794,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3267391901860971226, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 8.482178
+      objectReference: {fileID: 0}
     - target: {fileID: 4026229391196603860, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1126714159}
     - target: {fileID: 4114109439688682199, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
       propertyPath: m_fontSize
-      value: 47.9
+      value: 36.8
       objectReference: {fileID: 0}
     - target: {fileID: 4114109439688682199, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
       propertyPath: m_margin.w
@@ -858,6 +906,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7048231532039795751, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7338774939175901780, guid: a23be5fccf8496b4e83d19e74045f696, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -880,3 +932,4 @@ SceneRoots:
   - {fileID: 1930767287}
   - {fileID: 450426650}
   - {fileID: 2071117507}
+  - {fileID: 1181368202}

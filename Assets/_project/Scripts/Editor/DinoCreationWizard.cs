@@ -126,7 +126,7 @@ public class DinoCreatorWizard : EditorWindow
         dinoGO.layer = LayerMask.NameToLayer("Dino");
 
         var sr = dinoGO.AddComponent<SpriteRenderer>();
-        sr.sprite = idleSprite;
+        sr.sprite = passiveSprite;
         sr.sortingOrder = 5;
 
         dinoGO.AddComponent<CircleCollider2D>().radius = 0.5f;

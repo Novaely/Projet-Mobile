@@ -42,16 +42,16 @@ EditorBuildSettings:
     path: Assets/_project/Scenes/Levels/Level11.unity
     guid: f7dc8ad4708ed0a41aaf0984a04049d2
   - enabled: 1
-    path: Assets/_project/Scenes/Levels/level12.unity
+    path: Assets/_project/Scenes/Levels/Level12.unity
     guid: 2246fcea35eba1a428c16ad9ced2206a
   - enabled: 1
-    path: Assets/_project/Scenes/Levels/level13.unity
+    path: Assets/_project/Scenes/Levels/Level13.unity
     guid: 3b73ac5aaf29cc240907b731d728dc53
   - enabled: 1
-    path: Assets/_project/Scenes/Levels/level14.unity
+    path: Assets/_project/Scenes/Levels/Level14.unity
     guid: 5a12fad7cdc0e6841ab604dbedb69c42
   - enabled: 1
-    path: Assets/_project/Scenes/Levels/level15.unity
+    path: Assets/_project/Scenes/Levels/Level15.unity
     guid: 82d31013275f0a64a9eed4a33f4e7c3d
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: a49db3e974d19744da8f5725bd415b3f, type: 2}

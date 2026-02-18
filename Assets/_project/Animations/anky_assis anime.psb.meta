@@ -83,7 +83,7 @@ ScriptedImporter:
       y: 0
       width: 0
       height: 0
-    spriteID: 8b8a9927f7e525f4995e554beaa50d52
+    spriteID: 2d1d55a97a97775438cfc85cb69b20e4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -95,53 +95,9 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   multiSpriteImportData: []
   layeredSpriteImportData:
-  - name: Calque 5
+  - name: Calque 6
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 1263
-      width: 263
-      height: 133
-    spriteID: 07b7d8b6fbc635641878c732d9ab0b33
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 1263}
-    spritePosition: {x: 52, y: 390}
-  - name: Calque 4
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 1404
-      width: 234
-      height: 56
-    spriteID: 412611e11ad24844fae3ac3d70ded22b
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 1404}
-    spritePosition: {x: 62, y: 412}
-  - name: Calque 3
-    originalName: 
-    pivot: {x: 0.6594708, y: 0.29935345}
+    pivot: {x: 0.670496, y: 0.3169088}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -151,7 +107,7 @@ ScriptedImporter:
       y: 708
       width: 520
       height: 547
-    spriteID: 9786f81d4488b8d458fbe89c52aaaa96
+    spriteID: d7399c2304dea944d9f35f8d713c92a8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,6 +116,28 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 708}
+    spritePosition: {x: 0, y: 190}
+  - name: Calque 3
+    originalName: 
+    pivot: {x: 0.67049605, y: 0.3169088}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1263
+      width: 520
+      height: 547
+    spriteID: bcc5c816a2020a44c8127debbb6ecde2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1263}
     spritePosition: {x: 0, y: 190}
   - name: Calque 2
     originalName: 
@@ -173,7 +151,7 @@ ScriptedImporter:
       y: 4
       width: 754
       height: 696
-    spriteID: a5b068704529f4f449bb78be91ad4087
+    spriteID: 0faf0196fb29ed440a8344871d18b44f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -230,23 +208,13 @@ ScriptedImporter:
   resliceFromLayer: 0
   pSDLayerImportSetting: []
   psdLayers:
-  - name: Calque 5
-    spriteName: Calque 5
+  - name: Calque 6
+    spriteName: Calque 6
     isGroup: 0
     parentIndex: -1
-    spriteID: 07b7d8b6fbc635641878c732d9ab0b33
-    layerID: 8
-    mosaicPosition: {x: 4, y: 1263}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Calque 4
-    spriteName: Calque 4
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 412611e11ad24844fae3ac3d70ded22b
-    layerID: 7
-    mosaicPosition: {x: 4, y: 1404}
+    spriteID: d7399c2304dea944d9f35f8d713c92a8
+    layerID: 9
+    mosaicPosition: {x: 4, y: 708}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -254,9 +222,9 @@ ScriptedImporter:
     spriteName: Calque 3
     isGroup: 0
     parentIndex: -1
-    spriteID: 9786f81d4488b8d458fbe89c52aaaa96
+    spriteID: bcc5c816a2020a44c8127debbb6ecde2
     layerID: 6
-    mosaicPosition: {x: 4, y: 708}
+    mosaicPosition: {x: 4, y: 1263}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -264,7 +232,7 @@ ScriptedImporter:
     spriteName: Calque 2
     isGroup: 0
     parentIndex: -1
-    spriteID: a5b068704529f4f449bb78be91ad4087
+    spriteID: 0faf0196fb29ed440a8344871d18b44f
     layerID: 5
     mosaicPosition: {x: 4, y: 4}
     flatten: 0

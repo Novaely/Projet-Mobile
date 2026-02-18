@@ -4,6 +4,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("--- SFX ---")]
+    [SerializeField] AudioClip MainMenuMusic;
+    [SerializeField] AudioClip[] LevelMusics;
+
     public enum GameStates
     {
         Init,
@@ -50,7 +54,7 @@ public class GameManager : MonoBehaviour
         switch (GameState)
         {
             case GameStates.Init:
-                if (PlayerSave.Instance.IsSaveLoad) { GameState = GameStates.Menu; }
+                if (PlayerSave.Instance.IsSaveLoad) { MenuLoad(); }
                 break;
             case GameStates.Menu:
                 break;
@@ -68,10 +72,13 @@ public class GameManager : MonoBehaviour
     void MenuLoad()
     {
         GameState = GameStates.Menu;
+        AudioManager.Instance.PlayMusic(MainMenuMusic);
     }
 
     void LevelLoad()
     {
+        AudioManager.Instance.StopMusic();
+
         TutoManager tutoManager = FindFirstObjectByType<TutoManager>();
 
         if (tutoManager != null)
@@ -85,6 +92,9 @@ public class GameManager : MonoBehaviour
         {
             GameState = GameStates.Play;
         }
+
+        int r = Random.Range(0, LevelMusics.Length);
+        AudioManager.Instance.PlayMusic(LevelMusics[r]);
     }
 
     void TutoEnd()

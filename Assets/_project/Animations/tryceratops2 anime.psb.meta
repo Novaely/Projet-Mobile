@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 72e5738ea032c0c4f85ca6a09e3a9884
+guid: 1be9f4dd38b811547ac1375e75751d81
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -83,7 +83,7 @@ ScriptedImporter:
       y: 0
       width: 0
       height: 0
-    spriteID: c8834512e3f2cdf48a5860745b720083
+    spriteID: c934a0a9faa0d364c9af180cb6cd5801
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -95,75 +95,9 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   multiSpriteImportData: []
   layeredSpriteImportData:
-  - name: Calque 14
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 782
-      y: 558
-      width: 139
-      height: 106
-    spriteID: e8283f7650b22704898f2a4c2acd2d5e
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 782, y: 558}
-    spritePosition: {x: 127, y: 430}
-  - name: Calque 16
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 723
-      y: 376
-      width: 204
-      height: 121
-    spriteID: 0ef2ea440b686214da9d0d34fccaa76c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 723, y: 376}
-    spritePosition: {x: 181, y: 447}
-  - name: Calque 17
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 782
-      y: 672
-      width: 196
-      height: 55
-    spriteID: 956dbbbf04f3e4a4d96840e01bb5813e
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 782, y: 672}
-    spritePosition: {x: 187, y: 477}
   - name: Calque 13
     originalName: 
-    pivot: {x: 0.64407396, y: 0.1024394}
+    pivot: {x: 0.6524048, y: 0.1421683}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -173,7 +107,7 @@ ScriptedImporter:
       y: 4
       width: 711
       height: 546
-    spriteID: e05fbc96122c2c344ac102992dc1303f
+    spriteID: a7a6da4d46a644d4a86b645b1776238b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -182,6 +116,28 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 0, y: 294}
+  - name: Calque 21
+    originalName: 
+    pivot: {x: 0.6524048, y: 0.14216831}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 558
+      width: 711
+      height: 546
+    spriteID: 57ab632216cea6c4cace9352788a6552
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 558}
     spritePosition: {x: 0, y: 294}
   - name: Calque 18
     originalName: 
@@ -195,7 +151,7 @@ ScriptedImporter:
       y: 4
       width: 188
       height: 364
-    spriteID: 4026d80949532974688f0e35691cb2ed
+    spriteID: 4642a6d31e8958040999deeae3432c49
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -214,10 +170,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 613
-      y: 558
+      y: 1112
       width: 161
       height: 197
-    spriteID: 09f6040454a2ff742ab27bdf8b5c0143
+    spriteID: 57e8a6df88f9fa2458f20024f8e2ed11
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -225,7 +181,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 613, y: 558}
+    uvTransform: {x: 613, y: 1112}
     spritePosition: {x: 383, y: 18}
   - name: Calque 12
     originalName: 
@@ -236,10 +192,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 558
+      y: 1112
       width: 601
       height: 421
-    spriteID: 6ad9ecf87673b014c81c1ddcc6e0ea5c
+    spriteID: 281b579be71d1de4bbf371e7ae212162
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -247,7 +203,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 558}
+    uvTransform: {x: 4, y: 1112}
     spritePosition: {x: 208, y: 0}
   - name: Calque 20
     originalName: 
@@ -257,11 +213,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 613
-      y: 763
+      x: 782
+      y: 1112
       width: 161
       height: 197
-    spriteID: d424e1e941b592e4ea03e8821ac23d35
+    spriteID: 2ac063e6e8bb3a14f88ee93054904325
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -269,7 +225,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 613, y: 763}
+    uvTransform: {x: 782, y: 1112}
     spritePosition: {x: 325, y: 49}
   spriteImportData: []
   rigSpriteImportData: []
@@ -318,43 +274,23 @@ ScriptedImporter:
   resliceFromLayer: 0
   pSDLayerImportSetting: []
   psdLayers:
-  - name: Calque 14
-    spriteName: Calque 14
-    isGroup: 0
-    parentIndex: -1
-    spriteID: e8283f7650b22704898f2a4c2acd2d5e
-    layerID: 19
-    mosaicPosition: {x: 782, y: 558}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Calque 16
-    spriteName: Calque 16
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 0ef2ea440b686214da9d0d34fccaa76c
-    layerID: 21
-    mosaicPosition: {x: 723, y: 376}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Calque 17
-    spriteName: Calque 17
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 956dbbbf04f3e4a4d96840e01bb5813e
-    layerID: 22
-    mosaicPosition: {x: 782, y: 672}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
   - name: Calque 13
     spriteName: Calque 13
     isGroup: 0
     parentIndex: -1
-    spriteID: e05fbc96122c2c344ac102992dc1303f
+    spriteID: a7a6da4d46a644d4a86b645b1776238b
     layerID: 18
     mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Calque 21
+    spriteName: Calque 21
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 57ab632216cea6c4cace9352788a6552
+    layerID: 26
+    mosaicPosition: {x: 4, y: 558}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -362,7 +298,7 @@ ScriptedImporter:
     spriteName: Calque 18
     isGroup: 0
     parentIndex: -1
-    spriteID: 4026d80949532974688f0e35691cb2ed
+    spriteID: 4642a6d31e8958040999deeae3432c49
     layerID: 23
     mosaicPosition: {x: 723, y: 4}
     flatten: 0
@@ -372,9 +308,9 @@ ScriptedImporter:
     spriteName: Calque 19
     isGroup: 0
     parentIndex: -1
-    spriteID: 09f6040454a2ff742ab27bdf8b5c0143
+    spriteID: 57e8a6df88f9fa2458f20024f8e2ed11
     layerID: 24
-    mosaicPosition: {x: 613, y: 558}
+    mosaicPosition: {x: 613, y: 1112}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -382,9 +318,9 @@ ScriptedImporter:
     spriteName: Calque 12
     isGroup: 0
     parentIndex: -1
-    spriteID: 6ad9ecf87673b014c81c1ddcc6e0ea5c
+    spriteID: 281b579be71d1de4bbf371e7ae212162
     layerID: 17
-    mosaicPosition: {x: 4, y: 558}
+    mosaicPosition: {x: 4, y: 1112}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -392,9 +328,9 @@ ScriptedImporter:
     spriteName: Calque 20
     isGroup: 0
     parentIndex: -1
-    spriteID: d424e1e941b592e4ea03e8821ac23d35
+    spriteID: 2ac063e6e8bb3a14f88ee93054904325
     layerID: 25
-    mosaicPosition: {x: 613, y: 763}
+    mosaicPosition: {x: 782, y: 1112}
     flatten: 0
     isImported: 1
     isVisible: 1

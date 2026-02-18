@@ -246,6 +246,7 @@ MonoBehaviour:
   bubbleHappySprite: {fileID: 21300000, guid: c1ebcbf489c1fe04e82d932ff120d077, type: 3}
   bubbleAngrySprite: {fileID: 21300000, guid: 3dc712cfb56a5a9459cfc778975ee596, type: 3}
   _SFXBubbleEmotion: {fileID: 8300000, guid: 395287d6f43fe454a921689db5032c7b, type: 3}
+  _volume: 0.2
   currentState: 0
   currentSatisfaction: 0
 --- !u!1 &9064200662120889502

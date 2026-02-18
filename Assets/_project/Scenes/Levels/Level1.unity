@@ -476,6 +476,7 @@ MonoBehaviour:
     m_Bits: 256
   conditionManager: {fileID: 676351100}
   antiSpamDelay: 0.15
+  _SFXPlacement: {fileID: 8300000, guid: ed47ce49632f9b44eab94f99effab788, type: 3}
 --- !u!114 &676351099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -945,6 +946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Seat
   seatType: 0
+  isSpawnSeat: 0
   seatColumn: 1
   seatRow: 1
   occupant: {fileID: 0}
@@ -1456,6 +1458,7 @@ GameObject:
   - component: {fileID: 1931558740}
   - component: {fileID: 1931558739}
   - component: {fileID: 1931558737}
+  - component: {fileID: 1931558741}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1573,6 +1576,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1931558741
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931558736}
+  m_Enabled: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

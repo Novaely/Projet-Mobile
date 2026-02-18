@@ -666,6 +666,7 @@ MonoBehaviour:
     m_Bits: 256
   conditionManager: {fileID: 676351100}
   antiSpamDelay: 0.15
+  _SFXPlacement: {fileID: 8300000, guid: ed47ce49632f9b44eab94f99effab788, type: 3}
 --- !u!114 &676351099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,7 +684,7 @@ MonoBehaviour:
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 128
-  totalDinosToPlace: 9
+  totalDinosToPlace: 8
   levelValidated: 0
 --- !u!114 &676351100
 MonoBehaviour:
@@ -738,7 +739,6 @@ MonoBehaviour:
   - {fileID: 4542159638519610237, guid: 5eb5c143c75af0d4e9f6807bb95bb157, type: 3}
   - {fileID: 1495451563095317834, guid: 7eadf47c10fbcb24f8ee76f23660e731, type: 3}
   - {fileID: 5070272790163675155, guid: 34a6140976615ed4db6783ee0b10fe34, type: 3}
-  - {fileID: 9156668621598424937, guid: 7e580b998b6cae14f9dbd45c8116b508, type: 3}
   _dinosContainer: {fileID: 1604867147}
 --- !u!1 &797751246
 GameObject:
@@ -913,6 +913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Seat
   seatType: 0
+  isSpawnSeat: 0
   seatColumn: 1
   seatRow: 1
   occupant: {fileID: 0}

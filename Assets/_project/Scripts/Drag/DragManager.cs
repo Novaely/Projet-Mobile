@@ -23,6 +23,8 @@ public class DragManager : MonoBehaviour
     Vector2 _startPosition;
     bool _isDragging;
 
+    [SerializeField] AudioClip _SFXPlacement;
+
     public event Action<Dino> OnDinoClicked;
     public event Action OnDrag;
     public event Action OnDragCanceled;
@@ -137,6 +139,7 @@ public class DragManager : MonoBehaviour
                 {
                     if (conditionManager.DropDino(_currentDino, seat))
                     {
+                        AudioManager.Instance.PlaySFX(_SFXPlacement);
                         conditionManager.PickupDino(_oldSeat);
                         _currentDino.SetSlotPosition(seat.transform);
                         
@@ -161,7 +164,6 @@ public class DragManager : MonoBehaviour
                     if (_oldSeat != null) 
                     {
                         _oldSeat.occupant = _currentDino;
-                        UpdateAllBoard();
                     }
                 }
 

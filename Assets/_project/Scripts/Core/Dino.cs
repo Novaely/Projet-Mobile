@@ -22,7 +22,10 @@ public class Dino : MonoBehaviour
     public Sprite particleAngry;
     public SpriteRenderer bubbleRenderer; 
     public Sprite bubbleHappySprite;      
-    public Sprite bubbleAngrySprite;      
+    public Sprite bubbleAngrySprite;
+
+    [Header("--- SFX ---")]
+    [SerializeField] AudioClip _SFXBubbleEmotion;
 
     [Header("--- ETAT ---")]
     public PlacementState currentState = PlacementState.Neutre;
@@ -47,18 +50,19 @@ public class Dino : MonoBehaviour
     public void SetSlotPosition(Transform slotTransform)
     {
         _lastPosition = slotTransform;
+        transform.position = slotTransform.position;
     }
 
-    // --- MODIFICATION ICI : Ajout du paramètre playFX ---
     public void ReturnToLastPosition(bool playFX = true)
     {
         if (_lastPosition != null)
         {
             transform.position = _lastPosition.position;
+
             if (_lastPosition.TryGetComponent(out Seat seat))
             {
                 EvaluateSatisfaction(seat);
-                PlayPlacementAnimation(playFX); // On transmet l'info
+                PlayPlacementAnimation(playFX); 
             }
         }
     }
@@ -79,13 +83,25 @@ public class Dino : MonoBehaviour
     public void EvaluateSatisfaction(Seat seat)
     {
         if (seat == null) return;
-        if (IsOnSpawn(seat))
+        
+        if (seat.isSpawnSeat || seat.gameObject.layer == LayerMask.NameToLayer("Spawn"))
         {
             currentState = PlacementState.Neutre;
             currentSatisfaction = 0f;
+            
+            if (feedbackParticles != null) 
+            {
+                feedbackParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
+            
+            if (bubbleRenderer != null) 
+            {
+                bubbleRenderer.gameObject.SetActive(false);
+            }
+            
             return; 
         }
-        
+
         if (profile == null || profile.myRules == null || profile.myRules.Count == 0) 
         { 
             currentState = PlacementState.Bon;
@@ -107,7 +123,6 @@ public class Dino : MonoBehaviour
         else currentState = PlacementState.Neutre;
     }
 
-    // --- MODIFICATION ICI ---
     public void PlayPlacementAnimation(bool playFX = true)
     {
         PlayActiveAnimation(currentState, playFX);
@@ -116,17 +131,16 @@ public class Dino : MonoBehaviour
     private void PlayActiveAnimation(PlacementState state, bool playFX)
     {
         if (_currentAnim != null) StopCoroutine(_currentAnim);
-        UpdateBubbleState(state); // La bulle reste (info statique)
+        UpdateBubbleState(state);
 
         bool isSpawn = false;
         if (_lastPosition != null && _lastPosition.TryGetComponent(out Seat s)) isSpawn = IsOnSpawn(s);
 
-        if (!isSpawn && _lastPosition != null && Vector3.Distance(transform.position, _lastPosition.position) < 0.5f)
+        if (!isSpawn && _lastPosition != null)
         {
              transform.position = _lastPosition.position;
         }
 
-        // On remet l'échelle normale au cas où
         transform.localScale = _originalScale; 
         transform.rotation = Quaternion.identity;
 
@@ -134,7 +148,7 @@ public class Dino : MonoBehaviour
         {
             case PlacementState.Bon:
                 _renderer.sprite = happySprite ? happySprite : idleSprite;
-                if (playFX) // SEULEMENT SI ON VEUT DES FX
+                if (playFX) 
                 {
                     TriggerParticles(particleHappy); 
                     _currentAnim = StartCoroutine(AnimHappyJump());
@@ -143,7 +157,7 @@ public class Dino : MonoBehaviour
 
             case PlacementState.Mauvais:
                 _renderer.sprite = angrySprite ? angrySprite : idleSprite;
-                if (playFX) // SEULEMENT SI ON VEUT DES FX
+                if (playFX) 
                 {
                     TriggerParticles(particleAngry); 
                     _currentAnim = StartCoroutine(AnimAngryShake());
@@ -185,6 +199,7 @@ public class Dino : MonoBehaviour
     private void TriggerParticles(Sprite spriteToPlay)
     {
         if (feedbackParticles == null || spriteToPlay == null) return;
+        
         feedbackParticles.Stop();
         feedbackParticles.Clear();
         var textureModule = feedbackParticles.textureSheetAnimation;
@@ -192,6 +207,11 @@ public class Dino : MonoBehaviour
         textureModule.mode = ParticleSystemAnimationMode.Sprites;
         textureModule.SetSprite(0, spriteToPlay);
         feedbackParticles.Play();
+
+        if (AudioManager.Instance != null && _SFXBubbleEmotion != null)
+        {
+            AudioManager.Instance.PlaySFX(_SFXBubbleEmotion);
+        }
     }
 
     private IEnumerator AnimHappyJump()
@@ -216,7 +236,7 @@ public class Dino : MonoBehaviour
     private IEnumerator AnimAngryShake()
     {
         float duration = 0.4f; float timer = 0f;
-        Vector3 centerPos = transform.position;
+        Vector3 centerPos = _lastPosition != null ? _lastPosition.position : transform.position;
         while (timer < duration) {
             timer += Time.deltaTime;
             float x = Mathf.Sin(timer * 30f) * 0.15f; 

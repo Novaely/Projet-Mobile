@@ -164,7 +164,6 @@ public class DragManager : MonoBehaviour
                     if (_oldSeat != null) 
                     {
                         _oldSeat.occupant = _currentDino;
-                        UpdateAllBoard();
                     }
                 }
 

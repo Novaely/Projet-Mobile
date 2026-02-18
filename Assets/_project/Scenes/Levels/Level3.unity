@@ -960,7 +960,7 @@ PrefabInstance:
       objectReference: {fileID: 1094216404}
     - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
       propertyPath: seatRow
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2082316319609833877, guid: f5177723ced83ab4296bf2bc46676aad, type: 3}
       propertyPath: seatColumn

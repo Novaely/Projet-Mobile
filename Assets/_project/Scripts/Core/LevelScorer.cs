@@ -1,8 +1,5 @@
-using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using System.Linq;
-using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class LevelScorer : MonoBehaviour
 {

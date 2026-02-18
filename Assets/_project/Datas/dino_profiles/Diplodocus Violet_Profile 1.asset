@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Diplodocus Violet_Profile 1
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre derri\xE8re"
+  positiveCondition: Grroorr
   negativeCondition: 
   speciesName: Diplodocus Violet
   diet: 0

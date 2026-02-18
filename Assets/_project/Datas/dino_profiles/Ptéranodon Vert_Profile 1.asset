@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "Pt\xE9ranodon Vert_Profile 1"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Aime \xEAtre \xE0 c\xF4t\xE9 de carnivore"
-  negativeCondition: "N'aime pas \xEAtre seul"
+  positiveCondition: Carrnn
+  negativeCondition: Rawr
   speciesName: "Pt\xE9ranodon Vert"
   diet: 1
   myRules:

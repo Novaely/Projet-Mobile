@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Ankylo Fred_Profile 1
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Fred
-  positiveCondition: Veut un voisin avec des piercings
-  negativeCondition: N'aime pas ceux qui fume
+  positiveCondition: Pieerce
+  negativeCondition: Cigra
   speciesName: Ankylo Fred
   diet: 0
   myRules:

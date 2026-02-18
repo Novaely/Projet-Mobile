@@ -73,11 +73,11 @@ MonoBehaviour:
     French: haut de forme
     English: a top hat
     UnlockedAtLevel: 7
-  - DinoWord: Pieerce
-    French: Piercing
-    English: Piercing
-    UnlockedAtLevel: 7
-  - DinoWord: Pieerce
-    French: Piercing
-    English: Piercing
-    UnlockedAtLevel: 7
+  - DinoWord: Jjuup
+    French: Jupe
+    English: Skirt
+    UnlockedAtLevel: 3
+  - DinoWord: Sssooorrrrr
+    French: Sortie
+    English: Exit
+    UnlockedAtLevel: 3

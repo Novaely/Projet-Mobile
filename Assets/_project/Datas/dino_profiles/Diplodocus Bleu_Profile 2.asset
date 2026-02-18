@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
   positiveCondition: 
-  negativeCondition: "Ne veut pas \xEAtre devant"
+  negativeCondition: Vrooouuvroouuu
   speciesName: Diplodocus Bleu
   diet: 0
   myRules:

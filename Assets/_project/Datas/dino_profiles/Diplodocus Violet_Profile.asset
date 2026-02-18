@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
   positiveCondition: 
-  negativeCondition: "Ne veut pas \xEAtre \xE0 c\xF4t\xE9 de quelqu'un qui fume"
+  negativeCondition: Cigra
   speciesName: Diplodocus Violet
   diet: 0
   myRules:

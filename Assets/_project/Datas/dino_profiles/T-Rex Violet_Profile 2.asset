@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: T-Rex Violet_Profile 2
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Haut de Forme
-  positiveCondition: "Veut \xEAtre proche de la sortie"
+  positiveCondition: Sssooorrrrr
   negativeCondition: 
   speciesName: T-Rex Violet
   diet: 1

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: "Tric\xE9ratops Bleu_Profile 4"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre devant\nVeut \xEAtre proche d'une fen\xEAtre"
+  positiveCondition: 'Vrooouuvroouuu
+
+    Freeeeerrr'
   negativeCondition: 
   speciesName: "Tric\xE9ratops Bleu"
   diet: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "V\xE9lociraptor Rouge_Profile 2"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre au milieu"
+  positiveCondition: Miill
   negativeCondition: 
   speciesName: "V\xE9lociraptor Rouge"
   diet: 1

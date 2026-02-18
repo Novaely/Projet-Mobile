@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "Tric\xE9ratop Jaune_Profile"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Piercing
-  positiveCondition: "Veut \xEAtre proche de la fen\xEAtre"
-  negativeCondition: "Ne veut pas \xEAtre \xE0 c\xF4t\xE9 d'un Herbivore"
+  positiveCondition: Freeeeerrr
+  negativeCondition: Herbrrre
   speciesName: "Tric\xE9ratop Jaune"
   diet: 0
   myRules:

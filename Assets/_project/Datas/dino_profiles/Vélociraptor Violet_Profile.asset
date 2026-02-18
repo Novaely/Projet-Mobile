@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "V\xE9lociraptor Violet_Profile"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre devant"
-  negativeCondition: "Ne veut pas \xEAtre entre deux dinosaures"
+  positiveCondition: Vrooouuvroouuu
+  negativeCondition: Grrre Dino
   speciesName: "V\xE9lociraptor Violet"
   diet: 1
   myRules:

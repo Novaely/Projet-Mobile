@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "Pt\xE9ranodon Violet_Profile"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre \xE0 c\xF4t\xE9 d'un herbivore"
-  negativeCondition: "Ne veut pas \xEAtre devant"
+  positiveCondition: Herbrrre
+  negativeCondition: Vrooouuvroouuu
   speciesName: "Pt\xE9ranodon Violet"
   diet: 1
   myRules:

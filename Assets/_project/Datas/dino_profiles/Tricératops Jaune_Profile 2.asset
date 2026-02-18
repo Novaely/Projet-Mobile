@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Piercing
   positiveCondition: 
-  negativeCondition: "ne veut pas \xEAtre entre deux dinosaures\nne veut pas \xEAtre
-    derri\xE8re"
+  negativeCondition: 'Grrre Dino
+
+    Grroorr'
   speciesName: "Tric\xE9ratops Jaune"
   diet: 0
   myRules:

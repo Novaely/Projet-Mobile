@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: "V\xE9lociraptor Vert_Profile 2"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre \xE0 gauche\nVeut \xEAtre \xE0 c\xF4t\xE9 d'un
-    herbivore"
-  negativeCondition: "Ne veut personne derri\xE8re lui"
+  positiveCondition: 'Grrroo
+
+    Herbrrre'
+  negativeCondition: Grre Grroorr
   speciesName: "V\xE9lociraptor Vert"
   diet: 1
   myRules:

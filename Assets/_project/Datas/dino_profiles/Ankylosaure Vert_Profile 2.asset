@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Ankylosaure Vert_Profile 2
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Cigarette
-  positiveCondition: "Veut \xEAtre \xE0 c\xF4t\xE9 d'un dino qui porte une jupe"
-  negativeCondition: N'aime pas ceux qui porte des Piercing
+  positiveCondition: Jjuup
+  negativeCondition: Pieerce
   speciesName: Ankylosaure Vert
   diet: 0
   myRules:

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: T-Rex Vert_Profile 2
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Cigarette
-  positiveCondition: Veut un voisin qui fume
-  negativeCondition: N'aime pas les haut de Forme
+  positiveCondition: Cigra
+  negativeCondition: GrrannPo
   speciesName: T-Rex Vert
   diet: 1
   myRules:

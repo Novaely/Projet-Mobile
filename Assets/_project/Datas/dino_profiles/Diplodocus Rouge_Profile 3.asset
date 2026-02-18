@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Diplodocus Rouge_Profile 3
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre au milieu\nVeut \xEAtre proche du couloir"
+  positiveCondition: 'Miill
+
+    Crrolar'
   negativeCondition: 
   speciesName: Diplodocus Rouge
   diet: 0

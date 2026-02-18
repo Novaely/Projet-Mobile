@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Pt\xE9ranodon Violet_Profile 1"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre derri\xE8re"
+  positiveCondition: Grroorr
   negativeCondition: 
   speciesName: "Pt\xE9ranodon Violet"
   diet: 0

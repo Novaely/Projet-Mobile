@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "Tric\xE9ratops Jaune_Profile 5"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Piercing
-  positiveCondition: "Veut \xEAtre \xE0 c\xF4t\xE9 d'Ankylo Fred"
-  negativeCondition: N'aime pas ceux qui porte des jupes
+  positiveCondition: Grruu Fred
+  negativeCondition: Jjuup
   speciesName: "Tric\xE9ratops Jaune"
   diet: 0
   myRules:

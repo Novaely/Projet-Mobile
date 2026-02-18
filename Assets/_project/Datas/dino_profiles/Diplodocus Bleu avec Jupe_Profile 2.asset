@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Diplodocus Bleu avec Jupe_Profile 2
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Jupe
-  positiveCondition: "Veut \xEAtre \xE0 c\xF4t\xE9 d'un dino qui fume"
-  negativeCondition: N'aime pas ceux qui porte des piercings
+  positiveCondition: Cigra
+  negativeCondition: Pieerce
   speciesName: Diplodocus Bleu avec Jupe
   diet: 0
   myRules:

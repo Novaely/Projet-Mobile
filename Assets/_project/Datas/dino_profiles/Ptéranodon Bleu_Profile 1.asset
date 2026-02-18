@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: "Pt\xE9ranodon Bleu_Profile 1"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre au milieu\nVeut \xEAtre \xE0 c\xF4t\xE9 de la
-    fen\xEAtre"
+  positiveCondition: 'Miill
+
+    Freeeeerrr'
   negativeCondition: 
   speciesName: "Pt\xE9ranodon Bleu"
   diet: 1

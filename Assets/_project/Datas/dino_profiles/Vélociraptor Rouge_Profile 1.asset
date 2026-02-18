@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
   positiveCondition: 
-  negativeCondition: "Ne veut personne \xE0 c\xF4t\xE9 de lui\nNe veut personne derri\xE8re
-    lui"
+  negativeCondition: 'Grre Grroo
+
+    Grre Drroo
+
+    Grre Grroorr'
   speciesName: "V\xE9lociraptor Rouge"
   diet: 1
   myRules:

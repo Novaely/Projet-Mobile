@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: "Tric\xE9ratops Bleu_Profile"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Jupe
-  positiveCondition: "Veut \xEAtre \xE0 droite"
-  negativeCondition: "Pas \xE0 c\xF4t\xE9 d'un herbivore\nJamais au milieu"
+  positiveCondition: Drroo
+  negativeCondition: 'Herbrrre
+
+    Grree  Miill'
   speciesName: "Tric\xE9ratops Bleu"
   diet: 0
   myRules:

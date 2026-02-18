@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Diplodocus Vert_Profile 1
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre derri\xE8re"
-  negativeCondition: "Ne veut pas \xEAtre \xE0 c\xF4t\xE9 d'un carnivore"
+  positiveCondition: Grroorr
+  negativeCondition: Carrnn
   speciesName: Diplodocus Vert
   diet: 0
   myRules:

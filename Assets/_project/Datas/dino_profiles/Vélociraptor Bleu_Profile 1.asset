@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: "V\xE9lociraptor Bleu_Profile 1"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre \xE0 c\xF4t\xE9 d'un dinosaure Violet\nVeut \xEAtre
-    derri\xE8re"
+  positiveCondition: Grroorr
   negativeCondition: 
   speciesName: "V\xE9lociraptor Bleu"
   diet: 1

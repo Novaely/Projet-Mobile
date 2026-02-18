@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: "Tric\xE9ratops Bleu_Profile 1"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Jupe
-  positiveCondition: "Veut \xEAtre \xE0 c\xF4t\xE9 de quelqu'un qui porte une jupe
-    aussi"
-  negativeCondition: A peur des piercing
+  positiveCondition: Jjuup
+  negativeCondition: Pieerce
   speciesName: "Tric\xE9ratops Bleu"
   diet: 0
   myRules:

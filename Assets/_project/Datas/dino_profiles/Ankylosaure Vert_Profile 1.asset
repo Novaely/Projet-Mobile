@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Ankylosaure Vert_Profile 1
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Cigarette
-  positiveCondition: "\xEAtre au milieu"
-  negativeCondition: "Ne pas \xEAtre derri\xE8re"
+  positiveCondition: Miill
+  negativeCondition: Grroorr
   speciesName: Ankylosaure Vert
   diet: 0
   myRules:

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: "V\xE9lociraptor Vert_Profile 1"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre derri\xE8re\nVeut \xEAtre proche du couloir"
+  positiveCondition: 'Grroorr
+
+    Crrolar'
   negativeCondition: 
   speciesName: "V\xE9lociraptor Vert"
   diet: 1

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Diplodocus Bleu_Profile
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Aime \xEAtre seul"
-  negativeCondition: N'aime pas les carnivores
+  positiveCondition: Rawr
+  negativeCondition: Carrnn
   speciesName: Diplodocus Bleu
   diet: 0
   myRules:

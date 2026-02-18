@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Diplodocus Vert_Profile 3
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre au mileu\nVeut \xEAtre \xE0 c\xF4t\xE9 d'un carnivore"
+  positiveCondition: 'Miill
+
+    Carrnn'
   negativeCondition: 
   speciesName: Diplodocus Vert
   diet: 0

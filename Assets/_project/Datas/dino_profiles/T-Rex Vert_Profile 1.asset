@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Cigarette
   positiveCondition: 
-  negativeCondition: "Ne veut pas \xEAtre devant\nNe veut pas \xEAtre \xE0 gauche"
+  negativeCondition: 'Vrooouuvroouuu
+
+    Grrroo'
   speciesName: T-Rex Vert
   diet: 1
   myRules:

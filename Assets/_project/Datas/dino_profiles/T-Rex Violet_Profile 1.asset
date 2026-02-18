@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: T-Rex Violet_Profile 1
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Haut de Forme
-  positiveCondition: "Veut \xEAtre \xE0 c\xF4t\xE9 d'un dino qui fume"
-  negativeCondition: N'aime pas ceux qui porte des jupes
+  positiveCondition: Cigra
+  negativeCondition: Jjuup
   speciesName: T-Rex Violet
   diet: 1
   myRules:

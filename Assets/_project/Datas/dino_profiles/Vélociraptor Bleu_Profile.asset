@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "V\xE9lociraptor Bleu_Profile"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "\xEAtre au milieu"
-  negativeCondition: "Ne pas \xEAtre devant"
+  positiveCondition: Miill
+  negativeCondition: Vrooouuvroouuu
   speciesName: "V\xE9lociraptor Bleu"
   diet: 1
   myRules:

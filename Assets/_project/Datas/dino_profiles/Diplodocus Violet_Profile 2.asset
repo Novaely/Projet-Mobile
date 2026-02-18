@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Diplodocus Violet_Profile 2
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Peut \xEAtre placer o\xF9 on veut"
-  negativeCondition: "Peut \xEAtre placer o\xF9 on veut"
+  positiveCondition: 
+  negativeCondition: 
   speciesName: Diplodocus Violet
   diet: 0
   myRules: []

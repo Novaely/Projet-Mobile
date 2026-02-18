@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Diplodocus Violet_Profile 3
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "Veut \xEAtre devant\nVeut \xEAtre c\xF4t\xE9 couloir"
+  positiveCondition: 'Vrooouuvroouuu
+
+    Crrolar'
   negativeCondition: 
   speciesName: Diplodocus Violet
   diet: 0

@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: "Pt\xE9ranodon Bleu_Profile"
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: 
-  positiveCondition: "veut milieu (colonne)\nherbivore \xE0 c\xF4t\xE9"
-  negativeCondition: "ne veut pas \xEAtre devant"
+  positiveCondition: 'Miill
+
+    Herbrrre'
+  negativeCondition: Vrooouuvroouuu
   speciesName: "Pt\xE9ranodon Bleu"
   diet: 1
   myRules:

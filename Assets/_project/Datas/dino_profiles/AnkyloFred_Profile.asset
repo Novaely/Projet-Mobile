@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AnkyloFred_Profile
   m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
   accessoryTag: Fred
-  positiveCondition: "Veut \xEAtre au milieu"
+  positiveCondition: Miill
   negativeCondition: 
   speciesName: AnkyloFred
   diet: 0

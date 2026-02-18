@@ -237,11 +237,7 @@ MonoBehaviour:
   profile: {fileID: 11400000, guid: a7e7a22b0fcc1514f8268700107ee2eb, type: 2}
   passiveSprite: {fileID: 21300000, guid: a837ad02e14dc4a43ac31155ca2d68e5, type: 3}
   idleSprite: {fileID: 21300000, guid: ce0c29610ce02e64da7c7a2019d2d9b6, type: 3}
-  happySprite: {fileID: 0}
-  angrySprite: {fileID: 0}
   feedbackParticles: {fileID: 618483078666263676}
-  particleHappy: {fileID: 21300000, guid: c1ebcbf489c1fe04e82d932ff120d077, type: 3}
-  particleAngry: {fileID: 21300000, guid: 3dc712cfb56a5a9459cfc778975ee596, type: 3}
   bubbleRenderer: {fileID: 3516852080295019289}
   bubbleHappySprite: {fileID: 21300000, guid: c1ebcbf489c1fe04e82d932ff120d077, type: 3}
   bubbleAngrySprite: {fileID: 21300000, guid: 3dc712cfb56a5a9459cfc778975ee596, type: 3}

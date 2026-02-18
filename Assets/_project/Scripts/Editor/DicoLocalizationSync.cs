@@ -27,16 +27,13 @@ public static class DicoLocalizationSync
         }
 
         var sharedData = collection.SharedData;
-
-        var keys = new List<string>();
-        foreach (var entry in sharedData.Entries)
-            keys.Add(entry.Key);
-
-        foreach (var key in keys)
-            sharedData.RemoveKey(key);
+        sharedData.Clear();
 
         var frTable = collection.GetTable("fr") as StringTable;
         var enTable = collection.GetTable("en") as StringTable;
+
+        frTable.Clear();
+        enTable.Clear();
 
         foreach (var dino in database.Dictionnary)
         {

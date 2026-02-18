@@ -1,6 +1,5 @@
 using System;
 using TMPro;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.UI;
 using static SpawnManager;
@@ -10,6 +9,8 @@ public class UIInfoDinoLevel : MonoBehaviour
     [Header("Text References")]
     [SerializeField] Image _imageDiet;
     [SerializeField] private TextMeshProUGUI _textDinoName;
+    [SerializeField] private GameObject _panelWant;
+    [SerializeField] private GameObject _panelDontWant;
     [SerializeField] private TextMeshProUGUI _textDinoContraintePositive;
     [SerializeField] private TextMeshProUGUI _textDinoContrainteNegative;
 
@@ -61,11 +62,33 @@ public class UIInfoDinoLevel : MonoBehaviour
         if (_textDinoName != null)
             _textDinoName.text = infoDino.label;
 
-        if (_textDinoContraintePositive != null) 
+        if (_textDinoContraintePositive != null)
+        {
             _textDinoContraintePositive.text = infoDino.contraintePositive;
+            if (_textDinoContraintePositive.text == string.Empty)
+            {
+                _panelWant.SetActive(false);
+            }
+            else
+            {
+                _panelWant.SetActive(true);
+            }
+        }
+            
 
-        if (_textDinoContrainteNegative != null) 
+        if (_textDinoContrainteNegative != null)
+        {
             _textDinoContrainteNegative.text = infoDino.contrainteNegative;
+            if (_textDinoContraintePositive.text == string.Empty)
+            {
+                _panelWant.SetActive(false);
+            }
+            else
+            {
+                _panelWant.SetActive(true);
+            }
+        }
+            
 
         if (_imagePreviewDino != null)
         {

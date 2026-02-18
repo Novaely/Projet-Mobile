@@ -83,11 +83,11 @@ public class GooglePlayManager : MonoBehaviour
     void Start()
     {
         // Google play (je crois)
-        PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+        //PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
 
         // Unity
-        //PlayGamesPlatform.Activate();
-        //Social.localUser.Authenticate(ProcessAuthentication);
+        PlayGamesPlatform.Activate();
+        Social.localUser.Authenticate(ProcessAuthentication);
 
         Social.LoadAchievements(LoadAchievements);
     }

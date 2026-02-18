@@ -26,6 +26,7 @@ public class Dino : MonoBehaviour
 
     [Header("--- SFX ---")]
     [SerializeField] AudioClip _SFXBubbleEmotion;
+    [SerializeField, Range(0, 10)] float _volume = 1;
 
     [Header("--- ETAT ---")]
     public PlacementState currentState = PlacementState.Neutre;
@@ -210,7 +211,7 @@ public class Dino : MonoBehaviour
 
         if (AudioManager.Instance != null && _SFXBubbleEmotion != null)
         {
-            AudioManager.Instance.PlaySFX(_SFXBubbleEmotion);
+            AudioManager.Instance.PlaySFX(_SFXBubbleEmotion,_volume);
         }
     }
 

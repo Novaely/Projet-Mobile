@@ -5082,5 +5082,6 @@ MonoBehaviour:
   bubbleHappySprite: {fileID: 0}
   bubbleAngrySprite: {fileID: 0}
   _SFXBubbleEmotion: {fileID: 0}
+  _volume: 0.2
   currentState: 0
   currentSatisfaction: 0

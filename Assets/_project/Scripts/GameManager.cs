@@ -4,6 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("--- SFX ---")]
     [SerializeField] AudioClip MainMenuMusic;
     [SerializeField] AudioClip[] LevelMusics;
 

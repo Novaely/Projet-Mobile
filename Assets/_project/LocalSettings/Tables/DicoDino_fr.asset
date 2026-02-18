@@ -170,6 +170,66 @@ MonoBehaviour:
     m_Localized: haut de forme
     m_Metadata:
       m_Items: []
+  - m_Id: 5108224483082240
+    m_Localized: "Fen\xEAtre"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5108224554385408
+    m_Localized: Devant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5108224554385409
+    m_Localized: "\xC9tre seul"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5108224554385410
+    m_Localized: "A c\xF4t\xE9 d'un herbivore"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5108224554385411
+    m_Localized: "Derri\xE8re"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5108224554385412
+    m_Localized: "A c\xF4t\xE9 d'un carnivore"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5108224554385413
+    m_Localized: A droite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5108224554385414
+    m_Localized: Pas entre deux dinosaures
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5108224554385415
+    m_Localized: Au milieu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5108224554385416
+    m_Localized: Jamais au milieu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5108224554385417
+    m_Localized: A gauche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5108224554385418
+    m_Localized: Fumeur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5108224554385419
+    m_Localized: Couloir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5108224554385420
+    m_Localized: Piercing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5108224554385421
+    m_Localized: haut de forme
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -130,7 +130,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 1.02
 --- !u!114 &2817916104913006106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,11 +146,7 @@ MonoBehaviour:
   profile: {fileID: 11400000, guid: 4a6d56e1d9148c747a5d41a75ee7ab71, type: 2}
   passiveSprite: {fileID: 21300000, guid: f045408ade212414ba9a9ac4f60e1e2c, type: 3}
   idleSprite: {fileID: 21300000, guid: 9d8d35c3d83c0a34b9dbec1d1ead517f, type: 3}
-  happySprite: {fileID: 0}
-  angrySprite: {fileID: 0}
   feedbackParticles: {fileID: 1591975698696813127}
-  particleHappy: {fileID: 0}
-  particleAngry: {fileID: 0}
   bubbleRenderer: {fileID: 5609011111870182393}
   bubbleHappySprite: {fileID: 0}
   bubbleAngrySprite: {fileID: 0}

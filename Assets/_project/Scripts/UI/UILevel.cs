@@ -186,6 +186,14 @@ public class UILevel : MonoBehaviour
             {
                 _btnNextLevel.gameObject.SetActive(false);
             }
+            if (ScenesManager.Instance.GetLevelIndex(SceneManager.GetActiveScene()) == 1)
+            {
+                GooglePlayManager.Instance.CompleteAchievement(AchivementEnum.Tuto);
+            }
+            else if (_levelScorer.GetStars() == 3)
+            {
+                GooglePlayManager.Instance.CompleteAchievement((AchivementEnum)ScenesManager.Instance.GetLevelIndex(SceneManager.GetActiveScene()));
+            }
             
             PlayerSave.Instance.UpdateStarOfOneLevel(_levelScorer.GetStars());
         }

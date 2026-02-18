@@ -1146,8 +1146,6 @@ MonoBehaviour:
   _btnValidateButton: {fileID: 4310209121964570833}
   resultPanel: {fileID: 4609852959734627363}
   scoreText: {fileID: 4061341673957814387}
-  percentText: {fileID: 0}
-  starsText: {fileID: 0}
   starImages:
   - {fileID: 9010034067373009623}
   - {fileID: 9001365188591468560}
@@ -1471,7 +1469,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3272690806765879598}
   m_HandleRect: {fileID: 6480433871761817150}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0.9999963
   m_Size: 0.96934783
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2812,11 +2810,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2456802973992006093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 945, y: -376}
-  m_SizeDelta: {x: 72.4755, y: 60}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 10}
+  m_SizeDelta: {x: 60, y: 60}
+  m_Pivot: {x: 1, y: 0}
 --- !u!222 &3262682056353952301
 CanvasRenderer:
   m_ObjectHideFlags: 0

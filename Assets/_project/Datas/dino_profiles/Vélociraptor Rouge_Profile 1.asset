@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615cde17988db694a80bae6172af2359, type: 3}
+  m_Name: "V\xE9lociraptor Rouge_Profile 1"
+  m_EditorClassIdentifier: Assembly-CSharp::DinoProfileSO
+  accessoryTag: 
+  positiveCondition: 
+  negativeCondition: "Ne veut personne \xE0 c\xF4t\xE9 de lui\nNe veut personne derri\xE8re
+    lui"
+  speciesName: "V\xE9lociraptor Rouge"
+  diet: 1
+  myRules:
+  - {fileID: 11400000, guid: 87a1cb14a32181149bc603b3135a7197, type: 2}
+  - {fileID: 11400000, guid: 6b879f58a80512045bb8e6d6ad0a0140, type: 2}
+  - {fileID: 11400000, guid: f0f87d90f7d69a04dade19edba8183f4, type: 2}

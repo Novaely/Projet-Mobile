@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
         EndLevel,
     }
 
-    public GameStates GameState {  get; private set; }
+    public GameStates GameState { get; private set; }
 
     void Awake()
     {
@@ -47,7 +47,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        switch (GameState) {
+        switch (GameState)
+        {
             case GameStates.Init:
                 if (PlayerSave.Instance.IsSaveLoad) { GameState = GameStates.Menu; }
                 break;

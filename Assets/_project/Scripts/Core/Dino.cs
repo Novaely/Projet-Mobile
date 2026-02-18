@@ -1,12 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public enum PlacementState
-{
-    Neutre,
-    Bon,
-    Mauvais
-}
+public enum PlacementState { Neutre, Bon, Mauvais }
 
 public class Dino : MonoBehaviour
 {
@@ -15,23 +10,22 @@ public class Dino : MonoBehaviour
     public string dinoName => profile ? profile.speciesName : "Unknown";
     public DietType diet => profile ? profile.diet : DietType.Herbivore;
 
-    [Header("--- VISUEL PASSIF (Spawn & Drag) ---")]
+    [Header("--- VISUEL ---")]
     public Sprite passiveSprite; 
-
-    [Header("--- VISUEL ACTIF (Posé en Jeu) ---")]
-    public Sprite idleSprite;   
+    public Sprite idleSprite;    
     public Sprite happySprite;  
     public Sprite angrySprite;  
 
-    [Header("--- PARTICULES (Effet au placement) ---")]
+    [Header("--- FX ---")]
     public ParticleSystem feedbackParticles; 
     public Sprite particleHappy;  
     public Sprite particleAngry;
-
-    [Header("--- BULLE PERSISTANTE (Reste affichée) ---")]
     public SpriteRenderer bubbleRenderer; 
     public Sprite bubbleHappySprite;      
-    public Sprite bubbleAngrySprite;      
+    public Sprite bubbleAngrySprite;
+
+    [Header("--- SFX ---")]
+    [SerializeField] AudioClip _SFXBubbleEmotion;
 
     [Header("--- ETAT ---")]
     public PlacementState currentState = PlacementState.Neutre;
@@ -46,11 +40,11 @@ public class Dino : MonoBehaviour
     private void Awake()
     {
         _renderer = GetComponent<SpriteRenderer>();
-        _originalScale = transform.localScale;
+        _originalScale = transform.localScale; 
 
         if (bubbleRenderer != null) bubbleRenderer.gameObject.SetActive(false);
-        
-        SetVisualMode(false); 
+        if (idleSprite != null) _renderer.sprite = idleSprite;
+        currentState = PlacementState.Neutre;
     }
     
     public void SetSlotPosition(Transform slotTransform)
@@ -59,37 +53,55 @@ public class Dino : MonoBehaviour
         transform.position = slotTransform.position;
     }
 
-    public void ReturnToLastPosition()
+    public void ReturnToLastPosition(bool playFX = true)
     {
         if (_lastPosition != null)
         {
             transform.position = _lastPosition.position;
+
             if (_lastPosition.TryGetComponent(out Seat seat))
             {
                 EvaluateSatisfaction(seat);
-                PlayPlacementAnimation(); 
+                PlayPlacementAnimation(playFX); 
             }
         }
     }
 
     public void SetDragging(bool isDragging)
     {
-        if (isDragging) SetVisualMode(false);
+        if (isDragging)
+        {
+            if (_currentAnim != null) StopCoroutine(_currentAnim);
+            transform.localScale = _originalScale;
+            transform.rotation = Quaternion.identity;
+            if (passiveSprite != null) _renderer.sprite = passiveSprite;
+            if (feedbackParticles != null) feedbackParticles.Stop();
+            if (bubbleRenderer != null) bubbleRenderer.gameObject.SetActive(false);
+        }
     }
 
     public void EvaluateSatisfaction(Seat seat)
     {
         if (seat == null) return;
-
-        int spawnLayerIndex = LayerMask.NameToLayer("Spawn");
-        if (seat.gameObject.layer == spawnLayerIndex)
+        
+        if (seat.isSpawnSeat || seat.gameObject.layer == LayerMask.NameToLayer("Spawn"))
         {
-            SetVisualMode(false);
             currentState = PlacementState.Neutre;
             currentSatisfaction = 0f;
-            return;
+            
+            if (feedbackParticles != null) 
+            {
+                feedbackParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
+            
+            if (bubbleRenderer != null) 
+            {
+                bubbleRenderer.gameObject.SetActive(false);
+            }
+            
+            return; 
         }
-        
+
         if (profile == null || profile.myRules == null || profile.myRules.Count == 0) 
         { 
             currentState = PlacementState.Bon;
@@ -111,66 +123,63 @@ public class Dino : MonoBehaviour
         else currentState = PlacementState.Neutre;
     }
 
-
-    private void SetVisualMode(bool isActiveMode)
+    public void PlayPlacementAnimation(bool playFX = true)
     {
-        if (_currentAnim != null) StopCoroutine(_currentAnim);
-        
-        transform.localScale = _originalScale;
-        transform.rotation = Quaternion.identity;
-
-        if (!isActiveMode)
-        {
-            if (passiveSprite != null) _renderer.sprite = passiveSprite;
-            else if (idleSprite != null) _renderer.sprite = idleSprite;
-
-            if (feedbackParticles != null) feedbackParticles.Stop();
-            if (bubbleRenderer != null) bubbleRenderer.gameObject.SetActive(false);
-        }
+        PlayActiveAnimation(currentState, playFX);
     }
 
-    public void PlayPlacementAnimation()
-    {
-        if (_lastPosition != null && _lastPosition.gameObject.layer == LayerMask.NameToLayer("Spawn")) return;
-        
-        PlayActiveAnimation(currentState);
-    }
-
-    private void PlayActiveAnimation(PlacementState state)
+    private void PlayActiveAnimation(PlacementState state, bool playFX)
     {
         if (_currentAnim != null) StopCoroutine(_currentAnim);
-        
         UpdateBubbleState(state);
 
-        if (_lastPosition != null && Vector3.Distance(transform.position, _lastPosition.position) < 0.5f)
+        bool isSpawn = false;
+        if (_lastPosition != null && _lastPosition.TryGetComponent(out Seat s)) isSpawn = IsOnSpawn(s);
+
+        if (!isSpawn && _lastPosition != null)
+        {
              transform.position = _lastPosition.position;
+        }
+
+        transform.localScale = _originalScale; 
+        transform.rotation = Quaternion.identity;
 
         switch (state)
         {
             case PlacementState.Bon:
                 _renderer.sprite = happySprite ? happySprite : idleSprite;
-                TriggerParticles(particleHappy); 
-                _currentAnim = StartCoroutine(AnimHappyJump());
+                if (playFX) 
+                {
+                    TriggerParticles(particleHappy); 
+                    _currentAnim = StartCoroutine(AnimHappyJump());
+                }
                 break;
 
             case PlacementState.Mauvais:
                 _renderer.sprite = angrySprite ? angrySprite : idleSprite;
-                TriggerParticles(particleAngry); 
-                _currentAnim = StartCoroutine(AnimAngryShake());
+                if (playFX) 
+                {
+                    TriggerParticles(particleAngry); 
+                    _currentAnim = StartCoroutine(AnimAngryShake());
+                }
                 break;
 
             case PlacementState.Neutre:
             default:
-                _renderer.sprite = idleSprite;
+                _renderer.sprite = idleSprite; 
                 if (feedbackParticles != null) feedbackParticles.Stop();
                 break;
         }
     }
 
+    private bool IsOnSpawn(Seat seat)
+    {
+        return (seat.isSpawnSeat || seat.gameObject.layer == LayerMask.NameToLayer("Spawn"));
+    }
+
     private void UpdateBubbleState(PlacementState state)
     {
         if (bubbleRenderer == null) return;
-
         switch (state)
         {
             case PlacementState.Bon:
@@ -181,7 +190,6 @@ public class Dino : MonoBehaviour
                 bubbleRenderer.sprite = bubbleAngrySprite;
                 bubbleRenderer.gameObject.SetActive(true);
                 break;
-            case PlacementState.Neutre:
             default:
                 bubbleRenderer.gameObject.SetActive(false);
                 break;
@@ -191,41 +199,44 @@ public class Dino : MonoBehaviour
     private void TriggerParticles(Sprite spriteToPlay)
     {
         if (feedbackParticles == null || spriteToPlay == null) return;
-
+        
         feedbackParticles.Stop();
         feedbackParticles.Clear();
-
         var textureModule = feedbackParticles.textureSheetAnimation;
         textureModule.enabled = true;
         textureModule.mode = ParticleSystemAnimationMode.Sprites;
         textureModule.SetSprite(0, spriteToPlay);
-
         feedbackParticles.Play();
+
+        if (AudioManager.Instance != null && _SFXBubbleEmotion != null)
+        {
+            AudioManager.Instance.PlaySFX(_SFXBubbleEmotion);
+        }
     }
 
     private IEnumerator AnimHappyJump()
     {
-        float duration = 0.4f;
-        float timer = 0f;
-        Vector3 startScale = _originalScale;
-        Vector3 peakScale = _originalScale * 1.3f;
+        float duration = 0.4f; float timer = 0f;
+        Vector3 startScale = _originalScale; Vector3 peakScale = _originalScale * 1.3f;
         while (timer < duration) {
-            timer += Time.deltaTime;
-            float progress = timer / duration;
+            timer += Time.deltaTime; float progress = timer / duration;
             float curve = Mathf.Sin(progress * Mathf.PI); 
             transform.localScale = Vector3.Lerp(startScale, peakScale, curve);
-            if (_lastPosition != null) transform.position = _lastPosition.position + new Vector3(0, curve * 0.5f, 0);
+            
+            if (_lastPosition != null && !IsOnSpawn(_lastPosition.GetComponent<Seat>())) 
+                transform.position = _lastPosition.position + new Vector3(0, curve * 0.5f, 0);
+            
             yield return null;
         }
         transform.localScale = startScale;
-        if (_lastPosition != null) transform.position = _lastPosition.position;
+        if (_lastPosition != null && !IsOnSpawn(_lastPosition.GetComponent<Seat>())) 
+            transform.position = _lastPosition.position;
     }
 
     private IEnumerator AnimAngryShake()
     {
-        float duration = 0.4f;
-        float timer = 0f;
-        Vector3 centerPos = transform.position;
+        float duration = 0.4f; float timer = 0f;
+        Vector3 centerPos = _lastPosition != null ? _lastPosition.position : transform.position;
         while (timer < duration) {
             timer += Time.deltaTime;
             float x = Mathf.Sin(timer * 30f) * 0.15f; 

@@ -18,72 +18,88 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 5174663487500288
+  - m_Id: 5416562218762240
     m_Localized: "Fen\xEAtre"
     m_Metadata:
       m_Items: []
-  - m_Id: 5174663495888896
+  - m_Id: 5416562256510976
     m_Localized: Devant
     m_Metadata:
       m_Items: []
-  - m_Id: 5174663500083200
+  - m_Id: 5416562256510977
     m_Localized: "\xC9tre seul"
     m_Metadata:
       m_Items: []
-  - m_Id: 5174663500083201
+  - m_Id: 5416562256510978
     m_Localized: "A c\xF4t\xE9 d'un herbivore"
     m_Metadata:
       m_Items: []
-  - m_Id: 5174663500083202
+  - m_Id: 5416562256510979
     m_Localized: "Derri\xE8re"
     m_Metadata:
       m_Items: []
-  - m_Id: 5174663500083203
+  - m_Id: 5416562256510980
     m_Localized: "A c\xF4t\xE9 d'un carnivore"
     m_Metadata:
       m_Items: []
-  - m_Id: 5174663500083204
+  - m_Id: 5416562256510981
     m_Localized: A droite
     m_Metadata:
       m_Items: []
-  - m_Id: 5174663500083205
+  - m_Id: 5416562256510982
     m_Localized: Pas entre deux dinosaures
     m_Metadata:
       m_Items: []
-  - m_Id: 5174663500083206
+  - m_Id: 5416562256510983
     m_Localized: Au milieu
     m_Metadata:
       m_Items: []
-  - m_Id: 5174663500083207
+  - m_Id: 5416562256510984
     m_Localized: Jamais au milieu
     m_Metadata:
       m_Items: []
-  - m_Id: 5174663500083208
+  - m_Id: 5416562256510985
     m_Localized: A gauche
     m_Metadata:
       m_Items: []
-  - m_Id: 5174663500083209
+  - m_Id: 5416562256510986
     m_Localized: Fumeur
     m_Metadata:
       m_Items: []
-  - m_Id: 5174663500083210
+  - m_Id: 5416562256510987
     m_Localized: Couloir
     m_Metadata:
       m_Items: []
-  - m_Id: 5174663500083211
+  - m_Id: 5416562256510988
     m_Localized: Piercing
     m_Metadata:
       m_Items: []
-  - m_Id: 5174663500083212
+  - m_Id: 5416562256510989
     m_Localized: haut de forme
     m_Metadata:
       m_Items: []
-  - m_Id: 5174663500083213
+  - m_Id: 5416562256510990
     m_Localized: Jupe
     m_Metadata:
       m_Items: []
-  - m_Id: 5174663500083214
+  - m_Id: 5416562256510991
     m_Localized: Sortie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5416562256510992
+    m_Localized: "personne derri\xE8re lui"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5416562256510993
+    m_Localized: "personne \xE0 gauche"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5416562256510994
+    m_Localized: "personne \xE0 droite"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5416562256510995
+    m_Localized: "veut c\xF4t\xE9 AnkyloFred"
     m_Metadata:
       m_Items: []
   references:

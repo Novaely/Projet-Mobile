@@ -81,3 +81,19 @@ MonoBehaviour:
     French: Sortie
     English: Exit
     UnlockedAtLevel: 3
+  - DinoWord: Grre Grroorr
+    French: "personne derri\xE8re lui"
+    English: 'anyone behind '
+    UnlockedAtLevel: 7
+  - DinoWord: Grre Grroo
+    French: "personne \xE0 gauche"
+    English: anyone at left
+    UnlockedAtLevel: 7
+  - DinoWord: Grre Drroo
+    French: "personne \xE0 droite"
+    English: anyone at right
+    UnlockedAtLevel: 7
+  - DinoWord: Grruu Fred
+    French: "veut c\xF4t\xE9 AnkyloFred"
+    English: want to be next to AnkyloFred
+    UnlockedAtLevel: 7

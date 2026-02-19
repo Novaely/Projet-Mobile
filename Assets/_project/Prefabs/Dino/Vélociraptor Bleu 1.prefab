@@ -85,12 +85,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 73f6b8fd236ab4040bf55239f7986d31, type: 3}
+  m_Sprite: {fileID: -1743418607639154422, guid: 92bd9073cb662e544a282c7b7d6f39cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.674, y: 1.45}
+  m_Size: {x: 9.55, y: 8.61}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -144,8 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dino
   profile: {fileID: 11400000, guid: 3168285073037dd4f88e1cc836ef978d, type: 2}
-  passiveSprite: {fileID: 21300000, guid: 73f6b8fd236ab4040bf55239f7986d31, type: 3}
-  idleSprite: {fileID: 21300000, guid: a2bac7f2538956140a122502297e8b6d, type: 3}
+  passiveSprite: {fileID: -1743418607639154422, guid: 92bd9073cb662e544a282c7b7d6f39cd, type: 3}
+  idleSprite: {fileID: -81305407334589818, guid: 9eae97969b41e4e4680a1a92b908cce0, type: 3}
   feedbackParticles: {fileID: 8282259253790956556}
   bubbleRenderer: {fileID: 3891816392083173438}
   bubbleHappySprite: {fileID: 21300000, guid: c1ebcbf489c1fe04e82d932ff120d077, type: 3}

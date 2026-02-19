@@ -218,18 +218,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143290710}
     m_Modifications:
-    - target: {fileID: 1463677527914183686, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488848390865734772, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716679378481947258, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5693101656122206242, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: m_Name
       value: car_seat 1 (7)
@@ -275,45 +263,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: front
-      value: 
-      objectReference: {fileID: 475132918}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: right
       value: 
       objectReference: {fileID: 722255235}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatRow
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatColumn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: back
-      value: 
-      objectReference: {fileID: 475132917}
     - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: right
       value: 
       objectReference: {fileID: 722255236}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatRow
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatColumn
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -354,18 +310,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143290710}
     m_Modifications:
-    - target: {fileID: 1463677527914183686, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488848390865734772, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716679378481947258, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5693101656122206242, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: m_Name
       value: car_seat 1 (6)
@@ -411,45 +355,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: front
-      value: 
-      objectReference: {fileID: 528601523}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: right
       value: 
       objectReference: {fileID: 748387866}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatRow
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatColumn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: back
-      value: 
-      objectReference: {fileID: 528601522}
     - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: right
       value: 
       objectReference: {fileID: 748387867}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatRow
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatColumn
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -490,18 +402,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143290710}
     m_Modifications:
-    - target: {fileID: 1463677527914183686, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488848390865734772, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716679378481947258, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5693101656122206242, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: m_Name
       value: car_seat 1 (3)
@@ -551,29 +451,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 722255235}
     - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: front
-      value: 
-      objectReference: {fileID: 675511632}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: right
       value: 
       objectReference: {fileID: 1695779517}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatRow
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatColumn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: back
-      value: 
-      objectReference: {fileID: 675511631}
     - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: left
       value: 
@@ -582,18 +462,6 @@ PrefabInstance:
       propertyPath: right
       value: 
       objectReference: {fileID: 1695779518}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatRow
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatColumn
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -749,18 +617,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143290710}
     m_Modifications:
-    - target: {fileID: 1463677527914183686, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488848390865734772, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716679378481947258, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5693101656122206242, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: m_Name
       value: car_seat 1 (5)
@@ -810,29 +666,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 675511631}
     - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: front
-      value: 
-      objectReference: {fileID: 722255236}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: right
       value: 
       objectReference: {fileID: 475132917}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatRow
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatColumn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: back
-      value: 
-      objectReference: {fileID: 722255235}
     - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: left
       value: 
@@ -841,18 +677,6 @@ PrefabInstance:
       propertyPath: right
       value: 
       objectReference: {fileID: 475132918}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatRow
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatColumn
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -893,18 +717,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143290710}
     m_Modifications:
-    - target: {fileID: 1463677527914183686, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488848390865734772, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716679378481947258, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5693101656122206242, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: m_Name
       value: car_seat 1 (4)
@@ -954,29 +766,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 528601522}
     - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: front
-      value: 
-      objectReference: {fileID: 748387867}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: right
       value: 
       objectReference: {fileID: 1647652545}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatRow
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatColumn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: back
-      value: 
-      objectReference: {fileID: 748387866}
     - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: left
       value: 
@@ -985,18 +777,6 @@ PrefabInstance:
       propertyPath: right
       value: 
       objectReference: {fileID: 1647652546}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatRow
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatColumn
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1128,18 +908,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143290710}
     m_Modifications:
-    - target: {fileID: 1463677527914183686, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488848390865734772, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716679378481947258, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5693101656122206242, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: m_Name
       value: car_seat 1
@@ -1188,42 +956,10 @@ PrefabInstance:
       propertyPath: left
       value: 
       objectReference: {fileID: 1647652545}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: front
-      value: 
-      objectReference: {fileID: 870186951}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatRow
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatColumn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: back
-      value: 
-      objectReference: {fileID: 870186950}
     - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: left
       value: 
       objectReference: {fileID: 1647652546}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatRow
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatColumn
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1787,18 +1523,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143290710}
     m_Modifications:
-    - target: {fileID: 1463677527914183686, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488848390865734772, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716679378481947258, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5693101656122206242, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: m_Name
       value: car_seat 1 (2)
@@ -1848,29 +1572,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 748387866}
     - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: front
-      value: 
-      objectReference: {fileID: 1647652546}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: right
       value: 
       objectReference: {fileID: 870186950}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatRow
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatColumn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: back
-      value: 
-      objectReference: {fileID: 1647652545}
     - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: left
       value: 
@@ -1879,18 +1583,6 @@ PrefabInstance:
       propertyPath: right
       value: 
       objectReference: {fileID: 870186951}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatRow
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatColumn
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1931,18 +1623,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2143290710}
     m_Modifications:
-    - target: {fileID: 1463677527914183686, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488848390865734772, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716679378481947258, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5693101656122206242, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: m_Name
       value: car_seat 1 (1)
@@ -1991,42 +1671,10 @@ PrefabInstance:
       propertyPath: left
       value: 
       objectReference: {fileID: 675511631}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: front
-      value: 
-      objectReference: {fileID: 1695779518}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatRow
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316352534658010278, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatColumn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: back
-      value: 
-      objectReference: {fileID: 1695779517}
     - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
       propertyPath: left
       value: 
       objectReference: {fileID: 675511632}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatRow
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892872020578965940, guid: d263f81fac5874c4f874484c5249619c, type: 3}
-      propertyPath: seatColumn
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

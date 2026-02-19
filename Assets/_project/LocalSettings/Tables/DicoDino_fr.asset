@@ -18,88 +18,88 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 5422720904933376
-    m_Localized: "Fen\xEAtre"
+  - m_Id: 5439911721250816
+    m_Localized: Fenetre
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127680
+  - m_Id: 5439911721250817
     m_Localized: Devant
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127681
-    m_Localized: "\xC9tre seul"
+  - m_Id: 5439911721250818
+    m_Localized: Etre seul
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127682
-    m_Localized: "A c\xF4t\xE9 d'un herbivore"
+  - m_Id: 5439911721250819
+    m_Localized: A cote d'un herbivore
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127683
-    m_Localized: "Derri\xE8re"
+  - m_Id: 5439911721250820
+    m_Localized: Derriere
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127684
-    m_Localized: "A c\xF4t\xE9 d'un carnivore"
+  - m_Id: 5439911721250821
+    m_Localized: A cote d'un carnivore
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127685
+  - m_Id: 5439911721250822
     m_Localized: A droite
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127686
+  - m_Id: 5439911721250823
     m_Localized: Pas entre deux dinosaures
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127687
+  - m_Id: 5439911721250824
     m_Localized: Au milieu
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127688
+  - m_Id: 5439911721250825
     m_Localized: Jamais au milieu
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127689
+  - m_Id: 5439911721250826
     m_Localized: A gauche
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127690
+  - m_Id: 5439911721250827
     m_Localized: Fumeur
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127691
+  - m_Id: 5439911721250828
     m_Localized: Couloir
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127692
+  - m_Id: 5439911721250829
     m_Localized: Piercing
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127693
-    m_Localized: haut de forme
+  - m_Id: 5439911721250830
+    m_Localized: Haut de forme
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127694
+  - m_Id: 5439911721250831
     m_Localized: Jupe
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127695
+  - m_Id: 5439911721250832
     m_Localized: Sortie
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127696
-    m_Localized: "personne derri\xE8re lui"
+  - m_Id: 5439911721250833
+    m_Localized: Ne veut personne derriere lui
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127697
-    m_Localized: "personne \xE0 gauche"
+  - m_Id: 5439911721250834
+    m_Localized: Ne veut personne a sa gauche
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127698
-    m_Localized: "personne \xE0 droite"
+  - m_Id: 5439911721250835
+    m_Localized: Ne veut personne a sa droite
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127699
-    m_Localized: "veut c\xF4t\xE9 AnkyloFred"
+  - m_Id: 5439911721250836
+    m_Localized: Veut etre a cote AnkyloFred
     m_Metadata:
       m_Items: []
   references:

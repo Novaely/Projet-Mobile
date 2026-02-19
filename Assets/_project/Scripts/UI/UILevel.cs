@@ -126,32 +126,41 @@ public class UILevel : MonoBehaviour
 
     private void UpdateDicoDino()
     {
-        var table = LocalizationSettings.StringDatabase.GetTable("DicoDino");
         _textDico.text = string.Empty;
         
         int maxLevelUnlocked = 0;
-        for (int i = 0; i < PlayerSave.Instance.LevelSave.starsLevels.Count; i++)
+        for (int i = 0; i < PlayerSave.Instance.NumberOfLevel; i++)
         {
-            if (PlayerSave.Instance.LevelSave.starsLevels[i] <= 0)
+            if (PlayerSave.Instance.LevelSave.starsLevels[i] > 0)
             {
                 maxLevelUnlocked = i;
-                break;
             }
         }
-
+        Debug.Log(maxLevelUnlocked);
         foreach (var word in _databaseDico.Dictionnary)
         {
-            if (word.UnlockedAtLevel > maxLevelUnlocked)
+            if (word.UnlockedAtLevel >= maxLevelUnlocked)
             {
-                _textDico.text += word.DinoWord + " : ???" + "\n";
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1]) // FR
+                {
+                    _textDico.text += word.DinoWord + " : ???" + "\n";
+                }
+                else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) // EN
+                {
+                    _textDico.text += word.DinoWord + " : ???" + "\n";
+                }
             }
             else
             {
-                var entry = table.GetEntry(word.DinoWord);
-                if (entry == null)
-                    continue;
-
-                _textDico.text += word.DinoWord + " : " + entry.GetLocalizedString() + "\n";
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1]) // FR
+                {
+                    _textDico.text += word.DinoWord + " : " + word.French + "\n";
+                }
+                else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0]) // EN
+                {
+                    _textDico.text += word.DinoWord + " : " + word.English + "\n";
+                }
+                
             }
                 
         }

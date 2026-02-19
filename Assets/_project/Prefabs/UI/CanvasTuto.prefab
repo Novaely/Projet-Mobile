@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 50}
+  m_SizeDelta: {x: 520, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1029398876642468218
 CanvasRenderer:
@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 75e76eda15d2fc7438e667a89ed74498, type: 2}
+  m_sharedMaterial: {fileID: -4274496308295222994, guid: 75e76eda15d2fc7438e667a89ed74498, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -92,14 +92,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 8
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
+  m_wordWrappingRatios: 0
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
@@ -317,8 +317,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3927425127888023255}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.813, y: 0.76962966}
-  m_AnchorMax: {x: 0.813, y: 0.76962966}
+  m_AnchorMin: {x: 0.813, y: 0.6765927}
+  m_AnchorMax: {x: 0.813, y: 0.6765927}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 310.407, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -441,17 +441,46 @@ MonoBehaviour:
   _zoneText: {fileID: 7626774507015882693}
   InfoTutos:
   - position: {fileID: 5522695376460049926}
-    text: "Ici ce sont les informations des dinosaures \xE0 placer. Vous y retrouverez
-      leur nom, ce qu'ils veulent et ce qu'ils ne veulent pas"
+    text: 'Ici ce sont les informations des dinosaures a placer.
+
+      Vous y retrouverez
+      leur nom, si c''est un carnivore ou un herbivore, ce qu''ils veulent et ce
+      qu''ils ne veulent pas.'
+    trad: 'This is where you''ll find information about the dinosaurs to place.
+
+      You''ll
+      find their name, whether they''re carnivores or herbivores, what they want,
+      and what they don''t want.'
   - position: {fileID: 3844326224402179366}
-    text: Ici ce sont vos dinosaures, vous pouvez changer de dinosaures et les placer
-      dans l'ordre que vous voulez
+    text: 'Ici ce sont vos dinosaures.
+
+      Vous pouvez changer de dinosaures en
+      cliquant sur les fleches et les placer dans l''ordre que vous voulez.'
+    trad: 'These are your dinosaurs.
+
+      You can change them by clicking the arrows
+      and arrange them in any order you like.'
   - position: {fileID: 6858561277074816310}
-    text: "Vous pouvez changer dans les param\xE8tres de volume ainsi que la langue
-      du jeu"
+    text: Vous pouvez changer dans les parametres le volume de la musique ainsi que
+      la langue du jeu.
+    trad: You can change the music volume and the game language in the settings.
   - position: {fileID: 3054459828412265968}
-    text: Et ici c'est le dictionnaire du vocabulaire dinosaures ! vous retrouverez
-      tous les mots utiliser par les dinosaures et leur traduction dans notre langue
+    text: 'Et ici c''est le dictionnaire du vocabulaire des dinosaures !
+
+      Vous
+      retrouverez tous les mots deja utilises par les dinosaures et leur traduction
+      dans notre langue.
+
+      Les nouveaux mots decouvert dans un niveau se rajoutent
+      a votre dictionnaire a la fin du niveau.'
+    trad: 'And here''s the dinosaur vocabulary dictionary!
+
+      You''ll find all
+      the words used by dinosaurs and their translations in our language.
+
+      New
+      words discovered in a level are added to your dictionary at the end of the
+      level.'
 --- !u!1 &4943184931038883484
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,8 +511,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3927425127888023255}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.89000005, y: 0.76962966}
-  m_AnchorMax: {x: 0.89000005, y: 0.76962966}
+  m_AnchorMin: {x: 0.8632458, y: 0.76962966}
+  m_AnchorMax: {x: 0.8632458, y: 0.76962966}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 323.5574, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}

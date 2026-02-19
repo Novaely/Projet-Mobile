@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Localization.Settings;
 
 public class TutoManager : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class TutoManager : MonoBehaviour
     struct InfoTuto
     {
         public RectTransform position;
-        public string text;
+        [TextArea(5,9)] public string text;
+        [TextArea(5,9)] public string trad;
     }
 
     [SerializeField] List<InfoTuto> InfoTutos;
@@ -26,7 +28,15 @@ public class TutoManager : MonoBehaviour
     private void Start()
     {
         index = 0;
-        _zoneText.text = InfoTutos[index].text;
+        if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+        {
+            _zoneText.text = InfoTutos[index].text;
+        }
+        else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+        {
+            _zoneText.text = InfoTutos[index].trad;
+        }
+
         _zoneText.rectTransform.position = InfoTutos[index].position.position;
     }
 
@@ -45,7 +55,14 @@ public class TutoManager : MonoBehaviour
                     OnTutoEnd?.Invoke();
                     return;
                 }
-                _zoneText.text = InfoTutos[index].text;
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[1])
+                {
+                    _zoneText.text = InfoTutos[index].text;
+                }
+                else if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+                {
+                    _zoneText.text = InfoTutos[index].trad;
+                }
                 _zoneText.rectTransform.position = InfoTutos[index].position.position;
             }
         }

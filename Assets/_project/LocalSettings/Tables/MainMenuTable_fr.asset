@@ -23,11 +23,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 450485104640
-    m_Localized: "Cr\xE9dits"
+    m_Localized: Credits
     m_Metadata:
       m_Items: []
   - m_Id: 12143374184448
-    m_Localized: "S\xE9lection des niveaux"
+    m_Localized: Selection des niveaux
     m_Metadata:
       m_Items: []
   - m_Id: 13070751576064
@@ -39,7 +39,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 16626242105344
-    m_Localized: "Fran\xE7ais"
+    m_Localized: Francais
     m_Metadata:
       m_Items: []
   - m_Id: 16623469670400
@@ -51,7 +51,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2159856568053760
-    m_Localized: "S\xE9lection des Niveaux"
+    m_Localized: Selection des Niveaux
     m_Metadata:
       m_Items: []
   references:

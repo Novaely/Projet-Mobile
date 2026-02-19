@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DicoDinoDatabase
   <Dictionnary>k__BackingField:
   - DinoWord: Freeeeerrr
-    French: "Fen\xEAtre"
+    French: Fenetre
     English: Window
     UnlockedAtLevel: 1
   - DinoWord: Vrooouuvroouuu
@@ -22,19 +22,27 @@ MonoBehaviour:
     English: Front
     UnlockedAtLevel: 1
   - DinoWord: Rawr
-    French: "\xC9tre seul"
-    English: to be alone
+    French: Etre seul
+    English: To be alone
     UnlockedAtLevel: 1
   - DinoWord: Herbrrre
-    French: "A c\xF4t\xE9 d'un herbivore"
+    French: A cote d'un herbivore
     English: Next to a Herbivore
     UnlockedAtLevel: 2
+  - DinoWord: Jjuup
+    French: Jupe
+    English: Skirt
+    UnlockedAtLevel: 3
+  - DinoWord: Sssooorrrrr
+    French: Sortie
+    English: Exit
+    UnlockedAtLevel: 3
   - DinoWord: Grroorr
-    French: "Derri\xE8re"
+    French: Derriere
     English: At Back
     UnlockedAtLevel: 4
   - DinoWord: Carrnn
-    French: "A c\xF4t\xE9 d'un carnivore"
+    French: A cote d'un carnivore
     English: Next to a Carnivore
     UnlockedAtLevel: 4
   - DinoWord: Drroo
@@ -70,30 +78,22 @@ MonoBehaviour:
     English: Piercing
     UnlockedAtLevel: 7
   - DinoWord: GrrannPo
-    French: haut de forme
-    English: a top hat
+    French: Haut de forme
+    English: Top hat
     UnlockedAtLevel: 7
-  - DinoWord: Jjuup
-    French: Jupe
-    English: Skirt
-    UnlockedAtLevel: 3
-  - DinoWord: Sssooorrrrr
-    French: Sortie
-    English: Exit
-    UnlockedAtLevel: 3
   - DinoWord: Grre Grroorr
-    French: "personne derri\xE8re lui"
-    English: 'anyone behind '
+    French: Ne veut personne derriere lui
+    English: 'Nobody behind him '
     UnlockedAtLevel: 7
   - DinoWord: Grre Grroo
-    French: "personne \xE0 gauche"
-    English: anyone at left
+    French: Ne veut personne a sa gauche
+    English: Nobody at his left
     UnlockedAtLevel: 7
   - DinoWord: Grre Drroo
-    French: "personne \xE0 droite"
-    English: anyone at right
+    French: Ne veut personne a sa droite
+    English: Nobody at his right
     UnlockedAtLevel: 7
   - DinoWord: Grruu Fred
-    French: "veut c\xF4t\xE9 AnkyloFred"
-    English: want to be next to AnkyloFred
+    French: Veut etre a cote AnkyloFred
+    English: Want to be next to AnkyloFred
     UnlockedAtLevel: 7

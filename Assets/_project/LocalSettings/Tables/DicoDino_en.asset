@@ -18,88 +18,88 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 5422720904933376
+  - m_Id: 5439911721250816
     m_Localized: Window
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127680
+  - m_Id: 5439911721250817
     m_Localized: Front
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127681
-    m_Localized: to be alone
+  - m_Id: 5439911721250818
+    m_Localized: To be alone
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127682
+  - m_Id: 5439911721250819
     m_Localized: Next to a Herbivore
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127683
+  - m_Id: 5439911721250820
     m_Localized: At Back
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127684
+  - m_Id: 5439911721250821
     m_Localized: Next to a Carnivore
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127685
+  - m_Id: 5439911721250822
     m_Localized: At right
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127686
+  - m_Id: 5439911721250823
     m_Localized: Not between two dinosaurs
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127687
+  - m_Id: 5439911721250824
     m_Localized: In the middle
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127688
+  - m_Id: 5439911721250825
     m_Localized: Never in the middle
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127689
+  - m_Id: 5439911721250826
     m_Localized: At left
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127690
+  - m_Id: 5439911721250827
     m_Localized: Smoking
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127691
+  - m_Id: 5439911721250828
     m_Localized: Corridor
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127692
+  - m_Id: 5439911721250829
     m_Localized: Piercing
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127693
-    m_Localized: a top hat
+  - m_Id: 5439911721250830
+    m_Localized: Top hat
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127694
+  - m_Id: 5439911721250831
     m_Localized: Skirt
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127695
+  - m_Id: 5439911721250832
     m_Localized: Exit
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127696
-    m_Localized: 'anyone behind '
+  - m_Id: 5439911721250833
+    m_Localized: 'Nobody behind him '
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127697
-    m_Localized: anyone at left
+  - m_Id: 5439911721250834
+    m_Localized: Nobody at his left
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127698
-    m_Localized: anyone at right
+  - m_Id: 5439911721250835
+    m_Localized: Nobody at his right
     m_Metadata:
       m_Items: []
-  - m_Id: 5422720909127699
-    m_Localized: want to be next to AnkyloFred
+  - m_Id: 5439911721250836
+    m_Localized: Want to be next to AnkyloFred
     m_Metadata:
       m_Items: []
   references:

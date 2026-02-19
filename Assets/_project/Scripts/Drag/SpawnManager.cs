@@ -203,13 +203,10 @@ public class SpawnManager : MonoBehaviour
 
     void DinoClicked(Dino dino)
     {
-        Debug.Log("dino click");
-
         foreach (var tryDino in _dinos)
         {
             if (tryDino.dino == dino.gameObject)
             {
-                Debug.Log("dino trouv�");
                 if (tryDino.isPlace == true)
                 {
                     if (!_dinos[_currentIdDino].isPlace)

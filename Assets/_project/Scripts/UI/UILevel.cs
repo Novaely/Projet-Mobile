@@ -128,15 +128,15 @@ public class UILevel : MonoBehaviour
     {
         _textDico.text = string.Empty;
         
-        int maxLevelUnlocked = 0;
-        for (int i = 0; i < PlayerSave.Instance.NumberOfLevel; i++)
+        int maxLevelUnlocked = 1;
+        for (int i = 1; i < PlayerSave.Instance.NumberOfLevel-1; i++)
         {
             if (PlayerSave.Instance.LevelSave.starsLevels[i] > 0)
             {
-                maxLevelUnlocked = i;
+                maxLevelUnlocked = i+2;
             }
         }
-        Debug.Log(maxLevelUnlocked);
+
         foreach (var word in _databaseDico.Dictionnary)
         {
             if (word.UnlockedAtLevel >= maxLevelUnlocked)
